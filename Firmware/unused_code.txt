@@ -1,0 +1,403 @@
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Logarithmic  detector");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, "calibration may take ");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "up to half a minute.");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "     Please wait");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+
+	ReflectometerMode_Init(Si5351_ConfigStruct, ReflectometerMode_Calibrate_Log_Detector);
+	Delay_ms(4*DRAMATIC_PAUSE);
+	Si5351_ClearStickyBits(Si5351_ConfigStruct);
+
+
+
+
+uint16_t dacvalue=0, temp;
+	uint32_t log_cal_start_millis, total_samples=0;
+	for (temp=0; temp<=4095; temp++)
+	{
+		Board_ReflectometerState->log_conversion_table[temp]=0;
+	}
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "       /4096 points");
+
+	Board_ReflectometerState->sample_log_min=4095;
+	Board_ReflectometerState->sample_log_max=0;
+	Board_ReflectometerState->sample_lin_min=4095;
+	Board_ReflectometerState->sample_lin_max=0;
+
+	Board_ReflectometerState->log_conversion_table_samples=0;
+	Board_ReflectometerState->log_conversion_table_oversampling_min=65535;
+	log_cal_start_millis=millis;
+
+	while((Board_ReflectometerState->log_conversion_table_samples<4096)|(total_samples<1048576))
+	{
+		MCP4725_SetVoltage(dacvalue);
+		while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)==Bit_RESET){}
+		while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)==Bit_SET){}
+
+		if(Board_ReflectometerState->sample_lin_last < Board_ReflectometerState->sample_lin_min) Board_ReflectometerState->sample_lin_min=Board_ReflectometerState->sample_lin_last;
+		if(Board_ReflectometerState->sample_lin_last > Board_ReflectometerState->sample_lin_max) Board_ReflectometerState->sample_lin_max=Board_ReflectometerState->sample_lin_last;
+		if(Board_ReflectometerState->sample_log_last < Board_ReflectometerState->sample_log_min)
+			{
+				Board_ReflectometerState->sample_log_min=Board_ReflectometerState->sample_log_last;
+				Board_ReflectometerState->dac_log_min=dacvalue;
+			}
+		if(Board_ReflectometerState->sample_log_last > Board_ReflectometerState->sample_log_max) Board_ReflectometerState->sample_log_max=Board_ReflectometerState->sample_log_last;
+
+		if (Board_ReflectometerState->log_conversion_table[Board_ReflectometerState->sample_lin_last]==0)
+		{
+			Board_ReflectometerState->log_conversion_table[Board_ReflectometerState->sample_lin_last]=Board_ReflectometerState->sample_log_last+(1<<12);
+			Board_ReflectometerState->log_conversion_table_samples++;
+		}
+		else
+		{
+			#define LUTENTRY Board_ReflectometerState->log_conversion_table[Board_ReflectometerState->sample_lin_last]
+			LUTENTRY=(Board_ReflectometerState->sample_log_last + (LUTENTRY>>12)*(LUTENTRY&0x0FFF))
+							/((LUTENTRY>>12)+1)
+							+(LUTENTRY&0xF000);
+			if ((LUTENTRY>>12)<15)
+			{
+				LUTENTRY=(LUTENTRY&0x0FFF) + (((LUTENTRY>>12)+1)<<12);
+			}
+			#undef LUTENTRY
+		}
+
+		if(dacvalue==4095)
+		{
+			if(Board_ReflectometerState->log_conversion_table_samples==4096)
+			{
+				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Additional  averaging");
+			}else{
+				getnum(Board_ReflectometerState->log_conversion_table_samples,str);
+				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 6*3, 0, str+1);
+			}
+
+			SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 1,5);
+
+			uint16_t i3;
+			for(i3=0; i3<=4095; i3++)
+			{
+				if(Board_ReflectometerState->log_conversion_table[i3]!=0)
+				{
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,i3/32, 47-((Board_ReflectometerState->log_conversion_table[i3]&0x0FFF)-Board_ReflectometerState->sample_log_min)/((Board_ReflectometerState->sample_log_max - Board_ReflectometerState->sample_log_min)/39));
+				} else {
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,i3/32, 47);
+				}
+			}
+
+			SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+			SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+		}
+		if ((millis-log_cal_start_millis)>30000) break;
+		if ((millis-log_cal_start_millis)>15000 & total_samples>=131072) break;
+		dacvalue=(dacvalue+1) & 0x0FFF;
+		total_samples++;
+	}
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Number of averages");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(2*DRAMATIC_PAUSE);
+	for (temp=0; temp<=4095; temp++)
+	{
+		SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,temp/32,47-(39*(Board_ReflectometerState->log_conversion_table[temp]>>12))/15);
+	}
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(7*DRAMATIC_PAUSE);
+
+	for (temp=0; temp<=4095; temp++)
+	{
+		if ((Board_ReflectometerState->log_conversion_table[temp]>>12)<Board_ReflectometerState->log_conversion_table_oversampling_min)
+		{
+			Board_ReflectometerState->log_conversion_table_oversampling_min=Board_ReflectometerState->log_conversion_table[temp]>>12;
+		}
+		Board_ReflectometerState->log_conversion_table[temp]&=0x0FFF;
+	}
+
+	char str2[11];
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Samples");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum32(total_samples,str2);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*13, 0, str2+2);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 0, "/");
+	getnum(Board_ReflectometerState->log_conversion_table_samples,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*4, 0, str+1);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, "Averaging");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum((100*total_samples/Board_ReflectometerState->log_conversion_table_samples)/100,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*9, 1, str+2);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*6, 1, ".00/");
+	getnum((100*total_samples/Board_ReflectometerState->log_conversion_table_samples)%100,str);
+	if (str[3]==32) str[3]=48;
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 1, str+3);
+	getnum(Board_ReflectometerState->log_conversion_table_oversampling_min,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*2, 1, str+3);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "LOG minimum");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(Board_ReflectometerState->sample_log_min,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-24, 2, str+1);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "LOG maximum");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(Board_ReflectometerState->sample_log_max,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-24, 3, str+1);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "LOG calibration");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	(Board_ReflectometerState->log_conversion_table_samples!=4096)?dispError(SSD1306_ConfigStruct,4):dispOK(SSD1306_ConfigStruct,4);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(4*DRAMATIC_PAUSE);
+
+	/*
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "    Curve fitting");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	uint16_t temp_log_b, temp_log_b_value=4095;
+	for (temp=0; temp<=4095; temp++)
+	{
+		if(temp_log_b_value>Board_ReflectometerState->log_conversion_table[temp])
+		{
+			temp_log_b=temp;
+			temp_log_b_value=Board_ReflectometerState->log_conversion_table[temp];
+		}
+	}
+	Board_ReflectometerState->log_a=0;
+	for (temp=0; temp<=31; temp++)
+	{
+		uint16_t offset[]={29,32,34,36,39,41,44,47,51,54,58,62,66,71,76,81,87,93,100,107,114,122,131,140,149,160,171,183,196,210,224,240,257};
+		//uint16_t offset[]={63,66,70,73,77,81,85,89,93,98,103,108,114,119,125,132,138,145,152,160,168,176,185,194,204,214,225,236,248,260,273,287,301};
+		//uint16_t offset[]={349,366,385,404,424,445,468,491,516,541,568,597,627,658,691,725,762,800,840,882,926,972,1021,1072,1125,1182,1241,1303,1368,1436,1508,1583,1663};
+		Board_ReflectometerState->log_a=((float)Board_ReflectometerState->log_conversion_table[temp_log_b+offset[temp+1]] + (float)Board_ReflectometerState->log_conversion_table[temp_log_b-offset[temp+1]]
+									   - (float)Board_ReflectometerState->log_conversion_table[temp_log_b+offset[temp]] - (float)Board_ReflectometerState->log_conversion_table[temp_log_b-offset[temp]]
+									   + 2*(float)temp*Board_ReflectometerState->log_a)/(2*((float)temp+1));
+	}
+	Board_ReflectometerState->log_a=Board_ReflectometerState->log_a/log2f(1.07);
+	Board_ReflectometerState->log_b=temp_log_b;
+	Board_ReflectometerState->log_c=0;
+	for (temp=0;temp<=1000;temp++)
+	{
+		Board_ReflectometerState->log_c=((float)Board_ReflectometerState->log_conversion_table[temp+500+(int16_t)Board_ReflectometerState->log_b]
+											  - Board_ReflectometerState->log_a*log2f(temp+500)
+											  + ((float)temp)*Board_ReflectometerState->log_c)/((float)temp+1);
+	}
+	for (temp=0;temp<=4095;temp++)
+	{
+		SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,temp/32,47-(Board_ReflectometerState->log_a*log2f(fabsf(temp-Board_ReflectometerState->log_b))+Board_ReflectometerState->log_c)/(4096/47));
+		SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,temp/32,47-Board_ReflectometerState->log_conversion_table[temp]/(4096/47));
+	}
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(7*DRAMATIC_PAUSE);
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, " Curve center error");
+	//for (temp=0;temp<=4095;temp++)
+	//{
+	//	int16_t temp_error=Board_ReflectometerState->log_a*log2f(fabsf(temp-Board_ReflectometerState->log_b))+Board_ReflectometerState->log_c-Board_ReflectometerState->log_conversion_table[temp];
+	//	SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,temp/32,47-(temp_error+2047)/(4096/47));
+	//}
+	for (temp=0;temp<=127;temp++)
+	{
+		int16_t temp_error=Board_ReflectometerState->log_a*log2f(fabsf((temp-64+(uint16_t)Board_ReflectometerState->log_b)-Board_ReflectometerState->log_b))+Board_ReflectometerState->log_c-Board_ReflectometerState->log_conversion_table[temp-64+(uint16_t)Board_ReflectometerState->log_b];
+		SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,temp,47-(temp_error+2047)/(4096/47));
+	}
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(7*DRAMATIC_PAUSE);
+	*/
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Logarithmic  detector");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " zero calibration in ");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "       process.");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "     Please wait");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(4*DRAMATIC_PAUSE);
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "   Finding minimum");
+
+	uint32_t temp_minlog=1<<31, temp_maxlog;
+	uint16_t temp_mindac;
+	#define	EXPANSION	2
+	#define HALFWIDTH	64*EXPANSION
+	#define UPPER_END	(HALFWIDTH-1)
+	for(dacvalue=Board_ReflectometerState->dac_log_min-HALFWIDTH; dacvalue<=Board_ReflectometerState->dac_log_min+(HALFWIDTH-1); dacvalue++)
+	{
+		MCP4725_SetVoltage(dacvalue);
+
+		uint16_t i2;
+		uint32_t log_average=0;
+
+		for(i2=0; i2<2048; i2++)
+		{
+			while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)==Bit_RESET){}
+			while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)==Bit_SET){}
+
+			log_average+=Board_ReflectometerState->sample_log_last;
+		}
+
+		if(dacvalue==Board_ReflectometerState->dac_log_min-HALFWIDTH)
+		{
+			temp_maxlog=log_average;
+		}
+
+		if (log_average<temp_minlog)
+		{
+			temp_minlog=log_average;
+			temp_mindac=dacvalue;
+		}
+
+		SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct,(dacvalue-(Board_ReflectometerState->dac_log_min-HALFWIDTH))/EXPANSION, 47-log_average/(temp_maxlog/39));
+
+		if((dacvalue-(Board_ReflectometerState->dac_log_min-HALFWIDTH))%16==14)
+		{
+			SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+			SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+		}
+	}
+
+	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "LOG minimum");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(temp_minlog/2048,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 0, str);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, "at DAC value");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(temp_mindac,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 1, str);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "Expected LOG min");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(Board_ReflectometerState->sample_log_min,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 2, str);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "Expected DAC val");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum(Board_ReflectometerState->dac_log_min,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 3, str);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "Diff");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	getnum((temp_minlog/2048>Board_ReflectometerState->sample_log_min)?temp_minlog/2048-Board_ReflectometerState->sample_log_min:Board_ReflectometerState->sample_log_min-temp_minlog/2048,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*10, 4, str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*5, 4, "/");
+	getnum((temp_mindac>Board_ReflectometerState->dac_log_min)?temp_mindac-Board_ReflectometerState->dac_log_min:Board_ReflectometerState->dac_log_min-temp_mindac,str);
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 127-6*4, 4, str+1);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 5, "Zero calibration");
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(DRAMATIC_PAUSE);
+	(temp_mindac<(Board_ReflectometerState->dac_log_min+100) & temp_mindac>(Board_ReflectometerState->dac_log_min-100))?dispOK(SSD1306_ConfigStruct,5):dispError(SSD1306_ConfigStruct,5);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
+	Delay_ms(4*DRAMATIC_PAUSE);
+
+	Board_ReflectometerState->cal_log_min=temp_minlog/2048;
+	Board_ReflectometerState->dac_log_min=temp_mindac;
+	MCP4725_SetVoltage(Board_ReflectometerState->dac_log_min);
+
+	Delay_ms(100);
+
+	ReflectometerMode_Init(Si5351_ConfigStruct, ReflectometerMode_Run);
+	Delay_ms(1000);
+	Si5351_ClearStickyBits(Si5351_ConfigStruct);
+
+	Board_ReflectometerState->current_sample_index=0;
+	Board_ReflectometerState->start_sample_index=Board_ReflectometerState->largest_differentiation_point-64;
+	Board_ReflectometerState->Enable_Sampling=ENABLE;
+
+	SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
+	SSD1306_DrawBuffer(SSD1306_ConfigStruct);

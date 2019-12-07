@@ -1,0 +1,35 @@
+screen1.bmp	fall fractional, no filter
+
+screen2.bmp	fall fractional, no filter
+waveform1.txt	fall fractional, no filter
+screen3.bmp	fall fractional, 512 averages
+waveform2.txt	fall fractional, 512 averages
+screen4.bmp	rise fractional, no filter
+waveform3.txt	rise fractional, no filter
+screen5.bmp	rise fractional, 512 averages
+waveform4.txt	rise fractional, 512 averages
+
+screen6.bmp	rise integer, no filter
+waveform5.txt	rise integer, no filter
+screen7.bmp	rise integer, 512 averages
+waveform6.txt	rise integer, 512 averages
+screen8.bmp	fall integer, no filter
+waveform7.txt	fall integer, no filter
+screen9.bmp	fall integer, 512 averages
+waveform8.txt	fall integer, 512 averages
+
+screen10.bmp	fall integer, no filter
+screen11.bmp	rise integer, no filter
+screen12.bmp	rise fractional, no filter
+screen13.bmp	rise fractional, 512 averages
+waveform9.txt	rise fractional, 512 averages
+screen14.bmp	fall fractional, no filter
+screen15.bmp	fall fractional, 512 averages
+waveform10.txt	fall fractional, 512 averages
+
+screen16.bmp	TDR, 128 averages
+waveform11.txt	TDR, 128 averages
+screen17.bmp	TDR, 128 averages
+waveform12.txt	TDR, 128 averages
+screen18.bmp	TDR, 128 averages, calibrated
+waveform13.txt	TDR, 128 averages, calibrated

@@ -1,0 +1,8 @@
+# ignore all compiled binaries of firmware
+*.o
+#ignore debug MAP files of firmware
+*.map
+#ignore directories which contain scientific articles
+clanky-implementace/
+clanky-mimo/
+clanky-teorie/
