@@ -1,0 +1,227 @@
+% arara: pdflatex: { synctex: yes }
+% arara: makeindex: { style: ctuthesis }
+% arara: bibtex
+
+% The class takes all the key=value arguments that \ctusetup does,
+% and a couple more: draft and oneside
+\documentclass[twoside]{ctuthesis}
+\newcommand{\unit}[1]{\ensuremath{\, \textup{#1}}}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{physics}
+\usepackage[automake,acronym]{glossaries}
+\usepackage[detect-all]{siunitx}
+\sisetup{range-phrase=--}
+\usepackage[short,ddmmyyyy]{datetime}
+
+\DeclareMathOperator{\sinc}{sinc}
+
+\newacronym{TDR}{TDR}{reflektometrie v časové oblasti}
+\newacronym{FDTD}{FDTD}{finite-difference time-domain}
+\newacronym{SRD}{SRD}{step recovery diode}
+\newacronym{SATA}{SATA}{Serial Advanced Technology Attachment}
+\newacronym{USB}{USB}{Universal Serial Bus}
+\newacronym{SAS}{SAS}{Serial Attached Small Computer System Interface}
+\newacronym{PCI-E}{PCI-Express}{Peripheral Component Interconnect Express}
+\newacronym{DDS}{DDS}{Direct Digital Synthesis}
+\newacronym{HDMI}{HDMI}{High-Definition Multimedia Interconnect}
+\newacronym{TTL}{TTL}{Transistor-Trasistor Logic}
+\newacronym{CMOS}{CMOS}{Complementary Metal Oxide Semiconductor}
+\newacronym{LVCMOS}{LVCMOS}{Low Voltage CMOS}
+\newacronym{HCMOS}{HCMOS}{High Speed CMOS}
+\newacronym{ECL}{ECL}{Emitter Coupled Logic}
+\newacronym{LVPECL}{LVPECL}{Low Voltage Positive Emitter Coupled Logic}
+\newacronym{LVDS}{LVDS}{Low Voltage Differential Signaling}
+\newacronym{VML}{VML}{Voltage Mode Logic}
+\newacronym{HCSL}{HCSL}{High-Speed Current Steering Logic}
+\newacronym{CML}{CML}{Current Mode Logic}
+\newacronym{ADC}{ADC}{Analog-Digital Converter}
+\newacronym{VCO}{VCO}{Voltage Controlled Oscillator}
+\newacronym{PLL}{PLL}{Phase Locked Loop}
+%\newacronym{}{}{}
+
+\newglossaryentry{gama}
+{
+        name={$\Gamma$},
+        description={Koeficient odrazu. Je definován jako $\Gamma=\frac{Z_L-Z_0}{Z_L+Z_0}$. $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
+}
+
+\newglossaryentry{transmise}
+{
+        name={$T$},
+        description={Koeficient prostupu. Je definován jako $\Gamma=\frac{2Z_0}{Z_L+Z_0}$. Platí, že $T+\Gamma=1$}
+}
+
+\newglossaryentry{clipline}
+{
+        name={clipline},
+        description={V překladu zkratovací vedení. Jde o krátký úsek vedení zakončený zkratem, který se používal v lavinových generátorech pro vytvoření ultrakrátkých impulzů.}
+}
+
+\newglossaryentry{ADCinterleave}
+{
+        name={ADC interleaving},
+        description={Technika pro rychlejší vzorkování pomocí \textit{n} ADC, jejichž hodinové signály jsou fázově posunuté. Jde o možnost, jak zvyšovat vzorkovací frekvenci na \textit{n}-násobek vzorkovací frekvence samotného ADC. S počtem převodníků však roste cena zařízení, v nejlepším případě lineárně.}
+}
+
+\newglossaryentry{aperturetime}
+{
+        name={aperturový čas},
+        description={Aperturový čas je doba, po kterou přechází vzorkovač ze stavu, kdy jeho výstup sleduje vstup do stavu, kdy je výstup nezávislý na vstupu. Po tuto dobu se nelineárně mění vlastnosti vzorkovače. Výstupní napětí je tak nelineární funkcí vstupního napětí. Pokud jsou zpracovávány signály, u kterých již není aperturový čas zanedbatelně malý, je omezena jak linearita vzorkovače, tak jeho časová rozlišovací schopnost.}
+}
+
+\makeglossaries
+
+\renewcommand{\glossaryname}{Seznam cizích výrazů}
+\renewcommand{\acronymname}{Seznam zkratek použitých v textu}
+
+\DeclareSIUnit \gigasample{GSa}
+\DeclareSIUnit \bit{b}
+
+\ctusetup{
+%	preprint = {Pracovní verze},% z \today},
+%	titlelanguage = czech,
+	mainlanguage = czech,
+	otherlanguages = {slovak,english},
+	title-czech = {Reflektometr v časové oblasti},
+	title-english = {Time-Domain Reflectometer},
+	%subtitle-czech = {Měření odrazů na vedení a jejich analýza},
+	%subtitle-english = {Measurement of reflections on transmission lines and their analysis},
+	doctype = M,
+	faculty = F3,
+	department-czech = {Katedra mikroelektroniky},
+	department-english = {Department of Microelectronics},
+	author = {Bc. Petr Polášek},
+	supervisor = {Ing. Viktor Adler, Ph.D.},
+%	supervisor-address = {Ústav X, \\ Uliční 5, \\ Praha 99}, %TODO: opravit
+%	supervisor-specialist = {Prof. Ing. Karel Hoffmann, CSc.}, %TODO: opravit
+	fieldofstudy-english = {Electronics and communications},
+	subfieldofstudy-english = {Electronics},
+	fieldofstudy-czech = {Elektronika a komunikace},
+	subfieldofstudy-czech = {Elektronika},
+	keywords-czech = {reflektometrie, reflektometr, TDR},
+	keywords-english = {reflectometer, reflectometry, TDR},
+	day = 9,
+	month = 11,
+	year = 2019,
+	specification-file = {zadani.pdf},
+	front-specification = true,
+	front-list-of-figures = true,
+	front-list-of-tables = false,
+%	monochrome = true,
+%	layout-short = true,
+}
+
+\ctuprocess
+
+\addto\ctucaptionsczech{%
+	\def\supervisorname{Vedoucí}%
+	\def\subfieldofstudyname{Studijní program}%
+}
+
+\ctutemplateset{maketitle twocolumn default}{
+	\begin{twocolumnfrontmatterpage}
+		\ctutemplate{twocolumn.thanks}
+		\ctutemplate{twocolumn.declaration}
+		\ctutemplate{twocolumn.abstract.in.titlelanguage}
+		\ctutemplate{twocolumn.abstract.in.secondlanguage}
+		\ctutemplate{twocolumn.tableofcontents}
+		\ctutemplate{twocolumn.listoffigures}
+	\end{twocolumnfrontmatterpage}
+}
+
+% Theorem declarations, this is the reasonable default, anybody can do what they wish.
+% If you prefer theorems in italics rather than slanted, use \theoremstyle{plainit}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{note}
+\newtheorem*{remark*}{Remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength{\parskip}{1.5ex plus 0.2ex minus 0.2ex}
+
+% Abstract in Czech
+\begin{abstract-czech}
+Tato práce se zabývá reflektometrií v časové oblasti, jejími principy a možnostmi implementace. Jsou zde uvedeny možnosti generování budicího signálu a jeho vlastností, vzorkování odraženého signálu a jeho zpracování.
+
+Cílem této práce bylo popsání jednoduché architektury reflektometru na principu časové reflektometrie, kterou je možné implementovat pomocí běžných komponent v současnosti dostupných na trhu. Tato architektura nevyžaduje zákaznické obvody nebo náročné konstrukční techniky (např. hybridní konstrukce na keramickém substrátu), má malou energetickou spotřebu a nevyžaduje pro provoz podmínky, které by znesnadňovaly použití mimo vědecká pracoviště (např. chlazení tekutým héliem). Zvolená technika vzorkování v ekvivalentním čase umožňuje použití nízkofrekvenčních analogově-digitálních převodníků s velkým dynamickým rozsahem.
+
+Navržená architektura teoreticky umožňuje vzorkování v ekvivalentním čase s ekvivalentní vzorkovací frekvencí v řádu \SIrange{10}{100}{\gigasample} a zpracování širokopásmového signálu do řádu jednotek \si{\GHz}. 
+\end{abstract-czech}
+
+% Abstract in English
+\begin{abstract-english}
+This work concentrates on time-domain reflectometry, its principles and possible means of implementation. The work presents possible ways of generating the excitation signal and its properties, the sampling of the reflected signal and its processing.
+
+The goal of this work was a description of atime-domain reflectometer architecture which could be implemented using common electronic components currently available on the market. This architecture does not require any custom integrated circuits or intricate construction techniques (hybrid construction on ceramic substrate, for example), has low energy consumption and does not require any special conditions for its operation which could make its use outside scientific workplace difficult (liquid helium cooling, for example). The chosen equivalent-time sampling alows the use of low-frequency analog to digital converters with large dynamic range.
+
+The proposed architecture theroetically allows equivalent-time sampling with equivalent sampling rate in the order of \SIrange{10}{100}{\gigasample} and the ability to process ultra-wide bandwidth signal with bandwidth in the order of units of \si{\GHz}.
+\end{abstract-english}
+
+% Acknowledgements / Podekovani
+\begin{thanks}
+Děkuji svým rodičům i celé rodině, že mi byli oporou po celou dobu mého studia.
+
+Děkuji Ing. Viktoru Adlerovi, PhD. a prof. Ing. Karlu Hoffmannovi, CSc. za umožnění přístupu k mikrovlnné měřicí technice a možnost konzultování detailů této práce.
+
+Děkuji také studentskému klubu Silicon Hill a projektu \quotedblbase MacGyver - Bastlíři SH\textquotedblleft\ za umožnění přístupu k měřicímu vybavení.
+\end{thanks}
+
+% Declaration / Prohlaseni
+\begin{declaration}
+Prohlašuji, že jsem  předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem č.\,1/2009 o dodržování etických principů při přípravě vysokoškolských závěrečných prací.
+
+Dále prohlašuji, že nemám závažný důvod proti užití tohoto školního díla ve smyslu §60 zákona č.\,121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon).
+
+V Praze, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
+
+% podpis pod prohlasenim
+\begin{flushright}
+	\parbox{5cm}
+	{
+		\begin{center}
+			\dotfill \\ Bc. Petr Polášek 
+		\end{center}
+	}
+\end{flushright}
+
+\end{declaration}
+
+% Only for testing purposes
+%\listfiles
+\usepackage[pagewise]{lineno}
+
+\begin{document}
+
+\maketitle
+
+\printglossaries
+
+\input{diplomovy_projekt_1_uvod.tex}
+\input{diplomovy_projekt_2_buzeni.tex}
+\input{diplomovy_projekt_3_vzorkovani.tex}
+\input{diplomovy_projekt_4_separace.tex}
+\input{diplomovy_projekt_5_rozsireni_dynamickeho_rozsahu.tex}
+\input{diplomovy_projekt_6_navrzena_architektura.tex}
+\input{diplomovy_projekt_7_zaver.tex}
+
+\appendix
+
+\printindex
+
+\bibliographystyle{amsalpha}
+\bibliography{diplomovy_projekt}
+
+%\ctutemplate{specification.as.chapter}
+
+\end{document}

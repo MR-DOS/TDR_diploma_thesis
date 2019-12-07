@@ -1,0 +1,234 @@
+% arara: pdflatex: { synctex: yes }
+% arara: makeindex: { style: ctuthesis }
+% arara: bibtex
+
+% The class takes all the key=value arguments that \ctusetup does,
+% and a couple more: draft and oneside
+\documentclass[twoside]{ctuthesis}
+\newcommand{\unit}[1]{\ensuremath{\, \textup{#1}}}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{physics}
+\usepackage[automake,acronym]{glossaries}
+\usepackage[detect-all]{siunitx}
+\sisetup{range-phrase=--}
+\usepackage[short,ddmmyyyy]{datetime}
+
+\DeclareMathOperator{\sinc}{sinc}
+
+\newacronym{TDR}{TDR}{reflektometrie v časové oblasti}
+\newacronym{FDTD}{FDTD}{finite-difference time-domain}
+\newacronym{SRD}{SRD}{step recovery diode}
+\newacronym{SATA}{SATA}{Serial Advanced Technology Attachment}
+\newacronym{USB}{USB}{Universal Serial Bus}
+\newacronym{SAS}{SAS}{Serial Attached Small Computer System Interface}
+\newacronym{PCI-E}{PCI-Express}{Peripheral Component Interconnect Express}
+\newacronym{DDS}{DDS}{Direct Digital Synthesis}
+\newacronym{HDMI}{HDMI}{High-Definition Multimedia Interconnect}
+\newacronym{TTL}{TTL}{Transistor-Trasistor Logic}
+\newacronym{CMOS}{CMOS}{Complementary Metal Oxide Semiconductor}
+\newacronym{LVCMOS}{LVCMOS}{Low Voltage CMOS}
+\newacronym{HCMOS}{HCMOS}{High Speed CMOS}
+\newacronym{ECL}{ECL}{Emitter Coupled Logic}
+\newacronym{LVPECL}{LVPECL}{Low Voltage Positive Emitter Coupled Logic}
+\newacronym{LVDS}{LVDS}{Low Voltage Differential Signaling}
+\newacronym{VML}{VML}{Voltage Mode Logic}
+\newacronym{HCSL}{HCSL}{High-Speed Current Steering Logic}
+\newacronym{CML}{CML}{Current Mode Logic}
+\newacronym{ADC}{ADC}{Analog-Digital Converter}
+\newacronym{VCO}{VCO}{Voltage Controlled Oscillator}
+\newacronym{PLL}{PLL}{Phase Locked Loop}
+%\newacronym{}{}{}
+
+\newglossaryentry{gama}
+{
+        name={$\Gamma$},
+        description={Koeficient odrazu. Je definován jako $\Gamma=\frac{Z_L-Z_0}{Z_L+Z_0}$. $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
+}
+
+\newglossaryentry{transmise}
+{
+        name={$T$},
+        description={Koeficient prostupu. Je definován jako $\Gamma=\frac{2Z_0}{Z_L+Z_0}$. Platí, že $T+\Gamma=1$}
+}
+
+\newglossaryentry{clipline}
+{
+        name={clipline},
+        description={V překladu zkratovací vedení. Jde o krátký úsek vedení zakončený zkratem, který se používal v lavinových generátorech pro vytvoření ultrakrátkých impulzů.}
+}
+
+\newglossaryentry{ADCinterleave}
+{
+        name={ADC interleaving},
+        description={Technika pro rychlejší vzorkování pomocí \textit{n} ADC, jejichž hodinové signály jsou fázově posunuté. Jde o možnost, jak zvyšovat vzorkovací frekvenci na \textit{n}-násobek vzorkovací frekvence samotného ADC. S počtem převodníků však roste cena zařízení, v nejlepším případě lineárně.}
+}
+
+\newglossaryentry{aperturetime}
+{
+        name={aperturový čas},
+        description={Aperturový čas je doba, po kterou přechází vzorkovač ze stavu, kdy jeho výstup sleduje vstup do stavu, kdy je výstup nezávislý na vstupu. Po tuto dobu se nelineárně mění vlastnosti vzorkovače. Výstupní napětí je tak nelineární funkcí vstupního napětí. Pokud jsou zpracovávány signály, u kterých již není aperturový čas zanedbatelně malý, je omezena jak linearita vzorkovače, tak jeho časová rozlišovací schopnost.}
+}
+
+\makeglossaries
+
+\renewcommand{\glossaryname}{Seznam cizích výrazů}
+\renewcommand{\acronymname}{Seznam zkratek použitých v textu}
+
+\DeclareSIUnit \gigasample{GSa}
+\DeclareSIUnit \bit{b}
+
+\ctusetup{
+%	preprint = {Pracovní verze},% z \today},
+%	titlelanguage = czech,
+	mainlanguage = czech,
+	otherlanguages = {slovak,english},
+	title-czech = {Reflektometr v časové oblasti},
+	title-english = {Time-Domain Reflectometer},
+	%subtitle-czech = {Měření odrazů na vedení a jejich analýza},
+	%subtitle-english = {Measurement of reflections on transmission lines and their analysis},
+	doctype = M,
+	faculty = F3,
+	department-czech = {Katedra mikroelektroniky},
+	department-english = {Department of Microelectronics},
+	author = {Bc. Petr Polášek},
+	supervisor = {Ing. Viktor Adler, Ph.D.},
+%	supervisor-address = {Ústav X, \\ Uliční 5, \\ Praha 99}, %TODO: opravit
+%	supervisor-specialist = {Prof. Ing. Karel Hoffmann, CSc.}, %TODO: opravit
+	fieldofstudy-english = {Electronics and communications},
+	subfieldofstudy-english = {Electronics},
+	fieldofstudy-czech = {Elektronika a komunikace},
+	subfieldofstudy-czech = {Elektronika},
+	keywords-czech = {reflektometrie, reflektometr, TDR},
+	keywords-english = {reflectometer, reflectometry, TDR},
+	day = 9,
+	month = 11,
+	year = 2019,
+	specification-file = {zadani.pdf},
+	front-specification = true,
+	front-list-of-figures = true,
+	front-list-of-tables = false,
+%	monochrome = true,
+%	layout-short = true,
+}
+
+\ctuprocess
+
+\addto\ctucaptionsczech{%
+	\def\supervisorname{Vedoucí}%
+	\def\subfieldofstudyname{Studijní program}%
+}
+
+\ctutemplateset{maketitle twocolumn default}{
+	\begin{twocolumnfrontmatterpage}
+		\ctutemplate{twocolumn.thanks}
+		\ctutemplate{twocolumn.declaration}
+		\ctutemplate{twocolumn.abstract.in.titlelanguage}
+		\ctutemplate{twocolumn.abstract.in.secondlanguage}
+		\ctutemplate{twocolumn.tableofcontents}
+		\ctutemplate{twocolumn.listoffigures}
+	\end{twocolumnfrontmatterpage}
+}
+
+% Theorem declarations, this is the reasonable default, anybody can do what they wish.
+% If you prefer theorems in italics rather than slanted, use \theoremstyle{plainit}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{note}
+\newtheorem*{remark*}{Remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength{\parskip}{1.5ex plus 0.2ex minus 0.2ex}
+
+% Abstract in Czech
+\begin{abstract-czech}
+Tato práce se zabývá konstrukcí reflektometru v časové doméně, výsledkem je funkční zařízení s ovládacím softwarem. Cílem bylo vyvinout zařízení pro měření odrazů na vedení schopné detekce závad na vedení s přesností detekce polohy závady v řádu jednotek centimetrů. Důraz byl kladen na co nejmenší cenu výsledného zařízení a zároveň co nejjednodušší konstrukci, ovšem se snahou, aby tato kritéria neomezovala použitelnost či funkčnost zařízení.
+
+Výsledné zařízení dokáže měřit ve frekvenčním rozsahu do řádu jednotek\,\si{\GHz}, vzorkovací krok měření je 20\,\si{\ps}, ekvivalentní vzorkovací kmitočet je tedy 50\,\si{\gigasample}. Tento vzorkovací krok teoreticky umožňuje rozlišovací schopnost polohy závady na vedení 0,3\,\si{\cm} ve vakuu, v reálném prostředí může být i lepší. Samostatně dokáže zařízení detekovat jednoduché závady, jejich typ a polohu. V součinnosti s počítačem je možné provést i kalibraci pomocí kalibrační sady pro korekci nedokonalostí zařízení.
+
+V práci je popsána vytvořená konstrukce reflektometru a princip jeho funkce. Jednotlivé funkční bloky jsou podrobně popsány, vysvětlen je i postup optimalizace těchto bloků k dosažení co nejlepších parametrů zapojení. Vysvětleny jsou i metody detekce závad na vedení, kalibrace zařízení a autokalibrace.
+
+Práce ze zabývá i případnými možnostmi, jak by bylo možné rozšířit schopnosti tohoto zařízení o funkci transmisometru, která by umožnila používat toto zařízení jako vektorový analyzátor v časové oblasti.
+
+\end{abstract-czech}
+
+% Abstract in English
+\begin{abstract-english}
+This work deals with construction of reflectometer in time domain, which is implemented as functional device along with control software. The goal was to develop a device capable of measuring reflections on transmission lines caused by faults with spatial resolution on the order of units of centimetres. The emphasis was to develop a cheap and simple device while trying not to limit the functionality or capability of the device.
+
+The resulting device is able to measure up to units of\,\si{\GHz}, sampling step is 20\,\si{\ps}, resulting in equivalent sampling rate of 50\,\si{\gigasample}. This sampling step theoretically allows spatial resolution of 0.3\,\si{\cm} in vacuum, possibly even less in real environment. The device can detect simple faults on its own, along with their type and position. When used with computer, it is possible to perform calibration using calibration set.
+
+The work contains explanation of the construction and its principles. Each functional block is described in detail as well as the optimalisations which were used to obtain the best possible parameters of the construction. Also explained are methods of detection of faults on the transmission line, calibration and autocalibration of the device.
+
+This work also deals with eventual possibilities of extending the capabilities of the device by implementing a function of transmisometer, which could allow to use the device as a vector network analyzer in time domain.
+
+\end{abstract-english}
+
+% Acknowledgements / Podekovani
+\begin{thanks}
+Děkuji svým rodičům i celé rodině, že mi byli oporou po celou dobu mého studia.
+
+Děkuji Ing. Viktoru Adlerovi, PhD. a prof. Ing. Karlu Hoffmannovi, CSc. za umožnění přístupu k mikrovlnné měřicí technice a možnost konzultování detailů této práce.
+
+Děkuji také studentskému klubu Silicon Hill a projektu \quotedblbase MacGyver - Bastlíři SH\textquotedblleft\ za umožnění přístupu k měřicímu vybavení.
+\end{thanks}
+
+% Declaration / Prohlaseni
+\begin{declaration}
+Prohlašuji, že jsem  předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem č.\,1/2009 o dodržování etických principů při přípravě vysokoškolských závěrečných prací.
+
+Dále prohlašuji, že nemám závažný důvod proti užití tohoto školního díla ve smyslu §60 zákona č.\,121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon).
+
+V Praze, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
+
+% podpis pod prohlasenim
+\begin{flushright}
+	\parbox{5cm}
+	{
+		\begin{center}
+			\dotfill \\ Bc. Petr Polášek 
+		\end{center}
+	}
+\end{flushright}
+
+\end{declaration}
+
+% Only for testing purposes
+%\listfiles
+\usepackage[pagewise]{lineno}
+
+\begin{document}
+
+\maketitle
+
+\printglossaries
+
+\input{diplomova_prace_1_uvod.tex}
+\input{diplomova_prace_2_princip_funkce.tex}
+\input{diplomova_prace_3_popis_zapojeni.tex}
+\input{diplomova_prace_4_kalibrace.tex}
+\input{diplomova_prace_5_detekce_zavad.tex}
+\input{diplomova_prace_6_zmerene_parametry.tex}
+\input{diplomova_prace_7_uzivatelske_rozhrani_a_popis_ovladani.tex}
+\input{diplomova_prace_8_zaver.tex}
+
+\appendix
+
+\printindex
+
+\bibliographystyle{amsalpha}
+\bibliography{diplomova_prace}
+
+%\ctutemplate{specification.as.chapter}
+
+\end{document}

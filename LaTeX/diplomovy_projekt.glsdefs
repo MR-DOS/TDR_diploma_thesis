@@ -1,0 +1,60 @@
+\ifglsentryexists{TDR}{}%
+{%
+\gls@defglossaryentry{TDR}%
+{%
+name={TDR},%
+sort={TDR},%
+type={acronym},%
+first={reflektometrie v \IeC {\v c}asov\IeC {\'e} oblasti\glsspace (TDR)},%
+firstplural={reflektometrie v časové oblasti\acrpluralsuffix \glsspace (TDR\acrpluralsuffix )},%
+text={TDR},%
+plural={TDR\acrpluralsuffix },%
+description={reflektometrie v časové oblasti},%
+descriptionplural={reflektometrie v časové oblasti\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={reflektometrie v \IeC {\v c}asov\IeC {\'e} oblasti},%
+longplural={reflektometrie v \IeC {\v c}asov\IeC {\'e} oblastis},%
+short={TDR},%
+shortplural={TDRs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{gama}{}%
+{%
+\gls@defglossaryentry{gama}%
+{%
+name={$\Gamma $},%
+sort={$\Gamma $},%
+type={main},%
+first={$\Gamma $},%
+firstplural={$\Gamma $s},%
+text={$\Gamma $},%
+plural={$\Gamma $s},%
+description={Koeficient odrazu. Je definován jako $\Gamma =\frac {Z_L-Z_0}{Z_L+Z_0}$},%
+descriptionplural={Koeficient odrazu. Je definován jako $\Gamma =\frac {Z_L-Z_0}{Z_L+Z_0}$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
