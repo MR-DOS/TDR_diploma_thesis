@@ -6,7 +6,7 @@
  */
 
 #define INT_DIVIDER 46
-#define NUMBER_OF_POINTS 500000
+#define NUMBER_OF_POINTS 100000
 #define DRAMATIC_PAUSE 250
 #define SAMPLE_MEMORY_SIZE	4096
 #define DEVICE_NAME "TDR5351_CORE"
@@ -22,14 +22,15 @@ bool I2C_Initialised = FALSE;
 extern volatile uint32_t millis;
 extern volatile Board_ReflectometerStateTypeDef Board_ReflectometerState;
 extern volatile CalibrationState Board_CalibrationState;
-bool Remote_Mode = FALSE;
+volatile bool Remote_Mode = FALSE;
 
 #define COMMAND_REMOTE 0
 #define COMMAND_DEVICE 1
 #define COMMAND_STATE  2
 #define COMMAND_ACTION 3
 #define COMMAND_SEND_DATA	4
-const char commands[5][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!"};
+#define COMMAND_GET_AVG	5
+const char commands[6][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AVG?"};
 
 #define NO_RESPONSE_PENDING		255
 #define	RESPONSE_CARRIAGE_RETURN 254
@@ -54,14 +55,16 @@ const char commands[5][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!"};
 #define RESPONSE_MEASUREMENT_RUNNING	15
 #define RESPONSE_READY_TO_SEND			16
 #define RESPONSE_SENDING_DATA			17
-const uint8_t responses[18][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
+#define RESPONSE_AVG					18
+#define RESPONSE_AVG_NUMBER				19
+uint8_t responses[20][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
 			"STATE CALIBRATING_SAMPLER","STATE NOISE_ESTIMATION","STATE FINDING_EDGE","STATE FINDING_REFERENCE_PLANE",
 			"STATE READY","STATE WAIT_OPEN","STATE WAIT_SHORT","STATE WAIT_LOAD","STATE NORMAL_CAL_RUNNING",
 			"STATE WAIT_REFERENCE_PLANE","STATE WAIT_DUT","STATE MEASUREMENT_RUNNING", "STATE READY_TO_SEND",
-			"STATE SENDING_DATA"};
-uint8_t global_response_pending=NO_RESPONSE_PENDING;
+			"STATE SENDING_DATA", "AVG ", "0"};
+volatile uint8_t global_response_pending=NO_RESPONSE_PENDING;
 
-bool remote_user_action=FALSE;
+volatile bool remote_user_action=FALSE;
 
 void Wait_For_User_Action(void)
 {
@@ -76,9 +79,23 @@ void SysTick_Handler(void)
 
 	if (USART_GetFlagStatus(USART1, USART_FLAG_TXE) != RESET) // Serial port TX handler
 	{
+		if (global_response_pending==RESPONSE_BLOCKING_TRANSFER_PENDING) return;
+
 		if (global_response_pending!=NO_RESPONSE_PENDING)
 		{
-			if (global_response_pending==RESPONSE_BLOCKING_TRANSFER_PENDING) return;
+
+			if (global_response_pending==RESPONSE_SEND_DATA)
+			{
+				uint16_t i16;
+				for(i16=0; i16<SAMPLE_MEMORY_SIZE; i16++)
+				{
+					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
+					USART_SendData(USART1,(uint8_t)Board_ReflectometerState.sampled_data[i16]);
+					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
+					USART_SendData(USART1,(uint8_t)(Board_ReflectometerState.sampled_data[i16]>>8));
+				}
+				global_response_pending=NO_RESPONSE_PENDING;
+			}
 
 			if (global_response_pending==RESPONSE_CARRIAGE_RETURN)
 			{
@@ -96,7 +113,12 @@ void SysTick_Handler(void)
 
 			if (responses[global_response_pending][TX_position]==0)
 			{
-				global_response_pending=RESPONSE_CARRIAGE_RETURN;
+				if (global_response_pending==RESPONSE_AVG)
+				{
+					global_response_pending=RESPONSE_AVG_NUMBER;
+				} else {
+					global_response_pending=RESPONSE_CARRIAGE_RETURN;
+				}
 				TX_position=0;
 			} else {
 				USART_SendData(USART1, responses[global_response_pending][TX_position]);
@@ -397,6 +419,8 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 		if((i16*i16>Board_ReflectometerState->open_low_variation) & (i16*i16>Board_ReflectometerState->open_high_variation)) break;
 	}
 
+	getnum(Board_ReflectometerState->ideal_averaging,responses[RESPONSE_AVG_NUMBER]);
+
 	SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
 	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
 	SSD1306_DrawBuffer(SSD1306_ConfigStruct);
@@ -417,6 +441,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "    Press button");
 		SSD1306_DrawProgressBar(SSD1306_ConfigStruct);
 		SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+		Board_ReflectometerState->average_count=0;
 		Wait_For_User_Action();
 		GPIO_WriteBit(LED_PORT, LED_RDY, Bit_RESET);
 		GPIO_WriteBit(LED_PORT, LED_NOT_RDY, Bit_SET);
@@ -425,18 +450,18 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   Please wait for");
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "    first average");
 		SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
-		Board_ReflectometerState->average_count=0;
+
+		Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+		Board_ReflectometerState->enable_sampling=ON;
+		while(Board_ReflectometerState->is_running==OFF)
+		{
+			uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
+			SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
+			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
+		}
 
 		while(Board_ReflectometerState->average_count!=Board_ReflectometerState->ideal_averaging)
 		{
-			Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
-			Board_ReflectometerState->enable_sampling=ON;
-			while(Board_ReflectometerState->is_running==OFF)
-			{
-				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
-				SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
-				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
-			}
 			while(Board_ReflectometerState->is_running==ON)
 			{
 				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
@@ -446,22 +471,6 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			Board_ReflectometerState->enable_sampling=OFF;
 
 			Board_CalibrationState=CAL_READY_TO_SEND;
-
-			if(Remote_Mode==TRUE)
-			{
-				while(global_response_pending!=RESPONSE_SEND_DATA){}
-				global_response_pending=RESPONSE_BLOCKING_TRANSFER_PENDING;
-				for(i16=0; i16<SAMPLE_MEMORY_SIZE; i16++)
-				{
-					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-					USART_SendData(USART1,(uint8_t)Board_ReflectometerState->sampled_data[i16]);
-					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-					USART_SendData(USART1,(uint8_t)(Board_ReflectometerState->sampled_data[i16]>>8));
-				}
-				global_response_pending=NO_RESPONSE_PENDING;
-			}
-
-			Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 
 			SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0, 6);
 
@@ -478,10 +487,39 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 
 			if((GPIO_ReadInputDataBit(BTN_PORT,BTN)==RESET)|(remote_user_action==TRUE))
 			{
+				while(GPIO_ReadInputDataBit(BTN_PORT,BTN)==RESET){}
 				remote_user_action=FALSE;
+				if(global_response_pending==RESPONSE_SEND_DATA) global_response_pending=NO_RESPONSE_PENDING;
+				Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+				Board_ReflectometerState->enable_sampling=OFF;
+				Board_ReflectometerState->average_count=0;
 				break;
 			}
+
+			Board_ReflectometerState->enable_sampling=ON;
+
+			while(Board_ReflectometerState->is_running==OFF)
+			{
+				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
+				SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
+				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
+				/*if((Remote_Mode==TRUE)&(global_response_pending==RESPONSE_SEND_DATA))
+				{
+					global_response_pending=RESPONSE_BLOCKING_TRANSFER_PENDING;
+					for(i16=0; i16<SAMPLE_MEMORY_SIZE; i16++)
+					{
+						while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
+						USART_SendData(USART1,(uint8_t)Board_ReflectometerState->sampled_data[i16]);
+						while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
+						USART_SendData(USART1,(uint8_t)(Board_ReflectometerState->sampled_data[i16]>>8));
+					}
+					global_response_pending=NO_RESPONSE_PENDING;
+					Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+				}*/
+			}
 		}
+
+		Board_ReflectometerState->enable_sampling=OFF;
 
 		Board_ReflectometerState->average_count=0;
 		GPIO_WriteBit(LED_PORT, LED_RDY, Bit_SET);
@@ -1673,7 +1711,7 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 		}
 	}
 
-	Board_ReflectometerState->rising_edge_start_index=(Board_ReflectometerState->start_sample_index+edge_80percent_index-(edge_20percent_index-edge_80percent_index)*10-128)%NUMBER_OF_POINTS;
+	Board_ReflectometerState->rising_edge_start_index=(Board_ReflectometerState->start_sample_index+edge_80percent_index-(edge_20percent_index-edge_80percent_index)*10-SAMPLE_MEMORY_SIZE/32)%NUMBER_OF_POINTS;
 
 	if(RunGraphical==ON)
 	{
@@ -1849,7 +1887,6 @@ void USART1_IRQHandler(void)
 				{
 					response_pending = RESPONSE_DEVICE;
 					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
-					Remote_Mode=TRUE;
 				}
 				if (Compare_Strings(RX_buffer, commands[COMMAND_STATE]))
 				{
@@ -1866,6 +1903,12 @@ void USART1_IRQHandler(void)
 				if (Compare_Strings(RX_buffer, commands[COMMAND_SEND_DATA]))
 				{
 					response_pending=RESPONSE_SEND_DATA;
+					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
+					Remote_Mode=TRUE;
+				}
+				if (Compare_Strings(RX_buffer, commands[COMMAND_GET_AVG]))
+				{
+					response_pending=RESPONSE_AVG;
 					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
 					Remote_Mode=TRUE;
 				}

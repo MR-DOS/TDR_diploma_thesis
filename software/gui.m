@@ -15,7 +15,15 @@ endfunction
 
 function send_continue(calling_object,event_data,ser_port)
     srl_write(ser_port,"CONTINUE!\n\n");
-endfunction  
+endfunction 
+
+function send_new_avg(calling_object,event_data,ser_port, average)
+    srl_write(ser_port,strcat("AVG!",average,"\n\n"));
+endfunction
+
+function update_average(calling_object,event_data,h)
+    set(h.device_slider_text, "string", strcat("Averages: ",sprintf("%d",round(63*get(h.device_average_slider, "value")+1))));
+endfunction     
 
 function update_gui_state(h,state)  
     switch(state)
@@ -298,7 +306,7 @@ function update_gui_state(h,state)
       case{"STATE WAIT_DUT\r\n"}
         %set(h.plot,"visible","off");
         %set(h.graph_axes,"visible","off");
-        set(h.graph_placeholder_text,"visible","on");
+        %set(h.graph_placeholder_text,"visible","on");
         set(h.vertical_amplitude_in,"enable","off");
         set(h.vertical_amplitude_out,"enable","off");
         set(h.vertical_position_up,"enable","off");
@@ -473,6 +481,8 @@ HORIZONTAL_RESET_COORD=GetCornerCoord([5/8 2/3 VERTICAL_BUTTON_SIZE]);
 DEVICE_CONTINUE_BUTTON_COORD=GetCornerCoord([1/2 1/3 1/4 1/9]);
 DEVICE_STATE_TEXT_COORD=[0 0 1 1];
 DEVICE_INSTRUCTION_TEXT_COORD=DEVICE_STATE_TEXT_COORD;
+DEVICE_START_BUTTON_COORD=GetCornerCoord([2/3 1/5 1/4 1/10]);
+DEVICE_AVERAGE_SLIDER_COORD=GetCornerCoord([2/3 1/10 1/4 1/20]);
 
 CALIBRATION_OPEN_COORD=GetCornerCoord([1/5 3/4 CALIBRATION_BUTTON_SIZE]);
 CALIBRATION_SHORT_COORD=GetCornerCoord([1/5 2/4 CALIBRATION_BUTTON_SIZE]);
@@ -707,7 +717,22 @@ h.device_instruction_text = uicontrol ("style", "text",
                                "string", "Please wait while the state\ninformation is updated",
                                "horizontalalignment", "center",
                                "position", DEVICE_INSTRUCTION_TEXT_COORD, "parent", h.device_instruction_panel);   
+                            
+h.device_slider_text = uicontrol ("style", "text",
+                               "units", "normalized",
+                               "string", "Averages: 1",
+                               "horizontalalignment", "center",
+                               "position", DEVICE_START_BUTTON_COORD, "parent", h.device_state_panel); 
                                
+h.device_average_slider = uicontrol ("style", "slider",
+                            "units", "normalized",
+                            "string", "slider",
+                            "value", 0/63,
+                            "sliderstep", [1/63 1/63],
+                            "position", DEVICE_AVERAGE_SLIDER_COORD, "parent", h.device_state_panel);
+
+set(h.device_average_slider, "callback",{@update_average, h});                            
+                            
 %------------------------------------------------------------------------------- 
 
 h.calibration_panel = uipanel ("title", "Calibration panel", 
@@ -755,6 +780,7 @@ h.calibration_restore = uicontrol ("style", "pushbutton",
 guidata(main_window, h);
 
 set(serial_port,"timeout",1);
+
 while(1)
 srl_write(serial_port,"STATE?\n");
 device_state=srl_read(serial_port,255);
@@ -762,8 +788,9 @@ device_state=srl_read(serial_port,255);
 update_gui_state(h, device_state);
 if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   srl_write(serial_port,"SEND_DATA!\r\n");
-  set(serial_port,"timeout",20);
-  data=srl_read(serial_port,8192);
+  set(serial_port,"timeout",10);
+  [data,data_length]=srl_read(serial_port,8192);
+  if (data_length!=8192) continue; endif;
   set(h.plot,"visible","on");
   set(h.graph_axes,"visible","on");
   set(serial_port,"timeout",1);
