@@ -1,6 +1,15 @@
 \chapter{Princip měření}
 
 \section{Základní princip měření}
+Reflektometrie v časové oblasti (dále již jen reflektometrie) v kontextu této práce znamená měření vlastností jednobranu, které probíhá na základě měření odezvy měřeného systému na budicí signál, přičemž toto měření probíhá v časové oblasti. Pro měření je možné použít jako budicí signál libovolný kauzální signál, typicky se však využívají pouze průběhy podobné pravoúhlému průběhu nebo jednotkovému v případě širokopásmových reflektometrů. Vzhledem k tomu, že není možné je fyzicky realizovat, protože by vyžadovaly nekonečnou šířku pásma generátoru pulzů, používají se podobné signály, například chybová funkce \cite{S-4manual} nebo Gaussův pulz \cite{ultrawidebandsignals}. V případě úzkopásmových reflektometrů se používá například sinusový průběh modulovaný Gaussovým pulzem \cite{sincgausstdr}. Pro diagnostiku vedení, která jsou v době měření používána pro komunikaci, se používá například pseudonáhodný průběh.
+
+Za předpokladu lineárního invariantního systému a kauzálního budicího signálu je možné závislost odezvy měřeného systému na budicím signálu zapsat následujícím způsobem, kde $x(t)$ je budicí signál, $y(t)$ je změřená odezva systému na daný budicí signál a $h(t)$ je impulzní odezva:
+\begin{equation}
+y(t)=x(t) \ast h(t).
+\end{equation}
+
+
+Pomocí kalibračních metod je možné data získaná jako odezvu na tento budicí signál transformovat do podoby, která je vhodnější pro další zpracování. Plného odstranění vlivu průběhu budicího signálu na odezvě je vhodné měřenou odezvu transformovat do podoby impulzní nebo skokové odezvy.
 
 \section{Měření v ekvivalentním čase}
 

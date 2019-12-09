@@ -83,3 +83,4 @@
 \contentsline {subsection}{\numberline {7.2.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{14}{subsection.7.2.3}% 
 \contentsline {subsection}{\numberline {7.2.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{14}{subsection.7.2.4}% 
 \contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{15}{chapter.8}% 
+\contentsline {chapter}{\numberline {A}Literatura}{17}{appendix.A}% 

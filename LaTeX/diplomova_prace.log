@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  15 NOV 2019 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  9 DEC 2019 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1146,21 +1146,21 @@ LaTeX Info: Redefining \\ on input line 3056.
 (./diplomova_prace.aux)
 \openout1 = `diplomova_prace.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 210.
-LaTeX Font Info:    ... okay on input line 210.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 210.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 212.
+LaTeX Font Info:    ... okay on input line 212.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 212.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1275,7 +1275,7 @@ Dictionary: translator-basic-dictionary, Language: English
 ) (/home/msboss/texmf/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-LaTeX Info: Redefining \microtypecontext on input line 210.
+LaTeX Info: Redefining \microtypecontext on input line 212.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1337,7 +1337,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 210.
+Package hyperref Info: Link coloring OFF on input line 212.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1346,45 +1346,45 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count383
 )
-LaTeX Info: Redefining \ref on input line 210.
-LaTeX Info: Redefining \pageref on input line 210.
-LaTeX Info: Redefining \nameref on input line 210.
+LaTeX Info: Redefining \ref on input line 212.
+LaTeX Info: Redefining \pageref on input line 212.
+LaTeX Info: Redefining \nameref on input line 212.
 
 (./diplomova_prace.out) (./diplomova_prace.out)
 \@outlinefile=\write7
 \openout7 = `diplomova_prace.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 210.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 212.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 210.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 212.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 210
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 212
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 210
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 212
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 210.
+(Font)              <10.95> on input line 212.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 210.
+(Font)              <8> on input line 212.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 210.
-LaTeX Font Info:    Try loading font information for U+msa on input line 210.
+(Font)              <6> on input line 212.
+LaTeX Font Info:    Try loading font information for U+msa on input line 212.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1392,7 +1392,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 210.
+LaTeX Font Info:    Try loading font information for U+msb on input line 212.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1400,7 +1400,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 210
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 212
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
@@ -1410,7 +1410,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 210
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 212
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
@@ -1424,19 +1424,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<ctu_logo_black.pdf, id=196, 366.36874pt x 279.0425pt>
+<ctu_logo_black.pdf, id=200, 366.36874pt x 279.0425pt>
 File: ctu_logo_black.pdf Graphic file (type pdf)
 <use ctu_logo_black.pdf>
-Package pdftex.def Info: ctu_logo_black.pdf  used on input line 212.
+Package pdftex.def Info: ctu_logo_black.pdf  used on input line 214.
 (pdftex.def)             Requested size: 85.86746pt x 65.40001pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 212.
+(Font)              <14.4> on input line 214.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 212.
+(Font)              <10> on input line 214.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 212.
+(Font)              <7> on input line 214.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 212--212
+Overfull \hbox (5.0pt too wide) in paragraph at lines 214--214
 []|| [][][] 
  []
 
@@ -1447,7 +1447,7 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 212--212
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ctu_logo_black.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 212.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 214.
 
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
@@ -1460,35 +1460,35 @@ Package microtype Info: Loading generic protrusion settings for font family
  [2
 
 ]
-<zadani.pdf, id=211, 597.50829pt x 845.0471pt>
+<zadani.pdf, id=215, 597.50829pt x 845.0471pt>
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf>
-Package pdftex.def Info: zadani.pdf  used on input line 212.
+Package pdftex.def Info: zadani.pdf  used on input line 214.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf>
-Package pdftex.def Info: zadani.pdf  used on input line 212.
+Package pdftex.def Info: zadani.pdf  used on input line 214.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-<zadani.pdf, id=214, page=1, 597.50829pt x 845.0471pt>
+<zadani.pdf, id=218, page=1, 597.50829pt x 845.0471pt>
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
-Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
+Package pdftex.def Info: zadani.pdf , page1 used on input line 214.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
-Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
+Package pdftex.def Info: zadani.pdf , page1 used on input line 214.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
-Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
+Package pdftex.def Info: zadani.pdf , page1 used on input line 214.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
-Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
+Package pdftex.def Info: zadani.pdf , page1 used on input line 214.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
-Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
+Package pdftex.def Info: zadani.pdf , page1 used on input line 214.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [3 <./zadani.pdf>] [4
 
@@ -1526,11 +1526,21 @@ Package pdftex.def Info: zadani.pdf , page1 used on input line 212.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- [5
+
+Underfull \hbox (badness 1831) in paragraph at lines 214--214
+\T1/lmr/m/n/10.95 (+20) znam-nou po-moc p°i ana-lýze vy-so-ko-
+ []
+
+[5
 
 
 ]
-Underfull \hbox (badness 2088) in paragraph at lines 212--212
+Underfull \hbox (badness 1867) in paragraph at lines 214--214
+\T1/lmr/m/n/10.95 (+20) va-lentní vzor-ko-vací kmi-to-£et je tedy
+ []
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 214--214
 \T1/lmr/m/n/10.95 (+20) strukce re-flek-to-me-tru a prin-cip jeho
  []
 
@@ -1586,15 +1596,22 @@ Underfull \hbox (badness 2088) in paragraph at lines 212--212
 
 (./diplomova_prace.gls) (./diplomova_prace.acr) (./diplomova_prace_1_uvod.tex
 Kapitola 1.
-) (./diplomova_prace_2_princip_funkce.tex [1
+[1
 
 
 
 
-
-] [2
 
 ]
+Overfull \hbox (3.96323pt too wide) in paragraph at lines 12--13
+[]\T1/lmr/bx/n/10.95 Pouºití pouze tech-no-lo-gií ne-vy-ºa-du-jí-cích spe-ci-ál
+ní pro-vozní pod-
+ []
+
+) (./diplomova_prace_2_princip_funkce.tex
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1.
+ [2]
 Kapitola 2.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
@@ -1619,34 +1636,36 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5.
+(hyperref)                removing `\textasciicaron' on input line 14.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5.
+(hyperref)                removing `\textasciicaron' on input line 14.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5.
+(hyperref)                removing `\textasciicaron' on input line 14.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 7.
+(hyperref)                removing `\textasciicaron' on input line 16.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 7.
+(hyperref)                removing `\textasciicaron' on input line 16.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 7.
+(hyperref)                removing `\textring' on input line 16.
 
-) (./diplomova_prace_3_popis_zapojeni.tex [3] [4
+) (./diplomova_prace_3_popis_zapojeni.tex [3
+
+] [4
 
 ]
 Kapitola 3.
@@ -1890,9 +1909,6 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1.
-
 [14]
 Kapitola 8.
 
@@ -1902,10 +1918,15 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 
 )
 No file diplomova_prace.ind.
-No file diplomova_prace.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
-[15
+(./diplomova_prace.bbl [15
 
+] [16
+
+]
+P\v {r}\'{\i }loha A.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
+ [17
 runsystem(makeindex -s diplomova_prace.ist -t diplomova_prace.glg -o diplomova_
 prace.gls diplomova_prace.glo)...executed safely (allowed).
 
@@ -1913,28 +1934,33 @@ runsystem(makeindex -s diplomova_prace.ist -t diplomova_prace.alg -o diplomova_
 prace.acr diplomova_prace.acn)...executed safely (allowed).
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
  (./diplomova_prace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
 Package rerunfilecheck Info: File `diplomova_prace.out' has not changed.
-(rerunfilecheck)             Checksum: 25BAB2542EF9447AEF7B8209B3B8763C;3765.
+(rerunfilecheck)             Checksum: 9E4589661E44928AB572C6C5F311F16E;3812.
  ) 
 Here is how much of TeX's memory you used:
- 31373 strings out of 493738
- 558602 string characters out of 6153002
- 744107 words of memory out of 5000000
- 34478 multiletter control sequences out of 15000+600000
- 616290 words of font info for 118 fonts, out of 8000000 for 9000
+ 31427 strings out of 493738
+ 559270 string characters out of 6153002
+ 744414 words of memory out of 5000000
+ 34492 multiletter control sequences out of 15000+600000
+ 627930 words of font info for 135 fonts, out of 8000000 for 9000
  428 hyphenation exceptions out of 8191
  56i,18n,92p,2012b,1244s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
-public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmsso10.pfb>
-Output written on diplomova_prace.pdf (23 pages, 600167 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
+Output written on diplomova_prace.pdf (25 pages, 683315 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 386 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 27034 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 479 PDF objects out of 1000 (max. 8388607)
+ 426 compressed objects within 5 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 30114 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -1,7 +1,16 @@
 \chapter{Zadání a vlastní cíle návrhu}
 
 \section{Zadání}
-%Sem napsat něco o zadání, na co půjde navázat vlastním záměrem.
+Zadání této práce je vytvořit samostatně funkční reflektometr v časové oblasti na principu vzorkování v ekvivalentním čase. Budicí signál by měl být obdélníkového tvaru s co nejkratší náběžnou (či sestupnou) hranou. Zařízení by mělo být schopné samostatné funkce a mělo by být schopné určit polohu a typ základních typů diskontinuit na vedení. Mělo by být též možné provést kalibraci zařízení pomocí mechanických kalibrů.
 
 \section{Vlastní cíle návrhu}
-%Princip funkčního minimalismu
+Mimo již zmíněných cílů, které vycházejí ze zadání práce, vznikly další cíle, jejichž dosažení není zadáním nijak vyžadováno, ale které si autor stanovil jako svoje vlastní cíle, kterých by chtěl v rámci této práce dosáhnout. Jejich hlavním společným faktorem je požadavek na minimalismus celé konstrukce, jak z pohledu složitosti zapojení, tak i jeho velikosti a konečně také ceny. Zařízení by mělo být opakovatelně vyrobitelné, poud možno i v amatérských podmínkách. Podmínkou pro dodržení těchto cílů je však to, aby jejich splnění nedegradovalo kvalitu výsledného zařízení na mez použitelnosti.
+\begin{itemize}
+\item \textbf{Jednoduchost zapojení.} Konstrukce by měla být co nejjednodušší a obsahovat co nejméně komponent, aby měla co nejméně stupňů volnosti a bylo ji možné optimalizovat již ve fázi návrhu pomocí simulací a výpočtů. Tím se zmenšuje počet nezbytných cyklů návrhu, výroby a měření, které je nezbytné projít, aby zařízení splňovalo očekávané vlastnosti.
+\item \textbf{Použití pouze běžně dostupných a nahraditelných komponent.} Konstrukce by neměla obsahovat žádné komponenty, které jsou nenahraditelné. Jejich nedostupnost na trhu by pak znamenala, že zařízení již není možné vyrobit. V horším případě by se celá architektura zapojení musela přepracovat. Použité komponenty by navíc měly být pokud možno běžně dostupné - konstrukce by se měla pokud možno vyhnout například zákaznickým obvodům nebo na míru vyrobeným polovodičovým součástkám.
+\item \textbf{Použití pouze běžných konstrukčních metod.} Konstrukce by se měla vyhnout výrobním postupům, které se používají pouze u specializovaných zařízení a které není možné snadno replikovat. Tím jsou myšleny například polovodičové prvky pájené přímo substrátem na plošný spoj a následně strojově bondované.
+\item \textbf{Použití pouze technologií nevyžadujících speciální provozní podmínky.} Zařízení by mělo být pokud možno minimálně závislé na podmínkách okolního prostředí. Neměly by být použity například technologie vyžadující kryogenické chlazení, udržování konstantní teploty, speciální atmosféry nebo dokonalé stínění před světlem.
+\item \textbf{Žádné manuálně nastavované prvky při výrobě.} Konstrukce by neměla obsahovat žádné nastavitelné prvky, které by se musely po vyrobení prvotně nastavit. Všechny takové prvky by měly být řízené elektronicky a nastavované v rámci autokalibrace zařízení.
+\item \textbf{Jednoduchost ovládání.} Zařízení by mělo uživatele celým procesem autokalibrace a měření co nejjednodušeji provést. Zařízení by mělo samo nalézt možné závady na vedení a oznámit jejich typ a polohu.
+\item \textbf{Komunikace s počítačem.} Zařízení by mělo být schopné komunikovat s počítačem přes rozhraní USB a umožnit uložení změřených dat, rozšířené ovládání a případně složitější metody kalibrace.
+\end{itemize}

@@ -1,0 +1,24 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{GLR07}
+
+\bibitem[GLR07]{ultrawidebandsignals}
+Mohammad Ghavami, Michael Lachlan, and Kohno Ryuji, \emph{{U}ltra {W}ideband
+  {S}ignals and {S}ystems in {C}ommunications {E}ngineering}, 2nd ed., John
+  Wiley and sons, 2007 (English).
+
+\bibitem[MP74]{sincgausstdr}
+N.~A.~M. {Mackay} and S.~R. {Penstone}, \emph{{A} {H}igh-{S}ensitivity
+  {N}arrow-{B}and {T}ime-{D}omain {R}eflectometer}, IEEE Transactions on
+  Instrumentation and Measurement \textbf{23} (1974), no.~2, 155--158.
+
+\bibitem[Tek85]{S-4manual}
+Tektronix, Inc., Beaverton, Oregon, \emph{{S-4} {S}ampling {H}ead {I}nstruction
+  {M}anual}, 3 1985.
+
+\end{thebibliography}
