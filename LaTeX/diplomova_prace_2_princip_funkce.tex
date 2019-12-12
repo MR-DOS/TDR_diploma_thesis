@@ -1,19 +1,27 @@
 \chapter{Princip měření}
 
 \section{Základní princip měření}
-Reflektometrie v časové oblasti (dále již jen reflektometrie) v kontextu této práce znamená měření vlastností jednobranu, které probíhá na základě měření odezvy měřeného systému na budicí signál, přičemž toto měření probíhá v časové oblasti. Pro měření je možné použít jako budicí signál libovolný kauzální signál, typicky se však využívají pouze průběhy podobné pravoúhlému průběhu nebo jednotkovému v případě širokopásmových reflektometrů. Vzhledem k tomu, že není možné je fyzicky realizovat, protože by vyžadovaly nekonečnou šířku pásma generátoru pulzů, používají se podobné signály, například chybová funkce \cite{S-4manual} nebo Gaussův pulz \cite{ultrawidebandsignals}. V případě úzkopásmových reflektometrů se používá například sinusový průběh modulovaný Gaussovým pulzem \cite{sincgausstdr}. Pro diagnostiku vedení, která jsou v době měření používána pro komunikaci, se používá například pseudonáhodný průběh.
+Reflektometrie v časové oblasti (dále již jen reflektometrie) v kontextu této práce znamená měření vlastností jednobranu, které probíhá na základě měření odezvy měřeného systému na budicí signál, přičemž toto měření probíhá v časové oblasti. Pro měření je možné použít jako budicí signál libovolný kauzální signál, typicky se však využívají pouze průběhy podobné pravoúhlému průběhu nebo jednotkovému v případě širokopásmových reflektometrů. Vzhledem k tomu, že není možné je fyzicky realizovat, protože by vyžadovaly nekonečnou šířku pásma generátoru pulzů, používají se podobné signály, například chybová funkce \cite{S-4manual} nebo Gaussův pulz \cite{ultrawidebandsignals}. V případě úzkopásmových reflektometrů se používá například sinusový průběh modulovaný Gaussovým pulzem \cite{sincgausstdr}. Pro diagnostiku vedení, která jsou v době měření používána pro komunikaci, se používá například pseudonáhodný průběh \cite{noisedomainreflectometry}.
 
-Za předpokladu lineárního invariantního systému a kauzálního budicího signálu je možné závislost odezvy měřeného systému na budicím signálu zapsat následujícím způsobem, kde $x(t)$ je budicí signál, $y(t)$ je změřená odezva systému na daný budicí signál a $h(t)$ je impulzní odezva:
+Za předpokladu lineárního invariantního systému a kauzálního budicího signálu je možné závislost odezvy měřeného systému na budicím signálu zapsat následujícím způsobem \cite{principlesoflinearsystems}, kde $x(t)$ je budicí signál, $y(t)$ je změřená odezva systému na daný budicí signál a $h(t)$ je impulzní odezva:
 \begin{equation}
 y(t)=x(t) \ast h(t).
 \end{equation}
 
+Při měření reflektometrem je cílem získat tuto impulzní odezvu, případně skokovou odezvu. Tu je možné buď přímo použít k hrubé analýze měřeného systému nebo provést kalibrační měření, kterým je možné odstranit některé chyby měření, a měřený systém analyzovat výrazně přesněji. Na digitální reflektometry je možné ve frekvenční oblasti aplikovat podobné korekční algoritmy, jako na vektorové analyzátory.
 
-Pomocí kalibračních metod je možné data získaná jako odezvu na tento budicí signál transformovat do podoby, která je vhodnější pro další zpracování. Plného odstranění vlivu průběhu budicího signálu na odezvě je vhodné měřenou odezvu transformovat do podoby impulzní nebo skokové odezvy.
+V případě odstranění systémových chyb měření je možné provádět složitější analýzy měřeného systému, např. vypočítat impedanční profil měřeného vedení nebo použít reflektometr podobně jako jednoportový vektorový analyzátor.
 
 \section{Měření v ekvivalentním čase}
+Pro vysokorychlostní měření se používají dvě metody měření, měření v reálném čase a měření v ekvivalentním čase.
+
+Měření v reálném čase zpravidla probíhá tak, že jsou všechna měřená data získána z jediné realizace měřeného průběhu. Toto měření je spuštěno předem definovanou spouštěcí událostí, načež je velice rychle změřeno velké množství vzorků. Výhodou tohoto typu měření je možnost změřit jednorázové jevy. Nevýhodou je omezený vzorkovací kmitočet, který se v současné době pohybuje v jednotkách \si{\gigasample}. Dále je nevýhodou nezbytnost velice rychle zpracovávat velké množství dat. Tato metoda měření vyžaduje využití velice rychlých digitálních obvodů. Dodnes se v reflektometrech běžně nevyužívá, neboť neumožňuje dostatečně vysoké vzorkovací kmitočty.
+
+Měření v ekvivalentním čase naopak probíhá během většího množství realizací měřeného průběhu. Měření probíhá tak, že po každé spouštěcí události je odebrán určitý počet vzorků. Při další spouštěcí události dojde ke zhuštění naměřených dat. Ke změření celého průběhu je nezbytné, aby se měření opakovalo, dokud nejsou změřeny všechny body. Nevýhodou tohoto postupu je pomalejší měření a nemožnost změřit jednorázové jevy, nicméně pro statické úlohy, které jsou pro reflektometrická měření typická, je tato metoda vhodná. Tato metoda měření je téměř nezávislá na skutečném vzorkovacím kmitočtu, který pouze omezuje rychlost měření. Vzorkovací kmitočet je omezen pouze konstrukcí časovacích obvodů. Definuje se pak tzv. ekvivalentní vzorkovací kmitočet, který odpovídá převrácené hodnotě nejkratšího měřitelného časového kroku.
 
 \section{Interpretace měřených výsledků}
+Po změření odezvy systému na budicí pulz je výsledkem odezva, která je však zatížená chybami měření. Pro jejich odstranění je možné využít převedení změřeného průběhu do časové domény anásledně aplikaci korekčních algoritmů používaných typicky pro vektorové analyzátory. Je tak možné odstranit přeslechy, útlum vedení připojeného k reflektormetru, odrazy na připojovacích konektorech a frekvenční charakteristiku samotného budicího pulzu.
+Po odstranění těchto systémových chyb je možné převést je zpět do časové oblasti. Výsledkem je zkalibrovaný průběh, ze kterého je již možné spočítat např. impedanční profil měřeného systému.
 
 
 

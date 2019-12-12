@@ -1,3 +1,4 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
 \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
 % \MRhref is called by the amsart/book/proc definition of \MR.
@@ -5,7 +6,18 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{GLR07}
+\begin{thebibliography}{TKF{\etalchar{+}}13}
+
+\bibitem[CF05]{noisedomainreflectometry}
+{Chet Lo} and C.~{Furse}, \emph{Noise-domain reflectometry for locating wiring
+  faults}, IEEE Transactions on Electromagnetic Compatibility \textbf{47}
+  (2005), no.~1, 97--104.
+
+\bibitem[DJJ03]{vernierreflectometer}
+{Donghwan Lee}, {Jinho Sung}, and {Jaehong Park}, \emph{{A} 16\,ps-resolution
+  {R}andom {E}quivalent {S}ampling circuit for {TDR} utilizing a {V}ernier time
+  delay generation}, 2003 IEEE Nuclear Science Symposium. Conference Record
+  (IEEE Cat. No.03CH37515), vol.~2, Oct 2003, pp.~1219--1223 Vol.2.
 
 \bibitem[GLR07]{ultrawidebandsignals}
 Mohammad Ghavami, Michael Lachlan, and Kohno Ryuji, \emph{{U}ltra {W}ideband
@@ -17,8 +29,29 @@ N.~A.~M. {Mackay} and S.~R. {Penstone}, \emph{{A} {H}igh-{S}ensitivity
   {N}arrow-{B}and {T}ime-{D}omain {R}eflectometer}, IEEE Transactions on
   Instrumentation and Measurement \textbf{23} (1974), no.~2, 155--158.
 
+\bibitem[RR08]{VNAcalibrationarticle}
+A.~{Rumiantsev} and N.~{Ridler}, \emph{Vna calibration}, IEEE Microwave
+  Magazine \textbf{9} (2008), no.~3, 86--99.
+
+\bibitem[Sar97]{principlesoflinearsystems}
+Philip~E Sarachik, \emph{Principles of linear systems}, Cambridge University
+  Press, 1997.
+
+\bibitem[Sil15]{Si5351applicationnote}
+Silicon Laboratories Inc., Austin, \emph{{AN}619: {M}anually {G}enerating an
+  {S}i5351 {R}egister {M}ap}, 2015.
+
+\bibitem[Sil18]{Si5351datasheet}
+Silicon Laboratories Inc., Austin, \emph{{S}i5351 datasheet}, 2018.
+
 \bibitem[Tek85]{S-4manual}
 Tektronix, Inc., Beaverton, Oregon, \emph{{S-4} {S}ampling {H}ead {I}nstruction
   {M}anual}, 3 1985.
+
+\bibitem[TKF{\etalchar{+}}13]{ddsfpgareflectometer}
+D.~{Trebbels}, A.~{Kern}, F.~{Fellhauer}, C.~{Huebner}, and R.~{Zengerle},
+  \emph{{Miniaturized FPGA-Based High-Resolution Time-Domain Reflectometer}},
+  IEEE Transactions on Instrumentation and Measurement \textbf{62} (2013),
+  no.~7, 2101--2113.
 
 \end{thebibliography}
