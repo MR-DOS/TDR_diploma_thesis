@@ -24,6 +24,13 @@ Mohammad Ghavami, Michael Lachlan, and Kohno Ryuji, \emph{{U}ltra {W}ideband
   {S}ignals and {S}ystems in {C}ommunications {E}ngineering}, 2nd ed., John
   Wiley and sons, 2007 (English).
 
+\bibitem[JMN14]{Si5351_phase_noise_measurement}
+John Miles~(KE5FX) Jason Mildrum~(NT7S), \emph{{S}i5351 {I}nvestigations {P}art
+  7}, 11 2014, \url{https://nt7s.com/2014/11/si5351a-investigations-part-7/}.
+
+\bibitem[Mic09]{SY54020datasheet}
+Micrel, Inc., San Jose, \emph{{SY54020AR} datasheet}, 4 2009.
+
 \bibitem[MP74]{sincgausstdr}
 N.~A.~M. {Mackay} and S.~R. {Penstone}, \emph{{A} {H}igh-{S}ensitivity
   {N}arrow-{B}and {T}ime-{D}omain {R}eflectometer}, IEEE Transactions on

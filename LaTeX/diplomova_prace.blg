@@ -3,44 +3,47 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: diplomova_prace.aux
 The style file: amsalpha.bst
 Database file #1: diplomova_prace.bib
-You've used 10 entries,
+Warning--entry type for "Si5351_phase_noise_measurement" isn't style-file defined
+--line 12 of file diplomova_prace.bib
+You've used 12 entries,
             2624 wiz_defined-function locations,
-            621 strings with 5888 characters,
-and the built_in function-call counts, 3664 in all, are:
-= -- 337
-> -- 153
-< -- 2
-+ -- 51
-- -- 51
-* -- 306
-:= -- 575
-add.period$ -- 10
-call.type$ -- 10
-change.case$ -- 62
-chr.to.int$ -- 10
-cite$ -- 10
-duplicate$ -- 154
-empty$ -- 308
-format.name$ -- 58
-if$ -- 767
+            634 strings with 6166 characters,
+and the built_in function-call counts, 4152 in all, are:
+= -- 382
+> -- 162
+< -- 3
++ -- 53
+- -- 53
+* -- 339
+:= -- 644
+add.period$ -- 12
+call.type$ -- 12
+change.case$ -- 72
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 182
+empty$ -- 361
+format.name$ -- 61
+if$ -- 874
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 19
-newline$ -- 41
-num.names$ -- 21
-pop$ -- 61
+missing$ -- 21
+newline$ -- 47
+num.names$ -- 24
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 71
+purify$ -- 83
 quote$ -- 0
-skip$ -- 121
+skip$ -- 141
 stack$ -- 0
-substring$ -- 211
-swap$ -- 21
-text.length$ -- 2
-text.prefix$ -- 4
+substring$ -- 227
+swap$ -- 23
+text.length$ -- 3
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 72
+type$ -- 88
 warning$ -- 0
-while$ -- 26
-width$ -- 11
-write$ -- 117
+while$ -- 28
+width$ -- 13
+write$ -- 137
+(There was 1 warning)

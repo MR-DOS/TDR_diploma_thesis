@@ -5,12 +5,13 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="12.01494cm"
-   height="11.270253cm"
-   viewBox="0 0 47302.913 44371.107"
+   width="12.134377cm"
+   height="11.274517cm"
+   viewBox="0 0 47773.138 44387.894"
    id="svg24888"
    sodipodi:docname="timing_section.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
@@ -37,6 +38,38 @@
          id="path31989"
          inkscape:connector-curvature="0" />
     </clipPath>
+    <linearGradient
+       gradientTransform="matrix(1.2106441,0,0,0.51799767,-89868.01,390.2352)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient30176"
+       id="linearGradient30178-3"
+       x1="41769.75"
+       y1="74910"
+       x2="45800.824"
+       y2="74910"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient30176">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop30172" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop30174" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="matrix(0.27549322,0,0,0.18302873,-54344.304,-33353.621)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient30176"
+       id="linearGradient30178-3-2"
+       x1="41769.75"
+       y1="74910"
+       x2="45800.824"
+       y2="74910"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -52,8 +85,8 @@
      id="namedview24890"
      showgrid="false"
      inkscape:zoom="1.3254712"
-     inkscape:cx="246.94714"
-     inkscape:cy="201.96942"
+     inkscape:cx="282.90151"
+     inkscape:cy="189.59458"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -8159,6 +8192,22 @@
            cx="30000" />
       </g>
     </g>
+    <rect
+       style="fill:url(#linearGradient30178-3);fill-opacity:1;stroke-width:82.49000549"
+       id="rect25646-5"
+       width="14128.694"
+       height="13006.408"
+       x="-48528.516"
+       y="31344.164"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:url(#linearGradient30178-3-2);fill-opacity:1;stroke-width:23.39075661"
+       id="rect25646-5-9"
+       width="3215.1143"
+       height="4595.6699"
+       x="-44937.113"
+       y="-22416.395"
+       transform="matrix(0,-1,-1,0,0,0)" />
   </g>
   <g
      inkscape:groupmode="layer"

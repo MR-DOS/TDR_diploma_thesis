@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  12 DEC 2019 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  13 DEC 2019 19:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1703,7 +1703,7 @@ Package epstopdf Info: Source file: <images/block_diagram.eps>
 onverted-to.pdf images/block_diagram.eps>
 (epstopdf)             \includegraphics on input line 8.
 Package epstopdf Info: Output file is already uptodate.
-<images/block_diagram-eps-converted-to.pdf, id=385, 662.475pt x 348.30125pt>
+<images/block_diagram-eps-converted-to.pdf, id=395, 662.475pt x 348.30125pt>
 File: images/block_diagram-eps-converted-to.pdf Graphic file (type pdf)
 <use images/block_diagram-eps-converted-to.pdf>
 Package pdftex.def Info: images/block_diagram-eps-converted-to.pdf  used on inp
@@ -1732,7 +1732,7 @@ hitecture_overview-eps-converted-to.pdf images/si5351_internal_architecture_ove
 rview.eps>
 (epstopdf)             \includegraphics on input line 17.
 Package epstopdf Info: Output file is already uptodate.
-<images/si5351_internal_architecture_overview-eps-converted-to.pdf, id=389, 161
+<images/si5351_internal_architecture_overview-eps-converted-to.pdf, id=399, 161
 .60374pt x 105.39375pt>
 File: images/si5351_internal_architecture_overview-eps-converted-to.pdf Graphic
  file (type pdf)
@@ -1745,67 +1745,165 @@ rted-to.pdf  used on input line 17.
 ] [8 <./images/block_diagram-eps-converted-to.pdf> <./images/si5351_internal_ar
 chitecture_overview-eps-converted-to.pdf>] [9]
 Package epstopdf Info: Source file: <images/timing_section.eps>
-(epstopdf)                    date: 2019-12-12 13:33:26
-(epstopdf)                    size: 139503 bytes
+(epstopdf)                    date: 2019-12-13 19:05:17
+(epstopdf)                    size: 147523 bytes
 (epstopdf)             Output file: <images/timing_section-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2019-12-12 13:35:44
-(epstopdf)                    size: 32344 bytes
+(epstopdf)                    date: 2019-12-13 19:06:22
+(epstopdf)                    size: 36188 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/timing_section-eps-
 converted-to.pdf images/timing_section.eps>
 (epstopdf)             \includegraphics on input line 69.
 Package epstopdf Info: Output file is already uptodate.
-<images/timing_section-eps-converted-to.pdf, id=436, 342.27875pt x 321.2pt>
+<images/timing_section-eps-converted-to.pdf, id=446, 345.29pt x 321.2pt>
 File: images/timing_section-eps-converted-to.pdf Graphic file (type pdf)
 <use images/timing_section-eps-converted-to.pdf>
 Package pdftex.def Info: images/timing_section-eps-converted-to.pdf  used on in
 put line 69.
-(pdftex.def)             Requested size: 363.02786pt x 340.67133pt.
- [10]
+(pdftex.def)             Requested size: 363.00775pt x 337.68164pt.
+ [10] [11 <./images/timing_section-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <images/pulse_generator_section.eps>
+(epstopdf)                    date: 2019-12-13 19:05:42
+(epstopdf)                    size: 144236 bytes
+(epstopdf)             Output file: <images/pulse_generator_section-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2019-12-13 19:06:22
+(epstopdf)                    size: 34040 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/pulse_generator_sec
+tion-eps-converted-to.pdf images/pulse_generator_section.eps>
+(epstopdf)             \includegraphics on input line 86.
+Package epstopdf Info: Output file is already uptodate.
+<images/pulse_generator_section-eps-converted-to.pdf, id=474, 312.16624pt x 289
+.08pt>
+File: images/pulse_generator_section-eps-converted-to.pdf Graphic file (type pd
+f)
+<use images/pulse_generator_section-eps-converted-to.pdf>
+Package pdftex.def Info: images/pulse_generator_section-eps-converted-to.pdf  u
+sed on input line 86.
+(pdftex.def)             Requested size: 363.00859pt x 336.1623pt.
+
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 78.
+(hyperref)                removing `\textasciicaron' on input line 89.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 78.
+(hyperref)                removing `\textring' on input line 89.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12 <./images/pulse_generator_section-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <images/match_section.eps>
+(epstopdf)                    date: 2019-12-13 19:04:58
+(epstopdf)                    size: 132211 bytes
+(epstopdf)             Output file: <images/match_section-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2019-12-13 19:06:23
+(epstopdf)                    size: 53759 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/match_section-eps-c
+onverted-to.pdf images/match_section.eps>
+(epstopdf)             \includegraphics on input line 93.
+Package epstopdf Info: Output file is already uptodate.
+<images/match_section-eps-converted-to.pdf, id=483, 325.215pt x 237.88875pt>
+File: images/match_section-eps-converted-to.pdf Graphic file (type pdf)
+<use images/match_section-eps-converted-to.pdf>
+Package pdftex.def Info: images/match_section-eps-converted-to.pdf  used on inp
+ut line 93.
+(pdftex.def)             Requested size: 363.0275pt x 265.54787pt.
+Package epstopdf Info: Source file: <images/ltspice_schematic.eps>
+(epstopdf)                    date: 2019-12-13 19:52:47
+(epstopdf)                    size: 126999 bytes
+(epstopdf)             Output file: <images/ltspice_schematic-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2019-12-13 19:54:53
+(epstopdf)                    size: 31418 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/ltspice_schematic-e
+ps-converted-to.pdf images/ltspice_schematic.eps>
+(epstopdf)             \includegraphics on input line 99.
+Package epstopdf Info: Output file is already uptodate.
+<images/ltspice_schematic-eps-converted-to.pdf, id=484, 386.44376pt x 261.97874
+pt>
+File: images/ltspice_schematic-eps-converted-to.pdf Graphic file (type pdf)
+<use images/ltspice_schematic-eps-converted-to.pdf>
+Package pdftex.def Info: images/ltspice_schematic-eps-converted-to.pdf  used on
+ input line 99.
+(pdftex.def)             Requested size: 363.00362pt x 246.08817pt.
+Package epstopdf Info: Source file: <images/input_impedance.eps>
+(epstopdf)                    date: 2019-12-13 18:39:09
+(epstopdf)                    size: 31978 bytes
+(epstopdf)             Output file: <images/input_impedance-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2019-12-13 18:40:15
+(epstopdf)                    size: 11357 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/input_impedance-eps
+-converted-to.pdf images/input_impedance.eps>
+(epstopdf)             \includegraphics on input line 103.
+Package epstopdf Info: Output file is already uptodate.
+<images/input_impedance-eps-converted-to.pdf, id=485, 578.16pt x 433.62pt>
+File: images/input_impedance-eps-converted-to.pdf Graphic file (type pdf)
+<use images/input_impedance-eps-converted-to.pdf>
+Package pdftex.def Info: images/input_impedance-eps-converted-to.pdf  used on i
+nput line 103.
+(pdftex.def)             Requested size: 362.99883pt x 272.24911pt.
+Package epstopdf Info: Source file: <images/input_reflection.eps>
+(epstopdf)                    date: 2019-12-13 18:39:07
+(epstopdf)                    size: 32581 bytes
+(epstopdf)             Output file: <images/input_reflection-eps-converted-to.p
+df>
+(epstopdf)                    date: 2019-12-13 18:40:16
+(epstopdf)                    size: 13269 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/input_reflection-ep
+s-converted-to.pdf images/input_reflection.eps>
+(epstopdf)             \includegraphics on input line 107.
+Package epstopdf Info: Output file is already uptodate.
+<images/input_reflection-eps-converted-to.pdf, id=486, 578.16pt x 433.62pt>
+File: images/input_reflection-eps-converted-to.pdf Graphic file (type pdf)
+<use images/input_reflection-eps-converted-to.pdf>
+Package pdftex.def Info: images/input_reflection-eps-converted-to.pdf  used on 
+input line 107.
+(pdftex.def)             Requested size: 362.99883pt x 272.24911pt.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 82.
+(hyperref)                removing `\textasciicaron' on input line 113.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 82.
+(hyperref)                removing `\textasciicaron' on input line 113.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 86.
+(hyperref)                removing `\textasciicaron' on input line 117.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 86.
+(hyperref)                removing `\textasciicaron' on input line 117.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 86.
+(hyperref)                removing `\textring' on input line 117.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 86.
+(hyperref)                removing `\textasciicaron' on input line 117.
 
 ) (./diplomova_prace_4_kalibrace.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11 <./images/timing_section-eps-converted-to.pdf>] [12]
+ [13 <./images/match_section-eps-converted-to.pdf>] [14 <./images/ltspice_schem
+atic-eps-converted-to.pdf> <./images/input_impedance-eps-converted-to.pdf>] [15
+ <./images/input_reflection-eps-converted-to.pdf>] [16
+
+]
 Kapitola 4.
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
@@ -1837,9 +1935,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 11.
 
-[13
-
-]) (./diplomova_prace_5_detekce_zavad.tex [14]
+[17]) (./diplomova_prace_5_detekce_zavad.tex [18]
 Kapitola 5.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
@@ -1851,9 +1947,9 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 9.
 
-) (./diplomova_prace_6_zmerene_parametry.tex [15
+) (./diplomova_prace_6_zmerene_parametry.tex [19
 
-] [16
+] [20
 
 ]
 Kapitola 6.
@@ -1902,7 +1998,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 27.
 
-) (./diplomova_prace_7_uzivatelske_rozhrani_a_popis_ovladani.tex [17] [18
+) (./diplomova_prace_7_uzivatelske_rozhrani_a_popis_ovladani.tex [21] [22
 
 ]
 Kapitola 7.
@@ -1994,8 +2090,8 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 ) (./diplomova_prace_8_zaver.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19]
-[20]
+ [23]
+[24]
 Kapitola 8.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
@@ -2004,15 +2100,27 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 
 )
 No file diplomova_prace.ind.
-(./diplomova_prace.bbl [21
+(./diplomova_prace.bbl [25
 
-] [22
+] [26
 
 ]
 P\v {r}\'{\i }loha A.
-)
+
+Underfull \hbox (badness 1571) in paragraph at lines 28--30
+[]\T1/lmr/m/n/10.95 (+20) John Mi-les (KE5FX) Ja-son Mil-drum (NT7S), \T1/lmr/m
+/it/10.95 (+20) Si5351 In-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 28--30
+\T1/lmr/m/it/10.95 (+20) ves-ti-gati-ons Part 7\T1/lmr/m/n/10.95 (+20) , 11 201
+4, []$\T1/lmtt/m/n/10.95 https : / / nt7s . com / 2014 / 11 /
+ []
+
+[27])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
- [23
+ [28
 runsystem(makeindex -s diplomova_prace.ist -t diplomova_prace.glg -o diplomova_
 prace.gls diplomova_prace.glo)...executed safely (allowed).
 
@@ -2028,11 +2136,11 @@ Package rerunfilecheck Info: File `diplomova_prace.out' has not changed.
 (rerunfilecheck)             Checksum: A29DC3A68ADE05FC99E6AEFC202941DC;3880.
  ) 
 Here is how much of TeX's memory you used:
- 32069 strings out of 493738
- 571045 string characters out of 6153002
- 757556 words of memory out of 5000000
- 35061 multiletter control sequences out of 15000+600000
- 647987 words of font info for 161 fonts, out of 8000000 for 9000
+ 32116 strings out of 493738
+ 572600 string characters out of 6153002
+ 758000 words of memory out of 5000000
+ 35089 multiletter control sequences out of 15000+600000
+ 648070 words of font info for 162 fonts, out of 8000000 for 9000
  428 hyphenation exceptions out of 8191
  56i,18n,92p,2012b,1244s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
@@ -2044,11 +2152,12 @@ f/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
 s/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
 usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/
 public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on diplomova_prace.pdf (31 pages, 792470 bytes).
+r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmtt10.pfb>
+Output written on diplomova_prace.pdf (36 pages, 960592 bytes).
 PDF statistics:
- 588 PDF objects out of 1000 (max. 8388607)
- 514 compressed objects within 6 object streams
- 117 named destinations out of 1000 (max. 500000)
- 36793 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 666 PDF objects out of 1000 (max. 8388607)
+ 569 compressed objects within 6 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 36818 words of extra memory for PDF output out of 42996 (max. 10000000)
 

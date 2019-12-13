@@ -65,17 +65,48 @@ Podobný princip měření pomocí dvou oscilátorů o podobné frekvenci se ji�
 
 Další podobný způsob časování vzorkování je použit v \cite{ddsfpgareflectometer}, kde je využito \acrshort{FPGA} jako \acrshort{DDS}. Výstup z této \acrshort{DDS} je filtrován dolní propustí a následně zaveden do komparátoru, římž je získáván obdélníkový řídicí signál. Řízení vzájemné polohy budicího pulzu a vzorkování je pak dosaženo nastavováním fáze sinusového signálu, který je generován \acrshort{DDS}. Tento systém umožňuje krok vzorkování v jednotkách pikosekund. Je tedy podobný vlastnostmi konstrukci popsané v této práci. Něvýhodou je však to, že autoři se příliš nezabývali generátorem impulzů, náběžná hrana použitého generátoru činí přibližně 2 \si{ns}. Důvod, proč tak autoři učinili, je možná omezení vyplývající ze zvoleného způsobu vzorkování pomocí komparátoru a digitálního integrátoru.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/timing_section.eps}\caption{Zapojení hodinového generátoru Si5351.}\label{timing_section_schematic}
 \end{figure}	
 
 Zapojení hodinového generátoru s fázovým závěsem Si5351 je zobrazeno na \ref{timing_section_schematic}. Symbol obvodu je rozdělený na dvě části, U207A a U207B. Kromě samotného obvodu Si5351 je potřeba pouze referenční krystal a napájecí obvody. Napájení je rozděleno na dvě domény. První je jádro fázového závěsu, které napájí interní logické obvody a \acrshort{VCO}. Druhá napájí výstupní budiče. Toto rozdělení by mělo omezit fázový šum generovaných hodinových signálů způsobený rušením na napájení \acrshort{VCO} \cite{Si5351applicationnote}. Pro krystalový oscilátor není potřeba používat zatěžovací kondenzátory, jsou obsaženy uvnitř obvodu Si5351, je možné je nastavit v rozsahu \SIrange{4}{10}{\si{pF}}.
 
-Výstupní budiče obvodu Si5351 jsou slučitelné jak s \acrshort{CMOS} obvody a jejich modernějšími variantami, tak i s obvody rodin \acrshort{TTL}, \acrshort{ECL}, \acrshort{CML}, \acrshort{LVDS} a podobnými. Budiče jsou proudové, proud je možné nastavit ve čtyřech krocích v rozsahu \SIrange{2}{8}{\si{mA}} \cite{Si5351datasheet}. Tohoto faktu je využito v zapojení, 4 výstupy jsou použity přímo pro buzení vzorkovacích můstků, 2 výstupy pro buzení \acrshort{CML} bufferu, jeden výstup pro synchronizaci vzorkování oužitého mikrokontroléru a jeden výstup pro řízení stavu \acrshort{CML} bufferu.
+Výstupní budiče obvodu Si5351 jsou slučitelné jak s \acrshort{CMOS} obvody a jejich modernějšími variantami, tak i s obvody rodin \acrshort{TTL}, \acrshort{ECL}, \acrshort{CML}, \acrshort{LVDS} a podobnými. Budiče jsou proudové, proud je možné nastavit ve čtyřech krocích v rozsahu \SIrange{2}{8}{\si{mA}} \cite{Si5351datasheet}. Tohoto faktu je využito v zapojení, 4 výstupy jsou použity přímo pro proudové buzení vzorkovacích můstků, 2 výstupy pro buzení \acrshort{CML} bufferu, jeden výstup pro synchronizaci vzorkování použitého mikrokontroléru a jeden výstup pro řízení stavu \acrshort{CML} bufferu.
+
+Dle katalogových údajů by tento fázový závěs měl typicky dosahovat mezivrcholového fázového šumu $70~\si{ps}$, maximálně  $155~\si{ps}$. Dle výrobce by mělo jít o parametry v \quotedblbase nejhorším možném případě v reálné aplikaci \ldots{} skutečné vlastnosti mohou být výrazně lepší\textquotedblleft{} \cite{Si5351datasheet}. Bohužel není uvedeno, jak se tento parametr mění v závislosti na nastavení násobicích a dělicích sekcí. Není uveden ani histogram šumu, jeho frekvenční spektrum, ani efektivní hodnota. Spektrum fázového šumu je možné najít v \cite{Si5351_phase_noise_measurement}, bohužel se nejedná o ověřený zdroj.
 
 \section{Tvorba budicího pulzu}
+Pro tvorbu budicích pulzů byl vybrán obvod SY54020, který je původně určen jako \acrshort{CML} buffer. Logické obvody \acrshort{CML} používají logické úrovně referencované vůči kladnému pólu napájení, výstupy i vstupy těchto obvodů jsou přizpůsobené impedanci $50~\Omega$. Podle katalogových údajů \cite{SY54020datasheet} by měla výstupní impedance ležet v rozsahu \SIrange{45}{55}{\si{$\Omega$}}. Hlavní důvod pro použití tohoto bufferu je vysoká rychlost, dle katalogových údajů by měla délka náběžných a sestupných hran spadat do rozsahu \SIrange{35}{100}{\si{ps}}, typicky $60~\si{ps}$. Tento údaj je udáván pro body, kde prochází náběžná hrana $20~\%$ a $80~\%$ mezi původním a konečným napětím. U obvodu Si5351 by podle katalogových údajů měl tento parametr být typicky $1~\si{ns}$, maximálně $1{,}5~\si{ns}$. Použitím obvodu SY54020 by tedy mělo být možné zkrátit náběžné hrany o \SIrange{90}{98}{\si{\%}} oproti přímému použití výstupu z obvodu Si5351 jako zdroje budicích pulzů.
+
+Postatná výhoda obvodu SY54020 spočívá v oddělení napájecích úrovní vstupů a výstupů tohoto obvodu. V zapojení je vstupní část obvodu napájena $3{,}3~\si{V}$, výstupní část $1{,}65~\si{V}$, tedy přesně polovičním napájecím napětím. Tato napájecí hladina označená jako VCC, a zároveň jako GNDS, je použita jako virtuální analogová země. Všechny následující obvody jsou vztažené k této virtuální zemi.
+
+Zapojení generátoru budicích impulzů je na obrázku \ref{pulse_generator_section_schematic}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/pulse_generator_section.eps}\caption{Zapojení generátoru budicích pulzů}\label{pulse_generator_section_schematic}
+\end{figure}	
 
 \section{Přizpůsobovací obvody a testovací port}
+Generátor budicích impulzů z předchozího bodu je nezbytné připojit k měřicímu portu. K tomuto portu však musí být zároveň připojeny vzorkovací obvody. Proto jsou nezbytné přizpůsobovací obvody, které umožňují připojit k testovacímu portu obě tyto části při dodržení vstupní impedance. Jejich zapojení je uvedeno na obrázku \ref{match_section_schematic}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/match_section.eps}\caption{Schéma přizpůsobovacích obvodů.}\label{match_section_schematic}
+\end{figure}
+
+Přizpůsobovací obvody jsou navrženy tak, aby bylo dosaženo co nejlepšího impedančního přizpůsobení na testovacím konektoru. Problematická je impedance vzorkovacího můstku, neboť na jeho výstupu je připojen vzorkovací kondenzátor, který způsobuje rezonanci pouzdra vzorkovacího můstku na frekvenci přibližně $1.7~\si{GHz}$. Vliv této rezonance na vstupní impedanci reflektometru je částečně potlačen tím, že 
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/ltspice_schematic.eps}\caption{Schéma použité pro simulaci v programu LTSpice.}\label{ltspice_schematic}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/input_impedance.eps}\caption{Vstupní impedance reflektometru.}\label{input_impedance}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/input_reflection.eps}\caption{Přizpůsobení vstupní impedance reflektometru.}\label{input_reflection}
+\end{figure}
+
 
 \section{Vzorkovací obvody}
 
