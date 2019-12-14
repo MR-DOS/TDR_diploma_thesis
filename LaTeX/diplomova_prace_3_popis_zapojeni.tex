@@ -5,7 +5,7 @@ Zapojení se skládá z generátoru impulsů, vzorkovacích obvodů a řídicíh
 
 \section{Blokové zapojení}
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/block_diagram.eps}\caption{Blokové zapojení reflektometru.} \label{block_diagram}
+\includegraphics[width=\textwidth,keepaspectratio]{images/block_diagram.eps}\caption{Blokové zapojení reflektometru.} \label{block_diagram}
 \end{figure}
 
 Blokové zapojení reflektometru je znázorněno na obrázku \ref{block_diagram}. V dalších částech této kapitoly jsou jenotlivé bloky popsány do hloubky.
@@ -14,7 +14,7 @@ Blokové zapojení reflektometru je znázorněno na obrázku \ref{block_diagram}
 Hlavním prvkem celého zapojení je vícekanálový digitální fázový závěs, který je postaven na obvodu Si5351C-B \cite{Si5351datasheet}. Tento obvod obsahuje krystalový oscilátor, na nějž jsou zavěšeny dva interní oscilátory \acrshort{VCO}. Vnitřní blokové schéma je možné vidět na obrázku \ref{si5351_internal_architecture_overview}.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/si5351_internal_architecture_overview.eps}\caption{Vnitřní blokové zapojení obvodu Si5351, převzato z \cite{Si5351datasheet}.} \label{si5351_internal_architecture_overview}
+\includegraphics[width=\textwidth,keepaspectratio]{images/si5351_internal_architecture_overview.eps}\caption{Vnitřní blokové zapojení obvodu Si5351, převzato z \cite{Si5351datasheet}.} \label{si5351_internal_architecture_overview}
 \end{figure}
 
 Frekvenci těchto oscilátorů je možné nezávisle nastavit. Jejich frekvence $f_{VCO}$ může být neceločíselným násobkem frekvence krystalového oscilátoru $f_{XTAL}$.
@@ -45,7 +45,7 @@ Pak se během jedné periody oscilátory vůči sobě posunou o čas $T_{SHIFT}$
 \begin{equation}
 \begin{gathered}
 T_{SHIFT}=T_{OUT2}-T_{OUT1}=\dfrac{1}{f_{OUT2}} - \dfrac{1}{f_{OUT1}} \\
-T_{SHIFT}=\dfrac{d}{f_{XTAL}} \left(\dfrac{1}{a} - \dfrac{1}{a+\dfrac{b_1}{c}}\right) = \dfrac{d}{f_{XTAL}} \left(\dfrac{1}{1+a\dfrac{c}{b_1}}\right)
+T_{SHIFT}=\dfrac{d}{f_{XTAL}} \left(\dfrac{1}{a} - \dfrac{1}{a+\dfrac{b_1}{c}}\right) = \dfrac{d}{a f_{XTAL}} \left(\dfrac{1}{1+a\dfrac{c}{b_1}}\right)
 \end{gathered}
 \end{equation}
 
@@ -54,10 +54,10 @@ Pro minimalizaci fázového chvění je podle \cite{Si5351datasheet} a \cite{Si5
 \begin{equation}
 \begin{gathered}
 f_{XTAL}= 25 \si{MHz} \\
-a=24 \;\;\; b_1=1 \\
-c=500000 \;\;\; d=128 \cdot 46 \\
+a=24 \;\;\; b_1=24/8=3 \\
+c=500000/8=62500 \;\;\; d=128 \cdot 46=5888 \\
 f_{OUT1} \doteq 101902 \si{kHz} \doteq f_{OUT2} \\
-T_{SHIFT} = \dfrac{46 \cdot 128}{25000000} \left(\dfrac{1}{1+24 \cdot \dfrac{500000}{1}}\right) \doteq 19.627 \si{ps}
+T_{SHIFT} = \dfrac{46 \cdot 128}{24 \cdot 25000000} \left(\dfrac{1}{1+24 \cdot \dfrac{500000}{24}}\right) \doteq 19.627 \si{ps}
 \end{gathered}
 \end{equation}
 
@@ -66,7 +66,7 @@ Podobný princip měření pomocí dvou oscilátorů o podobné frekvenci se ji�
 Další podobný způsob časování vzorkování je použit v \cite{ddsfpgareflectometer}, kde je využito \acrshort{FPGA} jako \acrshort{DDS}. Výstup z této \acrshort{DDS} je filtrován dolní propustí a následně zaveden do komparátoru, římž je získáván obdélníkový řídicí signál. Řízení vzájemné polohy budicího pulzu a vzorkování je pak dosaženo nastavováním fáze sinusového signálu, který je generován \acrshort{DDS}. Tento systém umožňuje krok vzorkování v jednotkách pikosekund. Je tedy podobný vlastnostmi konstrukci popsané v této práci. Něvýhodou je však to, že autoři se příliš nezabývali generátorem impulzů, náběžná hrana použitého generátoru činí přibližně 2 \si{ns}. Důvod, proč tak autoři učinili, je možná omezení vyplývající ze zvoleného způsobu vzorkování pomocí komparátoru a digitálního integrátoru.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/timing_section.eps}\caption{Zapojení hodinového generátoru Si5351.}\label{timing_section_schematic}
+\includegraphics[width=\textwidth,keepaspectratio]{images/timing_section.eps}\caption{Zapojení hodinového generátoru Si5351.}\label{timing_section_schematic}
 \end{figure}	
 
 Zapojení hodinového generátoru s fázovým závěsem Si5351 je zobrazeno na \ref{timing_section_schematic}. Symbol obvodu je rozdělený na dvě části, U207A a U207B. Kromě samotného obvodu Si5351 je potřeba pouze referenční krystal a napájecí obvody. Napájení je rozděleno na dvě domény. První je jádro fázového závěsu, které napájí interní logické obvody a \acrshort{VCO}. Druhá napájí výstupní budiče. Toto rozdělení by mělo omezit fázový šum generovaných hodinových signálů způsobený rušením na napájení \acrshort{VCO} \cite{Si5351applicationnote}. Pro krystalový oscilátor není potřeba používat zatěžovací kondenzátory, jsou obsaženy uvnitř obvodu Si5351, je možné je nastavit v rozsahu \SIrange{4}{10}{\si{pF}}.
@@ -83,35 +83,59 @@ Postatná výhoda obvodu SY54020 spočívá v oddělení napájecích úrovní v
 Zapojení generátoru budicích impulzů je na obrázku \ref{pulse_generator_section_schematic}.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/pulse_generator_section.eps}\caption{Zapojení generátoru budicích pulzů}\label{pulse_generator_section_schematic}
+\includegraphics[width=\textwidth,keepaspectratio]{images/pulse_generator_section.eps}\caption{Zapojení generátoru budicích pulzů}\label{pulse_generator_section_schematic}
 \end{figure}	
 
 \section{Přizpůsobovací obvody a testovací port}
 Generátor budicích impulzů z předchozího bodu je nezbytné připojit k měřicímu portu. K tomuto portu však musí být zároveň připojeny vzorkovací obvody. Proto jsou nezbytné přizpůsobovací obvody, které umožňují připojit k testovacímu portu obě tyto části při dodržení vstupní impedance. Jejich zapojení je uvedeno na obrázku \ref{match_section_schematic}.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/match_section.eps}\caption{Schéma přizpůsobovacích obvodů.}\label{match_section_schematic}
+\includegraphics[width=\textwidth,keepaspectratio]{images/match_section.eps}\caption{Schéma přizpůsobovacích obvodů.}\label{match_section_schematic}
 \end{figure}
 
-Přizpůsobovací obvody jsou navrženy tak, aby bylo dosaženo co nejlepšího impedančního přizpůsobení na testovacím konektoru. Problematická je impedance vzorkovacího můstku, neboť na jeho výstupu je připojen vzorkovací kondenzátor, který způsobuje rezonanci pouzdra vzorkovacího můstku na frekvenci přibližně $1.7~\si{GHz}$. Vliv této rezonance na vstupní impedanci reflektometru je částečně potlačen tím, že 
+Přizpůsobovací obvody jsou navrženy tak, aby bylo dosaženo co nejlepšího impedančního přizpůsobení na testovacím konektoru. Problematická je impedance vzorkovacího můstku, neboť na jeho výstupu je připojen vzorkovací kondenzátor, který způsobuje rezonanci pouzdra vzorkovacího můstku na frekvenci přibližně $1.7~\si{GHz}$. Vliv této rezonance na vstupní impedanci reflektometru je částečně potlačen použitím děliče sestaveného z odporů R220, R224 a R229 a cívky L201 (označení podle obrázku \ref{match_section_schematic}). Výsledná impedance je zakreslena v grafu \ref{input_impedance}, parametr $S_{11}$ pak v grafu \ref{input_reflection}. Simulace byla provedena bez vední T1, které se nachází na schématu \ref{ltspice_schematic}. Hodnoty použitých součástek v děliči se mezi schématy liší, protože během vývoje zařízení byly použité diodové můstky HSMS-282P vyřazeny z výroby. Jako náhrada byly vybrány diodové můstky SMS3923-081LF. Díky podrobnějšímu SPICE modelu bylo možné do simulace zahrnout i vliv parazitních vlastností pouzdra tohoto můstku, což umožnilo další optimalizace. Konečné hodnoty použitých součástek se nachází ve schématu použitém v simulaci.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/ltspice_schematic.eps}\caption{Schéma použité pro simulaci v programu LTSpice.}\label{ltspice_schematic}
+\includegraphics[width=\textwidth,keepaspectratio]{images/ltspice_schematic.eps}\caption{Schéma použité pro simulaci v programu LTSpice.}\label{ltspice_schematic}
+\end{figure}
+
+Vstupní impedance byla simulována do 10 GHz. V celém simulovaném pásmu se vstupní impedance odchyluje od nominálních $50~\Omega$ o méně než $\pm2~\Omega$. Parametr $\lvert S_{11} \rvert$ je vykreslen v grafu \ref{input_reflection}. V celém rozsahu je menší než $-33~\si{dB}$, což odpovídá koeficientu odrazu $\Gamma <= 0.023$. Navržené přizpůsobení by tedy mělo být velmi dobré. Vzhledem k tomu, že konektory obvykle způsobují odraz větší, než je odraz vycházející ze simulace, měl by být klíčovým prvkem pro dosažení malého odrazu na testovacím portu kvalitní konektor a připojovací vedení. Při uvažování tolerance impedance budiče SY54020, která se pohybuje v rozsahu \SIrange{45}{55}{\si{$\Omega$}}, se přizpůsobení zhorší, nicméně v celém rozsahu je lepší než $-30~\si{dB}$.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/input_impedance.eps}\caption{Vstupní impedance reflektometru.}\label{input_impedance}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/input_impedance.eps}\caption{Vstupní impedance reflektometru.}\label{input_impedance}
+\includegraphics[width=\textwidth,keepaspectratio]{images/input_reflection.eps}\caption{Přizpůsobení vstupní impedance reflektometru.}\label{input_reflection}
+\end{figure}
+
+\section{Vzorkovací obvody a oddělovací zesilovač}
+Vzorkování je v reflektometru prováděno ve třech stupních. První stupeň je tvořený diodovým můstkem U208 (na obrázku \ref{sampler_section_schematic}) a kondenzátorem C230. Druhý stupeň vzorkování je tvořen diodovým můstkem U209 a kondenzátorem C233. Třetí stupeň probíhá uvnitř mikrokontroléru v \acrshort{ADC}.
+
+První vzorkovací stupeň je připojen k obvodu Si5351, který proudově napájí vzorkovací můstek. Proud nastavený na budičích tohoto obvodu je $8~\si{mA}$. V době, kdy vzorkovač sleduje vstupní signál, jsou diody sepnuty v propustné oblasti, můstek se pak chová přibližně jako rezistor o odporu jednotek $\Omega$ zapojený mezi vstupem a vzorkovacím kondenzátorem. V okamžiku, kdy má být odebrán vzorek měřeného napětí, se obrátí směr proudu tekoucí skrz můstek, čímž se můstek rozepne. Po rozepnutí má můstek charakter kondenzátoru o kapacitě desetin pikofaradu. Aby můstek co nejméně ovlivňoval vstupní impedanci reflektometru, je připojen přes přizpůsobovací obvody. Kondenzátor C230 musí mít co nejmenší kapacitu, aby příliš kapacitně nezatěžoval vzorkovací můstek. Při použití většího kondenzátoru klesá šířka propustného pásma vzorkovače a zvětšuje se vliv vzorkovače na vstupní impedanci reflektometru. Pro potlačení kapacitního charakteru vzorkovače je v přizpůsobovacím obvodu použita kombinace R229 a L201, které částečně na vysokých frekvencích stáčí impedanci zpět k reálným hodnotám. Při použití příliš malého kondenzátoru je problematická parazitní kapacita diodového můstku v rozepnutém stavu, měřený signál pak výrazně \quotedblbase prosakuje\textquotedblleft{} do navzorkovaného signálu i v okamžiku, kdy je diodový můstek rozepnutý.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/sampler_section.eps}\caption{Zapojení vzorkovacích obvodů.}\label{sampler_section_schematic}
+\end{figure}
+
+Maximální hodnotu kapacity kondenzátoru C230 určuje i oddělovací zesilovač. Při kapacitě větší než $1{,}5~\si{pF}$ by se oddělovací zesilovač rozkmital, což bylo zjištěno v zapojení během testování. Následně byla tato skutečnost potvrzena simulací a opravena. Proto jsou v zesilovači použity odpory R249, R250 a R251. R251 omezuje kladnou zpětnou vazbu a tlumí rezonanci páru U208~--~C230, čímž je zabráněno rozkmitání zesilovače. Odpor R249 nadále zeslabuje tuto kladnou zpětnou vazbu. Odpor R250 zvětšuje vstupní impedanci zesilovače a zvětšuje šířku pásma tohoto oddělovacího stupně. Kondenzátor C231 není v konečném zapojení použit, neboť zmenšoval použitelnou šířku pásma zesilovače a zhoršoval stabilitu zapojení.
+
+Vstupní impedance oddělovacího zesilovače je přibližně do 900 MHz takřka čistě imaginární, kapacita odpovídající této impedanci je přibližně $0{,}6~\si{pF}$ na $10~\si{MHz}$ a $0{,}9~\si{pF}$ na $1~\si{GHz}$. Zesilovač je zapojen jako sledovač signálu s jednotkovým ziskem. V source tranzistoru je zapojen proudový zdroj kvůli minimalizaci zkreslení. Dle simulace by stejnosměrné zkreslení zesilovače mělo být lepší než $0.0005~\%$, absolutní chyba výstupního napětí je uvedena v grafu \ref{buffer_voltage_error}. Simulace nebyla provedena s proudovým zdrojem, ale již v zapojení, které je uvedeno na schématu \ref{sampler_section_schematic}. Simulovaná data by tak měla lépe odpovídat realitě. Důvod, proč na schématu \ref{sampler_section_schematic} není uvedeno celé zapojení proudového zdroje, ale jen idealizovaného zdroje, je časová náročnost výpočtů. Při simulacích vstupní impedance má tato část minimální vliv na výsledky, ale výrazně zpomaluje výpočty, proto byla ze simulací týkajících se vstupní impedance a tranzientních simulací oddělovacího zesilovače vynechána. Celé zapojení proudového zdroje je vidět na schématu \ref{current_source_section_schematic}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/transfer_characteristic.eps}\caption{Chyba linearity oddělovacího zesilovače.}\label{buffer_voltage_error}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=12cm,keepaspectratio]{images/input_reflection.eps}\caption{Přizpůsobení vstupní impedance reflektometru.}\label{input_reflection}
+\includegraphics[width=\textwidth,keepaspectratio]{images/current_source_section.eps}\caption{Zapojení proudového zdroje.}\label{current_source_section_schematic}
 \end{figure}
 
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/power_supply_section.eps}\caption{Zapojení napájecích zdrojů vzorkovacích obvodů.}\label{analog_source_section_schematic}
+\end{figure}
 
-\section{Vzorkovací obvody}
-
-\section{Oddělovací zesilovač}
-
-\section{Sekundární vzorkování}
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/frequency_transfer_function_BF.eps}\caption{Přenos oddělovacího zesilovače.}\label{frequency_transfer_function_bf}
+\end{figure}
 
 \section{Digitalizace měřeného průběhu}

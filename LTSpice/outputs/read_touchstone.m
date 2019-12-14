@@ -11,6 +11,9 @@ if strcmpi(mode,'complex')
    sp.s21 = [];
    sp.s12 = [];
    sp.s22 = [];
+   sp.time=[];
+   sp.voltage1=[];
+   sp.voltage2=[];
 else
    sp.s11.mag = [];
    sp.s21.mag = [];
@@ -20,11 +23,14 @@ else
    sp.s21.ph = [];
    sp.s12.ph = [];
    sp.s22.ph = [];
+   sp.time=[];
+   sp.voltage1=[];
+   sp.voltage2=[];
 end
 
 while ( ~feof(fid) )
    str = fgets (fid);
-   if ((str(1) == '!')||(str(1) == '#')||(str(1) == 'F'))
+   if ((str(1) == '!')||(str(1) == '#')||(str(1) == 'F')||(str(1) == 't'))
       continue;
    end
    [val, len]= sscanf (str, '%f %1s %f %3s %f %2s');
@@ -47,6 +53,19 @@ while ( ~feof(fid) )
         %sp.s22.mag = [sp.s22.mag; val(8)];
         %sp.s22.ph = [sp.s22.ph; val(9)];
       end
+   end
+   
+   [val, len]= sscanf (str, '%f %f %f');
+   
+   if(len==2)
+      sp.time=val(1);
+      sp.voltage1=[sp.voltage1 val(2)];
+   end
+   
+   if(len==3)
+      sp.time=val(1);
+      sp.voltage1=[sp.voltage1 val(2)];
+      sp.voltage2=[sp.voltage2 val(3)];
    end
 end
 

@@ -1365,6 +1365,8 @@ Wire Wire Line
 	4800 9300 4950 9300
 Connection ~ 7600 6000
 Wire Wire Line
+	2200 5400 6300 5400
+Wire Wire Line
 	7200 5400 7200 6000
 Connection ~ 7200 6000
 $Comp
@@ -2900,10 +2902,54 @@ Text Label 12150 6800 0    50   ~ 0
 SLAVESAMP_R_N
 Text Label 11750 6800 2    50   ~ 0
 SLAVESAMP_R_P
+$Comp
+L petr_kicad:ATB2012-50011 U215
+U 1 1 5C9E7BED
+P 10550 5600
+F 0 "U215" H 10550 5925 50  0000 C CNN
+F 1 "ATB2012-50011" H 10550 5834 50  0000 C CNN
+F 2 "petr_kicad:ATB2012" H 10550 5300 50  0001 C CNN
+F 3 "https://product.tdk.com/info/en/documents/data_sheet/rf_balun_atb2012_en.pdf" V 10850 5600 50  0001 C CNN
+	1    10550 5600
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	12150 5600 12150 6150
+	2200 5500 10250 5500
 Wire Wire Line
-	7600 5300 7600 6000
+	2200 5600 10200 5600
+Wire Wire Line
+	10200 5600 10200 5700
+Wire Wire Line
+	10200 5700 10250 5700
+Wire Wire Line
+	10850 5500 11750 5500
+Wire Wire Line
+	10850 5700 12150 5700
+Wire Wire Line
+	12150 5700 12150 6150
+$Comp
+L petr_kicad:ATB2012-50011 U214
+U 1 1 5CA9B3A3
+P 6600 5300
+F 0 "U214" H 6600 5625 50  0000 C CNN
+F 1 "ATB2012-50011" H 6600 5534 50  0000 C CNN
+F 2 "petr_kicad:ATB2012" H 6600 5000 50  0001 C CNN
+F 3 "https://product.tdk.com/info/en/documents/data_sheet/rf_balun_atb2012_en.pdf" V 6900 5300 50  0001 C CNN
+	1    6600 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 5400 7200 5400
+Wire Wire Line
+	7600 5200 6900 5200
+Wire Wire Line
+	7600 5200 7600 6000
+Wire Wire Line
+	6300 5200 6250 5200
+Wire Wire Line
+	6250 5200 6250 5300
+Wire Wire Line
+	6250 5300 2200 5300
 $Comp
 L Device:C C?
 U 1 1 5CA62C88
@@ -5900,12 +5946,4 @@ F 3 "~" H 8500 6900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10450 8750 10400 8750
-Wire Wire Line
-	2200 5300 7600 5300
-Wire Wire Line
-	2200 5400 7200 5400
-Wire Wire Line
-	2200 5500 11750 5500
-Wire Wire Line
-	2200 5600 12150 5600
 $EndSCHEMATC
