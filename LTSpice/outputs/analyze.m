@@ -111,3 +111,65 @@ ylabel(ax(2),"Faze prenosu (deg)");
 saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/frequency_transfer_function_BF.eps','epsc');
 %saveas(gca, '/home/msboss/Documents/ant/s11.png','png');
 %plotyy(s11.freq,s11.mag,s11.freq,s11.ph,@plot);
+
+%------------------------------------------------------------------------------%
+
+s=read_touchstone("frequency_transfer_function_all.txt");
+
+unwrap=1;
+if (unwrap==1)
+  for j=2:length(s.s11.ph)
+    if ((s.s11.ph(j)-s.s11.ph(j-1))>300)
+      s.s11.ph(j:length(s.s11.ph))=s.s11.ph(j:length(s.s11.ph))-360; 
+    endif
+    
+    if ((s.s11.ph(j)-s.s11.ph(j-1))<-300)
+      s.s11.ph(j:length(s.s11.ph))=s.s11.ph(j:length(s.s11.ph))+360;   
+    endif  
+  endfor
+endif
+
+figure(5);
+[ax,h1,h2]=plotyy(s.freq, s.s11.mag, s.freq, s.s11.ph, @semilogx, @semilogx);
+xlim([s.freq(1) s.freq(end)]);
+grid off;
+grid minor on;
+hold on;
+hold off;
+xlabel("Frekvence (Hz)");
+set(h1,"linewidth",2);
+set(h2,"linewidth",2);
+%ylim(ax(1), [48 52]);
+%ylim(ax(2), [-180 180]);
+%yticks(ax(2), -180:20:180);
+ylabel(ax(1),"Prenos (dB)");
+ylabel(ax(2),"Faze prenosu (deg)");
+saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/frequency_transfer_function_all.eps','epsc');
+%saveas(gca, '/home/msboss/Documents/ant/s11.png','png');
+%plotyy(s11.freq,s11.mag,s11.freq,s11.ph,@plot);
+
+%------------------------------------------------------------------------------%
+
+s=read_touchstone("denoiser_positive.txt");
+figure(6);
+h1=semilogx(s.freq, s.s11.mag);
+hold on;
+set(h1,"linewidth",2);
+s=read_touchstone("denoiser_negative.txt");
+h2=semilogx(s.freq, s.s11.mag);
+hold off;
+xlim([s.freq(1) s.freq(end)]);
+grid off;
+grid minor on;
+hold on;
+hold off;
+xlabel("Frekvence (Hz)");
+
+set(h2,"linewidth",2);
+%ylim(ax(1), [48 52]);
+%ylim(ax(2), [-180 180]);
+%yticks(ax(2), -180:20:180);
+ylabel("Prenos (dB)");
+saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/denoiser_transfer_function.eps','epsc');
+%saveas(gca, '/home/msboss/Documents/ant/s11.png','png');
+%plotyy(s11.freq,s11.mag,s11.freq,s11.ph,@plot);

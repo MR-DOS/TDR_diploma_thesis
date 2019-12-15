@@ -13,12 +13,17 @@
 \usepackage{physics}
 \usepackage[automake,acronym]{glossaries}
 \usepackage[detect-all]{siunitx}
+\sisetup{%
+     output-decimal-marker = {,},
+     %inter-unit-product = \ensuremath{{}\cdot{}}
+        }
 \sisetup{range-phrase=--}
 \usepackage[short,ddmmyyyy]{datetime}
 
 \DeclareMathOperator{\sinc}{sinc}
 \newacronym{USB}{USB}{Universal Serial Bus}
 \newacronym{ADC}{ADC}{Analog-Digital Converter}
+\newacronym{DAC}{DAC}{Digital-Analog Converter}
 \newacronym{FPGA}{FPGA}{Field Programmable Gate Array}
 \newacronym{TCXO}{TCXO}{Temperature Compensated Crystal Oscillator}
 \newacronym{DDS}{DDS}{Direct Digital Synthesis}

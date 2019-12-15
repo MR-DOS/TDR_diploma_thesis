@@ -21,14 +21,16 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Zapojen\IeC {\'\i } hodinov\IeC {\'e}ho gener\IeC {\'a}toru Si5351.\relax }}{11}{figure.3.3}% 
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Zapojen\IeC {\'\i } gener\IeC {\'a}toru budic\IeC {\'\i }ch pulz\IeC {\r u}\relax }}{12}{figure.3.4}% 
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Sch\IeC {\'e}ma p\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{13}{figure.3.5}% 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Sch\IeC {\'e}ma pou\IeC {\v z}it\IeC {\'e} pro simulaci v programu LTSpice.\relax }}{14}{figure.3.6}% 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Vstupn\IeC {\'\i } impedance reflektometru.\relax }}{15}{figure.3.7}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Sch\IeC {\'e}ma pou\IeC {\v z}it\IeC {\'e} pro simulaci vstupn\IeC {\'\i } impedance v programu LTSpice.\relax }}{14}{figure.3.6}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Vstupn\IeC {\'\i } impedance reflektometru.\relax }}{14}{figure.3.7}% 
 \contentsline {figure}{\numberline {3.8}{\ignorespaces P\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru.\relax }}{15}{figure.3.8}% 
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Zapojen\IeC {\'\i } vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{16}{figure.3.9}% 
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Chyba linearity odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{17}{figure.3.10}% 
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Zapojen\IeC {\'\i } proudov\IeC {\'e}ho zdroje.\relax }}{18}{figure.3.11}% 
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Zapojen\IeC {\'\i } nap\IeC {\'a}jec\IeC {\'\i }ch zdroj\IeC {\r u} vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{18}{figure.3.12}% 
-\contentsline {figure}{\numberline {3.13}{\ignorespaces P\IeC {\v r}enos odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{19}{figure.3.13}% 
+\contentsline {figure}{\numberline {3.10}{\ignorespaces P\IeC {\v r}enos odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{17}{figure.3.10}% 
+\contentsline {figure}{\numberline {3.11}{\ignorespaces P\IeC {\v r}enos cel\IeC {\'e}ho syst\IeC {\'e}mu p\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i }-vzorkova\IeC {\v c}-zesilova\IeC {\v c}.\relax }}{18}{figure.3.11}% 
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Absolutn\IeC {\'\i } chyba linearity odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{19}{figure.3.12}% 
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Zapojen\IeC {\'\i } proudov\IeC {\'e}ho zdroje.\relax }}{19}{figure.3.13}% 
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Zapojen\IeC {\'\i } nap\IeC {\'a}jec\IeC {\'\i }ch zdroj\IeC {\r u} vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{20}{figure.3.14}% 
+\contentsline {figure}{\numberline {3.15}{\ignorespaces P\IeC {\v r}enosov\IeC {\'a} charakteristika aktivn\IeC {\'\i }ch nap\IeC {\'a}jec\IeC {\'\i }ch filtr\IeC {\r u}.\relax }}{21}{figure.3.15}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
