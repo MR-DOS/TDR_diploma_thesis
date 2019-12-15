@@ -3,7 +3,8 @@
 \glsgroupheading{A}\relax \glsresetentrylist %
 \glossentry{ADC}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{9}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{15}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{15}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{21}}}\glsgroupskip
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossentry{CML}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}}}%
@@ -11,7 +12,8 @@
 		\setentrycounter[]{page}\glsnumberformat{10}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossentry{DAC}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{18}}}%
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{21}}}%
 \glossentry{DDS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{10}}}\glsgroupskip
 \glsgroupheading{E}\relax \glsresetentrylist %

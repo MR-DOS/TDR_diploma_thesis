@@ -152,8 +152,29 @@ Napájecí zdroj operačních zesilovačů, proudového zdroje a oddělovacího 
 
 Záporná napájecí větev je získávána z téhož zdroje pomocí nábojové pumpy tvořené kondenzátory C266 -- C268 a diodami D205 a D206. Výsledné napětí je přibližně \SI{-12}{\volt}. Tranzistor Q209 opět tvoří aktivní filtr. Odporovým děličem je nastaveno výstupní napětí přibližně \SI{-5}{\volt}. Potlačení zvlnění by dle simulace mělo být přibližně \SI{-134}{\deci\bel} na frekvenci \SI{2}{\mega\hertz}, kde pracuje spínaný zdroj. Přenosová charakteristika tohoto aktivního filtru je na grafu \ref{analog_source_filter_transfer}, je vyznačená oranžově.
 
+Za předpokladu, že simulace odpovídají reálnému chování navržených obvodů, mělo by být zvlnění na napájecích větvích způsobené spínaným zdrojem potlačeno aktivními filtry natolik, že by nemělo být měřitelné a nemělo by nijak ovlivňovat měření.
+
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/denoiser_transfer_function.eps}\caption{Přenosová charakteristika aktivních napájecích filtrů.}\label{analog_source_filter_transfer}
+\end{figure}
+
+Za oddělovacím zesilovačem následuje jednotkový sledovač s operačním zesilovačem TL072, který slouží kesnížení výstupní impedance oddělovacího zesilovače. Výstup tohoto zesilovače je opět vzorkován pomocí vzorkovacího můstku U209 do \SI{1}{\nano\farad} kondenzátoru. Oddělovací zesilovač má sice vysokou impedanci, takže téměř nezpůsobuje drift napětí na vzorkovacím kondenzátoru C230, nicméně vzhledem ke svodovému proudu vzorkovacího můstku U208 je tento drift nenulový. Proto těsně před sepnutím můstku U208 se rozepne můstek U209. Vzhledem k tomu, že kapacita kondenzátoru C233 je o 3 řády větší, než kapacita kondenzátoru C230, je i výsledný drift o 3 řády menší. Napětí po tomto sekundárním vzorkování je zesíleno v zesilovači U205 na schématu \ref{secondary_sampler_section_schematic}.
+
+\section{Logaritmický detektor}
+
+Toto navzorkované napětí je převáděno na logaritmickou podobu pomocí logaritmického detektoru AD8307. Logaritmický detektor byl použit pro rozšíření dynamického rozsahu měření dvanáctibitového \acrshort{ADC}. Bohužel, v rámci testování se ukázalo, že šum vzorkovacích obvodů je příliš velký a logaritmický detektor nepřinášel žádné zpřesnění měřených hodnot. Změřená závislost výstupního napětí logaritmického detektoru na kódovém slově \acrshort{DAC} je v grafu \ref{log_function_graph_whole}, přiblížená problematická oblast v grafu \ref{log_function_graph_zoomed}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/secondary_sampler_section.eps}\caption{Schéma sekundárního vzorkovače a logaritmického detektoru.}\label{secondary_sampler_section_schematic}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/log_function_graph_whole.eps}\caption{Změřená závislost výstupního napětí na kódovém slově DAC, celkové zobrazení.}\label{log_function_graph_whole}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/log_function_graph_zoomed.eps}\caption{Změřená závislost výstupního napětí na kódovém slově DAC, výřez problematické oblasti.}\label{log_function_graph_zoomed}
 \end{figure}
 
 \section{Digitalizace měřeného průběhu}
