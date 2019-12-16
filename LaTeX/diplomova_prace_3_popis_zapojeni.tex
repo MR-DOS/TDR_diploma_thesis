@@ -47,6 +47,7 @@ Pak se během jedné periody oscilátory vůči sobě posunou o čas $T_{SHIFT}$
 T_{SHIFT}=T_{OUT2}-T_{OUT1}=\dfrac{1}{f_{OUT2}} - \dfrac{1}{f_{OUT1}} \\
 T_{SHIFT}=\dfrac{d}{f_{XTAL}} \left(\dfrac{1}{a} - \dfrac{1}{a+\dfrac{b_1}{c}}\right) = \dfrac{d}{a f_{XTAL}} \left(\dfrac{1}{1+a\dfrac{c}{b_1}}\right)
 \end{gathered}
+\label{equation_tshift}
 \end{equation}
 
 Pro minimalizaci fázového chvění je podle \cite{Si5351datasheet} a \cite{Si5351applicationnote} vhodné preferovat celočíselné násobení i dělení, je-li to možné. Dále může fázové chvění zmenšit i použití sudých násobitelů a dělitelů. V navrženém zapojení je tedy fázový závěs nastaven takto:
@@ -158,7 +159,7 @@ Za předpokladu, že simulace odpovídají reálnému chování navržených obv
 \includegraphics[width=\textwidth,keepaspectratio]{images/denoiser_transfer_function.eps}\caption{Přenosová charakteristika aktivních napájecích filtrů.}\label{analog_source_filter_transfer}
 \end{figure}
 
-Za oddělovacím zesilovačem následuje jednotkový sledovač s operačním zesilovačem TL072, který slouží kesnížení výstupní impedance oddělovacího zesilovače. Výstup tohoto zesilovače je opět vzorkován pomocí vzorkovacího můstku U209 do \SI{1}{\nano\farad} kondenzátoru. Oddělovací zesilovač má sice vysokou impedanci, takže téměř nezpůsobuje drift napětí na vzorkovacím kondenzátoru C230, nicméně vzhledem ke svodovému proudu vzorkovacího můstku U208 je tento drift nenulový. Proto těsně před sepnutím můstku U208 se rozepne můstek U209. Vzhledem k tomu, že kapacita kondenzátoru C233 je o 3 řády větší, než kapacita kondenzátoru C230, je i výsledný drift o 3 řády menší. Napětí po tomto sekundárním vzorkování je zesíleno v zesilovači U205 na schématu \ref{secondary_sampler_section_schematic}.
+Za oddělovacím zesilovačem následuje jednotkový sledovač s operačním zesilovačem TL072, který slouží ke snížení výstupní impedance oddělovacího zesilovače. Výstup tohoto zesilovače je opět vzorkován pomocí vzorkovacího můstku U209 do \SI{1}{\nano\farad} kondenzátoru. Oddělovací zesilovač má sice vysokou impedanci, takže téměř nezpůsobuje drift napětí na vzorkovacím kondenzátoru C230, nicméně vzhledem ke svodovému proudu vzorkovacího můstku U208 je tento drift nenulový. Proto těsně před sepnutím můstku U208 se rozepne můstek U209. Vzhledem k tomu, že kapacita kondenzátoru C233 je o 3 řády větší, než kapacita kondenzátoru C230, je i výsledný drift o 3 řády menší. Napětí po tomto sekundárním vzorkování je zesíleno v zesilovači U205 na schématu \ref{secondary_sampler_section_schematic}.
 
 \section{Logaritmický detektor}
 
@@ -178,3 +179,4 @@ Toto navzorkované napětí je převáděno na logaritmickou podobu pomocí loga
 \end{figure}
 
 \section{Digitalizace měřeného průběhu}
+Navzorkovaný průběh je třeba pro zpracování zdigitalizovat. K tomuto účelu je použit interní \acrshort{ADC} použitého mikrokontroléru STM32F103. Tento převodník má rozlišení 12~bitů a maximální vzorkovací kmitočet \SI{1}{\megasample}. Podstatná výhoda interního převodníku je automatizace obsluhy měření. Digitalizace je synchronizována se vzorkováním, obvod Si5351 generuje synchronizační signál, kterým se digitalizace spouští. Ihned po dokončení digitalizace se vyvolává přerušení, které změřený vzorek zpracuje. Tento proces by bylo možné ještě zjednodušit použitím DMA v procesoru, avšak bylo zvoleno řešení s přerušením, protože přerušení řeší i průměrování a další úkony.

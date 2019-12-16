@@ -45,6 +45,8 @@
 \@LN@col{1}
 \babel@aux{czech}{}
 \@LN@col{2}
+\@LN@col{1}
+\@LN@col{2}
 \citation{Si5351datasheet}
 \@LN@col{1}
 \babel@aux{czech}{}
@@ -88,6 +90,7 @@
 \newlabel{si5351_internal_architecture_overview}{{3.2}{8}{Vnitřní blokové zapojení obvodu Si5351, převzato z \cite {Si5351datasheet}.\relax }{figure.3.2}{}}
 \citation{Si5351datasheet}
 \citation{Si5351applicationnote}
+\newlabel{equation_tshift}{{3.4}{9}{Generování potřebných hodinových signálů}{equation.3.3.4}{}}
 \citation{vernierreflectometer}
 \citation{ddsfpgareflectometer}
 \citation{Si5351applicationnote}
@@ -133,66 +136,79 @@
 \newlabel{log_function_graph_whole}{{3.17}{23}{Změřená závislost výstupního napětí na kódovém slově DAC, celkové zobrazení.\relax }{figure.3.17}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces Zm\IeC {\v e}\IeC {\v r}en\IeC {\'a} z\IeC {\'a}vislost v\IeC {\'y}stupn\IeC {\'\i }ho nap\IeC {\v e}t\IeC {\'\i } na k\IeC {\'o}dov\IeC {\'e}m slov\IeC {\v e} DAC, v\IeC {\'y}\IeC {\v r}ez problematick\IeC {\'e} oblasti.\relax }}{23}{figure.3.18}\protected@file@percent }
 \newlabel{log_function_graph_zoomed}{{3.18}{23}{Změřená závislost výstupního napětí na kódovém slově DAC, výřez problematické oblasti.\relax }{figure.3.18}{}}
+\citation{Si5351datasheet}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Popis firmware}{25}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Technick\IeC {\'e} parametry firmware}{25}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Autokalibrace a autodiagnostika za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{25}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Z\IeC {\'a}vislost rozptylu na po\IeC {\v c}tu proveden\IeC {\'y}ch pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u}.\relax }}{27}{figure.4.1}\protected@file@percent }
+\newlabel{averaging_variance}{{4.1}{27}{Závislost rozptylu na počtu provedených průměrů.\relax }{figure.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Z\IeC {\'a}vislost diference rozptylu (\IeC {\v c}erven\IeC {\v e}) a sou\IeC {\v c}inu rozptylu s po\IeC {\v c}tem pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} (mod\IeC {\v r}e) na po\IeC {\v c}tu proveden\IeC {\'y}ch pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} pro v\IeC {\'y}po\IeC {\v c}et v plovouc\IeC {\'\i } desetinn\IeC {\'e} \IeC {\v r}\IeC {\'a}dce.\relax }}{28}{figure.4.2}\protected@file@percent }
+\newlabel{averaging_float_difference_error}{{4.2}{28}{Závislost diference rozptylu (červeně) a součinu rozptylu s počtem průměrů (modře) na počtu provedených průměrů pro výpočet v plovoucí desetinné řádce.\relax }{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Z\IeC {\'a}vislost diference rozptylu (\IeC {\v c}erven\IeC {\v e}) a sou\IeC {\v c}inu rozptylu s po\IeC {\v c}tem pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} (mod\IeC {\v r}e) na po\IeC {\v c}tu proveden\IeC {\'y}ch pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} pro celo\IeC {\v c}\IeC {\'\i }seln\IeC {\'e} v\IeC {\'y}po\IeC {\v c}ty.\relax }}{28}{figure.4.3}\protected@file@percent }
+\newlabel{averaging_float_difference_error}{{4.3}{28}{Závislost diference rozptylu (červeně) a součinu rozptylu s počtem průměrů (modře) na počtu provedených průměrů pro celočíselné výpočty.\relax }{figure.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{29}{section.4.3}\protected@file@percent }
 \citation{VNAcalibrationarticle}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Kalibrace}{25}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Kalibrace}{31}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Chybov\IeC {\'y} model}{25}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Chyby pramen\IeC {\'\i }c\IeC {\'\i } z nep\IeC {\v r}esnosti frekvence f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{25}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} chybov\IeC {\'e}ho modelu}{25}{section.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Kompenzace chyb}{25}{section.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Omezen\IeC {\'\i } plynouc\IeC {\'\i } z omezen\IeC {\'e} \IeC {\v s}\IeC {\'\i }\IeC {\v r}ky p\IeC {\'a}sma zapojen\IeC {\'\i }}{25}{section.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Detekce z\IeC {\'a}vad}{27}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Chybov\IeC {\'y} model}{31}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Chyby pramen\IeC {\'\i }c\IeC {\'\i } z nep\IeC {\v r}esnosti frekvence f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{31}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} chybov\IeC {\'e}ho modelu}{31}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Kompenzace chyb}{31}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Omezen\IeC {\'\i } plynouc\IeC {\'\i } z omezen\IeC {\'e} \IeC {\v s}\IeC {\'\i }\IeC {\v r}ky p\IeC {\'a}sma zapojen\IeC {\'\i }}{31}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Detekce z\IeC {\'a}vad}{33}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{27}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{27}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{27}{section.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}V\IeC {\'y}po\IeC {\v c}et impedan\IeC {\v c}n\IeC {\'\i }ho profilu}{27}{section.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{29}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{33}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{33}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{33}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}V\IeC {\'y}po\IeC {\v c}et impedan\IeC {\v c}n\IeC {\'\i }ho profilu}{33}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{35}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Budic\IeC {\'\i } pulz}{29}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{29}{subsection.6.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Spektrum budic\IeC {\'\i }ho pulzu}{29}{subsection.6.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{29}{section.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Jitter f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su v celo\IeC {\v c}\IeC {\'\i }seln\IeC {\'e}m re\IeC {\v z}imu}{29}{subsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{29}{subsubsection*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{29}{subsubsection*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{29}{subsubsection*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{29}{subsubsection*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{29}{subsubsection*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{29}{subsubsection*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Jitter f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su v racion\IeC {\'a}ln\IeC {\'\i }m re\IeC {\v z}imu}{29}{subsection.6.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{29}{subsubsection*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{29}{subsubsection*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{29}{subsubsection*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{29}{subsubsection*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{29}{subsubsection*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{29}{subsubsection*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Drift f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{29}{subsection.6.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i } a popis ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i }}{31}{chapter.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Budic\IeC {\'\i } pulz}{35}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{35}{subsection.7.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Spektrum budic\IeC {\'\i }ho pulzu}{35}{subsection.7.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{35}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Jitter f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su v celo\IeC {\v c}\IeC {\'\i }seln\IeC {\'e}m re\IeC {\v z}imu}{35}{subsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{35}{subsubsection*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{35}{subsubsection*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{35}{subsubsection*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{35}{subsubsection*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{35}{subsubsection*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{35}{subsubsection*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Jitter f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su v racion\IeC {\'a}ln\IeC {\'\i }m re\IeC {\v z}imu}{35}{subsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{35}{subsubsection*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Histogram jitteru}{35}{subsubsection*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{35}{subsubsection*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Frekven\IeC {\v c}n\IeC {\'\i } spektrum jitteru}{35}{subsubsection*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{35}{subsubsection*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Chov\IeC {\'a}n\IeC {\'\i } jitteru p\IeC {\v r}i pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{35}{subsubsection*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Drift f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{35}{subsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i } a popis ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i }}{37}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v autonomn\IeC {\'\i }m re\IeC {\v z}imu}{32}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Autokalibrace}{32}{subsection.7.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{32}{subsubsection*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{32}{subsubsection*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{32}{subsubsection*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{32}{subsubsection*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{32}{subsubsection*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{32}{subsubsection*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{32}{subsection.7.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{32}{subsection.7.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{32}{subsection.7.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v re\IeC {\v z}imu s p\IeC {\v r}ipojen\IeC {\'y}m po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{32}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Autokalibrace}{32}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{32}{subsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{32}{subsection.7.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{32}{subsection.7.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v autonomn\IeC {\'\i }m re\IeC {\v z}imu}{38}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.1}Autokalibrace}{38}{subsection.8.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{38}{subsubsection*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{38}{subsubsection*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{38}{subsubsection*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{38}{subsubsection*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{38}{subsubsection*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{38}{subsubsection*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{38}{subsection.8.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{38}{subsection.8.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{38}{subsection.8.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v re\IeC {\v z}imu s p\IeC {\v r}ipojen\IeC {\'y}m po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{38}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Autokalibrace}{38}{subsection.8.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{38}{subsection.8.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{38}{subsection.8.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{38}{subsection.8.2.4}\protected@file@percent }
 \bibstyle{amsalpha}
 \bibdata{diplomova_prace}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{33}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Z\IeC {\'a}v\IeC {\v e}r}{39}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{noisedomainreflectometry}{CF05}
@@ -206,7 +222,7 @@
 \bibcite{principlesoflinearsystems}{Sar97}
 \bibcite{Si5351applicationnote}{Sil15}
 \bibcite{Si5351datasheet}{Sil18}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Literatura}{35}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Literatura}{41}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{S-4manual}{Tek85}

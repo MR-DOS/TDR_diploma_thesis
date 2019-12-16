@@ -12,7 +12,7 @@
 \usepackage{epsfig}
 \usepackage{physics}
 \usepackage[automake,acronym]{glossaries}
-\usepackage[detect-all]{siunitx}
+\usepackage[binary-units=true,detect-all]{siunitx}
 \sisetup{%
      output-decimal-marker = {,},
      %inter-unit-product = \ensuremath{{}\cdot{}}
@@ -33,6 +33,8 @@
 \newacronym{LVDS}{LVDS}{Low Voltage Differential Signaling}
 \newacronym{CML}{CML}{Current Mode Logic}
 \newacronym{PLL}{PLL}{Phase Locked Loop}
+\newacronym{RAM}{RAM}{Random Access Memory}
+
 
 \newacronym{TDR}{TDR}{reflektometrie v časové oblasti}
 \newacronym{FDTD}{FDTD}{finite-difference time-domain}
@@ -88,6 +90,7 @@
 \renewcommand{\acronymname}{Seznam zkratek použitých v textu}
 
 \DeclareSIUnit \gigasample{GSa.s^{{-1}}}
+\DeclareSIUnit \megasample{MSa.s^{{-1}}}
 \DeclareSIUnit \bit{b}
 
 \ctusetup{
@@ -165,7 +168,7 @@
 \begin{abstract-czech}
 Tato práce se zabývá konstrukcí reflektometru v časové doméně, výsledkem je funkční zařízení s ovládacím softwarem. Cílem bylo vyvinout zařízení pro měření odrazů na vedení schopné detekce závad na vedení s přesností detekce polohy závady v řádu jednotek centimetrů. Důraz byl kladen na co nejmenší cenu výsledného zařízení a zároveň co nejjednodušší konstrukci, ovšem se snahou, aby tato kritéria neomezovala použitelnost či funkčnost zařízení.
 
-Výsledné zařízení dokáže měřit ve frekvenčním rozsahu do řádu jednotek\,\si{\GHz}, vzorkovací krok měření je 20\,\si{\ps}, ekvivalentní vzorkovací kmitočet je tedy 50\,\si{\gigasample}. Tento vzorkovací krok teoreticky umožňuje rozlišovací schopnost polohy závady na vedení 0,3\,\si{\cm} ve vakuu, v reálném prostředí může být i lepší. Samostatně dokáže zařízení detekovat jednoduché závady, jejich typ a polohu. V součinnosti s počítačem je možné provést i kalibraci pomocí kalibrační sady pro korekci nedokonalostí zařízení.
+Výsledné zařízení dokáže měřit ve frekvenčním rozsahu do řádu jednotek~\si{\GHz}, vzorkovací krok měření je \SI{20}{\ps}, ekvivalentní vzorkovací kmitočet je tedy \SI{50}{\gigasample}. Tento vzorkovací krok teoreticky umožňuje rozlišovací schopnost polohy závady na vedení \SI{0.3}{\cm} ve vakuu, v reálném prostředí může být i lepší. Samostatně dokáže zařízení detekovat jednoduché závady, jejich typ a polohu. V součinnosti s počítačem je možné provést i kalibraci pomocí kalibrační sady pro korekci nedokonalostí zařízení.
 
 V práci je popsána vytvořená konstrukce reflektometru a princip jeho funkce. Jednotlivé funkční bloky jsou podrobně popsány, vysvětlen je i postup optimalizace těchto bloků k dosažení co nejlepších parametrů zapojení. Vysvětleny jsou i metody detekce závad na vedení, kalibrace zařízení a autokalibrace.
 
@@ -177,7 +180,7 @@ Práce ze zabývá i případnými možnostmi, jak by bylo možné rozšířit s
 \begin{abstract-english}
 This work deals with construction of reflectometer in time domain, which is implemented as functional device along with control software. The goal was to develop a device capable of measuring reflections on transmission lines caused by faults with spatial resolution on the order of units of centimetres. The emphasis was to develop a cheap and simple device while trying not to limit the functionality or capability of the device.
 
-The resulting device is able to measure up to units of\,\si{\GHz}, sampling step is 20\,\si{\ps}, resulting in equivalent sampling rate of 50\,\si{\gigasample}. This sampling step theoretically allows spatial resolution of 0.3\,\si{\cm} in vacuum, possibly even less in real environment. The device can detect simple faults on its own, along with their type and position. When used with computer, it is possible to perform calibration using calibration set.
+The resulting device is able to measure up to units of~\si{\GHz}, sampling step is \SI{20}{\ps}, resulting in equivalent sampling rate of \SI{50}{\gigasample}. This sampling step theoretically allows spatial resolution of \SI{0.3}{\centi\meter} in vacuum, possibly even less in real environment. The device can detect simple faults on its own, along with their type and position. When used with computer, it is possible to perform calibration using calibration set.
 
 The work contains explanation of the construction and its principles. Each functional block is described in detail as well as the optimalisations which were used to obtain the best possible parameters of the construction. Also explained are methods of detection of faults on the transmission line, calibration and autocalibration of the device.
 
@@ -198,9 +201,9 @@ Děkuji také studentskému klubu Silicon Hill a projektu \quotedblbase MacGyver
 
 % Declaration / Prohlaseni
 \begin{declaration}
-Prohlašuji, že jsem  předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem č.\,1/2009 o dodržování etických principů při přípravě vysokoškolských závěrečných prací.
+Prohlašuji, že jsem  předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem č.~1/2009 o dodržování etických principů při přípravě vysokoškolských závěrečných prací.
 
-Dále prohlašuji, že nemám závažný důvod proti užití tohoto školního díla ve smyslu §60 zákona č.\,121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon).
+Dále prohlašuji, že nemám závažný důvod proti užití tohoto školního díla ve smyslu §60 zákona č.~121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon).
 
 V Praze, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
 
@@ -229,6 +232,7 @@ V Praze, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
 \input{diplomova_prace_1_uvod.tex}
 \input{diplomova_prace_2_princip_funkce.tex}
 \input{diplomova_prace_3_popis_zapojeni.tex}
+\input{diplomova_prace_popis_firmware.tex}
 \input{diplomova_prace_4_kalibrace.tex}
 \input{diplomova_prace_5_detekce_zavad.tex}
 \input{diplomova_prace_6_zmerene_parametry.tex}
