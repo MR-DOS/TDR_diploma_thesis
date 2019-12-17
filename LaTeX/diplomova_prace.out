@@ -18,36 +18,41 @@
 \BOOKMARK [0][-]{chapter.4}{Popis firmware}{}% 18
 \BOOKMARK [1][-]{section.4.1}{Technick\351 parametry firmware}{chapter.4}% 19
 \BOOKMARK [1][-]{section.4.2}{Autokalibrace a autodiagnostika zar\355zen\355}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.3}{Postup ovl\341d\341n\355 firmware}{chapter.4}% 21
-\BOOKMARK [0][-]{chapter.5}{Kalibrace}{}% 22
-\BOOKMARK [1][-]{section.5.1}{Chybov\375 model}{chapter.5}% 23
-\BOOKMARK [1][-]{section.5.2}{Chyby pramen\355c\355 z nepresnosti frekvence f\341zov\351ho z\341vesu}{chapter.5}% 24
-\BOOKMARK [1][-]{section.5.3}{Meren\355 parametru chybov\351ho modelu}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.4}{Kompenzace chyb}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.5}{Omezen\355 plynouc\355 z omezen\351 \235\355rky p\341sma zapojen\355}{chapter.5}% 27
-\BOOKMARK [0][-]{chapter.6}{Detekce z\341vad}{}% 28
-\BOOKMARK [1][-]{section.6.1}{Princip hled\341n\355 z\341vad}{chapter.6}% 29
-\BOOKMARK [1][-]{section.6.2}{Z\341kladn\355 typy z\341vad}{chapter.6}% 30
-\BOOKMARK [1][-]{section.6.3}{Slo\236en\351 z\341vady}{chapter.6}% 31
-\BOOKMARK [1][-]{section.6.4}{V\375pocet impedancn\355ho profilu}{chapter.6}% 32
-\BOOKMARK [0][-]{chapter.7}{Zmeren\351 parametry}{}% 33
-\BOOKMARK [1][-]{section.7.1}{Budic\355 pulz}{chapter.7}% 34
-\BOOKMARK [2][-]{subsection.7.1.1}{Prubeh budic\355ho pulzu}{section.7.1}% 35
-\BOOKMARK [2][-]{subsection.7.1.2}{Spektrum budic\355ho pulzu}{section.7.1}% 36
-\BOOKMARK [1][-]{section.7.2}{Parametry f\341zov\351ho z\341vesu}{chapter.7}% 37
-\BOOKMARK [2][-]{subsection.7.2.1}{Jitter f\341zov\351ho z\341vesu v celoc\355seln\351m re\236imu}{section.7.2}% 38
-\BOOKMARK [2][-]{subsection.7.2.2}{Jitter f\341zov\351ho z\341vesu v racion\341ln\355m re\236imu}{section.7.2}% 39
-\BOOKMARK [2][-]{subsection.7.2.3}{Drift f\341zov\351ho z\341vesu}{section.7.2}% 40
-\BOOKMARK [0][-]{chapter.8}{U\236ivatelsk\351 rozhran\355 a popis ovl\341d\341n\355}{}% 41
-\BOOKMARK [1][-]{section.8.1}{Chov\341n\355 zar\355zen\355 v autonomn\355m re\236imu}{chapter.8}% 42
-\BOOKMARK [2][-]{subsection.8.1.1}{Autokalibrace}{section.8.1}% 43
-\BOOKMARK [2][-]{subsection.8.1.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.8.1}% 44
-\BOOKMARK [2][-]{subsection.8.1.3}{Meren\355}{section.8.1}% 45
-\BOOKMARK [2][-]{subsection.8.1.4}{Vyhodnocen\355 zmeren\375ch dat}{section.8.1}% 46
-\BOOKMARK [1][-]{section.8.2}{Chov\341n\355 zar\355zen\355 v re\236imu s pripojen\375m poc\355tacem}{chapter.8}% 47
-\BOOKMARK [2][-]{subsection.8.2.1}{Autokalibrace}{section.8.2}% 48
-\BOOKMARK [2][-]{subsection.8.2.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.8.2}% 49
-\BOOKMARK [2][-]{subsection.8.2.3}{Meren\355}{section.8.2}% 50
-\BOOKMARK [2][-]{subsection.8.2.4}{Vyhodnocen\355 zmeren\375ch dat}{section.8.2}% 51
-\BOOKMARK [0][-]{chapter.9}{Z\341ver}{}% 52
-\BOOKMARK [0][-]{appendix.A}{Literatura}{}% 53
+\BOOKMARK [2][-]{subsection.4.2.1}{Detekce stability f\341zov\351ho z\341vesu}{section.4.2}% 21
+\BOOKMARK [2][-]{subsection.4.2.2}{Autokalibrace stejnosmern\351 slo\236ky}{section.4.2}% 22
+\BOOKMARK [2][-]{subsection.4.2.3}{Kalibrace napetov\375ch \372rovn\355}{section.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.2.4}{Odhad \235umov\351 \372rovne a prumerov\341n\355}{section.4.2}% 24
+\BOOKMARK [2][-]{subsection.4.2.5}{Autokalibrace polohy budic\355ho pulzu}{section.4.2}% 25
+\BOOKMARK [1][-]{section.4.3}{Postup ovl\341d\341n\355 firmware}{chapter.4}% 26
+\BOOKMARK [0][-]{chapter.5}{Kalibrace}{}% 27
+\BOOKMARK [1][-]{section.5.1}{Chybov\375 model}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.2}{Chyby pramen\355c\355 z nepresnosti frekvence f\341zov\351ho z\341vesu}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.3}{Meren\355 parametru chybov\351ho modelu}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.4}{Kompenzace chyb}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.5}{Omezen\355 plynouc\355 z omezen\351 \235\355rky p\341sma zapojen\355}{chapter.5}% 32
+\BOOKMARK [0][-]{chapter.6}{Detekce z\341vad}{}% 33
+\BOOKMARK [1][-]{section.6.1}{Princip hled\341n\355 z\341vad}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.2}{Z\341kladn\355 typy z\341vad}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.3}{Slo\236en\351 z\341vady}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.4}{V\375pocet impedancn\355ho profilu}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter.7}{Zmeren\351 parametry}{}% 38
+\BOOKMARK [1][-]{section.7.1}{Budic\355 pulz}{chapter.7}% 39
+\BOOKMARK [2][-]{subsection.7.1.1}{Prubeh budic\355ho pulzu}{section.7.1}% 40
+\BOOKMARK [2][-]{subsection.7.1.2}{Spektrum budic\355ho pulzu}{section.7.1}% 41
+\BOOKMARK [1][-]{section.7.2}{Parametry f\341zov\351ho z\341vesu}{chapter.7}% 42
+\BOOKMARK [2][-]{subsection.7.2.1}{Jitter f\341zov\351ho z\341vesu v celoc\355seln\351m re\236imu}{section.7.2}% 43
+\BOOKMARK [2][-]{subsection.7.2.2}{Jitter f\341zov\351ho z\341vesu v racion\341ln\355m re\236imu}{section.7.2}% 44
+\BOOKMARK [2][-]{subsection.7.2.3}{Drift f\341zov\351ho z\341vesu}{section.7.2}% 45
+\BOOKMARK [0][-]{chapter.8}{U\236ivatelsk\351 rozhran\355 a popis ovl\341d\341n\355}{}% 46
+\BOOKMARK [1][-]{section.8.1}{Chov\341n\355 zar\355zen\355 v autonomn\355m re\236imu}{chapter.8}% 47
+\BOOKMARK [2][-]{subsection.8.1.1}{Autokalibrace}{section.8.1}% 48
+\BOOKMARK [2][-]{subsection.8.1.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.8.1}% 49
+\BOOKMARK [2][-]{subsection.8.1.3}{Meren\355}{section.8.1}% 50
+\BOOKMARK [2][-]{subsection.8.1.4}{Vyhodnocen\355 zmeren\375ch dat}{section.8.1}% 51
+\BOOKMARK [1][-]{section.8.2}{Chov\341n\355 zar\355zen\355 v re\236imu s pripojen\375m poc\355tacem}{chapter.8}% 52
+\BOOKMARK [2][-]{subsection.8.2.1}{Autokalibrace}{section.8.2}% 53
+\BOOKMARK [2][-]{subsection.8.2.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.8.2}% 54
+\BOOKMARK [2][-]{subsection.8.2.3}{Meren\355}{section.8.2}% 55
+\BOOKMARK [2][-]{subsection.8.2.4}{Vyhodnocen\355 zmeren\375ch dat}{section.8.2}% 56
+\BOOKMARK [0][-]{chapter.9}{Z\341ver}{}% 57
+\BOOKMARK [0][-]{appendix.A}{Literatura}{}% 58

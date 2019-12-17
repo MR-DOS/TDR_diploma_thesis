@@ -37,6 +37,11 @@
 \contentsline {chapter}{\numberline {4}Popis firmware}{25}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Technick\IeC {\'e} parametry firmware}{25}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Autokalibrace a autodiagnostika za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{25}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Detekce stability f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{25}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Autokalibrace stejnosm\IeC {\v e}rn\IeC {\'e} slo\IeC {\v z}ky}{26}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Kalibrace nap\IeC {\v e}\IeC {\v t}ov\IeC {\'y}ch \IeC {\'u}rovn\IeC {\'\i }}{26}{subsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Odhad \IeC {\v s}umov\IeC {\'e} \IeC {\'u}rovn\IeC {\v e} a pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{26}{subsection.4.2.4}% 
+\contentsline {subsection}{\numberline {4.2.5}Autokalibrace polohy budic\IeC {\'\i }ho pulzu}{28}{subsection.4.2.5}% 
 \contentsline {section}{\numberline {4.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{29}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Kalibrace}{31}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Chybov\IeC {\'y} model}{31}{section.5.1}% 
