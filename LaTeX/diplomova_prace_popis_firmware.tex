@@ -17,7 +17,7 @@ Dalším krokem autokalibrace je nastavení stejnosměrného posuvu měřeného 
 V dalším kroku se provede kalibrace logických úrovní a zjištění úrovně šumu v měřeném signálu. V obou logických úrovních budicího pulzu je nejprve změřeno 4096 vzorků, ze kterých se spočítá průměr. Potom se změří dalších 4096 vzorků, které jsou použity pro spočítání rozptylu měřených hodnot. Tím se získá informace o statických napěťových úrovních pro stavy odpovídající vedení zakončenému otevřeným koncem a zkratem, tedy pro koeficienty odrazu $-1$ a $+1$, čímž je získán teoretický rozsah měřených hodnot. Rozptyl hodnot je podstatný pro odhad vhodného počtu průměrování. Vhodný počet průměrování byl uvažován jako počet průměrů, při kterých již byl šum podstatně potlačen, avšak dále by jeho úroveň klesala již pomalu.
 
 \subsection{Odhad šumové úrovně a průměrování}
-Pro průměrování je použit algoritmus, který se v minulosti objevil např. v osciloskopech značky Hewlett-Packard. Tento algoritmus je počítán celočíselně a pro svůj chod potřebuje množství paměti odpovídající pouze jedinému zaznamenanému průběhu. Pro algoritmus je potřeba jen soubor předchozích změřených dat $ y_{i-1}$, nový změřený vzorek $x$ a proměnná $i$ vyjadřující, kolikátý průměr je právě měřen.
+Pro průměrování je použit algoritmus, který se v minulosti objevil např. v osciloskopech značky Hewlett-Packard \cite{HP54100_article_journal}. Tento algoritmus je počítán celočíselně a pro svůj chod potřebuje množství paměti odpovídající pouze jedinému zaznamenanému průběhu. Pro algoritmus je potřeba jen soubor předchozích změřených dat $ y_{i-1}$, nový změřený vzorek $x$ a proměnná $i$ vyjadřující, kolikátý průměr je právě měřen.
 
 \begin{equation}
 \begin{gathered}
@@ -25,7 +25,7 @@ Pro průměrování je použit algoritmus, který se v minulosti objevil např. 
 \end{gathered}
 \end{equation}
 
-Tento algoritmus byl numericky simulován, nejprve v přesné podobě v plovoucí desetinné čárce a poté v celočíselné podobě. Pro simulaci byla použita náhodná data s rozptylem 1024, a tedy směrodatnou odchylkou 32. Tato hodnota je blízká reálně měřeným hodnotám v realizovaném zapojení reflektometru. Graf \ref{averaging_variance} vychází z dat simulovaných v plovoucí desetinné čárce, pro celočíselnou variantu není graf uveden, neboť rozdíl mezi nimi není rozpoznatelný. Rozdíly jsou znázorněny na následujících grafech.
+Tento algoritmus byl numericky simulován, nejprve v přesné podobě v plovoucí desetinné čárce a poté v celočíselné podobě. Pro simulaci byla použita náhodná data s rozptylem 1024, a tedy směrodatnou odchylkou 32. Tato hodnota je blízká reálně měřeným hodnotám v realizovaném zapojení reflektometru. Graf \ref{averaging_variance} vychází z dat simulovaných v plovoucí desetinné čárce, pro celočíselnou variantu není graf uveden, neboť rozdíl mezi nimi není rozpoznatelný. Rozdíly jsou znázorněny na následujících grafech. Výpočty byly provedeny $256\times$, výsledky byly zprůměrovány, aby byly křivky v grafech hladké. Bez průměrování jsou křivky lehce zatížené šumem.
 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/averaging_float_variance.eps}\caption{Závislost rozptylu na počtu provedených průměrů.}\label{averaging_variance}
@@ -37,16 +37,16 @@ Průběh této závislosti odpovídá funkci $\frac{1}{N}$, což je možné dok�
 \includegraphics[width=\textwidth,keepaspectratio]{images/averaging_float_difference_error.eps}\caption{Závislost diference rozptylu (červeně) a součinu rozptylu s počtem průměrů (modře) na počtu provedených průměrů pro výpočet v plovoucí desetinné řádce.}\label{averaging_float_difference_error}
 \end{figure}
 
-V případě celočíselných výpočtů vypadá diference rozptylu podobně, ovšem ze součinu počtu průměrů a rozptylu je vidět, že závislost rozptylu na počtu průměrů neodpovídá již přesně hyperbolické funkci. Jde o vliv numerických chyb způsobovaných zaokrouhlováním výsledků. Pro větší počet průměrů než je směrodatná odchylka měřeného signálu, již znatelně stoupají numerické chyby. Význam tohoto faktu spočívá v tom, že již nestoupá odstup užitečného signálu od šumu, protože dominantním zdrojem šumu jsou chyby zaokrouhlování.
-
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/averaging_integer_difference_error.eps}\caption{Závislost diference rozptylu (červeně) a součinu rozptylu s počtem průměrů (modře) na počtu provedených průměrů pro celočíselné výpočty.}\label{averaging_float_difference_error}
 \end{figure}
 
+V případě celočíselných výpočtů vypadá diference rozptylu podobně, ovšem ze součinu počtu průměrů a rozptylu je vidět, že závislost rozptylu na počtu průměrů neodpovídá již přesně hyperbolické funkci. Jde o vliv numerických chyb způsobovaných zaokrouhlováním výsledků. Pro větší počet průměrů než je směrodatná odchylka měřeného signálu, již znatelně stoupají numerické chyby. Význam tohoto faktu spočívá v tom, že již nestoupá odstup užitečného signálu od šumu, protože dominantním zdrojem šumu jsou chyby zaokrouhlování.
+
 Výsledkem těchto simulací je odhad vhodného počtu průměru. Optimální počet průměrů $N$ tedy leží v rozsahu $\langle\frac{\sigma}{2}, \sigma \rangle$, kde $\sigma$ je směrodatná odchylka měřeného signálu. Po změření rozptylu měřeného signálu je tedy možné přímo odhadnout vhodný počet průměrování.
 
 \subsection{Autokalibrace polohy budicího pulzu}
-Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a vzorkovacím signálem náhodný. Proto je potřeba nejprve najít polohu budicího pulzu v měřených datech. Vzhledem k tomu, že není pro nedostatek RAM možné uložit celé měření a v uložených datech hledat budicí impulz, je využito přímého hledání náběžné hrany. Ta probíhá tak, že v obslužném přerušení se ukládá posledních 8 měřených vzorků, ze kterých se počítá průměr diferencí přes těchto 8 vzorků kvůli zvýšení imunity vůči šumu. Výpočet této průměrné diference je možné zjednodušit podle vzorce \ref{equation_difference_sum}. 
+Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a vzorkovacím signálem náhodný. Proto je potřeba nejprve najít polohu budicího pulzu v měřených datech. Vzhledem k tomu, že není pro nedostatek RAM možné uložit celé měření a v uložených datech hledat budicí impulz, je využito přímého hledání náběžné hrany, kdy se ukládá pouze posledních 8 vzorků. Ta probíhá tak, že v obslužném přerušení se ukládá posledních 8 měřených vzorků, ze kterých se počítá průměr diferencí přes těchto 8 vzorků kvůli zvýšení imunity vůči šumu. Výpočet této průměrné diference je možné zjednodušit podle vzorce \ref{equation_difference_sum}. 
 
 \begin{equation}
 \begin{gathered}
@@ -57,16 +57,80 @@ Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a 
 
 Pak platí, že pro průměr $n$ diferencí je potřeba spočítat jen diferenci ze dvou vzorků vzdálených o~$n$~prvků. Tato operace tedy pro každý změřený vzorek vyžaduje jedinou matematickou operaci, a tedy zabere malé množství výpočetního času, díky čemuž je možné tento výpočet umístit do obslužného přerušení. Z tohoto spočteného průměru diferencí se hledá maximum, tedy oblast s nejvyšší strmostí. Během fáze hledání náběžné hrany je mimo přerušení sledována odhadnutá poloha náběžné hrany. Pokud se tato poloha čtyřikrát v řadě ocitne v tolerančním poli $\pm256$ bodů, je tato poloha uznána jako skutečná poloha náběžné hrany. Celá tato autokalibrační fáze probíhá s odpojeným měřeným systémem.
 
-\begin{figure}[htbp]
-\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_port_load.eps}\caption{Budicí pulz při připojeném standardu \quotedblbase load\textquotedblleft . Červeně je vyznačena diference při průměrování přes 8 bodů. Maximum diference odpovídá přibližně středu náběžné hrany.}\label{rising_edge_port_load}
+\begin{figure}[H]
+\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_port_load.eps}\caption{Budicí pulz při připojeném standardu \quotedblbase load\textquotedblleft{} přímo k testovacímu portu. Červeně je vyznačena diference při průměrování přes 8 bodů. Maximum diference odpovídá přibližně středu náběžné hrany.}\label{rising_edge_port_load}
 \end{figure}
 
 \subsection{Kalibrace polohy roviny měření}
 Následně je poloha měřicího okna nastavena 512 bodů před detekovanou hranu budicího pulzu. Reflektometr čeká na zásah uživatele, je vyžadováno připojení vedení, na jehož konec se později bude připojovat měřený systém. Na konec vedení je při tomto kalibračním kroku připojený kalibr typu \quotedblbase open\textquotedblleft. Průběh v okolí budicího pulzu je osmkrát změřen a zprůměrován. Ve změřeném průběhu je v oblasti odhadnuté náběžné hrany v rovině měření změřena počáteční napětí před náběžnou hranou a konečné napětí po náběžné hraně, odhad probíhá na základě maxima, ke kterému dochází na náběžné hraně v rámci překmitu. Následně proběhne hledání bodů, kde náběžná hrana prochází \SI{20}{\percent} a \SI{80}{\percent} mezi počátečním a konečným napětím. Z polohy těchto bodů je lineárně extrapolován počátek odezvy v rovině měření tak, aby při měření již nebyla měřena část sytému před rovinou měření. Budicí impulz je tedy po tomto kroku již mimo okno měření a nadále již v měření nijak nevystupuje. Ukázková odezva kalibru \quotedblbase open\textquotedblleft{} společně s vyznačenými význačnými body je na grafu \ref{rising_edge_DUT_open}.
 
-\begin{figure}[htbp]
-\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_DUT_open.eps}\caption{Odezva v rovině měření při připojeném standardu \quotedblbase open\textquotedblleft , čáry vyznačují úrovně \SI{20}{\percent} a \SI{80}{\percent} náběžné hrany a jejich polohu v čase. Délka náběžné hrany v tomto úseku je \SI{180}{\pico\second}. Při měření mezi body \SI{10}{\percent} a \SI{90}{\percent} náběžné hrany je tato délka \SI{280}{\pico\second}.}\label{rising_edge_DUT_open}
+\begin{figure}[H]
+\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_DUT_open.eps}\caption{Odezva v rovině měření při připojeném standardu \quotedblbase open\textquotedblleft , čáry vyznačují úrovně \SI{20}{\percent} (tmavě červená) a \SI{80}{\percent} (tmavě zelená) náběžné hrany a jejich polohu v čase. Délka náběžné hrany v tomto úseku je \SI{180}{\pico\second}. Při měření mezi body \SI{10}{\percent} a \SI{90}{\percent} náběžné hrany je tato délka \SI{280}{\pico\second}.}\label{rising_edge_DUT_open}
 \end{figure}
 
 \section{Postup ovládání firmware}
+Po zapnutí se zobrazí obrazovka s informací o verzi firmware, datu a času jeho kompilace. Její podoba je vidět na obrázku \ref{greeting_screen}.
 
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio]{images/greeting_screen.png}\caption{Uvítací obrazovka s informací o verzi.}\label{greeting_screen}
+\end{figure}
+
+Prozatím není zařízení interaktivní, pouze oznamuje stav autokalibračních postupů. Následuje detekce stability fázového závěsu, tuto část ukazují obrázky \ref{init_5351} a \ref{stability_5351}. Ukazatel ve spodní části je běžící, aby uživateli signalizoval, že zařízení běží a nezastavilo se například z důvodu nějaké chyby.
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/init_5351.png}\caption{Obrazovka zobrazovaná po dobu inicializace fázového závěsu.}\label{init_5351}
+\end{figure}
+
+Po inicializaci následuje indikace stability jednotlivých částí PLL podle obrázku \ref{stability_5351}. V případě, že je vše v pořádku, zobrazí se hlášení \quotedblbase PLL Startup complete\textquotedblleft{} a program pokračuje dále. V případě, že dojde k chybě, program se zde zastaví s indikací chyby \quotedblbase PLL Startup error\textquotedblleft. 
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/stability_5351.png}\caption{Obrazovka s informacemi o stabilitě jednotlivých částí PLL Si5351.}\label{stability_5351}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/offset_user_wait.png}\caption{Čekání na zásah uživatele - autokalibrace stejnosměrné složky, kalibrace úrovní a měření úrovně šumu.}\label{offset_user_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/offset_wait.png}\caption{Probíhající autokalibrace stejnosměrné složky.}\label{offset_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/levels_user_wait.png}\caption{Probíhající autokalibrace napěťových úrovní a měření úrovně šumu.}\label{levels_user_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/levels_complete.png}\caption{Výsledek autokalibrace napěťových úrovní a měření šumu.}\label{levels_complete}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_wait.png}\caption{Hrubé hledání náběžné hrany.}\label{edge_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_user_wait.png}\caption{Čekání na zásah uživatele - přesné hledání náběžné hrany.}\label{edge_user_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_sampling.png}\caption{Přesné hledání náběžné hrany.}\label{edge_sampling}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_found.png}\caption{Úspěšné nalezení přesné polohy náběžné hrany.}\label{edge_found}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_user_wait.png}\caption{Čekání na zásah uživatele - připojení DUT a začátek měření.}\label{measurement_user_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_avg_wait.png}\caption{Čekání na proběhnutí prvního měření.}\label{measurement_avg_wait}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_running.png}\caption{Průběh měření, 33. průměr.}\label{measurement_running}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_complete.png}\caption{Měření dokončeno.}\label{measurement_complete}
+\end{figure}

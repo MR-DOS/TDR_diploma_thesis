@@ -525,7 +525,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 		GPIO_WriteBit(LED_PORT, LED_RDY, Bit_SET);
 		GPIO_WriteBit(LED_PORT, LED_NOT_RDY, Bit_RESET);
 
-		SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
+		SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " Measurement complete");
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   Please wait for");
 		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "   data to be sent");
@@ -1337,6 +1337,7 @@ EnableState Calibrate_Si5351(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_
 			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "PLL Startup complete");
 		} else {
 			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "PLL Startup error");
+			while(1){}
 		}
 		SSD1306_StopProgressBar(SSD1306_ConfigStruct);
 		SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
@@ -1581,7 +1582,7 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 	}
 
 	start_millis=millis;
-	//repeat looking for new largest differentiation index until it lies twice in tolerance field
+	//repeat looking for new largest differentiation index until it lies four times in tolerance field
 	while(position_hits<4)
 	{
 		last_largest_differentiation_point=Board_ReflectometerState->largest_differentiation_point;
@@ -1636,7 +1637,7 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 		{
 			if(RunGraphical==ON)
 			{
-				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/(NUMBER_OF_POINTS*RISING_EDGE_AVG)+(255*Board_ReflectometerState->average_count)/RISING_EDGE_AVG;
+				static uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/(NUMBER_OF_POINTS*RISING_EDGE_AVG)+(255*Board_ReflectometerState->average_count)/RISING_EDGE_AVG;
 				if(progress>last_progress)SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, progress);
 				last_progress=progress;
 				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);

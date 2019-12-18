@@ -50,6 +50,11 @@ A.~{Rumiantsev} and N.~{Ridler}, \emph{Vna calibration}, IEEE Microwave
 Philip~E Sarachik, \emph{Principles of linear systems}, Cambridge University
   Press, 1997.
 
+\bibitem[Sch86]{HP54100_article_journal}
+Rodney~T. Schlater, \emph{{W}aveform {G}raphics for a {1-G}hz {D}igitizing
+  {O}scillosocpe}, Hewlett-Packard Journal \textbf{37} (1986), no.~4, 20--25,
+  \url{https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1986-04.pdf}.
+
 \bibitem[Sil15]{Si5351applicationnote}
 Silicon Laboratories Inc., Austin, \emph{{AN}619: {M}anually {G}enerating an
   {S}i5351 {R}egister {M}ap}, 2015.

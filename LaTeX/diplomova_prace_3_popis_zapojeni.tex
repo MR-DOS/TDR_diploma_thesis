@@ -179,4 +179,11 @@ Toto navzorkované napětí je převáděno na logaritmickou podobu pomocí loga
 \end{figure}
 
 \section{Digitalizace měřeného průběhu}
-Navzorkovaný průběh je třeba pro zpracování zdigitalizovat. K tomuto účelu je použit interní \acrshort{ADC} použitého mikrokontroléru STM32F103. Tento převodník má rozlišení 12~bitů a maximální vzorkovací kmitočet \SI{1}{\megasample}. Podstatná výhoda interního převodníku je automatizace obsluhy měření. Digitalizace je synchronizována se vzorkováním, obvod Si5351 generuje synchronizační signál, kterým se digitalizace spouští. Ihned po dokončení digitalizace se vyvolává přerušení, které změřený vzorek zpracuje. Tento proces by bylo možné ještě zjednodušit použitím DMA v procesoru, avšak bylo zvoleno řešení s přerušením, protože přerušení řeší i průměrování a další úkony.
+Navzorkovaný průběh je třeba pro zpracování zdigitalizovat. K tomuto účelu je použit interní \acrshort{ADC} použitého mikrokontroléru STM32F103. Tento převodník má rozlišení 12~bitů a maximální vzorkovací kmitočet \SI{1}{\megasample}. Podstatná výhoda interního převodníku je automatizace obsluhy měření. Digitalizace je synchronizována se vzorkováním, obvod Si5351 generuje synchronizační signál, kterým se digitalizace spouští. Ihned po dokončení digitalizace se vyvolává přerušení, které změřený vzorek zpracuje. Tento proces by bylo možné ještě zjednodušit použitím DMA v procesoru, avšak bylo zvoleno řešení s přerušením, protože přerušení řeší i průměrování a další úkony. Zapojení mikrokontroléru je vyobrazeno na schématu \ref{microcontroller_section}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/microcontroller_section.eps}\caption{Zapojení mikrokontroléru.}\label{microcontroller_section}
+\end{figure}
+
+\section{Komunikace s počítačem}
+Komunikace reflektometru s počítačem je zajištěna pomocí virtuálního sériového portu. Ten je tvořen převodníkem CH340G, který podporuje standardní přenosové rychlosti, navíc nabízí i nestandardní rychlosti až do \SI{2}{\mega\baud}.
