@@ -46,14 +46,27 @@ V případě celočíselných výpočtů vypadá diference rozptylu podobně, ov
 Výsledkem těchto simulací je odhad vhodného počtu průměru. Optimální počet průměrů $N$ tedy leží v rozsahu $\langle\frac{\sigma}{2}, \sigma \rangle$, kde $\sigma$ je směrodatná odchylka měřeného signálu. Po změření rozptylu měřeného signálu je tedy možné přímo odhadnout vhodný počet průměrování.
 
 \subsection{Autokalibrace polohy budicího pulzu}
-Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a vzorkovacím signálem náhodný. Proto je potřeba nejprve najít polohu budicího pulzu v měřených datech. Vzhledem k tomu, že není pro nedostatek RAM možné uložit celé měření a v uložených datech hledat  budicí impulz, je využito přímého hledání náběžné hrany. Ta probíhá tak, že v obslužném přerušení se ukládá posledních 8 měřených vzorků, ze kterých se počítá průměr diferencí přes těchto 8 vzorků kvůli zvýšení imunity vůči šumu. Výpočet této průměrné diference je možné zjednodušit podle vzorce \ref{equation_difference_sum}. Pak platí, že pro průměr $n$ diferencí je potřeba spočítat jen diferenci ze dvou vzorků vzdálených o~$n$~prvků.
+Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a vzorkovacím signálem náhodný. Proto je potřeba nejprve najít polohu budicího pulzu v měřených datech. Vzhledem k tomu, že není pro nedostatek RAM možné uložit celé měření a v uložených datech hledat budicí impulz, je využito přímého hledání náběžné hrany. Ta probíhá tak, že v obslužném přerušení se ukládá posledních 8 měřených vzorků, ze kterých se počítá průměr diferencí přes těchto 8 vzorků kvůli zvýšení imunity vůči šumu. Výpočet této průměrné diference je možné zjednodušit podle vzorce \ref{equation_difference_sum}. 
 
 \begin{equation}
 \begin{gathered}
-	diff_{AVG}[n]= \dfrac{1}{8} \sum_{k=0}^7 \dfrac{x[n-k]-x[n-(k+1)]}{2}= \dfrac{x[n]-x[n-8]}{16}
+	diff_{AVG8}[n]= \dfrac{1}{8} \sum_{k=0}^7 \dfrac{x[n-k]-x[n-(k+1)]}{2}= \dfrac{x[n]-x[n-8]}{16}
 \end{gathered}
 \label{equation_difference_sum}
 \end{equation}
+
+Pak platí, že pro průměr $n$ diferencí je potřeba spočítat jen diferenci ze dvou vzorků vzdálených o~$n$~prvků. Tato operace tedy pro každý změřený vzorek vyžaduje jedinou matematickou operaci, a tedy zabere malé množství výpočetního času, díky čemuž je možné tento výpočet umístit do obslužného přerušení. Z tohoto spočteného průměru diferencí se hledá maximum, tedy oblast s nejvyšší strmostí. Během fáze hledání náběžné hrany je mimo přerušení sledována odhadnutá poloha náběžné hrany. Pokud se tato poloha čtyřikrát v řadě ocitne v tolerančním poli $\pm256$ bodů, je tato poloha uznána jako skutečná poloha náběžné hrany. Celá tato autokalibrační fáze probíhá s odpojeným měřeným systémem.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_port_load.eps}\caption{Budicí pulz při připojeném standardu \quotedblbase load\textquotedblleft . Červeně je vyznačena diference při průměrování přes 8 bodů. Maximum diference odpovídá přibližně středu náběžné hrany.}\label{rising_edge_port_load}
+\end{figure}
+
+\subsection{Kalibrace polohy roviny měření}
+Následně je poloha měřicího okna nastavena 512 bodů před detekovanou hranu budicího pulzu. Reflektometr čeká na zásah uživatele, je vyžadováno připojení vedení, na jehož konec se později bude připojovat měřený systém. Na konec vedení je při tomto kalibračním kroku připojený kalibr typu \quotedblbase open\textquotedblleft. Průběh v okolí budicího pulzu je osmkrát změřen a zprůměrován. Ve změřeném průběhu je v oblasti odhadnuté náběžné hrany v rovině měření změřena počáteční napětí před náběžnou hranou a konečné napětí po náběžné hraně, odhad probíhá na základě maxima, ke kterému dochází na náběžné hraně v rámci překmitu. Následně proběhne hledání bodů, kde náběžná hrana prochází \SI{20}{\percent} a \SI{80}{\percent} mezi počátečním a konečným napětím. Z polohy těchto bodů je lineárně extrapolován počátek odezvy v rovině měření tak, aby při měření již nebyla měřena část sytému před rovinou měření. Budicí impulz je tedy po tomto kroku již mimo okno měření a nadále již v měření nijak nevystupuje. Ukázková odezva kalibru \quotedblbase open\textquotedblleft{} společně s vyznačenými význačnými body je na grafu \ref{rising_edge_DUT_open}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/rising_edge_DUT_open.eps}\caption{Odezva v rovině měření při připojeném standardu \quotedblbase open\textquotedblleft , čáry vyznačují úrovně \SI{20}{\percent} a \SI{80}{\percent} náběžné hrany a jejich polohu v čase. Délka náběžné hrany v tomto úseku je \SI{180}{\pico\second}. Při měření mezi body \SI{10}{\percent} a \SI{90}{\percent} náběžné hrany je tato délka \SI{280}{\pico\second}.}\label{rising_edge_DUT_open}
+\end{figure}
 
 \section{Postup ovládání firmware}
 
