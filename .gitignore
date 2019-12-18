@@ -6,3 +6,5 @@
 clanky-implementace/
 clanky-mimo/
 clanky-teorie/
+#ignore SyncTeX file
+*synctex.gz
