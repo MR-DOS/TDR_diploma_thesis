@@ -6,12 +6,46 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{TKF{\etalchar{+}}13}
+\begin{thebibliography}{{MOH}09}
+
+\bibitem[Ana08]{ADF4350datasheet}
+Analog Devices Inc., Norwood, \emph{{ADF}4350 {W}ideband {S}ynthesizer with
+  {I}ntegrated {VCO}}, 2008.
+
+\bibitem[Ava18]{HSMS282xdatasheet}
+Avago Technologies, Austin, \emph{{HSMS}282x datasheet}, 2018.
+
+\bibitem[BB97]{relaxationspectroscopy}
+R.~Buchner and J.~Barthel, \emph{{A Time Domain Reflectometer for Dielectric
+  Relaxation Spectroscopy of Electrolyte Solutions}}, Berichte der
+  Bunsengesellschaft für physikalische Chemie \textbf{101} (1997), no.~10,
+  1509--1516.
+
+\bibitem[BCL{\etalchar{+}}13]{fpgadelaylinereflectometer}
+G.~Bencivenni, E.~Czerwinski, E.~De Lucia, G.~De Robertis, D.~Domenici,
+  O.~Erriquez, G.~Fanizzi, G.~Felici, R.~Liuzzi, F.~Loddo, M.~Mongelli,
+  G.~Morello, A.~Ranieri, and V.~Valentino, \emph{{A} {T}ime {D}omain
+  {R}eflectometer with 100\,ps precision implemented in a cost-effective {FPGA}
+  for the test of the {KLOE-2} {I}nner {T}racker readout anodes}, Nuclear
+  Instruments and Methods in Physics Research Section A: Accelerators,
+  Spectrometers, Detectors and Associated Equipment \textbf{698} (2013), 185 --
+  191.
+
+\bibitem[CBC11]{broadbandreflectometry}
+Andrea Cataldo, Egidio~De Benedetto, and Giuseppe Cannazza, \emph{{B}roadband
+  {R}eflectometry for {E}nhanced {D}iagnostics and {M}onitoring {A}pplications
+  ({L}ecture {N}otes in {E}lectrical {E}ngineering)}, Springer, Berlin, 2011.
 
 \bibitem[CF05]{noisedomainreflectometry}
 {Chet Lo} and C.~{Furse}, \emph{Noise-domain reflectometry for locating wiring
   faults}, IEEE Transactions on Electromagnetic Compatibility \textbf{47}
   (2005), no.~1, 97--104.
+
+\bibitem[DDGC11]{subnanosecondgeneratorcomparison}
+A.~{De Angelis}, M.~{Dionigi}, R.~{Giglietti}, and P.~{Carbone},
+  \emph{{E}xperimental {C}omparison of {L}ow-{C}ost {S}ub-{N}anosecond {P}ulse
+  {G}enerators}, IEEE Transactions on Instrumentation and Measurement
+  \textbf{60} (2011), no.~1, 310--318.
 
 \bibitem[DJJ03]{vernierreflectometer}
 {Donghwan Lee}, {Jinho Sung}, and {Jaehong Park}, \emph{{A} 16\,ps-resolution
@@ -19,10 +53,14 @@
   delay generation}, 2003 IEEE Nuclear Science Symposium. Conference Record
   (IEEE Cat. No.03CH37515), vol.~2, Oct 2003, pp.~1219--1223 Vol.2.
 
-\bibitem[GLR07]{ultrawidebandsignals}
-Mohammad Ghavami, Michael Lachlan, and Kohno Ryuji, \emph{{U}ltra {W}ideband
-  {S}ignals and {S}ystems in {C}ommunications {E}ngineering}, 2nd ed., John
-  Wiley and sons, 2007 (English).
+\bibitem[Hew08]{usb30standard}
+Hewlett-Packard Company and Intel Corporation and Microsoft Corporation and NEC
+  Corporation and ST-NXP Wireless and Texas Instruments, \emph{{U}niversal
+  {S}erial {B}us 3.0 {S}pecification}, 11 2008.
+
+\bibitem[Hol02]{lvpecl_vml_cml_lvds_interfacing}
+Nick Holland, \emph{Interfacing between {LVPECL, VML, CML, and LVDS L}evels},
+  Tech. report, Texas Instruments, Dallas, 11 2002.
 
 \bibitem[Hou00]{oscilloscopefrontend}
 Hubert Houtman, \emph{{1-GHz} sampling oscilloscope front end is easily
@@ -34,21 +72,28 @@ Hubert Houtman, \emph{{1-GHz} sampling oscilloscope front end is easily
 John Miles~(KE5FX) Jason Mildrum~(NT7S), \emph{{S}i5351 {I}nvestigations {P}art
   7}, 11 2014, \url{https://nt7s.com/2014/11/si5351a-investigations-part-7/}.
 
+\bibitem[Mic08]{SY54017datasheet}
+Micrel, Inc., San Jose, \emph{{SY54017} datasheet}, 5 2008.
+
 \bibitem[Mic09]{SY54020datasheet}
 Micrel, Inc., San Jose, \emph{{SY54020AR} datasheet}, 4 2009.
+
+\bibitem[{MOH}09]{CT-100Bmanual}
+{MOHR Test and Measurement LLC}, \emph{{CT-100B} {D}atasheet}, 2009.
 
 \bibitem[MP74]{sincgausstdr}
 N.~A.~M. {Mackay} and S.~R. {Penstone}, \emph{{A} {H}igh-{S}ensitivity
   {N}arrow-{B}and {T}ime-{D}omain {R}eflectometer}, IEEE Transactions on
   Instrumentation and Measurement \textbf{23} (1974), no.~2, 155--158.
 
+\bibitem[NR09]{simpledelaylinereflectometer}
+C.~{Negrea} and M.~{Rangu}, \emph{Sequential sampling time domain
+  reflectometer}, 2009 15th International Symposium for Design and Technology
+  of Electronics Packages (SIITME), Sep. 2009, pp.~367--371.
+
 \bibitem[RR08]{VNAcalibrationarticle}
 A.~{Rumiantsev} and N.~{Ridler}, \emph{Vna calibration}, IEEE Microwave
   Magazine \textbf{9} (2008), no.~3, 86--99.
-
-\bibitem[Sar97]{principlesoflinearsystems}
-Philip~E Sarachik, \emph{Principles of linear systems}, Cambridge University
-  Press, 1997.
 
 \bibitem[Sch86]{HP54100_article_journal}
 Rodney~T. Schlater, \emph{{W}aveform {G}raphics for a {1-G}hz {D}igitizing
@@ -62,14 +107,40 @@ Silicon Laboratories Inc., Austin, \emph{{AN}619: {M}anually {G}enerating an
 \bibitem[Sil18]{Si5351datasheet}
 Silicon Laboratories Inc., Austin, \emph{{S}i5351 datasheet}, 2018.
 
+\bibitem[Tek68]{S-1manual}
+Tektronix, Inc., Beaverton, Oregon, \emph{Type {S-1} {S}ampling {H}ead
+  {I}nstruction {M}anual}, 1968.
+
 \bibitem[Tek85]{S-4manual}
 Tektronix, Inc., Beaverton, Oregon, \emph{{S-4} {S}ampling {H}ead {I}nstruction
   {M}anual}, 3 1985.
+
+\bibitem[Tex12]{SN65LVPE501datasheet}
+Texas Instruments, Dallas, \emph{{SN65LVPE501} datasheet}, 5 2012.
+
+\bibitem[Tex16a]{SN75LVCP600Sdatasheet}
+Texas Instruments, Dallas, \emph{{SN75LVCP600S} datasheet}, 3 2016.
+
+\bibitem[Tex16b]{SN75LVCP601datasheet}
+Texas Instruments, Dallas, \emph{{SN75LVCP601} datasheet}, 3 2016.
+
+\bibitem[Tex18]{TUSB1002Adatasheet}
+Texas Instruments, Dallas, \emph{{TUSB1002} datasheet}, 11 2018.
 
 \bibitem[TKF{\etalchar{+}}13]{ddsfpgareflectometer}
 D.~{Trebbels}, A.~{Kern}, F.~{Fellhauer}, C.~{Huebner}, and R.~{Zengerle},
   \emph{{Miniaturized FPGA-Based High-Resolution Time-Domain Reflectometer}},
   IEEE Transactions on Instrumentation and Measurement \textbf{62} (2013),
   no.~7, 2101--2113.
+
+\bibitem[Wil98]{AN72LT}
+Jim Williams, \emph{{AN72}: {A} {S}even-{N}anosecond {C}omparator for {S}ingle
+  {S}upply {O}peration: {G}uidance for {P}utting {C}ivilized {S}peed to
+  {W}ork}, Tech. report, Linear Technology Co., Milpitas, 5 1998.
+
+\bibitem[Wil03]{AN94LT}
+\bysame, \emph{{AN94}: {S}lew {R}ate {V}erification for {W}ideband
+  {A}mplifiers: {T}he {T}aming of the {S}lew}, Tech. report, Linear Technology
+  Co., Milpitas, 5 2003.
 
 \end{thebibliography}

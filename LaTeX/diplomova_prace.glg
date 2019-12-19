@@ -1,5 +1,7 @@
 This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
 Scanning style file ./diplomova_prace.ist.............................done (29 attributes redefined, 0 ignored).
-Scanning input file diplomova_prace.glo...done (0 entries accepted, 0 rejected).
-Nothing written in diplomova_prace.gls.
+Scanning input file diplomova_prace.glo....done (5 entries accepted, 0 rejected).
+Sorting entries....done (14 comparisons).
+Generating output file diplomova_prace.gls....done (16 lines written, 0 warnings).
+Output written in diplomova_prace.gls.
 Transcript written in diplomova_prace.glg.
