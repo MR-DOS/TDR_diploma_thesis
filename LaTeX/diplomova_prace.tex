@@ -11,7 +11,7 @@
 \usepackage{graphicx}
 \usepackage{epsfig}
 \usepackage{physics}
-\usepackage[automake,acronym]{glossaries}
+\usepackage[automake,acronym,nonumberlist]{glossaries}
 \usepackage[binary-units=true,detect-all]{siunitx}
 \sisetup{%
      output-decimal-marker = {,},
@@ -28,7 +28,7 @@
 \newacronym{TCXO}{TCXO}{Temperature Compensated Crystal Oscillator}
 \newacronym{DDS}{DDS}{Direct Digital Synthesis}
 \newacronym{VCO}{VCO}{Voltage Controlled Oscillator}
-\newacronym{TTL}{TTL}{Transistor-Trasistor Logic}
+\newacronym{TTL}{TTL}{Transistor-Tranoctavesistor Logic}
 \newacronym{CMOS}{CMOS}{Complementary Metal Oxide Semiconductor}
 \newacronym{LVDS}{LVDS}{Low Voltage Differential Signaling}
 \newacronym{CML}{CML}{Current Mode Logic}
@@ -36,9 +36,9 @@
 \newacronym{RAM}{RAM}{Random Access Memory}
 
 
-\newacronym{TDR}{TDR}{reflektometrie v časové oblasti}
-\newacronym{FDTD}{FDTD}{finite-difference time-domain}
-\newacronym{SRD}{SRD}{step recovery diode}
+\newacronym{TDR}{TDR}{Time domain reflectometry}
+\newacronym{FDTD}{FDTD}{Finite-difference time-domain}
+\newacronym{SRD}{SRD}{Step recovery diode}
 \newacronym{SATA}{SATA}{Serial Advanced Technology Attachment}
 \newacronym{SAS}{SAS}{Serial Attached Small Computer System Interface}
 \newacronym{PCI-E}{PCI-Express}{Peripheral Component Interconnect Express}
@@ -56,32 +56,32 @@
 
 \newglossaryentry{gama}
 {
-        name={$\Gamma$},
-        description={Koeficient odrazu. Je definován jako $\Gamma=\frac{Z_L-Z_0}{Z_L+Z_0}$. $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
+        name={Koeficient odrazu ($\Gamma$)},
+        description={Je definován jako $\Gamma=\frac{Z_L-Z_0}{Z_L+Z_0}$. $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
 }
 
 \newglossaryentry{transmise}
 {
-        name={$T$},
-        description={Koeficient prostupu. Je definován jako $\Gamma=\frac{2Z_0}{Z_L+Z_0}$. Platí, že $T+\Gamma=1$}
+        name={Koeficient prostupu ($T$)},
+        description={Je definován jako $T=\frac{2Z_0}{Z_L+Z_0}$. Platí, že $T+\Gamma=1$}
 }
 
 \newglossaryentry{clipline}
 {
-        name={clipline},
-        description={V překladu zkratovací vedení. Jde o krátký úsek vedení zakončený zkratem, který se používal v lavinových generátorech pro vytvoření ultrakrátkých impulzů.}
+        name={Clipline},
+        description={V překladu zkratovací vedení. Jde o krátký úsek vedení zakončený zkratem, který se používal v lavinových generátorech pro vytvoření ultrakrátkých impulzů}
 }
 
 \newglossaryentry{ADCinterleave}
 {
         name={ADC interleaving},
-        description={Technika pro rychlejší vzorkování pomocí \textit{n} ADC, jejichž hodinové signály jsou fázově posunuté. Jde o možnost, jak zvyšovat vzorkovací frekvenci na \textit{n}-násobek vzorkovací frekvence samotného ADC. S počtem převodníků však roste cena zařízení, v nejlepším případě lineárně.}
+        description={Technika pro rychlejší vzorkování pomocí \textit{n} ADC, jejichž hodinové signály jsou fázově posunuté. Jde o možnost, jak zvyšovat vzorkovací frekvenci na \textit{n}-násobek vzorkovací frekvence samotného ADC. S počtem převodníků však roste cena zařízení, v nejlepším případě lineárně}
 }
 
 \newglossaryentry{aperturetime}
 {
-        name={aperturový čas},
-        description={Aperturový čas je doba, po kterou přechází vzorkovač ze stavu, kdy jeho výstup sleduje vstup do stavu, kdy je výstup nezávislý na vstupu. Po tuto dobu se nelineárně mění vlastnosti vzorkovače. Výstupní napětí je tak nelineární funkcí vstupního napětí. Pokud jsou zpracovávány signály, u kterých již není aperturový čas zanedbatelně malý, je omezena jak linearita vzorkovače, tak jeho časová rozlišovací schopnost.}
+        name={Aperturový čas},
+        description={Aperturový čas je doba, po kterou přechází vzorkovač ze stavu, kdy jeho výstup sleduje vstup do stavu, kdy je výstup nezávislý na vstupu. Po tuto dobu se nelineárně mění vlastnosti vzorkovače. Výstupní napětí je tak nelineární funkcí vstupního napětí. Pokud jsou zpracovávány signály, u kterých již není aperturový čas zanedbatelně malý, je omezena jak linearita vzorkovače, tak jeho časová rozlišovací schopnost}
 }
 
 \makeglossaries
@@ -91,6 +91,7 @@
 
 \DeclareSIUnit \gigasample{GSa.s^{{-1}}}
 \DeclareSIUnit \megasample{MSa.s^{{-1}}}
+\DeclareSIUnit \kilosample{kSa.s^{{-1}}}
 \DeclareSIUnit \bit{b}
 \DeclareSIUnit \baud{Bd}
 \DeclareSIUnit \gigabitpersecond{Gb.s^{{-1}}}

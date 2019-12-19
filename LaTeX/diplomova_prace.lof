@@ -15,7 +15,7 @@
 \babel@toc {czech}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Zn\IeC {\'a}zorn\IeC {\v e}n\IeC {\'\i } jednoho odrazu na veden\IeC {\'\i } \cite {broadbandreflectometry}.\relax }}{7}{figure.2.1}% 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Zn\IeC {\'a}zorn\IeC {\v e}n\IeC {\'\i } jednoho odrazu na veden\IeC {\'\i }.\relax }}{8}{figure.2.1}% 
 \contentsline {figure}{\numberline {2.2}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad odezvy na komplexn\IeC {\'\i } impedanci na veden\IeC {\'\i } \cite {broadbandreflectometry}.\relax }}{9}{figure.2.2}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Diracovo delta.\relax }}{13}{figure.3.1}% 
@@ -26,9 +26,9 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Funkce $\sinc (x)$.\relax }}{16}{figure.3.6}% 
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Diskr\IeC {\'e}tn\IeC {\'\i } b\IeC {\'\i }l\IeC {\'y} \IeC {\v s}um.\relax }}{17}{figure.3.7}% 
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Autokorelace diskr\IeC {\'e}tn\IeC {\'\i }ho b\IeC {\'\i }l\IeC {\'e}ho \IeC {\v s}umu z \ref {whitenoise}.\relax }}{17}{figure.3.8}% 
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } LVPECL v\IeC {\'y}stupu \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{19}{figure.3.9}% 
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } \acrshort {LVDS} v\IeC {\'y}stupu \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{20}{figure.3.10}% 
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } \acrshort {CML} v\IeC {\'y}stupu \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{21}{figure.3.11}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } LVPECL v\IeC {\'y}stupu, p\IeC {\v r}evzato \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{19}{figure.3.9}% 
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } \acrshort {LVDS} v\IeC {\'y}stupu, p\IeC {\v r}evzato z \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{20}{figure.3.10}% 
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Typick\IeC {\'e} zapojen\IeC {\'\i } \acrshort {CML} v\IeC {\'y}stupu, p\IeC {\v r}evzato z \cite {lvpecl_vml_cml_lvds_interfacing}.\relax }}{20}{figure.3.11}% 
 \contentsline {figure}{\numberline {3.12}{\ignorespaces V\IeC {\'y}stupn\IeC {\'\i } pr\IeC {\r u}b\IeC {\v e}h \acrshort {SATA} redriveru \cite {SN75LVCP601datasheet}.\relax }}{21}{figure.3.12}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Blokov\IeC {\'e} zapojen\IeC {\'\i } \acrshort {PLL} Si5351 \cite {Si5351datasheet}.\relax }}{24}{figure.4.1}% 

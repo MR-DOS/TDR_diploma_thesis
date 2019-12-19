@@ -4,46 +4,46 @@ The top-level auxiliary file: diplomova_prace.aux
 The style file: amsalpha.bst
 Database file #1: diplomova_prace.bib
 Warning--entry type for "Si5351_phase_noise_measurement" isn't style-file defined
---line 12 of file diplomova_prace.bib
-You've used 33 entries,
+--line 25 of file diplomova_prace.bib
+You've used 34 entries,
             2624 wiz_defined-function locations,
-            742 strings with 9324 characters,
-and the built_in function-call counts, 10661 in all, are:
-= -- 1007
-> -- 378
+            749 strings with 9612 characters,
+and the built_in function-call counts, 11211 in all, are:
+= -- 1055
+> -- 418
 < -- 8
-+ -- 125
-- -- 123
-* -- 859
-:= -- 1633
-add.period$ -- 33
-call.type$ -- 33
-change.case$ -- 198
-chr.to.int$ -- 32
-cite$ -- 33
-duplicate$ -- 492
-empty$ -- 944
-format.name$ -- 145
-if$ -- 2263
++ -- 141
+- -- 138
+* -- 917
+:= -- 1727
+add.period$ -- 34
+call.type$ -- 34
+change.case$ -- 208
+chr.to.int$ -- 33
+cite$ -- 34
+duplicate$ -- 506
+empty$ -- 977
+format.name$ -- 160
+if$ -- 2369
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 47
-newline$ -- 110
-num.names$ -- 53
-pop$ -- 188
+missing$ -- 49
+newline$ -- 113
+num.names$ -- 56
+pop$ -- 197
 preamble$ -- 1
-purify$ -- 228
+purify$ -- 239
 quote$ -- 0
-skip$ -- 366
+skip$ -- 375
 stack$ -- 0
-substring$ -- 552
-swap$ -- 60
+substring$ -- 587
+swap$ -- 61
 text.length$ -- 8
 text.prefix$ -- 21
 top$ -- 0
-type$ -- 260
+type$ -- 268
 warning$ -- 0
-while$ -- 61
-width$ -- 37
-write$ -- 361
+while$ -- 65
+width$ -- 38
+write$ -- 372
 (There was 1 warning)

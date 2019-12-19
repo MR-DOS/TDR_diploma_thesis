@@ -79,6 +79,12 @@ Hubert Houtman, \emph{{1-GHz} sampling oscilloscope front end is easily
 John Miles~(KE5FX) Jason Mildrum~(NT7S), \emph{{S}i5351 {I}nvestigations {P}art
   7}, 11 2014, \url{https://nt7s.com/2014/11/si5351a-investigations-part-7/}.
 
+\bibitem[MGD{\etalchar{+}}15]{highspeed_trackhold}
+K.~N. {Madsen}, T.~D. {Gathman}, S.~{Daneshgar}, T.~C. {Oh}, J.~C. {Li}, and
+  J.~F. {Buckwalter}, \emph{A high-linearity, 30 gs/s track-and-hold amplifier
+  and time interleaved sample-and-hold in an inp-on-cmos process}, IEEE Journal
+  of Solid-State Circuits \textbf{50} (2015), no.~11, 2692--2702.
+
 \bibitem[Mic08]{SY54017datasheet}
 Micrel, Inc., San Jose, \emph{{SY54017} datasheet}, 5 2008.
 
