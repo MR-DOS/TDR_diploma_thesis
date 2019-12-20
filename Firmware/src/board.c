@@ -57,7 +57,7 @@ const char commands[6][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AV
 #define RESPONSE_SENDING_DATA			17
 #define RESPONSE_AVG					18
 #define RESPONSE_AVG_NUMBER				19
-uint8_t responses[20][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
+uint8_t responses[21][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
 			"STATE CALIBRATING_SAMPLER","STATE NOISE_ESTIMATION","STATE FINDING_EDGE","STATE FINDING_REFERENCE_PLANE",
 			"STATE READY","STATE WAIT_OPEN","STATE WAIT_SHORT","STATE WAIT_LOAD","STATE NORMAL_CAL_RUNNING",
 			"STATE WAIT_REFERENCE_PLANE","STATE WAIT_DUT","STATE MEASUREMENT_RUNNING", "STATE READY_TO_SEND",
@@ -95,6 +95,7 @@ void SysTick_Handler(void)
 					USART_SendData(USART1,(uint8_t)(Board_ReflectometerState.sampled_data[i16]>>8));
 				}
 				global_response_pending=NO_RESPONSE_PENDING;
+				Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 			}
 
 			if (global_response_pending==RESPONSE_CARRIAGE_RETURN)
@@ -460,7 +461,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
 		}
 
-		while(Board_ReflectometerState->average_count!=Board_ReflectometerState->ideal_averaging)
+		while(Board_ReflectometerState->average_count < Board_ReflectometerState->ideal_averaging)
 		{
 			while(Board_ReflectometerState->is_running==ON)
 			{
@@ -470,7 +471,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			}
 			Board_ReflectometerState->enable_sampling=OFF;
 
-			Board_CalibrationState=CAL_READY_TO_SEND;
+			if (Board_CalibrationState==CAL_MEASUREMENT_RUNNING) Board_CalibrationState=CAL_READY_TO_SEND;
 
 			SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0, 6);
 
@@ -524,12 +525,16 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 		Board_ReflectometerState->average_count=0;
 		GPIO_WriteBit(LED_PORT, LED_RDY, Bit_SET);
 		GPIO_WriteBit(LED_PORT, LED_NOT_RDY, Bit_RESET);
+		if(Remote_Mode==TRUE)
+		{
+			SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " Measurement complete");
+			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   Please wait for");
+			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "   data to be sent");
+			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
 
-		SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
-		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " Measurement complete");
-		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   Please wait for");
-		SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "   data to be sent");
-		SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+			while((Board_CalibrationState==CAL_READY_TO_SEND) | (Board_CalibrationState==CAL_SENDING_DATA)) {}
+		}
 	}
 }
 
@@ -1637,10 +1642,13 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 		{
 			if(RunGraphical==ON)
 			{
-				static uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/(NUMBER_OF_POINTS*RISING_EDGE_AVG)+(255*Board_ReflectometerState->average_count)/RISING_EDGE_AVG;
-				if(progress>last_progress)SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, progress);
-				last_progress=progress;
-				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
+				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/(NUMBER_OF_POINTS*RISING_EDGE_AVG)+(255*Board_ReflectometerState->average_count)/RISING_EDGE_AVG;
+				if(progress>last_progress)
+				{
+					SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, progress);
+					last_progress=progress;
+					SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
+				}
 			}
 		}
 		Board_ReflectometerState->pending_measurement=ON;
@@ -1903,6 +1911,8 @@ void USART1_IRQHandler(void)
 				}
 				if (Compare_Strings(RX_buffer, commands[COMMAND_SEND_DATA]))
 				{
+					if (Board_CalibrationState!=CAL_READY_TO_SEND) return;
+					Board_CalibrationState=CAL_SENDING_DATA;
 					response_pending=RESPONSE_SEND_DATA;
 					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
 					Remote_Mode=TRUE;

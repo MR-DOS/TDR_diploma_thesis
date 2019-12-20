@@ -26,6 +26,11 @@ function update_average(calling_object,event_data,h)
 endfunction     
 
 function update_gui_state(h,state)  
+    if length(state>2)
+      if (state(1:2)==[13 10]) 
+        state=state(3:end);
+      endif;
+    endif 
     switch(state)
       case{"STATE BOARD_INIT\r\n"}
         set(h.plot,"visible","off");
@@ -51,6 +56,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");
         set(h.device_state_text,"string","The device is initialising its peripherals.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE WAIT_EDGE\r\n"}
         set(h.plot,"visible","off");
@@ -76,6 +85,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off"); 
         set(h.device_state_text,"string","The device is about to find the position\nof rising edge of the generator.");
         set(h.device_instruction_text,"string","Please disconnect everything form test port\nand connect directly an \"OPEN\" standard.\nThen press either the Continue button\nor button on the device.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE CALIBRATING_SAMPLER\r\n"}
         set(h.plot,"visible","off");
@@ -101,6 +114,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is calibrating DC offset of the sampler.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE NOISE_ESTIMATION\r\n"}
         set(h.plot,"visible","off");
@@ -126,6 +143,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");   
         set(h.device_state_text,"string","The device is measuring its own noise.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE FINDING_EDGE\r\n"}
         set(h.plot,"visible","off");
@@ -151,6 +172,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");   
         set(h.device_state_text,"string","The device is trying to find the rising edge\n of the generator.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE WAIT_REFERENCE_PLANE\r\n"}
         set(h.plot,"visible","off");
@@ -176,6 +201,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off"); 
         set(h.device_state_text,"string","The device is about to find the position\nof the measurement plane.");
         set(h.device_instruction_text,"string","Please connect airline/transmission line and connect \nan \"OPEN\" standard to its end. Then press either the \nContinue button or button on the device.");
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE FINDING_REFERENCE_PLANE\r\n"}
         set(h.plot,"visible","off");
@@ -201,6 +230,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off"); 
         set(h.device_state_text,"string","The device is trying to find the position\nof the measurement plane.");
         set(h.device_instruction_text,"string","Please wait. No user action is required."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");                
         
       case{"STATE READY\r\n"}
         %set(h.plot,"visible","on");
@@ -226,6 +259,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","on"); 
         set(h.device_state_text,"string","The device is ready for measurement.");
         set(h.device_instruction_text,"string","Now you can control the device."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
         
       case{"STATE WAIT_OPEN\r\n"}
         set(h.plot,"visible","off");
@@ -250,9 +287,12 @@ function update_gui_state(h,state)
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
-        set(h.device_instruction_text,"string","Please connect \"OPEN\" standard to the reference plane.\nThen press either the Continue button or button\non the device.");
-        
-        
+        set(h.device_instruction_text,"string","Please connect \"OPEN\" standard to the reference plane.\nThen press either the Continue button or button\non the device."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
+             
       case{"STATE WAIT_SHORT\r\n"}
         set(h.plot,"visible","off");
         set(h.graph_axes,"visible","off");
@@ -276,7 +316,11 @@ function update_gui_state(h,state)
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
-        set(h.device_instruction_text,"string","Please connect \"SHORT\" standard to the reference plane.\Then press either the Continue button or button\non the device.");
+        set(h.device_instruction_text,"string","Please connect \"SHORT\" standard to the reference plane.\Then press either the Continue button or button\non the device."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
                  
       case{"STATE WAIT_LOAD\r\n"}
         set(h.plot,"visible","off");
@@ -301,7 +345,11 @@ function update_gui_state(h,state)
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
-        set(h.device_instruction_text,"string","Please connect \"LOAD\" standard to the reference plane.\Then press either the Continue button or button\non the device.");
+        set(h.device_instruction_text,"string","Please connect \"LOAD\" standard to the reference plane.\Then press either the Continue button or button\non the device."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","off");
+        set(h.device_slider_text,"visible","off");
       
       case{"STATE WAIT_DUT\r\n"}
         %set(h.plot,"visible","off");
@@ -317,8 +365,8 @@ function update_gui_state(h,state)
         set(h.horizontal_position_up,"enable","off");
         set(h.horizontal_position_down,"enable","off");
         set(h.horizontal_reset,"enable","off");
-        set(h.device_continue,"enable","on");
-        set(h.device_continue,"backgroundcolor",[0.5 0.94 0.5]);
+        set(h.device_continue,"enable","off");
+        set(h.device_continue,"backgroundcolor",[0.94 0.94 0.94]);
         set(h.calibration_open,"enable","off");
         set(h.calibration_short,"enable","off");
         set(h.calibration_load,"enable","off");
@@ -327,6 +375,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is ready to measure the DUT.");
         set(h.device_instruction_text,"string","Please connect the DUT. Then press \neither the Continue button or button\non the device.");
+        set(h.device_run,"visible","on");
+        set(h.device_stop,"visible","off");
+        set(h.device_average_slider,"visible","on");
+        set(h.device_slider_text,"visible","on");
         
       case{"STATE NORMAL_CAL_RUNNING\r\n"}
         %set(h.plot,"visible","on");
@@ -351,7 +403,11 @@ function update_gui_state(h,state)
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is measuring a calibration normal.");
-        set(h.device_instruction_text,"string","Please wait. No user action is required."); 
+        set(h.device_instruction_text,"string","Please wait. No user action is required.");  
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","on");
+        set(h.device_average_slider,"visible","on");
+        set(h.device_slider_text,"visible","on");
        
       case{"STATE READY_TO_SEND\r\n"}
         %set(h.plot,"visible","on");
@@ -377,6 +433,10 @@ function update_gui_state(h,state)
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is ready to send data.");
         set(h.device_instruction_text,"string","Please wait. No user action is required."); 
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","on");
+        set(h.device_average_slider,"visible","on");
+        set(h.device_slider_text,"visible","on");
         
       case{"STATE MEASUREMENT_RUNNING\r\n"}
         %set(h.plot,"visible","on");
@@ -401,13 +461,19 @@ function update_gui_state(h,state)
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
         set(h.device_state_text,"string","The device is ready to send data.");
-        set(h.device_instruction_text,"string","Please wait. No user action is required.");   
+        set(h.device_instruction_text,"string","Please wait. No user action is required.");  
+        set(h.device_run,"visible","off");
+        set(h.device_stop,"visible","on");
+        set(h.device_average_slider,"visible","on");
+        set(h.device_slider_text,"visible","on");  
         
     otherwise
         set(h.device_continue,"enable","off");
         set(h.device_continue,"backgroundcolor",[0.94 0.94 0.94]);
-        set(h.device_state_text,"string","The device ireturned an abnormal response.");
+        set(h.device_state_text,"string","The device returned an abnormal response.");
         set(h.device_instruction_text,"string","Please wait. If this error does not get solved\nin a few seconds,please reboot the reflectometer\nand restart this program."); 
+        disp(strcat("Got response:",char(state)));
+        disp(state);
     endswitch
 endfunction
 
@@ -481,8 +547,9 @@ HORIZONTAL_RESET_COORD=GetCornerCoord([5/8 2/3 VERTICAL_BUTTON_SIZE]);
 DEVICE_CONTINUE_BUTTON_COORD=GetCornerCoord([1/2 1/3 1/4 1/9]);
 DEVICE_STATE_TEXT_COORD=[0 0 1 1];
 DEVICE_INSTRUCTION_TEXT_COORD=DEVICE_STATE_TEXT_COORD;
-DEVICE_START_BUTTON_COORD=GetCornerCoord([2/3 1/5 1/4 1/10]);
-DEVICE_AVERAGE_SLIDER_COORD=GetCornerCoord([2/3 1/10 1/4 1/20]);
+DEVICE_AVERAGE_TEXT_COORD=GetCornerCoord([2/3 2/20 1/4 1/15]);
+DEVICE_AVERAGE_SLIDER_COORD=GetCornerCoord([2/3 1/6 1/4 1/15]);
+DEVICE_RUN_STOP_COORD=GetCornerCoord([1/3 1/6 1/4 1/9]);
 
 CALIBRATION_OPEN_COORD=GetCornerCoord([1/5 3/4 CALIBRATION_BUTTON_SIZE]);
 CALIBRATION_SHORT_COORD=GetCornerCoord([1/5 2/4 CALIBRATION_BUTTON_SIZE]);
@@ -496,16 +563,16 @@ main_window=figure();
 set(main_window, "MenuBar", "none");
 set(main_window, "ToolBar", "none");
 %set (main_window, "color", get(0, "defaultuicontrolbackgroundcolor"))
-%set(main_window, "position", [get(main_window, "position")(1:2) window_size]);
-set(main_window, "position", [1600 1000 window_size]);
-set(main_window, "Name", "TDR Control panel (Petr Polasek 2019-11-28)", "NumberTitle", "off");
+set(main_window, "position", [get(main_window, "position")(1:2) window_size]);
+%set(main_window, "position", [1600 1000 window_size]);
+set(main_window, "Name", "TDR Control panel (Petr Polasek 2019-12-20)", "NumberTitle", "off");
 
 h.serial_probe_message = uicontrol ("style", "text",
                                 "units", "normalized",
                                 "string", "Probing for serial port accessibility",
                                 "horizontalalignment", "center",
                                 "position", [0 0.45 1 0.1]);
-pause(0.5);                                
+pause(0.5);                          
                                 
 if (exist("serial") != 3)
   delete(h.serial_probe_message);
@@ -722,16 +789,35 @@ h.device_slider_text = uicontrol ("style", "text",
                                "units", "normalized",
                                "string", "Averages: 1",
                                "horizontalalignment", "center",
-                               "position", DEVICE_START_BUTTON_COORD, "parent", h.device_state_panel); 
+                               "visible","off",
+                               "position", DEVICE_AVERAGE_TEXT_COORD, "parent", h.device_state_panel); 
                                
 h.device_average_slider = uicontrol ("style", "slider",
                             "units", "normalized",
                             "string", "slider",
                             "value", 0/63,
                             "sliderstep", [1/63 1/63],
+                            "visible","off",
                             "position", DEVICE_AVERAGE_SLIDER_COORD, "parent", h.device_state_panel);
-
+                            
 set(h.device_average_slider, "callback",{@update_average, h});                            
+
+h.device_run = uicontrol ("style", "pushbutton",
+                                "units", "normalized",
+                                "string", "RUN",
+                                "callback", {@send_continue, serial_port},
+                                "visible","off",
+                                "backgroundcolor",[0.5 0.94 0.5],
+                                "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
+
+h.device_stop = uicontrol ("style", "pushbutton",
+                                "units", "normalized",
+                                "string", "STOP",
+                                %"callback", {@send_continue, serial_port},
+                                "visible","off",
+                                "backgroundcolor",[0.94 0.5 0.5],
+                                "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
+                                 
                             
 %------------------------------------------------------------------------------- 
 
@@ -780,12 +866,30 @@ h.calibration_restore = uicontrol ("style", "pushbutton",
 guidata(main_window, h);
 
 set(serial_port,"timeout",1);
+avg_received=0;
+last_state=0;
 
 while(1)
 srl_write(serial_port,"STATE?\n");
 device_state=srl_read(serial_port,255);
 %set(h.device_state_text,"string",char(device_state));
 update_gui_state(h, device_state);
+if (last_state!=device_state) avg_received=0; endif;
+
+if (avg_received==0)
+  if (strcmp(char(device_state),"STATE WAIT_DUT\r\n"))
+    srl_write(serial_port,"AVG?\r\n");
+    averages=srl_read(serial_port,255);
+    disp(averages);
+    disp(char(averages));
+    averages=sscanf(char(averages(4:end)),"%f");
+    disp(averages);
+    set(h.device_slider_text,"string",strcat("Averages: ",num2str(averages)));
+    set(h.device_average_slider,"value",(averages-1)/63);
+  endif;
+  avg_received=1;
+endif;
+
 if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   srl_write(serial_port,"SEND_DATA!\r\n");
   set(serial_port,"timeout",10);
@@ -799,6 +903,8 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   set(h.plot,"YData",decoded_data);
   xlim(h.graph_axes,[0 20*numel(decoded_data)]);
   ylim(h.graph_axes, [min(decoded_data) max(decoded_data)]);
+  drawnow;
 endif;
-drawnow();
+
+uiwait(main_window,1);
 endwhile
