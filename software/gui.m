@@ -360,12 +360,12 @@ function update_gui_state(h,state,data_length)
         %set(h.graph_placeholder_text,"visible","on");
         set(h.device_continue,"enable","off");
         set(h.device_continue,"backgroundcolor",[0.94 0.94 0.94]);
-        set(h.calibration_open,"enable","off");
-        set(h.calibration_short,"enable","off");
-        set(h.calibration_load,"enable","off");
+        set(h.calibration_open,"enable","on");
+        set(h.calibration_short,"enable","on");
+        set(h.calibration_load,"enable","on");
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
-        set(h.calibration_restore,"enable","off");  
+        set(h.calibration_restore,"enable","on");  
         set(h.device_state_text,"string","The device is ready to measure the DUT.");
         set(h.device_instruction_text,"string","Please connect the DUT. Then press \neither the Continue button or button\non the device.");
         set(h.device_run,"visible","on");
@@ -476,8 +476,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
-        set(h.device_state_text,"string","The device is ready to send data.");
-        set(h.device_instruction_text,"string","Please wait. No user action is required.");  
+        set(h.device_state_text,"string","The device is running a measurement.");
+        set(h.device_instruction_text,"string","Please wait. No user action is required.\nOnce the measurement is done, you will see the data.");  
         set(h.device_run,"visible","off");
         set(h.device_stop,"visible","on");
         set(h.device_average_slider,"visible","on");
@@ -909,10 +909,14 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   srl_write(serial_port,"SEND_DATA!\r\n");
   set(serial_port,"timeout",10);
   [data,data_length]=srl_read(serial_port,8192);
-  if (data_length!=8192) continue; endif;
+  set(serial_port,"timeout",1);
+  if (data_length!=8192) 
+    disp("Data transmission failed for some reason, did not receive enough data");
+    disp(cstrcat("Received only ",num2str(data_length)," bytes of data of 8192."));
+    continue; 
+  endif;
   set(h.plot,"visible","on");
   set(h.graph_axes,"visible","on");
-  set(serial_port,"timeout",1);
   decoded_data=4096-typecast(data,'uint16');
   set(h.plot,"XData",20*(0:4095));
   set(h.plot,"YData",decoded_data);

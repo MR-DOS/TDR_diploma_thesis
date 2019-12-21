@@ -36,8 +36,7 @@ const char commands[7][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AV
 #define NO_RESPONSE_PENDING		255
 #define	RESPONSE_CARRIAGE_RETURN 254
 #define RESPONSE_LINE_FEED 		253
-#define RESPONSE_BLOCKING_TRANSFER_PENDING 252
-#define RESPONSE_SEND_DATA		251
+#define RESPONSE_SEND_DATA		252
 #define RESPONSE_REMOTE 				0
 #define RESPONSE_DEVICE 				1
 #define RESPONSE_BOARD_INIT 			2
@@ -80,23 +79,18 @@ void SysTick_Handler(void)
 
 	if (USART_GetFlagStatus(USART1, USART_FLAG_TXE) != RESET) // Serial port TX handler
 	{
-		if (global_response_pending==RESPONSE_BLOCKING_TRANSFER_PENDING) return;
-
 		if (global_response_pending!=NO_RESPONSE_PENDING)
 		{
-
 			if (global_response_pending==RESPONSE_SEND_DATA)
 			{
-				uint16_t i16;
-				for(i16=0; i16<SAMPLE_MEMORY_SIZE; i16++)
+				if (DMA_GetFlagStatus(DMA1_FLAG_TC4)==SET)
 				{
-					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-					USART_SendData(USART1,(uint8_t)Board_ReflectometerState.sampled_data[i16]);
-					while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-					USART_SendData(USART1,(uint8_t)(Board_ReflectometerState.sampled_data[i16]>>8));
+					DMA_Cmd(DMA1_Channel4, DISABLE);
+					DMA_ClearFlag(DMA1_FLAG_TC4);
+					global_response_pending=NO_RESPONSE_PENDING;
+					Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 				}
-				global_response_pending=NO_RESPONSE_PENDING;
-				Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+				return;
 			}
 
 			if (global_response_pending==RESPONSE_CARRIAGE_RETURN)
@@ -455,35 +449,38 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 
 		Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 		Board_ReflectometerState->enable_sampling=ON;
-		while(Board_ReflectometerState->is_running==OFF)
-		{
-			uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
-			SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
-			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
-		}
 
 		while(Board_ReflectometerState->average_count < Board_ReflectometerState->ideal_averaging)
 		{
+			while(Board_ReflectometerState->is_running==OFF)
+			{
+				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
+				SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
+				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
+			}
 			while(Board_ReflectometerState->is_running==ON)
 			{
 				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
 				SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
 				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
 			}
-			Board_ReflectometerState->enable_sampling=OFF;
-
-			if (Board_CalibrationState==CAL_MEASUREMENT_RUNNING) Board_CalibrationState=CAL_READY_TO_SEND;
 
 			SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0, 6);
 
-			for(i16=0;i16<=128*NPOINTS;i16++)
+			for(i16=0;i16<128*NPOINTS;i16++)
 			{
-				if ((Board_ReflectometerState->sample_cycle_max-Board_ReflectometerState->sample_cycle_min)>=53)
+				int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[i16]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
+				if (draw_tmp<=0)
 				{
-					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, i16/NPOINTS, (Board_ReflectometerState->sampled_data[i16]-Board_ReflectometerState->sample_window_min)/((Board_ReflectometerState->sample_window_max-Board_ReflectometerState->sample_window_min)/52));
-				} else {
-					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, i16/NPOINTS, (Board_ReflectometerState->sampled_data[i16]-Board_ReflectometerState->sample_window_min));
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, i16/NPOINTS, 0);
+					continue;
 				}
+				if (draw_tmp>=52)
+				{
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, i16/NPOINTS, 52);
+					continue;
+				}
+				SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, i16/NPOINTS, draw_tmp);
 			}
 			SSD1306_DrawBuffer(SSD1306_ConfigStruct);
 
@@ -491,33 +488,8 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			{
 				while(GPIO_ReadInputDataBit(BTN_PORT,BTN)==RESET){}
 				remote_user_action=FALSE;
-				if(global_response_pending==RESPONSE_SEND_DATA) global_response_pending=NO_RESPONSE_PENDING;
-				Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 				Board_ReflectometerState->enable_sampling=OFF;
-				Board_ReflectometerState->average_count=0;
 				break;
-			}
-
-			Board_ReflectometerState->enable_sampling=ON;
-
-			while(Board_ReflectometerState->is_running==OFF)
-			{
-				uint8_t progress=(255*((Board_ReflectometerState->current_sample_index + NUMBER_OF_POINTS - Board_ReflectometerState->start_sample_index) % NUMBER_OF_POINTS))/NUMBER_OF_POINTS;
-				SSD1306_DrawMeasurementProgressIndicator(SSD1306_ConfigStruct, progress, Board_ReflectometerState->average_count, Board_ReflectometerState->ideal_averaging);
-				SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,6,7);
-				/*if((Remote_Mode==TRUE)&(global_response_pending==RESPONSE_SEND_DATA))
-				{
-					global_response_pending=RESPONSE_BLOCKING_TRANSFER_PENDING;
-					for(i16=0; i16<SAMPLE_MEMORY_SIZE; i16++)
-					{
-						while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-						USART_SendData(USART1,(uint8_t)Board_ReflectometerState->sampled_data[i16]);
-						while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)!=SET){}
-						USART_SendData(USART1,(uint8_t)(Board_ReflectometerState->sampled_data[i16]>>8));
-					}
-					global_response_pending=NO_RESPONSE_PENDING;
-					Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
-				}*/
 			}
 		}
 
@@ -532,9 +504,56 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " Measurement complete");
 			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   Please wait for");
 			SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 3, "   data to be sent");
-			SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
+			SSD1306_DrawBuffer(SSD1306_ConfigStruct);
 
-			while((Board_CalibrationState==CAL_READY_TO_SEND) | (Board_CalibrationState==CAL_SENDING_DATA)) {}
+			Board_CalibrationState=CAL_READY_TO_SEND;
+			while(Board_CalibrationState==CAL_READY_TO_SEND){}
+			Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+		}else {
+			for(i16=SAMPLE_MEMORY_SIZE;i16>127;i16-=10*(i16/140)+1)
+			{
+				uint16_t point;
+				SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+				for(point=0; point<i16; point++)
+				{
+					int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
+					if (draw_tmp<=0)
+					{
+						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 0);
+						continue;
+					}
+					if (draw_tmp>=52)
+					{
+						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 52);
+						continue;
+					}
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, draw_tmp);
+				}
+				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,4*6,7,"Zooming, wait.");
+				SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+			}
+			for(i16=0;i16<=SAMPLE_MEMORY_SIZE-128;i16++)
+			{
+				uint16_t point;
+				SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+				for(point=0; point<128; point++)
+				{
+					int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[i16+point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
+					if (draw_tmp<=0)
+					{
+						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 0);
+						continue;
+					}
+					if (draw_tmp>=52)
+					{
+						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 52);
+						continue;
+					}
+					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, draw_tmp);
+				}
+				SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, (255*(uint32_t)i16)/(SAMPLE_MEMORY_SIZE-128));
+				SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+			}
 		}
 	}
 }
@@ -1171,6 +1190,7 @@ void SERIAL_Init(void)
 	USART_InitTypeDef USART_InitStruct;
 	GPIO_InitTypeDef GPIO_InitStruct;
 	NVIC_InitTypeDef NVIC_InitStructure;
+	DMA_InitTypeDef DMA_InitStruct;
 
 	RCC_APB2PeriphClockCmd(USART_PERIPH | RCC_APB2Periph_USART1, ENABLE);
 
@@ -1202,6 +1222,24 @@ void SERIAL_Init(void)
 
 	USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+
+	DMA_InitStruct.DMA_PeripheralBaseAddr=(uint32_t)&USART1->DR;
+	DMA_InitStruct.DMA_MemoryBaseAddr=(uint32_t)Board_ReflectometerState.sampled_data;
+	DMA_InitStruct.DMA_DIR=DMA_DIR_PeripheralDST;
+	DMA_InitStruct.DMA_BufferSize=SAMPLE_MEMORY_SIZE*2;
+	DMA_InitStruct.DMA_PeripheralInc=DMA_PeripheralInc_Disable;
+	DMA_InitStruct.DMA_MemoryInc=DMA_MemoryInc_Enable;
+	DMA_InitStruct.DMA_PeripheralDataSize=DMA_PeripheralDataSize_Byte;
+	DMA_InitStruct.DMA_MemoryDataSize=DMA_MemoryDataSize_Byte;
+	DMA_InitStruct.DMA_Mode=DMA_Mode_Normal;
+	DMA_InitStruct.DMA_Priority=DMA_Priority_Low;
+	DMA_InitStruct.DMA_M2M=DMA_M2M_Disable;
+
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);
+	DMA_DeInit(DMA1_Channel4);
+	DMA_Init(DMA1_Channel4, &DMA_InitStruct);
+	DMA_SetCurrDataCounter(DMA1_Channel4, SAMPLE_MEMORY_SIZE*2);
+	USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE);
 }
 
 EnableState Calibrate_Si5351(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef *SSD1306_ConfigStruct, Framebuffer *display_buffer, Board_ReflectometerStateTypeDef *Board_ReflectometerState, EnableState RunGraphical)
@@ -1917,6 +1955,8 @@ void USART1_IRQHandler(void)
 					response_pending=RESPONSE_SEND_DATA;
 					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
 					Remote_Mode=TRUE;
+					DMA_SetCurrDataCounter(DMA1_Channel4, SAMPLE_MEMORY_SIZE*2);
+					DMA_Cmd(DMA1_Channel4, ENABLE);
 				}
 				if (Compare_Strings(RX_buffer, commands[COMMAND_GET_AVG]))
 				{
