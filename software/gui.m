@@ -17,15 +17,18 @@ function send_continue(calling_object,event_data,ser_port)
     srl_write(ser_port,"CONTINUE!\n\n");
 endfunction 
 
-function send_new_avg(calling_object,event_data,ser_port, average)
-    srl_write(ser_port,strcat("AVG!",average,"\n\n"));
-endfunction
+function send_start(calling_object,event_data,ser_port,h)
+    avg=num2str(round(63*get(h.device_average_slider,"value"))+1,"%d");
+    if (length(avg)==1) avg=cstrcat("0",avg); endif;
+    srl_write(ser_port,cstrcat("AVG! ",avg,"\r\n"));
+    srl_write(ser_port,"CONTINUE!\n\n");
+endfunction 
 
 function update_average(calling_object,event_data,h)
     set(h.device_slider_text, "string", strcat("Averages: ",sprintf("%d",round(63*get(h.device_average_slider, "value")+1))));
 endfunction     
 
-function update_gui_state(h,state)  
+function update_gui_state(h,state,data_length)  
     if length(state>2)
       if (state(1:2)==[13 10]) 
         state=state(3:end);
@@ -355,16 +358,6 @@ function update_gui_state(h,state)
         %set(h.plot,"visible","off");
         %set(h.graph_axes,"visible","off");
         %set(h.graph_placeholder_text,"visible","on");
-        set(h.vertical_amplitude_in,"enable","off");
-        set(h.vertical_amplitude_out,"enable","off");
-        set(h.vertical_position_up,"enable","off");
-        set(h.vertical_position_down,"enable","off");
-        set(h.vertical_reset,"enable","off");
-        set(h.horizontal_amplitude_in,"enable","off");
-        set(h.horizontal_amplitude_out,"enable","off");
-        set(h.horizontal_position_up,"enable","off");
-        set(h.horizontal_position_down,"enable","off");
-        set(h.horizontal_reset,"enable","off");
         set(h.device_continue,"enable","off");
         set(h.device_continue,"backgroundcolor",[0.94 0.94 0.94]);
         set(h.calibration_open,"enable","off");
@@ -379,6 +372,29 @@ function update_gui_state(h,state)
         set(h.device_stop,"visible","off");
         set(h.device_average_slider,"visible","on");
         set(h.device_slider_text,"visible","on");
+        if(data_length==4096)
+          set(h.vertical_amplitude_in,"enable","on");
+          set(h.vertical_amplitude_out,"enable","on");
+          set(h.vertical_position_up,"enable","on");
+          set(h.vertical_position_down,"enable","on");
+          set(h.vertical_reset,"enable","on");
+          set(h.horizontal_amplitude_in,"enable","on");
+          set(h.horizontal_amplitude_out,"enable","on");
+          set(h.horizontal_position_up,"enable","on");
+          set(h.horizontal_position_down,"enable","on");
+          set(h.horizontal_reset,"enable","on");
+        else
+          set(h.vertical_amplitude_in,"enable","off");
+          set(h.vertical_amplitude_out,"enable","off");
+          set(h.vertical_position_up,"enable","off");
+          set(h.vertical_position_down,"enable","off");
+          set(h.vertical_reset,"enable","off");
+          set(h.horizontal_amplitude_in,"enable","off");
+          set(h.horizontal_amplitude_out,"enable","off");
+          set(h.horizontal_position_up,"enable","off");
+          set(h.horizontal_position_down,"enable","off");
+          set(h.horizontal_reset,"enable","off");
+        endif;
         
       case{"STATE NORMAL_CAL_RUNNING\r\n"}
         %set(h.plot,"visible","on");
@@ -494,7 +510,7 @@ function update_plot_axes(obj)
         tmp=ylim(h.graph_axes);
         ylim(h.graph_axes, [(tmp(1)+tmp(2))/2-(tmp(2)-tmp(1)) (tmp(1)+tmp(2))/2]);
       case {h.vertical_reset}
-        ylim([-1 1]);
+        ylim([min(get(h.plot,"ydata")) max(get(h.plot,"ydata"))]);
       case {h.horizontal_amplitude_in}
         tmp=xlim(h.graph_axes);
         xlim(h.graph_axes, [((tmp(1)+tmp(2))/2)-(tmp(2)-tmp(1))/4 ((tmp(1)+tmp(2))/2)+(tmp(2)-tmp(1))/4]);
@@ -805,7 +821,7 @@ set(h.device_average_slider, "callback",{@update_average, h});
 h.device_run = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "RUN",
-                                "callback", {@send_continue, serial_port},
+                                "callback", {@send_start, serial_port, h},
                                 "visible","off",
                                 "backgroundcolor",[0.5 0.94 0.5],
                                 "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
@@ -813,7 +829,7 @@ h.device_run = uicontrol ("style", "pushbutton",
 h.device_stop = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "STOP",
-                                %"callback", {@send_continue, serial_port},
+                                "callback", {@send_continue, serial_port},
                                 "visible","off",
                                 "backgroundcolor",[0.94 0.5 0.5],
                                 "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
@@ -868,22 +884,21 @@ guidata(main_window, h);
 set(serial_port,"timeout",1);
 avg_received=0;
 last_state=0;
+decoded_data=[];
 
 while(1)
 srl_write(serial_port,"STATE?\n");
 device_state=srl_read(serial_port,255);
 %set(h.device_state_text,"string",char(device_state));
-update_gui_state(h, device_state);
-if (last_state!=device_state) avg_received=0; endif;
+update_gui_state(h, device_state, length(decoded_data));
+if (strcmp(char(last_state),char(device_state))==0) avg_received=0; endif;
+last_state=device_state;
 
 if (avg_received==0)
   if (strcmp(char(device_state),"STATE WAIT_DUT\r\n"))
     srl_write(serial_port,"AVG?\r\n");
     averages=srl_read(serial_port,255);
-    disp(averages);
-    disp(char(averages));
     averages=sscanf(char(averages(4:end)),"%f");
-    disp(averages);
     set(h.device_slider_text,"string",strcat("Averages: ",num2str(averages)));
     set(h.device_average_slider,"value",(averages-1)/63);
   endif;

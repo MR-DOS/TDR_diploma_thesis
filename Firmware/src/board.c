@@ -30,7 +30,8 @@ volatile bool Remote_Mode = FALSE;
 #define COMMAND_ACTION 3
 #define COMMAND_SEND_DATA	4
 #define COMMAND_GET_AVG	5
-const char commands[6][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AVG?"};
+#define COMMAND_SET_AVG 6
+const char commands[7][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AVG?", "AVG!"};
 
 #define NO_RESPONSE_PENDING		255
 #define	RESPONSE_CARRIAGE_RETURN 254
@@ -1923,6 +1924,28 @@ void USART1_IRQHandler(void)
 					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
 					Remote_Mode=TRUE;
 				}
+
+				RX_buffer[4]=0;
+				if (Compare_Strings(RX_buffer, commands[COMMAND_SET_AVG]))
+				{
+					if(Board_CalibrationState!=CAL_WAIT_DUT) return;
+					response_pending=NO_RESPONSE_PENDING;
+					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
+					Remote_Mode=TRUE;
+					/*
+					 * 					if ((RX_buffer[5]>"6")|(RX_buffer[5]<"0")) return;
+					 *					if ((RX_buffer[6]>"9")|(RX_buffer[5]<"0")) return;
+					 *					if ((RX_buffer[5]=="6")&(RX_buffer[6]>"4")) return;
+					 */
+					if ((RX_buffer[5]>54)|(RX_buffer[5]<48)) return;
+					if ((RX_buffer[6]>57)|(RX_buffer[5]<48)) return;
+					if ((RX_buffer[5]==54)&(RX_buffer[6]>52)) return;
+					uint8_t tmp=(RX_buffer[5]-48)*10+(RX_buffer[6]-48);
+					if ((tmp<1)|(tmp>64)) return;
+					Board_ReflectometerState.ideal_averaging=tmp;
+					getnum(Board_ReflectometerState.ideal_averaging,responses[RESPONSE_AVG_NUMBER]);
+				}
+
 			} else RX_length++;
 		} else {
 			USART_ReceiveData(USART1);

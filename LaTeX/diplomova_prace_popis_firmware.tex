@@ -1,6 +1,6 @@
 \chapter{Popis firmware}
 
-Pojmem firmware je v této kapitole myšlen program, který běží v mikrokontroléru a obsluhuje všechny části reflektometru a poskytuje uživatelské rozhraní a zajišťuje měření, vyhodnocování měření a komunikaci s počítačem.
+Pojmem firmware je v této kapitole myšlen program, který běží v mikrokontroléru a obsluhuje všechny části reflektometru a poskytuje uživatelské rozhraní a zajišťuje měření, vyhodnocování měření a komunikaci s počítačem. Firmware je napsán v jazyce C, knihovny pro ovládání periferií byly převzaty od výrobce. Všechen ostatní zdrojový kód je vlastní, vznikl v rámci této práce.
 
 \section{Technické parametry firmware}
 Použitý mikrokontrolér disponuje \SI{20}{\kilo\byte} \acrshort{RAM}. Jeden měřený vzorek zabírá 12 bitů, bez použití komprese dat je možné do \acrshort{RAM} uložit 10000~vzorků. Parametr $\frac{a b}{c}$ v rovnici \ref{equation_tshift} určuje délku měřeného souboru dat. Vzledem k použitým hodnotám má měřený soubor dat 500000~bodů s časovým krokem přibližně \SI{19.62}{\pico\second}. Část RAM ovšem zabírá program pro svůj chod, délka měřicího okna byla nakonec zvolena 4096 bodů, což umožňuje v rámci jednoho okna změřit interval o délce přes \SI{80}{\nano\second}. Ve vakuu tento interval odpovídá délce měřeného úseku \SI{12}{\meter}. Pro koaxiální kabely odpovídá měřený úsek přibližně \SIrange{7.9}{10.2}{\meter} při uvažování typického rozsahu zkracovacího činitele \SIrange{0.66}{0.85}{}. V případě potřeby měřit delší vedení se může měřicí okno posunout a měřit další úsek vedení. Tento nedostatek tedy nebrání měřit libovolně dlouhá vedení, pouze znamená, že pro delší vedení je nezbytné provádět měření po částech.
@@ -70,27 +70,26 @@ Následně je poloha měřicího okna nastavena 512 bodů před detekovanou hran
 
 \section{Postup ovládání firmware}
 Po zapnutí se zobrazí obrazovka s informací o verzi firmware, datu a času jeho kompilace. Její podoba je vidět na obrázku \ref{greeting_screen}. Všechny dále uvedené obrázky byly vyexportovány z běžícího zařízení, měly by tedy přesně odpovídat zobrazovaným informacím.
-
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio]{images/greeting_screen.png}\caption{Uvítací obrazovka s informací o verzi.}\label{greeting_screen}
 \end{figure}
 
 Prozatím není zařízení interaktivní, pouze oznamuje stav autokalibračních postupů. Následuje detekce stability fázového závěsu, tuto část ukazují obrázky \ref{init_5351} a \ref{stability_5351}. Ukazatel ve spodní části je běžící, aby uživateli signalizoval, že zařízení běží a nezastavilo se například z důvodu nějaké chyby.
-
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/init_5351.png}\caption{Obrazovka zobrazovaná po dobu inicializace fázového závěsu.}\label{init_5351}
 \end{figure}
 
 Po inicializaci následuje indikace stability jednotlivých částí PLL podle obrázku \ref{stability_5351}. V případě, že je vše v pořádku, zobrazí se hlášení \quotedblbase PLL Startup complete\textquotedblleft{} a program pokračuje dále. V případě, že dojde k chybě, program se zde zastaví s indikací chyby \quotedblbase PLL Startup error\textquotedblleft. 
-
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/stability_5351.png}\caption{Obrazovka s informacemi o stabilitě jednotlivých částí PLL Si5351.}\label{stability_5351}
 \end{figure}
 
+Před autokalibrací polohy budicího pulzu, autokalibrací stejnosměrné složky a odhadu šumové úrovně je uživatel požádán, aby odpojil od reflektometru všechna připojená vedení nebo DUT. Tento požadavek je uveden na obr. \ref{offset_user_wait}. V tuto chvíli se zastaví běžící ukazatel ve spodní části obrazovky, aby signalizoval čekání.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/offset_user_wait.png}\caption{Čekání na zásah uživatele - autokalibrace stejnosměrné složky, kalibrace úrovní a měření úrovně šumu.}\label{offset_user_wait}
 \end{figure}
 
+V průběhu autokalibračních kroků je uživatel postupně informován o probíhajícím kroku, případně o jeho postupu. Takto proběhne autokalibrace stejnosměrné složky (obr. \ref{offset_wait}) a měření napěťových úrovní a úrovně šumu (obr. \ref{levels_user_wait}). Následně je uživatel informován o výsledku autokalibrace napěťových úrovní a šumu (obr. \ref{levels_complete}), ze kterých je možné odhalit některé možné závady. Pokud by například jedna z úrovní byla rovna 0 nebo 4095, případně kdyby se obě přibližně rovnaly, pak je možné usuzovat na chybu ADC nebo hardwarovou závadu. Pokud by vyšla variance měřeného signálu příliš vysoká nebo příliš nízká, mohla by tato informace indikovat chybu vzorkovače.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/offset_wait.png}\caption{Probíhající autokalibrace stejnosměrné složky.}\label{offset_wait}
 \end{figure}
@@ -103,14 +102,17 @@ Po inicializaci následuje indikace stability jednotlivých částí PLL podle o
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/levels_complete.png}\caption{Výsledek autokalibrace napěťových úrovní a měření šumu.}\label{levels_complete}
 \end{figure}
 
+Po změření napěťových a šumových úrovní následuje hrubé hledání náběžné hrany budicího signálu, indikováno je dle obr. \ref{edge_wait}.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_wait.png}\caption{Hrubé hledání náběžné hrany.}\label{edge_wait}
 \end{figure}
 
+Po hrubém nalezení polohy hrany budicího signálu je uživatel vyzván k připojení testovacího vedení a připojení standardu \quotedblbase open\textquotedblleft{} na konec vedení podle obr. \ref{edge_user_wait}.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_user_wait.png}\caption{Čekání na zásah uživatele - přesné hledání náběžné hrany.}\label{edge_user_wait}
 \end{figure}
 
+Přesné hledání polohy měřicí roviny trvá delší dobu, protože dochází k opakovanému měření a průměrování. Tento proces je tedy indikován ukazatelem průběhu, ze kterého je možné odhadnout, kdy bude proces dokončen. Tento krok je uveden na obr. \ref{edge_sampling}. Po dokončení hledání je zobrazeno potvrzení o úspěšném dokončení autokalibrace podle obr. \ref{edge_found}.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_sampling.png}\caption{Přesné hledání náběžné hrany.}\label{edge_sampling}
 \end{figure}
@@ -119,18 +121,22 @@ Po inicializaci následuje indikace stability jednotlivých částí PLL podle o
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/edge_found.png}\caption{Úspěšné nalezení přesné polohy náběžné hrany.}\label{edge_found}
 \end{figure}
 
+Nyní je již zařízení připraveno k měření. Uživatel je dle obr. \ref{measurement_user_wait} vyzván k připojení DUT a potvrzení začátku měření tlačítkem.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_user_wait.png}\caption{Čekání na zásah uživatele - připojení DUT a začátek měření.}\label{measurement_user_wait}
 \end{figure}
 
+Během prvního měření je zobrazena informace o čekání na dokončení prvního měření dle obr. \ref{measurement_avg_wait}.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_avg_wait.png}\caption{Čekání na proběhnutí prvního měření.}\label{measurement_avg_wait}
 \end{figure}
 
+V průběhu dalších měření je průběh každého měření indikován ukazatelem v levé spodní části obrazovky dle obr. \ref{measurement_running} a celkový počet změřených průběhů je uveden v pravé spodní části obrazovky. Změřený a zprůměrovaný průběh je vidět v horní části obrazovky.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_running.png}\caption{Průběh měření, 33. průměr.}\label{measurement_running}
 \end{figure}
 
+V případě, že je zařízení ovládáno z počítače, je na konci měření zobrazena výzva k vyčkání na odeslání zprůměrovaných změřených dat do počítače. Tato výzva je vyobrazena na obr. \ref{measurement_complete}.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_complete.png}\caption{Měření dokončeno.}\label{measurement_complete}
 \end{figure}
