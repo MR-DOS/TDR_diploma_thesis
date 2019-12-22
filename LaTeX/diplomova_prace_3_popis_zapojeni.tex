@@ -17,26 +17,26 @@ Hlavním prvkem celého zapojení je vícekanálový digitální fázový závě
 \includegraphics[width=\textwidth,keepaspectratio]{images/si5351_internal_architecture_overview.eps}\caption{Vnitřní blokové zapojení obvodu Si5351, převzato z \cite{Si5351datasheet}.} \label{si5351_internal_architecture_overview}
 \end{figure}
 
-Frekvenci těchto oscilátorů je možné nezávisle nastavit. Jejich frekvence $f_{VCO}$ může být neceločíselným násobkem frekvence krystalového oscilátoru $f_{XTAL}$.
+Frekvenci těchto oscilátorů je možné nezávisle nastavit. Jejich frekvence $f_\mathrm{VCO}$ může být neceločíselným násobkem frekvence krystalového oscilátoru $f_\mathrm{XTAL}$.
 \begin{equation}
-f_{VCO}=f_{XTAL} \left(a+\dfrac{b}{c} \right)
+f_\mathrm{VCO}=f_\mathrm{XTAL} \left(a+\dfrac{b}{c} \right)
 \end{equation}
 Koeficient $a$ může nabývat hodnot $\langle 15, 90 \rangle$. V neceločíselném režimu může koeficient $c$ nabývat hodnot $\langle 0, 1048575 \rangle$, koeficient $b$ pak $\langle 0, c \rangle$.
 Je tedy možné nastavit frekvenci oscilátorů tak, že se liší o méně než 1 ppm. Při použití těchto dvou frekvencí jako časovacích signálů pro buzení a vzorkování je tedy možné odebírat až 1048576 vzorků. Dochází totiž k tomu, že s každou periodou se postupně hrany těchto obdélníkových signálů vůči sobě časově posunou o fixní časový krok. Tento krok je možné spočítat z nastavených frekvencí oscilátorů.
 
 \begin{equation}
 \begin{gathered}
-f_{VCO1}=f_{XTAL} \left(a_1+\dfrac{b_1}{c_1} \right) \\
-f_{VCO2}=f_{XTAL} \left(a_2+\dfrac{b_2}{c_2} \right)
+f_\mathrm{VCO1}=f_\mathrm{XTAL} \left(a_1+\dfrac{b_1}{c_1} \right) \\
+f_\mathrm{VCO2}=f_\mathrm{XTAL} \left(a_2+\dfrac{b_2}{c_2} \right)
 \end{gathered}
 \end{equation}
 
-Za těmito oscilátory ještě následují děličky. Ty také umožňují neceločíselné dělení, které je ovšem nevýhodné, protože může zvyšovat fázové chvění výstupního signálu. Proto jsou použity pouze v celočíselném režimu. Děličky jsou použity kvůli omezenému vzorkovacímu kmitočtu použitého \acrshort{ADC}. Výsledkem jsou tedy dvě frekvence $f_{OUT1}$ a $f_{OUT2}$. Označíme-li společný dělicí poměr $d$ a za předpokladu, že $a_1=a_2=a$, $c_1=c_2=c$ a $b_2=0$:
+Za těmito oscilátory ještě následují děličky. Ty také umožňují neceločíselné dělení, které je ovšem nevýhodné, protože může zvyšovat fázové chvění výstupního signálu. Proto jsou použity pouze v celočíselném režimu. Děličky jsou použity kvůli omezenému vzorkovacímu kmitočtu použitého \acrshort{ADC}. Výsledkem jsou tedy dvě frekvence $f_\mathrm{OUT1}$ a $f_\mathrm{OUT2}$. Označíme-li společný dělicí poměr $d$ a za předpokladu, že $a_1=a_2=a$, $c_1=c_2=c$ a $b_2=0$:
 
 \begin{equation}
 \begin{gathered}
-f_{OUT1}=\dfrac{f_{VCO1}}{d}=f_{XTAL} \left(\dfrac{a+\dfrac{b_1}{c} }{d}\right) \\
-f_{OUT2}=\dfrac{f_{VCO2}}{d}=f_{XTAL} \left(\dfrac{a}{d}\right)
+f_\mathrm{OUT1}=\dfrac{f_\mathrm{VCO1}}{d}=f_\mathrm{XTAL} \left(\dfrac{a+\dfrac{b_1}{c} }{d}\right) \\
+f_\mathrm{OUT2}=\dfrac{f_\mathrm{VCO2}}{d}=f_\mathrm{XTAL} \left(\dfrac{a}{d}\right)
 \end{gathered}
 \end{equation}
 
@@ -44,8 +44,8 @@ Pak se během jedné periody oscilátory vůči sobě posunou o čas $T_{SHIFT}$
 
 \begin{equation}
 \begin{gathered}
-T_{SHIFT}=T_{OUT2}-T_{OUT1}=\dfrac{1}{f_{OUT2}} - \dfrac{1}{f_{OUT1}} \\
-T_{SHIFT}=\dfrac{d}{f_{XTAL}} \left(\dfrac{1}{a} - \dfrac{1}{a+\dfrac{b_1}{c}}\right) = \dfrac{d}{a f_{XTAL}} \left(\dfrac{1}{1+a\dfrac{c}{b_1}}\right)
+T_\mathrm{SHIFT}=T_\mathrm{OUT2}-T_\mathrm{OUT1}=\dfrac{1}{f_\mathrm{OUT2}} - \dfrac{1}{f_\mathrm{OUT1}} \\
+T_\mathrm{SHIFT}=\dfrac{d}{f_\mathrm{XTAL}} \left(\dfrac{1}{a} - \dfrac{1}{a+\dfrac{b_1}{c}}\right) = \dfrac{d}{a f_\mathrm{XTAL}} \left(\dfrac{1}{1+a\dfrac{c}{b_1}}\right)
 \end{gathered}
 \label{equation_tshift}
 \end{equation}
@@ -54,11 +54,11 @@ Pro minimalizaci fázového chvění je podle \cite{Si5351datasheet} a \cite{Si5
 
 \begin{equation}
 \begin{gathered}
-f_{XTAL}=\SI{25}{MHz} \\
+f_\mathrm{XTAL}=\SI{25}{MHz} \\
 a=24 \;\;\; b_1=24/8=3 \\
 c=500000/8=62500 \;\;\; d=128 \cdot 46=5888 \\
-f_{OUT1} \doteq \SI{101902}{kHz} \doteq f_{OUT2} \\
-T_{SHIFT} = \dfrac{46 \cdot 128}{24 \cdot 25000000} \left(\dfrac{1}{1+24 \cdot \dfrac{500000}{24}}\right) \doteq \SI{19.627}{ps}
+f_\mathrm{OUT1} \doteq \SI{101902}{kHz} \doteq f_\mathrm{OUT2} \\
+T_\mathrm{SHIFT} = \dfrac{46 \cdot 128}{24 \cdot 25000000} \left(\dfrac{1}{1+24 \cdot \dfrac{500000}{24}}\right) \doteq \SI{19.627}{ps}
 \end{gathered}
 \end{equation}
 
@@ -106,7 +106,7 @@ Přizpůsobovací obvody jsou navrženy tak, aby bylo dosaženo co nejlepšího 
 \includegraphics[width=\textwidth,keepaspectratio]{images/input_reflection.eps}\caption{Přizpůsobení vstupní impedance reflektometru.}\label{input_reflection}
 \end{figure}
 
-Vstupní impedance byla simulována do 10 GHz. V celém simulovaném pásmu se vstupní impedance odchyluje od nominálních $50~\Omega$ o méně než $\pm2~\Omega$. Parametr $\lvert S_{11} \rvert$ je vykreslen v grafu \ref{input_reflection}. V celém rozsahu je menší než \SI{-33}{\deci\bel}, což odpovídá koeficientu odrazu $\Gamma <= 0.023$. Navržené přizpůsobení by tedy mělo být velmi dobré. Vzhledem k tomu, že konektory obvykle způsobují odraz větší, než je odraz vycházející ze simulace, měl by být klíčovým prvkem pro dosažení malého odrazu na testovacím portu kvalitní konektor a připojovací vedení. Při uvažování tolerance impedance budiče SY54020, která se pohybuje v rozsahu \SIrange{45}{55}{\ohm}, se přizpůsobení zhorší, nicméně v celém rozsahu je lepší než \SI{-30}{\deci\bel}.
+Vstupní impedance byla simulována do 10 GHz. V celém simulovaném pásmu se vstupní impedance odchyluje od nominálních $50~\Omega$ o méně než $\pm2~\Omega$. Parametr $\lvert S_\mathrm{11} \rvert$ je vykreslen v grafu \ref{input_reflection}. V celém rozsahu je menší než \SI{-33}{\deci\bel}, což odpovídá koeficientu odrazu $\Gamma <= 0.023$. Navržené přizpůsobení by tedy mělo být velmi dobré. Vzhledem k tomu, že konektory obvykle způsobují odraz větší, než je odraz vycházející ze simulace, měl by být klíčovým prvkem pro dosažení malého odrazu na testovacím portu kvalitní konektor a připojovací vedení. Při uvažování tolerance impedance budiče SY54020, která se pohybuje v rozsahu \SIrange{45}{55}{\ohm}, se přizpůsobení zhorší, nicméně v celém rozsahu je lepší než \SI{-30}{\deci\bel}.
 
 \section{Vzorkovací obvody a oddělovací zesilovač}
 Vzorkování je v reflektometru prováděno ve třech stupních. První stupeň je tvořený diodovým můstkem U208 (na obrázku \ref{sampler_section_schematic}) a kondenzátorem C230. Druhý stupeň vzorkování je tvořen diodovým můstkem U209 a kondenzátorem C233. Třetí stupeň probíhá uvnitř mikrokontroléru v \acrshort{ADC}.
@@ -121,7 +121,7 @@ Vzhledem k velice malé kapacitě vzorkovacího kondenzátoru je nezbytné, aby 
 
 Při návrhu zapojení byly uvažovány i varianty s jinými tranzistory. Bohužel nebyl nalezen žádný tranzistor, který by byl  schopen pracovat do vyšších frekvencí a přitom měl nízký vstupní proudl hradla. Moderní tranzistory HEMT bohužel zpravidla mají vstupní proud v řádu mikroampérů. Rychlejší tranzistory typů MOSFET nebo MESFET se vyrábí pouze pro výkonové aplikace. Ke vhodným tranzistorům typu JFET se bohužel dodávají pouze S-parametry a nejsou dostupné parametry pro SPICE modely. Nakonec tedy byl zvolen tranzistor BF998. 
 
-Maximální hodnotu kapacity kondenzátoru C230 určuje i oddělovací zesilovač. Při kapacitě větší než \SI{1.5}{\pico\farad} by se oddělovací zesilovač rozkmital, což bylo zjištěno v zapojení během testování. Následně byla tato skutečnost potvrzena simulací a opravena. Proto jsou v zesilovači použity odpory R249, R250 a R251. R251 omezuje kladnou zpětnou vazbu a tlumí rezonanci páru U208~--~C230, čímž je zabráněno rozkmitání zesilovače. Odpor R249 nadále zeslabuje tuto kladnou zpětnou vazbu. Odpor R250 zvětšuje vstupní impedanci zesilovače a zvětšuje šířku pásma tohoto oddělovacího stupně. Kondenzátor C231 není v konečném zapojení použit, neboť zmenšoval použitelnou šířku pásma zesilovače a zhoršoval stabilitu zapojení. Přenosová charakteristika oddělovacího zesilovače je uvedena v grafu \ref{frequency_transfer_function_bf}.Podle těchto odsimulovaných výsledků by měla být 6\si{\deci\bel} šířka pásma přibližně \SI{5.9}{\giga\hertz}.
+Maximální hodnotu kapacity kondenzátoru C230 určuje i oddělovací zesilovač. Při kapacitě větší než \SI{1.5}{\pico\farad} se oddělovací zesilovač rozkmital, což bylo zjištěno v zapojení během testování. Následně byla tato skutečnost potvrzena simulací a opravena. Proto jsou v zesilovači použity odpory R249, R250 a R251. R251 omezuje kladnou zpětnou vazbu a tlumí rezonanci páru U208~--~C230, čímž je zabráněno rozkmitání zesilovače. Odpor R249 nadále zeslabuje tuto kladnou zpětnou vazbu. Odpor R250 zvětšuje vstupní impedanci zesilovače a zvětšuje šířku pásma tohoto oddělovacího stupně. Kondenzátor C231 není v konečném zapojení použit, neboť zmenšoval použitelnou šířku pásma zesilovače a zhoršoval stabilitu zapojení. Přenosová charakteristika oddělovacího zesilovače je uvedena v grafu \ref{frequency_transfer_function_bf}.Podle těchto odsimulovaných výsledků by měla být 6\si{\deci\bel} šířka pásma přibližně \SI{5.9}{\giga\hertz}.
 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/frequency_transfer_function_BF.eps}\caption{Přenos oddělovacího zesilovače.}\label{frequency_transfer_function_bf}
@@ -143,7 +143,7 @@ Simulace nebyla provedena s idealizovaným proudovým zdrojem, ale již v zapoje
 \includegraphics[width=\textwidth,keepaspectratio]{images/current_source_section.eps}\caption{Zapojení proudového zdroje.}\label{current_source_section_schematic}
 \end{figure}
 
-Proudový zdroj na schématu \ref{current_source_section_schematic} napájí oddělovací zesilovač. Zdroj je řízen \acrshort{DAC}, je možné jej nastavit v rozsahu \SIrange{0}{15.9}{\si{mA}} v 4096 krocích po přibližně \SI{3.88}{\micro\ampere}. Zroj je určen k autokalibraci reflektometru, umožňuje stejnosměrné posunutí měřeného signálu. Tento autokalibrační proces je nezbytný kvůli výrobním tolerancím a teplotní závislosti unipolárního dvouhradlového tranzistoru BF998. Proudový zdroj je zapojen jako kaskodové proudové zrcadlo. Odpor R235 spolu s tranzistory Q203 a Q204 slouží jako převodník z napětí na proud. Tranzistory Q202, Q205, Q206 a Q207 tvoří proudové zrcadlo. V emitorech tranzistorů jsou zapojeny odpory, čímž se zrcadlo podobá Widlarově proudovému zrcadlu se zesilovacím poměrem přibližně 60. Tranzistor Q202 je vysokofrekvenční typ s $f_T=\SI{6}{\giga\hertz}$ při \SI{8}{\milli\ampere} a nízkou výstupní kapacitou kolektoru, $C_ob<\SI{1.8}{\milli\ampere}$. Pro ochranu tranzistoru Q202 před lavinovým průrazem během zapínání reflektometru a autokalibrace je použita dioda D201, která omezuje napětí kolektor-emitor na tranzistoru Q202 na přibližně \SI{4}{\volt}, průrazné napětí tranzistoru je dle katalogových údajů \SI{6}{\volt}. Proudový zdroj je navržen tak, že není možné nastavit proud emitorem tranzistoru Q202 větší než \SI{15}{\milli\ampere}, přičemž povolený trvalý proud je \SI{50}{\milli\ampere}. Tranzistor by tedy měl být kompletně ochráněn před poškozením. Pro potlačení vlivu kapacity diody D201 na přenos oddělovacího zesilovače na vysokých frekvencích je použita cívka L203.
+Proudový zdroj na schématu \ref{current_source_section_schematic} napájí oddělovací zesilovač. Zdroj je řízen \acrshort{DAC}, je možné jej nastavit v rozsahu \SIrange{0}{15.9}{\si{mA}} v 4096 krocích po přibližně \SI{3.88}{\micro\ampere}. Zroj je určen k autokalibraci reflektometru, umožňuje stejnosměrné posunutí měřeného signálu. Tento autokalibrační proces je nezbytný kvůli výrobním tolerancím a teplotní závislosti unipolárního dvouhradlového tranzistoru BF998. Proudový zdroj je zapojen jako kaskodové proudové zrcadlo. Odpor R235 spolu s tranzistory Q203 a Q204 slouží jako převodník z napětí na proud. Tranzistory Q202, Q205, Q206 a Q207 tvoří proudové zrcadlo. V emitorech tranzistorů jsou zapojeny odpory, čímž se zrcadlo podobá Widlarově proudovému zrcadlu se zesilovacím poměrem přibližně 60. Tranzistor Q202 je vysokofrekvenční typ s $f_T=\SI{6}{\giga\hertz}$ při \SI{8}{\milli\ampere} a nízkou výstupní kapacitou kolektoru, maxímálně $C_\mathrm{ob}<\SI{1.8}{\pico\farad}$. Pro ochranu tranzistoru Q202 před lavinovým průrazem během zapínání reflektometru a autokalibrace je použita dioda D201, která omezuje napětí kolektor-emitor na tranzistoru Q202 na přibližně \SI{4}{\volt}, průrazné napětí tranzistoru je dle katalogových údajů \SI{6}{\volt}. Proudový zdroj je navržen tak, že není možné nastavit proud emitorem tranzistoru Q202 větší než \SI{15}{\milli\ampere}, přičemž povolený trvalý proud je \SI{50}{\milli\ampere}. Tranzistor by tedy měl být kompletně ochráněn před poškozením. Pro potlačení vlivu kapacity diody D201 na přenos oddělovacího zesilovače na vysokých frekvencích je použita cívka L203.
 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/power_supply_section.eps}\caption{Zapojení napájecích zdrojů vzorkovacích obvodů.}\label{analog_source_section_schematic}

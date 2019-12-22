@@ -74,14 +74,20 @@
 
 \newglossaryentry{ADCinterleave}
 {
-        name={ADC interleaving},
+        name={Prokládání ADC},
         description={Technika pro rychlejší vzorkování pomocí \textit{n} ADC, jejichž hodinové signály jsou fázově posunuté. Jde o možnost, jak zvyšovat vzorkovací frekvenci na \textit{n}-násobek vzorkovací frekvence samotného ADC. S počtem převodníků však roste cena zařízení, v nejlepším případě lineárně}
 }
 
 \newglossaryentry{aperturetime}
 {
-        name={Aperturový čas},
+        name={aperturový čas},
         description={Aperturový čas je doba, po kterou přechází vzorkovač ze stavu, kdy jeho výstup sleduje vstup do stavu, kdy je výstup nezávislý na vstupu. Po tuto dobu se nelineárně mění vlastnosti vzorkovače. Výstupní napětí je tak nelineární funkcí vstupního napětí. Pokud jsou zpracovávány signály, u kterých již není aperturový čas zanedbatelně malý, je omezena jak linearita vzorkovače, tak jeho časová rozlišovací schopnost}
+}
+
+\newglossaryentry{redriver}
+{
+        name={redriver},
+        description={Speciální budič sběrnice, který se používá ve sběrnicích USB, SATA a SAS v případě, kdy je sběrnice vedena dlouhou cestou po desceplošných spojů. V takovém případě vlivem disperze dochází k deformaci náběžných hran na přenášených datech. Redrivery dokáží vliv disperze potlačovat tím, že na vstupu mají tvarovací obvody, které zajišťují korektní příjem dat. Na výstupu pak mají možnost na náběžných hranách vytvářet překmit, který kompenzuje disperzní ztráty. Míru vstupní i výstupní korekce bývá možné v krocích nastavit tak, aby odpovídaly fyzickým parametrům vytvořených spojů \cite{SN75LVCP601datasheet}}
 }
 
 \makeglossaries
@@ -89,12 +95,12 @@
 \renewcommand{\glossaryname}{Seznam cizích výrazů}
 \renewcommand{\acronymname}{Seznam zkratek použitých v textu}
 
-\DeclareSIUnit \gigasample{GSa.s^{{-1}}}
-\DeclareSIUnit \megasample{MSa.s^{{-1}}}
-\DeclareSIUnit \kilosample{kSa.s^{{-1}}}
+\DeclareSIUnit \gigasample{GSa$\cdot$s^{{-1}}}
+\DeclareSIUnit \megasample{MSa$\cdot$s^{{-1}}}
+\DeclareSIUnit \kilosample{kSa$\cdot$s^{{-1}}}
 \DeclareSIUnit \bit{b}
 \DeclareSIUnit \baud{Bd}
-\DeclareSIUnit \gigabitpersecond{Gb.s^{{-1}}}
+\DeclareSIUnit \gigabitpersecond{Gb$\cdot$s^{{-1}}}
 \DeclareSIUnit \ppm{ppm}
 
 \ctusetup{

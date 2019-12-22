@@ -1,5 +1,6 @@
 \glossaryentry{Koeficient odrazu ($\Gamma $)?\glossentry{gama}|setentrycounter[]{page}\glsnumberformat}{7}
 \glossaryentry{Koeficient prostupu ($T$)?\glossentry{transmise}|setentrycounter[]{page}\glsnumberformat}{7}
 \glossaryentry{Clipline?\glossentry{clipline}|setentrycounter[]{page}\glsnumberformat}{12}
-\glossaryentry{ADC interleaving?\glossentry{ADCinterleave}|setentrycounter[]{page}\glsnumberformat}{23}
-\glossaryentry{Aperturový čas?\glossentry{aperturetime}|setentrycounter[]{page}\glsnumberformat}{25}
+\glossaryentry{redriver?\glossentry{redriver}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{Prokládání ADC?\glossentry{ADCinterleave}|setentrycounter[]{page}\glsnumberformat}{23}
+\glossaryentry{aperturový čas?\glossentry{aperturetime}|setentrycounter[]{page}\glsnumberformat}{25}

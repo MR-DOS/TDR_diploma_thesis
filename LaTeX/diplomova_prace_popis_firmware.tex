@@ -1,9 +1,9 @@
 \chapter{Popis firmware}
 
-Pojmem firmware je v této kapitole myšlen program, který běží v mikrokontroléru a obsluhuje všechny části reflektometru a poskytuje uživatelské rozhraní a zajišťuje měření, vyhodnocování měření a komunikaci s počítačem. Firmware je napsán v jazyce C, knihovny pro ovládání periferií byly převzaty od výrobce. Všechen ostatní zdrojový kód je vlastní, vznikl v rámci této práce.
+Pojmem firmware je v této kapitole myšlen program, který běží v mikrokontroléru, obsluhuje všechny části reflektometru, poskytuje uživatelské rozhraní a zajišťuje měření, vyhodnocování měření a komunikaci s počítačem. Firmware je napsán v jazyce C, knihovny pro ovládání periferií byly převzaty od výrobce. Všechen ostatní zdrojový kód je vlastní, vznikl v rámci této práce.
 
 \section{Technické parametry firmware}
-Použitý mikrokontrolér disponuje \SI{20}{\kilo\byte} \acrshort{RAM}. Jeden měřený vzorek zabírá 12 bitů, bez použití komprese dat je možné do \acrshort{RAM} uložit 10000~vzorků. Parametr $\frac{a b}{c}$ v rovnici \ref{equation_tshift} určuje délku měřeného souboru dat. Vzledem k použitým hodnotám má měřený soubor dat 500000~bodů s časovým krokem přibližně \SI{19.62}{\pico\second}. Část RAM ovšem zabírá program pro svůj chod, délka měřicího okna byla nakonec zvolena 4096 bodů, což umožňuje v rámci jednoho okna změřit interval o délce přes \SI{80}{\nano\second}. Ve vakuu tento interval odpovídá délce měřeného úseku \SI{12}{\meter}. Pro koaxiální kabely odpovídá měřený úsek přibližně \SIrange{7.9}{10.2}{\meter} při uvažování typického rozsahu zkracovacího činitele \SIrange{0.66}{0.85}{}. V případě potřeby měřit delší vedení se může měřicí okno posunout a měřit další úsek vedení. Tento nedostatek tedy nebrání měřit libovolně dlouhá vedení, pouze znamená, že pro delší vedení je nezbytné provádět měření po částech.
+Použitý mikrokontrolér disponuje \SI{20}{\kilo\byte} \acrshort{RAM}. Jeden měřený vzorek zabírá 12 bitů, bez použití komprese dat je možné do \acrshort{RAM} uložit 10000~vzorků. Parametr $\frac{a b}{c}$ v rovnici \ref{equation_tshift} určuje délku měřeného souboru dat. Vzhledem k použitým hodnotám má měřený soubor dat 500000~bodů s časovým krokem přibližně \SI{19.62}{\pico\second}. Část RAM ovšem zabírá program pro svůj chod, délka měřicího okna byla nakonec zvolena 4096 bodů, což umožňuje v rámci jednoho okna změřit interval o délce přes \SI{80}{\nano\second}. Ve vakuu tento interval odpovídá délce měřeného úseku \SI{12}{\meter}. Pro koaxiální kabely odpovídá měřený úsek přibližně \SIrange{7.9}{10.2}{\meter} při uvažování typického rozsahu zkracovacího činitele \SIrange{0.66}{0.85}{}. V případě potřeby měřit delší vedení se může měřicí okno posunout a měřit další úsek vedení. Tento nedostatek tedy nebrání měřit libovolně dlouhá vedení, pouze znamená, že pro delší vedení je nezbytné provádět měření po částech.
 
 \section{Autokalibrace a autodiagnostika zařízení}
 
@@ -31,7 +31,7 @@ Tento algoritmus byl numericky simulován, nejprve v přesné podobě v plovouc�
 \includegraphics[width=\textwidth,keepaspectratio]{images/averaging_float_variance.eps}\caption{Závislost rozptylu na počtu provedených průměrů.}\label{averaging_variance}
 \end{figure}	
 
-Průběh této závislosti odpovídá funkci $\frac{1}{N}$, což je možné dokázat tak, že se rozptyl ve všech bodech pronásobí počtem průměrů, který danému bodu odpovídá. Na grafu \ref{averaging_float_difference_error} je vidět, že součin rozptylu s počtem průměrů je přibližně konstantní a odpovídá počátečnímu rozptylu. Diference rozptylu se pro větší počet průměrů než 16 blíží nule. Pro více než 16 průměrů, tedy polovinu směrodatné odchylky, tedy již úroveň šumu výrazně neklesá.
+Průběh této závislosti odpovídá funkci $\frac{1}{N}$, což je možné vizualizovat tak, že se rozptyl ve všech bodech pronásobí počtem průměrů, který danému bodu odpovídá. Na grafu \ref{averaging_float_difference_error} je vidět, že součin rozptylu s počtem průměrů je přibližně konstantní a odpovídá počátečnímu rozptylu. Diference rozptylu se pro větší počet průměrů než 16 blíží nule. Pro více než 16 průměrů, tedy polovinu směrodatné odchylky, tedy již úroveň šumu výrazně neklesá.
 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/averaging_float_difference_error.eps}\caption{Závislost diference rozptylu (červeně) a součinu rozptylu s počtem průměrů (modře) na počtu provedených průměrů pro výpočet v plovoucí desetinné řádce.}\label{averaging_float_difference_error}
@@ -50,7 +50,7 @@ Při zapnutí fázového závěsu je fázový rozdíl mezi budicím signálem a 
 
 \begin{equation}
 \begin{gathered}
-	diff_{AVG8}[n]= \dfrac{1}{8} \sum_{k=0}^7 \dfrac{x[n-k]-x[n-(k+1)]}{2}= \dfrac{x[n]-x[n-8]}{16}
+	\mathit{diff}_{\mathrm{AVG8}}[n]= \dfrac{1}{8} \sum_{k=0}^7 \dfrac{x[n-k]-x[n-(k+1)]}{2}= \dfrac{x[n]-x[n-8]}{16}
 \end{gathered}
 \label{equation_difference_sum}
 \end{equation}

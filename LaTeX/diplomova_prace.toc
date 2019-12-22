@@ -48,7 +48,7 @@
 \contentsline {subsection}{\numberline {9.2.1}Detekce stability f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{55}{subsection.9.2.1}% 
 \contentsline {subsection}{\numberline {9.2.2}Autokalibrace stejnosm\IeC {\v e}rn\IeC {\'e} slo\IeC {\v z}ky}{56}{subsection.9.2.2}% 
 \contentsline {subsection}{\numberline {9.2.3}Kalibrace nap\IeC {\v e}\IeC {\v t}ov\IeC {\'y}ch \IeC {\'u}rovn\IeC {\'\i }}{56}{subsection.9.2.3}% 
-\contentsline {subsection}{\numberline {9.2.4}Odhad \IeC {\v s}umov\IeC {\'e} \IeC {\'u}rovn\IeC {\v e} a pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{57}{subsection.9.2.4}% 
+\contentsline {subsection}{\numberline {9.2.4}Odhad \IeC {\v s}umov\IeC {\'e} \IeC {\'u}rovn\IeC {\v e} a pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{56}{subsection.9.2.4}% 
 \contentsline {subsection}{\numberline {9.2.5}Autokalibrace polohy budic\IeC {\'\i }ho pulzu}{59}{subsection.9.2.5}% 
 \contentsline {subsection}{\numberline {9.2.6}Kalibrace polohy roviny m\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{60}{subsection.9.2.6}% 
 \contentsline {section}{\numberline {9.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{61}{section.9.3}% 
