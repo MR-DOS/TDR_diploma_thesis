@@ -41,5 +41,12 @@ endfunction
 %load_demangle_show_save('measurement_avg_wait');
 %load_demangle_show_save('measurement_running');
 %load_demangle_show_save('measurement_complete');
+load_demangle_show_save('zooming_start');
+load_demangle_show_save('zooming_complete');
+load_demangle_show_save('discontinuity_split');
+load_demangle_show_save('discontinuity_open_after_split');
+load_demangle_show_save('discontinuity_open');
+load_demangle_show_save('discontinuity_open_report');
+load_demangle_show_save('discontinuities_shown');
 
 close all;

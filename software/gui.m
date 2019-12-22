@@ -901,6 +901,10 @@ if (avg_received==0)
     averages=sscanf(char(averages(4:end)),"%f");
     set(h.device_slider_text,"string",strcat("Averages: ",num2str(averages)));
     set(h.device_average_slider,"value",(averages-1)/63);
+    
+    srl_write(serial_port,"LEVELS!\r\n");
+    levels=srl_read(serial_port,255);
+    levels=sscanf(char(levels(8:end)),"%f %f");
   endif;
   avg_received=1;
 endif;
@@ -919,9 +923,10 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   set(h.graph_axes,"visible","on");
   decoded_data=4096-typecast(data,'uint16');
   set(h.plot,"XData",20*(0:4095));
-  set(h.plot,"YData",decoded_data);
+  set(h.plot,"YData",2*(double(decoded_data)-levels(1))/(levels(2)-levels(1))-1);
   xlim(h.graph_axes,[0 20*numel(decoded_data)]);
-  ylim(h.graph_axes, [min(decoded_data) max(decoded_data)]);
+  ylim(h.graph_axes, [-1.2 1.2]);
+  yticks(h.graph_axes,-1:0.5:1);
   drawnow;
 endif;
 

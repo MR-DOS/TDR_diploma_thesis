@@ -31,7 +31,8 @@ volatile bool Remote_Mode = FALSE;
 #define COMMAND_SEND_DATA	4
 #define COMMAND_GET_AVG	5
 #define COMMAND_SET_AVG 6
-const char commands[7][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AVG?", "AVG!"};
+#define COMMAND_GET_LEVELS 7
+const char commands[8][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AVG?", "AVG!", "LEVELS!"};
 
 #define NO_RESPONSE_PENDING		255
 #define	RESPONSE_CARRIAGE_RETURN 254
@@ -57,11 +58,14 @@ const char commands[7][15]={"REM!","DEV?","STATE?","CONTINUE!","SEND_DATA!", "AV
 #define RESPONSE_SENDING_DATA			17
 #define RESPONSE_AVG					18
 #define RESPONSE_AVG_NUMBER				19
-uint8_t responses[21][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
+#define RESPONSE_LEVELS					20
+#define RESPONSE_LEVELS_LOW				21
+#define RESPONSE_LEVELS_HIGH			22
+uint8_t responses[23][48]={"REM.",DEVICE_NAME" "__DATE__" "__TIME__,"STATE BOARD_INIT","STATE WAIT_EDGE",
 			"STATE CALIBRATING_SAMPLER","STATE NOISE_ESTIMATION","STATE FINDING_EDGE","STATE FINDING_REFERENCE_PLANE",
 			"STATE READY","STATE WAIT_OPEN","STATE WAIT_SHORT","STATE WAIT_LOAD","STATE NORMAL_CAL_RUNNING",
 			"STATE WAIT_REFERENCE_PLANE","STATE WAIT_DUT","STATE MEASUREMENT_RUNNING", "STATE READY_TO_SEND",
-			"STATE SENDING_DATA", "AVG ", "0"};
+			"STATE SENDING_DATA", "AVG ", "0","LEVELS ", "0", "4095"};
 volatile uint8_t global_response_pending=NO_RESPONSE_PENDING;
 
 volatile bool remote_user_action=FALSE;
@@ -69,7 +73,101 @@ volatile bool remote_user_action=FALSE;
 void Wait_For_User_Action(void)
 {
 	while((GPIO_ReadInputDataBit(BTN_PORT,BTN)==SET)&(remote_user_action==FALSE)){}
+	while(GPIO_ReadInputDataBit(BTN_PORT,BTN)==RESET){}
 	remote_user_action=FALSE;
+}
+
+/*
+void Find_Discontinuities(uint16_t data[SAMPLE_MEMORY_SIZE], uint16_t error_positions[8], int16_t diff_values[8], uint16_t low, uint16_t high)
+{
+	uint8_t error_counter=0;
+	uint16_t i16;
+	int16_t last_tmp=0;
+	for(i16=16; i16<SAMPLE_MEMORY_SIZE; i16++)
+	{
+		int16_t tmp=-(2000*((int32_t)data[i16]-data[i16-16]))/(high-low);
+		if (((tmp>100)|(tmp<-100))&(abs(last_tmp)>abs(tmp)))
+		{
+			error_positions[error_counter]=i16-8;
+			diff_values[error_counter]=tmp;
+			error_counter++;
+			i16=i16+32;
+			if (error_counter==8) return;
+		}
+		last_tmp=tmp;
+	}
+}
+*/
+
+void Find_Discontinuities(uint16_t data[SAMPLE_MEMORY_SIZE], uint16_t error_positions[8], int16_t diff_values[8], uint16_t low, uint16_t high)
+{
+	uint8_t error_counter=0;
+	uint8_t i8;
+	uint16_t i16;
+	int16_t last_largest_diff=0;
+	uint32_t last_largest_diff_position=0;
+	for(i16=16; i16<SAMPLE_MEMORY_SIZE; i16++)
+	{
+		int16_t tmp=-(2000*((int32_t)data[i16]-data[i16-16]))/(high-low);
+
+		if (abs(tmp)>abs(last_largest_diff))
+		{
+			last_largest_diff=tmp;
+			last_largest_diff_position=i16;
+		}
+	}
+
+	while(error_counter<7)
+	{
+		if (abs(last_largest_diff)>150)
+		{
+			error_positions[error_counter]=last_largest_diff_position;
+			diff_values[error_counter]=last_largest_diff;
+		}
+
+		if (diff_values[error_counter]==0) break;
+
+		error_counter++;
+		last_largest_diff=0;
+		last_largest_diff_position=0;
+		for(i16=16; i16<SAMPLE_MEMORY_SIZE; i16++)
+		{
+			int16_t tmp=-(2000*((int32_t)data[i16]-data[i16-16]))/(high-low);
+			if (abs(tmp)>abs(last_largest_diff))
+			{
+				bool already_found=FALSE;
+				for (i8=0; i8<error_counter; i8++)
+				{
+					if ((i16<(error_positions[i8]+16)) & (i16>(error_positions[i8]-16))) already_found=TRUE;
+				}
+				if (already_found==TRUE) continue;
+
+				last_largest_diff=tmp;
+				last_largest_diff_position=i16;
+			}
+		}
+	}
+
+	error_counter=0;
+	while(diff_values[error_counter]!=0) error_counter++;
+
+	for (i8=0; i8<error_counter; i8++)
+	{
+		uint8_t i8_2;
+		for(i8_2=1; i8_2<error_counter; i8_2++)
+		{
+			if (error_positions[i8_2]<error_positions[i8_2-1])
+			{
+				uint8_t tmp2=error_positions[i8_2];
+				error_positions[i8_2]=error_positions[i8_2-1];
+				error_positions[i8_2-1]=tmp2;
+
+				tmp2=diff_values[i8_2];
+				diff_values[i8_2]=diff_values[i8_2-1];
+				diff_values[i8_2-1]=tmp2;
+			}
+		}
+	}
 }
 
 void SysTick_Handler(void)
@@ -88,7 +186,7 @@ void SysTick_Handler(void)
 					DMA_Cmd(DMA1_Channel4, DISABLE);
 					DMA_ClearFlag(DMA1_FLAG_TC4);
 					global_response_pending=NO_RESPONSE_PENDING;
-					Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
+					Board_CalibrationState=CAL_DATA_SENT;
 				}
 				return;
 			}
@@ -109,6 +207,19 @@ void SysTick_Handler(void)
 
 			if (responses[global_response_pending][TX_position]==0)
 			{
+				if (global_response_pending==RESPONSE_LEVELS)
+				{
+					global_response_pending=RESPONSE_LEVELS_LOW;
+					TX_position=0;
+					return;
+				}
+				if (global_response_pending==RESPONSE_LEVELS_LOW)
+				{
+					USART_SendData(USART1,32);
+					global_response_pending=RESPONSE_LEVELS_HIGH;
+					TX_position=0;
+					return;
+				}
 				if (global_response_pending==RESPONSE_AVG)
 				{
 					global_response_pending=RESPONSE_AVG_NUMBER;
@@ -379,11 +490,12 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, ON);
 
 	while(0){
-	Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_OPEN, ON);
+	//Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_OPEN, ON);
 
 	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
 	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Please connect short");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, "      standard.");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " standard to the end");
+	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   of an airline.");
 	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "    Press button");
 	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
 	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
@@ -391,7 +503,11 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
 
 	Calibrate_Logic_Levels(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_SHORT, ON);
-	Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_SHORT, ON);
+	//Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_SHORT, ON);
+
+	ReflectometerMode_Init(Si5351_ConfigStruct, ReflectometerMode_Run);
+	Delay_ms(100);
+	Si5351_ClearStickyBits(Si5351_ConfigStruct);
 
 	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
 	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, " Please connect load");
@@ -416,6 +532,8 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	}
 
 	getnum(Board_ReflectometerState->ideal_averaging,responses[RESPONSE_AVG_NUMBER]);
+	getnum(Board_ReflectometerState->calibration[CAL_OPEN].low_value,responses[RESPONSE_LEVELS_LOW]);
+	getnum(Board_ReflectometerState->calibration[CAL_OPEN].high_value,responses[RESPONSE_LEVELS_HIGH]);
 
 	SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
 	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
@@ -425,6 +543,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	Board_ReflectometerState->start_sample_index=Board_ReflectometerState->rising_edge_start_index;
 	Board_ReflectometerState->enable_sampling=OFF;
 	Board_ReflectometerState->average_count=0;
+	Board_ReflectometerState->enable_continuous_run=ON;
 
 	GPIO_WriteBit(LED_PORT, LED_RDY, Bit_SET);
 	GPIO_WriteBit(LED_PORT, LED_NOT_RDY, Bit_RESET);
@@ -507,52 +626,157 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 			SSD1306_DrawBuffer(SSD1306_ConfigStruct);
 
 			Board_CalibrationState=CAL_READY_TO_SEND;
-			while(Board_CalibrationState==CAL_READY_TO_SEND){}
+			while(Board_CalibrationState!=CAL_DATA_SENT){}
 			Board_CalibrationState=CAL_MEASUREMENT_RUNNING;
 		}else {
-			for(i16=SAMPLE_MEMORY_SIZE;i16>127;i16-=10*(i16/140)+1)
+
+			uint16_t discontinuities[8]={0,0,0,0,0,0,0,0};
+			int16_t discontinuities_value[8]={0,0,0,0,0,0,0,0};
+			Find_Discontinuities(&(Board_ReflectometerState->sampled_data), &discontinuities, &discontinuities_value, Board_ReflectometerState->calibration[CAL_OPEN].low_value, Board_ReflectometerState->calibration[CAL_OPEN].high_value);
+
+			uint8_t discontinuity_counter=0;
+			if(discontinuities[discontinuity_counter]==0)
 			{
-				uint16_t point;
 				SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
-				for(point=0; point<i16; point++)
-				{
-					int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
-					if (draw_tmp<=0)
-					{
-						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 0);
-						continue;
-					}
-					if (draw_tmp>=52)
-					{
-						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 52);
-						continue;
-					}
-					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, draw_tmp);
-				}
-				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,4*6,7,"Zooming, wait.");
+				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,0," No discontinuities");
+				SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,1,"        found!");
 				SSD1306_DrawBuffer(SSD1306_ConfigStruct);
-			}
-			for(i16=0;i16<=SAMPLE_MEMORY_SIZE-128;i16++)
-			{
-				uint16_t point;
-				SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
-				for(point=0; point<128; point++)
+			} else {
+				for(i16=SAMPLE_MEMORY_SIZE;i16>127;i16-=10*(i16/140)+1)
 				{
-					int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[i16+point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
-					if (draw_tmp<=0)
+					uint16_t point;
+					SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+					for(point=0; point<i16; point++)
 					{
-						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 0);
-						continue;
+						int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
+						if (draw_tmp<=0)
+						{
+							SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 0);
+							continue;
+						}
+						if (draw_tmp>=52)
+						{
+							SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, 52);
+							continue;
+						}
+						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, (127*point)/i16, draw_tmp);
 					}
-					if (draw_tmp>=52)
-					{
-						SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 52);
-						continue;
-					}
-					SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, draw_tmp);
+					SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,4*6,7,"Zooming, wait.");
+					SSD1306_DrawBuffer(SSD1306_ConfigStruct);
 				}
-				SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, (255*(uint32_t)i16)/(SAMPLE_MEMORY_SIZE-128));
-				SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+
+				for(i16=0;i16<=SAMPLE_MEMORY_SIZE-128;i16++)
+				{
+					uint16_t point;
+					SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+
+					if((discontinuities[discontinuity_counter]==0)|(discontinuity_counter==9))
+					{
+						SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+						SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,3," All discontinuities");
+						SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"        shown!");
+						SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 6, "    Press button");
+						SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+						Wait_For_User_Action();
+						break;
+					} else {
+						for(point=0; point<128; point++)
+						{
+							int32_t draw_tmp=(52*4096*((int32_t)Board_ReflectometerState->sampled_data[i16+point]-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value))/(4096*((int32_t)Board_ReflectometerState->calibration[CAL_OPEN].high_value-(int32_t)Board_ReflectometerState->calibration[CAL_OPEN].low_value));
+							if (draw_tmp<=0)
+							{
+								SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 0);
+								continue;
+							}
+							if (draw_tmp>=52)
+							{
+								SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, 52);
+								continue;
+							}
+							SSD1306_DrawPixelToBuffer(SSD1306_ConfigStruct, point, draw_tmp);
+						}
+
+						SSD1306_DrawProgressIndicator(SSD1306_ConfigStruct, (255*(uint32_t)i16)/(SAMPLE_MEMORY_SIZE-128));
+						SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+
+						if(discontinuities[discontinuity_counter]<=(i16+64))
+						{
+							Delay_ms(2000);
+							char tmp_string[6];
+
+							getnum(discontinuity_counter+1, tmp_string);
+							SSD1306_ClearDisplayBuffer(SSD1306_ConfigStruct);
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-5*6,0,tmp_string);
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,0,"Discontinuity #");
+
+							getnum(abs(discontinuities_value[discontinuity_counter]),tmp_string);
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-5*6,1,tmp_string);
+							SSD1306_DrawCharToBuffer(SSD1306_ConfigStruct,127-4*6,1,46);
+							if (tmp_string[1]==32)
+							{
+								SSD1306_DrawCharToBuffer(SSD1306_ConfigStruct,127-5*6,1,48);
+							} else {
+								SSD1306_DrawCharToBuffer(SSD1306_ConfigStruct,127-5*6,1,tmp_string[1]);
+							}
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,1,"Refl. coeff.");
+
+							if(discontinuities_value[discontinuity_counter]<0) SSD1306_DrawCharToBuffer(SSD1306_ConfigStruct,127-6*6,1,45);
+
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,3,"Type of reflection:");
+							bool error_identified=FALSE;
+
+							if((discontinuities_value[discontinuity_counter]>900)&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"OPEN");
+							}
+
+							if((discontinuities_value[discontinuity_counter]<-900)&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"SHORT");
+							}
+
+							if((discontinuities_value[discontinuity_counter]<(333+80))&(discontinuities_value[discontinuity_counter]>(333-80))&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"IMPEDANCE DOUBLED");
+							}
+
+							if((discontinuities_value[discontinuity_counter]>(-333-80))&(discontinuities_value[discontinuity_counter]<(-333+80))&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"IMPEDANCE HALVED");
+							}
+
+							if((discontinuities_value[discontinuity_counter]>0)&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"HIGHER IMPEDANCE");
+							}
+
+							if((discontinuities_value[discontinuity_counter]<0)&(error_identified==FALSE))
+							{
+								error_identified=TRUE;
+								SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,4,"LOWER IMPEDANCE");
+							}
+
+							char position_string[11];
+							getnum32((10000000/NUMBER_OF_POINTS)*((uint32_t)discontinuities[discontinuity_counter] - (Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index)),position_string);
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-11*7,5,position_string);
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,5,"Position:");
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-2*7,5,"ps");
+
+							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 7, "    Press button");
+
+							SSD1306_DrawBuffer(SSD1306_ConfigStruct);
+							Wait_For_User_Action();
+							discontinuity_counter++;
+						}
+
+
+					}
+				}
 			}
 		}
 	}
@@ -1759,6 +1983,7 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 		}
 	}
 
+	Board_ReflectometerState->rising_edge_center_index=Board_ReflectometerState->start_sample_index+edge_80percent_index+(edge_20percent_index-edge_80percent_index)/2;
 	Board_ReflectometerState->rising_edge_start_index=(Board_ReflectometerState->start_sample_index+edge_80percent_index-(edge_20percent_index-edge_80percent_index)*10-SAMPLE_MEMORY_SIZE/32)%NUMBER_OF_POINTS;
 
 	if(RunGraphical==ON)
@@ -1965,7 +2190,14 @@ void USART1_IRQHandler(void)
 					Remote_Mode=TRUE;
 				}
 
-				RX_buffer[4]=0;
+				if (Compare_Strings(RX_buffer, commands[COMMAND_GET_LEVELS]))
+				{
+					response_pending=RESPONSE_LEVELS;
+					GPIO_WriteBit(LED_PORT, LED_BUSY, Bit_RESET);
+					Remote_Mode=TRUE;
+				}
+
+				RX_buffer[4]=0; //THIS HAS TO BE THE LAST CHECK!
 				if (Compare_Strings(RX_buffer, commands[COMMAND_SET_AVG]))
 				{
 					if(Board_CalibrationState!=CAL_WAIT_DUT) return;

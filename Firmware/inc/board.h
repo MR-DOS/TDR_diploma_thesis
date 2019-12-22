@@ -85,7 +85,7 @@ typedef enum {DISABLED=0, ENABLED=1} ForceState;
 typedef enum {CAL_BOARD_INIT=0, CAL_WAIT_EDGE, CAL_CALIBRATING_SAMPLER, CAL_NOISE_ESTIMATION,
 			CAL_FINDING_EDGE, CAL_FINDING_REFERENCE_PLANE, CAL_READY, CAL_WAIT_OPEN, CAL_WAIT_SHORT,
 			CAL_WAIT_LOAD, CAL_RUNNING, CAL_WAIT_REFERENCE_PLANE, CAL_WAIT_DUT, CAL_MEASUREMENT_RUNNING,
-			CAL_READY_TO_SEND, CAL_SENDING_DATA} CalibrationState;
+			CAL_READY_TO_SEND, CAL_SENDING_DATA, CAL_DATA_SENT} CalibrationState;
 
 #ifndef ENABLESTATE
 #define ENABLESTATE
@@ -189,6 +189,7 @@ typedef struct
 	volatile uint32_t start_sample_index;
 	volatile uint32_t largest_differentiation_point;
 	uint32_t rising_edge_start_index;
+	uint32_t rising_edge_center_index;
 
 	volatile uint16_t average_count;
 

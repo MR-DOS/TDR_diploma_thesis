@@ -140,3 +140,47 @@ V případě, že je zařízení ovládáno z počítače, je na konci měření
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/measurement_complete.png}\caption{Měření dokončeno.}\label{measurement_complete}
 \end{figure}
+
+V případě, že je zařízení ovládáno bez využití počítače, přiblíží se změřená data tak, aby každý změřený bod odpovídal jednomu horizontánímu bodu na displeji. Začátek tohoto procesu je zachycen na obr. \ref{zooming_start}, konec tohoto procesu pak na obr. \ref{zooming_complete}.
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/zooming_start.png}\caption{Měření dokončeno, začátek přibližování změřených dat.}\label{zooming_start}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/zooming_complete.png}\caption{Měření dokončeno, konec přibližování změřených dat.}\label{zooming_complete}
+\end{figure}
+
+Po přiblížení se změřený průběh začne plynule posouvat až k části průběhu, kde byla detekována diskontinuita na vedení podle obr. \ref{discontinuity_open_after_split}. Firmware jako diskontinuitu považuje jakoukoli část změřeného průběhu, kde diference průběhu odpovídá $\abs{\Gamma}>\SI{0.15}{}$. Zde několik sekund počká, aby si jej uživatel mohl prohlédnout. 
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_open_after_split.png}\caption{Přiblížená data vycentrovaná na polohu diskontinuity.}\label{discontinuity_open_after_split}
+\end{figure}
+
+Následně se zobrazí informační text, který informuje o pořadí diskontinuity, koeficient odrazu v místě diskontinuity, detekovaný typ závady a polohu závady. Poloha je indikována v časových jednotkách, protože nejsou známé parametry vedení. Poloha je vztažena vůči detekované poloze roviny měření. Tato informační obrazovka je vyobrazena na obr. \ref{discontinuity_split}.
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_split.png}\caption{Informační obrazovka o typu diskontinuity, obecná diskontinuita.}\label{discontinuity_split}
+\end{figure}
+
+Podle typu diskontinuity se zobrazí její identifikace. Firmare je schopen identifikovat celkem 6 druhů diskontinuit:
+\begin{itemize}
+	\item{$\Gamma>\SI{0.9}{}$}\\* Diskontinuita je považována za \quotedblbase OPEN\textquotedblleft, tedy rozpojený konec vedení.
+	\item{$\Gamma<\SI{-0.9}{}$}\\* Diskontinuita je považována za \quotedblbase SHORT\textquotedblleft, tedy zkratovaný konec vedení. K této i předchozí diskontinuitě může dojít buď mechanickým poškozením vedení nebo jeho rozpojením.
+	\item{$\Gamma=1/3 \pm \SI{-0.08}{}$}\\* Diskontinuita je považována za \quotedblbase IMPEDANCE DOUBLED\textquotedblleft, tedy zdvojnásobení impedance.
+	\item{$\Gamma=-1/3 \mp \SI{-0.08}{}$}\\* Diskontinuita je považována za \quotedblbase IMPEDANCE HALVED\textquotedblleft, tedy přechod na poloviční impedanci vedení. K této závadě může dojít například v místě, kde je vedení rozdvojeno a jsou na něj připojena dvě vedení o stené impedanci jako první vedení.
+	\item{$\Gamma>\SI{0}{}$}\\* V případě, že diskontinuita neodpovídá ani jedné z předchozích chyb, je indikována buď tato nebo následující chyba. Tato je označena jako \quotedblbase HIGHER IMPEDANCE\textquotedblleft , tedy přechod vedení na vyšší impedanci.
+	\item{$\Gamma<\SI{0}{}$}\\* Tato diskontinuita je označena jako \quotedblbase LOWER IMPEDANCE\textquotedblleft , tedy přechod vedení na nižší impedanci.
+\end{itemize}
+
+Odezva na kalibr typu \quotedblbase open\textquotedblleft{} je na obr. \ref{discontinuity_open}. Z levé strany je průběh uprostřed obrazovky, odpovídá $\Gamma=0$, v místě diskontinuity přejde až k vrchnímu okraji obrazovky, který odpovídá $\Gamma=1$. Spodní okraj obrazovky odpovídá $\Gamma=-1$.
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_open.png}\caption{Přiblížená odezva na kalibr typu \quotedblbase open\textquotedblleft .}\label{discontinuity_open}
+\end{figure}
+
+Průběhu na obr. \ref{discontinuity_open_report} odpovídá informační obrazovka z obr. \ref{discontinuity_open_report}. Koeficient $\Gamma$ je přibližně roven 1, odpovídá tedy odrazu na kalibru \quotedblbase open\textquotedblleft .
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_open_report.png}\caption{Informační obrazovka o typu diskontinuity, kalibr typu \quotedblbase open\textquotedblleft .}\label{discontinuity_open_report}
+\end{figure}
+
+Poté, co jsou uživateli popsány všechny diskontinuity (firmware detekuje pouze 8 největších diskontinuit), zobrazí se informace o tom, že všechny diskontinuit již byly zobrazeny. Tato informace je vidět na obr. \ref{discontinuities_shown}. Poté je možné celé měření opakovat.
+\begin{figure}[H]
+\includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuities_shown.png}\caption{Informační obrazovka o zobrazení všech diskontinuit.}\label{discontinuities_shown}
+\end{figure}
