@@ -187,3 +187,30 @@ Navzorkovaný průběh je třeba pro zpracování zdigitalizovat. K tomuto úče
 
 \section{Komunikace s počítačem}
 Komunikace reflektometru s počítačem je zajištěna pomocí virtuálního sériového portu. Ten je tvořen převodníkem CH340G, který podporuje standardní přenosové rychlosti, navíc nabízí i nestandardní rychlosti až do \SI{2}{\mega\baud}. Pro komunikaci s reflektometrem slouží ovládací software napsaný v prostředí Octave.
+
+\section{Navržená deska plošných spojů}
+Plošný spoj reflektometru byl navržen v návrhovém prostředí KiCAD. Vysokofrekvenční část spojů zahrnuje pouze cestu mezi konektorem, budičem a vzorkovačem. Tato cesta je dlouhá pouze několik milimetrů. Proto byl spoj navržen s předpokladem, že na takto krátkou vzdálenost není nezbytné použít materiál určený pro vysokofrekvenční zapojení. Byl proto použit obyčejný substrát typu FR-4 o tloušťce \SI{0.6}{\milli\meter}, motiv je pouze oboustranný. Tloušťka byla zvolena tak, aby koplanární vedení nemusela být širší než přibližně \SI{1}{\milli\meter} při mezeře mezi vedením a zemnicí plochou větší než \SI{0.2}{\milli\meter}. Požadavek na mezeru vychází z běžných výrobních požadavků a tolerancí výrobců plošných spojů. Navržená a vyrobená deska plošných spojů je vyfocena na obr. \ref{pcb_top_unassembled} a \ref{pcb_bottom_unassembled}. Osazená a otestovaná deska plošných spojů je na obrázcích \ref{pcb_top_assembled} a \ref{pcb_bottom_assembled}. Velké hnědé součástky, které jsou osazeny z obou stran desky plošných spojů, jsou kondenzátorová pole, která slouží ke spojení virtuální a skutečné signálové země pro vysoké frekvence, ohraničují celou oblast virtuální země. Okolí testovacího portu s koplanárním vedením je na obr. \ref{pcb_coplanar}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_top.jpg}\caption{Vrchní strana desky plošných spojů, neosazená.}\label{pcb_top_unassembled}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_bottom.jpg}\caption{Spodní strana desky plošných spojů, neosazená.}\label{pcb_bottom_unassembled}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_top_assembled.jpg}\caption{Vrchní strana desky plošných spojů, osazená.}\label{pcb_top_assembled}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=9.5cm,keepaspectratio]{images/pcb_bottom_assembled.jpg}\caption{Spodní strana desky plošných spojů, osazená.}\label{pcb_bottom_assembled}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_coplanar.jpg}\caption{Testovací konektor, koplanární vedení a motiv budiče a vzorkovače.}\label{pcb_coplanar}
+\end{figure}
+
+Na obr. \ref{pcb_coplanar} je vidět koplanární vedení vedoucí ke konektoru. Délka tohoto vedení je necelých \SI{8}{\milli\meter}, šířka vodiče je \SI{0.775}{\milli\meter} a šířka mezery \SI{0.2}{\milli\meter}. Při tloušťce substrátu \SI{0.6}{\milli\meter} a permitivitě $\epsilon _r= \SI{4.6}{}$ vychází impedance tohoto koplanárního vedení na \SI{50.01}{\ohm}.
+
+Pod konektorem se nachází také koplanární vedení. Jeo délka je \SI{5.3}{\milli\meter}, šířka vodiče je \SI{2}{\milli\meter} a šířka mezery \SI{0.2}{\milli\meter}. Tato část vedení byla bohužel nesprávně navržena, šířka pájecí plošky pro konektor měla být správně přibližně \SI{1.1}{\milli\meter} a mezera \SI{0.9}{\milli\meter}. Takto má tato část vedení impedanci přibližně \SIrange{30}{40}{\ohm} namísto \SI{50}{\ohm}. Spočtená impedance je uvedená jako rozsah, protože geometrické rozměry se nacházejí v rozsahu, kde se různé analytické nástroje ve výsledku lišily, protože obvykle pracují pouze pro určitý rozsah poměru šířky vedení k tloušťce substrátu. Během měření se také ukázalo, že použitý SMA konektor nebyl pro toto použití vhodný, neboť má velké výrobní tolerance a malou opakovatelnost montáže.

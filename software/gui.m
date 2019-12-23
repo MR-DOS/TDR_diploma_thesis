@@ -926,7 +926,7 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   set(h.plot,"YData",2*(double(decoded_data)-levels(1))/(levels(2)-levels(1))-1);
   xlim(h.graph_axes,[0 20*numel(decoded_data)]);
   ylim(h.graph_axes, [-1.2 1.2]);
-  yticks(h.graph_axes,-1:0.5:1);
+  %yticks(h.graph_axes,-1:0.5:1);
   drawnow;
 endif;
 

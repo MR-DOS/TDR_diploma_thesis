@@ -1,4 +1,4 @@
-update=Pá 13. prosince 2019, 14:37:58 CET
+update=Po 23. prosince 2019, 00:14:53 CET
 version=1
 last_client=kicad
 [general]
@@ -34,7 +34,7 @@ PageLayoutDescrFile=
 LastNetListRead=
 LastSTEPExportPath=outputs/TDR_5351_core.step
 LastIDFExportPath=
-LastVRMLExportPath=
+LastVRMLExportPath=TDR_5351_core.wrl
 LastSpecctraDSNExportPath=
 LastGenCADExportPath=
 CopperLayerCount=2
