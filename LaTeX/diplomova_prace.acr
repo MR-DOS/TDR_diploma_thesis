@@ -104,5 +104,6 @@
 \glossentry{VML}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{VNA}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{88}}}%
+		\setentrycounter[]{page}\glsnumberformat{88}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{91}}}%
 \end{theglossary}\glossarypostamble

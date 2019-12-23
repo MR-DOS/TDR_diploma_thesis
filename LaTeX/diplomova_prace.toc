@@ -57,10 +57,6 @@
 \contentsline {section}{\numberline {10.1}Ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } software}{75}{section.10.1}% 
 \contentsline {chapter}{\numberline {11}Kalibrace}{81}{chapter.11}% 
 \contentsline {section}{\numberline {11.1}Chybov\IeC {\'y} model}{81}{section.11.1}% 
-\contentsline {section}{\numberline {11.2}Chyby pramen\IeC {\'\i }c\IeC {\'\i } z nep\IeC {\v r}esnosti frekvence f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{81}{section.11.2}% 
-\contentsline {section}{\numberline {11.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} chybov\IeC {\'e}ho modelu}{81}{section.11.3}% 
-\contentsline {section}{\numberline {11.4}Kompenzace chyb}{81}{section.11.4}% 
-\contentsline {section}{\numberline {11.5}Omezen\IeC {\'\i } plynouc\IeC {\'\i } z omezen\IeC {\'e} \IeC {\v s}\IeC {\'\i }\IeC {\v r}ky p\IeC {\'a}sma zapojen\IeC {\'\i }}{81}{section.11.5}% 
 \contentsline {chapter}{\numberline {12}Detekce z\IeC {\'a}vad}{83}{chapter.12}% 
 \contentsline {section}{\numberline {12.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{83}{section.12.1}% 
 \contentsline {section}{\numberline {12.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{83}{section.12.2}% 
@@ -71,22 +67,7 @@
 \contentsline {section}{\numberline {13.3}TDR m\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru}{88}{section.13.3}% 
 \contentsline {section}{\numberline {13.4}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru pomoc\IeC {\'\i } VNA}{88}{section.13.4}% 
 \contentsline {section}{\numberline {13.5}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} pou\IeC {\v z}it\IeC {\'e}ho substr\IeC {\'a}tu}{89}{section.13.5}% 
-\contentsline {chapter}{\numberline {14}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i } a popis ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i }}{93}{chapter.14}% 
-\contentsline {section}{\numberline {14.1}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v autonomn\IeC {\'\i }m re\IeC {\v z}imu}{94}{section.14.1}% 
-\contentsline {subsection}{\numberline {14.1.1}Autokalibrace}{94}{subsection.14.1.1}% 
-\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{94}{subsubsection*.9}% 
-\contentsline {subsubsection}{Kalibrace polohy budic\IeC {\'\i }ho pulzu}{94}{subsubsection*.9}% 
-\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{94}{subsubsection*.10}% 
-\contentsline {subsubsection}{Kalibrace polohy m\IeC {\v e}\IeC {\v r}ic\IeC {\'\i } roviny}{94}{subsubsection*.10}% 
-\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{94}{subsubsection*.11}% 
-\contentsline {subsubsection}{Kalibrace vzorkovac\IeC {\'\i }ho kmito\IeC {\v c}tu}{94}{subsubsection*.11}% 
-\contentsline {subsection}{\numberline {14.1.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{94}{subsection.14.1.2}% 
-\contentsline {subsection}{\numberline {14.1.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{94}{subsection.14.1.3}% 
-\contentsline {subsection}{\numberline {14.1.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{94}{subsection.14.1.4}% 
-\contentsline {section}{\numberline {14.2}Chov\IeC {\'a}n\IeC {\'\i } za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i } v re\IeC {\v z}imu s p\IeC {\v r}ipojen\IeC {\'y}m po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{94}{section.14.2}% 
-\contentsline {subsection}{\numberline {14.2.1}Autokalibrace}{94}{subsection.14.2.1}% 
-\contentsline {subsection}{\numberline {14.2.2}Kalibrace pomoc\IeC {\'\i } kalibra\IeC {\v c}n\IeC {\'\i }ch standard\IeC {\r u}}{94}{subsection.14.2.2}% 
-\contentsline {subsection}{\numberline {14.2.3}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{94}{subsection.14.2.3}% 
-\contentsline {subsection}{\numberline {14.2.4}Vyhodnocen\IeC {\'\i } zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{94}{subsection.14.2.4}% 
-\contentsline {chapter}{\numberline {15}Z\IeC {\'a}v\IeC {\v e}r}{95}{chapter.15}% 
-\contentsline {chapter}{\numberline {A}Literatura}{97}{appendix.A}% 
+\contentsline {section}{\numberline {13.6}Parametry zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{92}{section.13.6}% 
+\contentsline {chapter}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{97}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Spln\IeC {\v e}n\IeC {\'\i } zad\IeC {\'a}n\IeC {\'\i }}{97}{section.14.1}% 
+\contentsline {chapter}{\numberline {A}Literatura}{99}{appendix.A}% 

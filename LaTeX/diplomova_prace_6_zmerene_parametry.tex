@@ -51,3 +51,65 @@ Pro ověření permitivity použitého substrátu byla vytvořena testovací des
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/measurements/uoml.jpg}\caption{Testovací deska plošných spojů pro změření parametrů substrátu s připájenými konektory.}\label{uoml}
 \end{figure}
+
+Pro zjištění parametrů substrátu bylo provedeno měření všech vedení a kalibrů pomocí \acrshort{VNA} Agilent E8364A. Změřená data byla zpracována pomocí algoritmu, který vytvořil podle \cite{TRL_calibration} Ing.~Viktor Adler,~Ph.D. v matematickém prostředí MATLAB. Takto zpracovaná data ze změřených kalibrů, vedení a jejich vzájemných kombinací byla použita pro kalibraci. Pomocí takto získané kalibrace byly získány parametry jednoho z vedení. Tato data byla následně importována do simulačního nástroje CST a pomocí optimalizace parametrů substrátu byly získány jeho vlastnosti. Bohužel takto získané parametry jsou zatíženy zdrojem chyb, který pramení ze skutečnosti, že byly získávány pouze parametry substrátu, nebyl uvažován vliv samotného vedení. Ztráty způsobené např. hrubostí povrchu vedení na desce plošných spojů jsou tak součástí získaných parametrů substrátu. Parametr $\tan \delta$ uvedený v tabulce \ref{permittivity_table} tedy nejspíše neodpovídá přesně ztrátám způsobeným substrátem. V tabulce \ref{permittivity_table} je vidět, že permitivita substrátu je až do \SI{6}{\giga\hertz} přibližně konstantní, poté začne klesat. Pokles je ovšem vcelku malý, na \SI{18}{\giga\hertz} činí pokles permitivity méně než \SI{1.5}{\percent}.
+
+Při permitivitě substrátu $\epsilon'=\SI{4.1}{}$ místo $\epsilon'=\SI{4.6}{}$, se kterou byl reflektometr navržen, tak vychází impedance použitého koplanárního vedení na přibližně \SI{52.5}{\ohm}. Vzhledem ke skutečnosti, že pod testovacím konektorem se nachází vedení s nesprávnou (nižší) impedancí, má tento fakt vliv spíše pozitivní, protože je tak výsledný odraz na měřicím portu menší, než bylo původně očekáváno.
+
+\begin{table}[htbp]
+\begin{center}
+\caption{Tabulka permitivity a ztrát substrátu získaná z testovací desky plošných spojů z obr. \ref{uoml}}\label{permittivity_table}
+\begin{tabular}{ |c|c|c|  }
+ \hline
+ Frekvence (\si{\giga\hertz}) & $\epsilon'$ (-) & $\tan \delta$ (-)\\
+ \hline
+ \hline
+	\SI{0.99}{}	&	\SI{4.100}{}	&	\SI{0.013}{}\\
+ \hline
+	\SI{2.18}{}	&	\SI{4.104}{}	&	\SI{0.006}{}\\
+ \hline
+	\SI{4.15}{}	&	\SI{4.081}{}	&	\SI{0.005}{}\\
+ \hline
+	\SI{6.13}{}	&	\SI{4.096}{}	&	\SI{0.007}{}\\
+ \hline
+	\SI{8.10}{}	&	\SI{4.065}{}	&	\SI{0.010}{}\\
+ \hline
+	\SI{10.1}{}	&	\SI{4.083}{}	&	\SI{0.012}{}\\
+ \hline
+	\SI{12.1}{}	&	\SI{4.050}{}	&	\SI{0.014}{}\\
+ \hline
+	\SI{14.0}{}	&	\SI{4.061}{}	&	\SI{0.015}{}\\
+ \hline
+	\SI{16.0}{}	&	\SI{4.037}{}	&	\SI{0.017}{}\\
+ \hline
+	\SI{18.0}{}	&	\SI{4.046}{}	&	\SI{0.017}{}\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Parametry změřených dat}
+Prvním zajímavým parametrem, který je možné z dat změřených reflektometrem získat, je délka měřené náběžné hrany. V grafu \ref{measured_open_risetime} je tato náběžná hrana vykreslena. Při měření délky náběžné hrany mezi \SIrange{20}{80}{\percent} mezi počátečním a konečným napětím je tato délka \SI{220}{\pico\second}. Celý změřený průběh pro kalibr \quotedblbase open\textquotedblleft{} na konci vedení je zakreslen v grafu \ref{measured_open}. Z grafu je vidět, že koeficient odrazu na tomto kalibru je $\Gamma \doteq 1$. Ve vzdálenosti odpovídající délce kabelu mezi reflektometrem a kalibrem, tedy přibližně okolo \SI{23}{\nano\second} se nachází další odraz, tentokrát menší a záporný. Ten je způsoben odrazem změřené odezvy na kalibr od konektoru reflektometru a zpět. Záporný je z toho důvodu, že impedance měřicího portu reflektometru je menší než \SI{50}{\ohm}.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measure_open_risetime.eps}\caption{Délka náběžné hrany při měření kalibru \quotedblbase open\textquotedblleft{} na konci vedení.}\label{measured_open_risetime}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measured_open.eps}\caption{Odezva při měření kalibru \quotedblbase open\textquotedblleft{} na konci vedení.}\label{measured_open}
+\end{figure}
+
+Při měření kalibru v grafu \ref{measured_short_risetime} \quotedblbase short\textquotedblleft{} je náběžná hrana odezvy dlouhá \SI{240}{\pico\second}. Celá odezva se po diskontinuitě pohybuje okolo koeficientu odrazu $\Gamma \doteq -1$. Opět je na grafu \ref{measured_short} tento nežádoucí odraz vidět přibližně na \SI{23}{\nano\second}. Tentokrát má ovšem stejnou polaritu jako odraz od kalibru, protože koeficient odrazu měřicího portu i kalibru je záporný, po dvou odrazech má tedy stejnou polaritu jako první odraz.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measure_short_risetime.eps}\caption{Délka náběžné hrany při měření kalibru \quotedblbase short\textquotedblleft{} na konci vedení.}\label{measured_short_risetime}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measured_short.eps}\caption{Odezva při měření kalibru \quotedblbase short\textquotedblleft{} na konci vedení.}\label{measured_short}
+\end{figure}
+
+Odezva na kalibr \quotedblbase match\textquotedblleft{} je v grafu \ref{measured_load}. Dle očekávání není v změřených datech viditelný žádný odraz od tohoto kalibru, přítomen je pouze šum.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measured_load.eps}\caption{Odezva při měření kalibru \quotedblbase match\textquotedblleft{} na konci vedení.}\label{measured_load}
+\end{figure}

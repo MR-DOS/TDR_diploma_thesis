@@ -1,32 +1,3 @@
 \chapter{Kalibrace}
 
 \section{Chybový model}
-
-\section{Chyby pramenící z nepřesnosti frekvence fázového závěsu}
-
-\section{Měření parametrů chybového modelu}
-
-\section{Kompenzace chyb}
-
-\section{Omezení plynoucí z omezené šířky pásma zapojení}
-
-
-Změřenou odezvu $y(t)$ je nezbytné dále zpracovávat. Uvedená impulzní odezva je zatížena několika různými zdroji chyb. Prvním zdrojem chyb je samotný budicí pulz, jenž není ideální a je nezbytné nejprve provést kalibrační měření pro odstranění tohoto zdroje chyb. Jednou z možností, jak odstranit tento zdroj chyb, je změřit ideálně zakončený testovací port. Pro tento typ zakončení by mělo platit, že nedochází k žádným odrazům, a tedy by pro impulzní odezvu takového kalibračního standardu mělo platit následující tvrzení.
-\begin{equation}
-	h(t) =
-	\begin{dcases*}
-		1 & $t=0$;\\
-		0 & $t\neq 0$;
-	\end{dcases*}
-\end{equation}
-Pak platí tedy, že:
-\begin{equation}
-y(t)=x(t).
-\end{equation}
-
-Takto je možné zjistit podobu budicího pulzu. Takováto metoda kalibrace však pokrývá jen jeden zdroj chyb. Mezi další zdroje chyb
-
-Pomocí kalibračních metod je možné data získaná jako odezvu na tento budicí signál transformovat do podoby, která je vhodnější pro další zpracování. Pro plné odstranění vlivu průběhu budicího signálu na odezvě je vhodné měřenou odezvu transformovat do podoby impulzní nebo skokové odezvy. Tuto korekci měřených dat je možné provést buď v časové oblasti např. Wienerovou dekonvolucí nebo ve frekvenční oblasti. Pouhá korekce do podoby impulsní odezvy je však nedostačující pro korekci měřených dat, neboť 
-Kalibrací je možné také zároveň odstranit vliv nedokonalostí reflektometru a připojeného vedení, např. přeslechy, útlum vedení a odrazy na konektorech \cite{VNAcalibrationarticle}.
-
-Z této impulzní odezvy je možné nadále analyzovat měřený systém. V případě reflektometrie je typicky požadován jako výstup měření impedanční profil měřeného systému. 

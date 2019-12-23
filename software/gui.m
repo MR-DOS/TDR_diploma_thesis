@@ -885,6 +885,7 @@ set(serial_port,"timeout",1);
 avg_received=0;
 last_state=0;
 decoded_data=[];
+levels=[0 4095];
 
 while(1)
 srl_write(serial_port,"STATE?\n");

@@ -4,27 +4,27 @@ The top-level auxiliary file: diplomova_prace.aux
 The style file: amsalpha.bst
 Database file #1: diplomova_prace.bib
 Warning--entry type for "Si5351_phase_noise_measurement" isn't style-file defined
---line 51 of file diplomova_prace.bib
+--line 64 of file diplomova_prace.bib
 You've used 36 entries,
             2624 wiz_defined-function locations,
-            760 strings with 10023 characters,
-and the built_in function-call counts, 12233 in all, are:
-= -- 1154
+            760 strings with 10101 characters,
+and the built_in function-call counts, 12271 in all, are:
+= -- 1158
 > -- 468
 < -- 8
-+ -- 159
++ -- 160
 - -- 156
-* -- 1000
-:= -- 1880
+* -- 1004
+:= -- 1884
 add.period$ -- 36
 call.type$ -- 36
 change.case$ -- 222
 chr.to.int$ -- 35
 cite$ -- 36
 duplicate$ -- 547
-empty$ -- 1054
+empty$ -- 1058
 format.name$ -- 180
-if$ -- 2590
+if$ -- 2598
 int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 53
@@ -36,7 +36,7 @@ purify$ -- 255
 quote$ -- 0
 skip$ -- 417
 stack$ -- 0
-substring$ -- 658
+substring$ -- 671
 swap$ -- 73
 text.length$ -- 8
 text.prefix$ -- 21

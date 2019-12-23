@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  23 DEC 2019 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.24)  23 DEC 2019 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1447,7 +1447,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<ctu_logo_black.pdf, id=273, 366.36874pt x 279.0425pt>
+<ctu_logo_black.pdf, id=221, 366.36874pt x 279.0425pt>
 File: ctu_logo_black.pdf Graphic file (type pdf)
 <use ctu_logo_black.pdf>
 Package pdftex.def Info: ctu_logo_black.pdf  used on input line 241.
@@ -1483,7 +1483,7 @@ Package microtype Info: Loading generic protrusion settings for font family
  [2
 
 ]
-<zadani.pdf, id=287, 597.50829pt x 845.0471pt>
+<zadani.pdf, id=235, 597.50829pt x 845.0471pt>
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf>
 Package pdftex.def Info: zadani.pdf  used on input line 241.
@@ -1492,7 +1492,7 @@ File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf>
 Package pdftex.def Info: zadani.pdf  used on input line 241.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-<zadani.pdf, id=290, page=1, 597.50829pt x 845.0471pt>
+<zadani.pdf, id=238, page=1, 597.50829pt x 845.0471pt>
 File: zadani.pdf Graphic file (type pdf)
 <use zadani.pdf, page 1>
 Package pdftex.def Info: zadani.pdf , page1 used on input line 241.
@@ -1579,11 +1579,14 @@ Underfull \hbox (badness 2088) in paragraph at lines 241--241
 
 ] (./diplomova_prace.lof [9
 
-] [10])
+] [10] [11])
 \tf@lof=\write9
 \openout9 = `diplomova_prace.lof'.
 
- [11]
+
+[12
+
+]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -1617,13 +1620,11 @@ Underfull \hbox (badness 2088) in paragraph at lines 241--241
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-[12
-
+ (./diplomova_prace.gls) (./diplomova_prace.acr [1
 
 
 
-] (./diplomova_prace.gls) (./diplomova_prace.acr [1
+
 
 
 ] [2
@@ -1657,7 +1658,7 @@ o.pdf>
 -eps-converted-to.pdf images/onereflectionsample.eps>
 (epstopdf)             \includegraphics on input line 10.
 Package epstopdf Info: Output file is already uptodate.
-<images/onereflectionsample-eps-converted-to.pdf, id=703, 578.16pt x 433.62pt>
+<images/onereflectionsample-eps-converted-to.pdf, id=647, 578.16pt x 433.62pt>
 File: images/onereflectionsample-eps-converted-to.pdf Graphic file (type pdf)
 <use images/onereflectionsample-eps-converted-to.pdf>
 Package pdftex.def Info: images/onereflectionsample-eps-converted-to.pdf  used 
@@ -1680,7 +1681,7 @@ Package epstopdf Info: Source file: <images/samplecomplexresponse.eps>
 se-eps-converted-to.pdf images/samplecomplexresponse.eps>
 (epstopdf)             \includegraphics on input line 20.
 Package epstopdf Info: Output file is already uptodate.
-<images/samplecomplexresponse-eps-converted-to.pdf, id=724, 410.53375pt x 239.8
+<images/samplecomplexresponse-eps-converted-to.pdf, id=668, 410.53375pt x 239.8
 9626pt>
 File: images/samplecomplexresponse-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1709,7 +1710,7 @@ Package epstopdf Info: Source file: <images/dirac.eps>
 -to.pdf images/dirac.eps>
 (epstopdf)             \includegraphics on input line 30.
 Package epstopdf Info: Output file is already uptodate.
-<images/dirac-eps-converted-to.pdf, id=746, 578.16pt x 433.62pt>
+<images/dirac-eps-converted-to.pdf, id=691, 578.16pt x 433.62pt>
 File: images/dirac-eps-converted-to.pdf Graphic file (type pdf)
 <use images/dirac-eps-converted-to.pdf>
 Package pdftex.def Info: images/dirac-eps-converted-to.pdf  used on input line 
@@ -1725,13 +1726,13 @@ Package epstopdf Info: Source file: <images/gauss.eps>
 -to.pdf images/gauss.eps>
 (epstopdf)             \includegraphics on input line 33.
 Package epstopdf Info: Output file is already uptodate.
-<images/gauss-eps-converted-to.pdf, id=749, 578.16pt x 433.62pt>
+<images/gauss-eps-converted-to.pdf, id=694, 578.16pt x 433.62pt>
 File: images/gauss-eps-converted-to.pdf Graphic file (type pdf)
 <use images/gauss-eps-converted-to.pdf>
 Package pdftex.def Info: images/gauss-eps-converted-to.pdf  used on input line 
 33.
 (pdftex.def)             Requested size: 363.0pt x 272.24911pt.
-<images/clipline_generator.png, id=755, 1942.25626pt x 1568.86125pt>
+<images/clipline_generator.png, id=700, 1942.25626pt x 1568.86125pt>
 File: images/clipline_generator.png Graphic file (type png)
 <use images/clipline_generator.png>
 Package pdftex.def Info: images/clipline_generator.png  used on input line 37.
@@ -1746,7 +1747,7 @@ Package epstopdf Info: Source file: <images/unitstep.eps>
 ted-to.pdf images/unitstep.eps>
 (epstopdf)             \includegraphics on input line 41.
 Package epstopdf Info: Output file is already uptodate.
-<images/unitstep-eps-converted-to.pdf, id=758, 578.16pt x 433.62pt>
+<images/unitstep-eps-converted-to.pdf, id=703, 578.16pt x 433.62pt>
 File: images/unitstep-eps-converted-to.pdf Graphic file (type pdf)
 <use images/unitstep-eps-converted-to.pdf>
 Package pdftex.def Info: images/unitstep-eps-converted-to.pdf  used on input li
@@ -1765,7 +1766,7 @@ Package epstopdf Info: Source file: <images/erf.eps>
 o.pdf images/erf.eps>
 (epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
-<images/erf-eps-converted-to.pdf, id=794, 578.16pt x 433.62pt>
+<images/erf-eps-converted-to.pdf, id=739, 578.16pt x 433.62pt>
 File: images/erf-eps-converted-to.pdf Graphic file (type pdf)
 <use images/erf-eps-converted-to.pdf>
 Package pdftex.def Info: images/erf-eps-converted-to.pdf  used on input line 47
@@ -1989,7 +1990,7 @@ Package epstopdf Info: Source file: <images/sinc.eps>
 to.pdf images/sinc.eps>
 (epstopdf)             \includegraphics on input line 56.
 Package epstopdf Info: Output file is already uptodate.
-<images/sinc-eps-converted-to.pdf, id=799, 578.16pt x 433.62pt>
+<images/sinc-eps-converted-to.pdf, id=744, 578.16pt x 433.62pt>
 File: images/sinc-eps-converted-to.pdf Graphic file (type pdf)
 <use images/sinc-eps-converted-to.pdf>
 Package pdftex.def Info: images/sinc-eps-converted-to.pdf  used on input line 5
@@ -2006,7 +2007,7 @@ Package epstopdf Info: Source file: <images/whitenoise.eps>
 erted-to.pdf images/whitenoise.eps>
 (epstopdf)             \includegraphics on input line 64.
 Package epstopdf Info: Output file is already uptodate.
-<images/whitenoise-eps-converted-to.pdf, id=821, 578.16pt x 433.62pt>
+<images/whitenoise-eps-converted-to.pdf, id=766, 578.16pt x 433.62pt>
 File: images/whitenoise-eps-converted-to.pdf Graphic file (type pdf)
 <use images/whitenoise-eps-converted-to.pdf>
 Package pdftex.def Info: images/whitenoise-eps-converted-to.pdf  used on input 
@@ -2023,7 +2024,7 @@ Package epstopdf Info: Source file: <images/whitenoisecorr.eps>
 converted-to.pdf images/whitenoisecorr.eps>
 (epstopdf)             \includegraphics on input line 67.
 Package epstopdf Info: Output file is already uptodate.
-<images/whitenoisecorr-eps-converted-to.pdf, id=823, 578.16pt x 433.62pt>
+<images/whitenoisecorr-eps-converted-to.pdf, id=768, 578.16pt x 433.62pt>
 File: images/whitenoisecorr-eps-converted-to.pdf Graphic file (type pdf)
 <use images/whitenoisecorr-eps-converted-to.pdf>
 Package pdftex.def Info: images/whitenoisecorr-eps-converted-to.pdf  used on in
@@ -2048,7 +2049,7 @@ Package epstopdf Info: Source file: <images/lvpecl_output.eps>
 onverted-to.pdf images/lvpecl_output.eps>
 (epstopdf)             \includegraphics on input line 85.
 Package epstopdf Info: Output file is already uptodate.
-<images/lvpecl_output-eps-converted-to.pdf, id=862, 458.71375pt x 232.87pt>
+<images/lvpecl_output-eps-converted-to.pdf, id=806, 458.71375pt x 232.87pt>
 File: images/lvpecl_output-eps-converted-to.pdf Graphic file (type pdf)
 <use images/lvpecl_output-eps-converted-to.pdf>
 Package pdftex.def Info: images/lvpecl_output-eps-converted-to.pdf  used on inp
@@ -2064,7 +2065,7 @@ Package epstopdf Info: Source file: <images/lvds_output.eps>
 verted-to.pdf images/lvds_output.eps>
 (epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
-<images/lvds_output-eps-converted-to.pdf, id=868, 289.08pt x 272.01625pt>
+<images/lvds_output-eps-converted-to.pdf, id=812, 289.08pt x 272.01625pt>
 File: images/lvds_output-eps-converted-to.pdf Graphic file (type pdf)
 <use images/lvds_output-eps-converted-to.pdf>
 Package pdftex.def Info: images/lvds_output-eps-converted-to.pdf  used on input
@@ -2080,7 +2081,7 @@ Package epstopdf Info: Source file: <images/cml_output.eps>
 erted-to.pdf images/cml_output.eps>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
-<images/cml_output-eps-converted-to.pdf, id=874, 288.07625pt x 202.7575pt>
+<images/cml_output-eps-converted-to.pdf, id=818, 288.07625pt x 202.7575pt>
 File: images/cml_output-eps-converted-to.pdf Graphic file (type pdf)
 <use images/cml_output-eps-converted-to.pdf>
 Package pdftex.def Info: images/cml_output-eps-converted-to.pdf  used on input 
@@ -2098,7 +2099,7 @@ Package epstopdf Info: Source file: <images/redriver.eps>
 ted-to.pdf images/redriver.eps>
 (epstopdf)             \includegraphics on input line 107.
 Package epstopdf Info: Output file is already uptodate.
-<images/redriver-eps-converted-to.pdf, id=924, 284.06125pt x 157.58875pt>
+<images/redriver-eps-converted-to.pdf, id=869, 284.06125pt x 157.58875pt>
 File: images/redriver-eps-converted-to.pdf Graphic file (type pdf)
 <use images/redriver-eps-converted-to.pdf>
 Package pdftex.def Info: images/redriver-eps-converted-to.pdf  used on input li
@@ -2124,7 +2125,7 @@ hitecture_overview-eps-converted-to.pdf images/si5351_internal_architecture_ove
 rview.eps>
 (epstopdf)             \includegraphics on input line 15.
 Package epstopdf Info: Output file is already uptodate.
-<images/si5351_internal_architecture_overview-eps-converted-to.pdf, id=960, 161
+<images/si5351_internal_architecture_overview-eps-converted-to.pdf, id=905, 161
 .60374pt x 105.39375pt>
 File: images/si5351_internal_architecture_overview-eps-converted-to.pdf Graphic
  file (type pdf)
@@ -2143,7 +2144,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 19.
 
-<images/oscilloscopefrontend.png, id=988, 2029.5825pt x 1170.3725pt>
+<images/oscilloscopefrontend.png, id=932, 2029.5825pt x 1170.3725pt>
 File: images/oscilloscopefrontend.png Graphic file (type png)
 <use images/oscilloscopefrontend.png>
 Package pdftex.def Info: images/oscilloscopefrontend.png  used on input line 22
@@ -2152,12 +2153,12 @@ Package pdftex.def Info: images/oscilloscopefrontend.png  used on input line 22
 [25 <./images/oscilloscopefrontend.png>]) (./diplomovy_projekt_4_separace.tex
 [26]
 Kapitola 5.
-<images/directionalcoupler.png, id=1003, 771.38188pt x 331.73938pt>
+<images/directionalcoupler.png, id=947, 771.38188pt x 331.73938pt>
 File: images/directionalcoupler.png Graphic file (type png)
 <use images/directionalcoupler.png>
 Package pdftex.def Info: images/directionalcoupler.png  used on input line 6.
 (pdftex.def)             Requested size: 290.40111pt x 124.8879pt.
-<images/resistivebridge.png, id=1010, 74.19208pt x 113.7868pt>
+<images/resistivebridge.png, id=954, 74.19208pt x 113.7868pt>
 File: images/resistivebridge.png Graphic file (type png)
 <use images/resistivebridge.png>
 Package pdftex.def Info: images/resistivebridge.png  used on input line 14.
@@ -2176,7 +2177,7 @@ pdf>
 ps-converted-to.pdf images/separableunitstep.eps>
 (epstopdf)             \includegraphics on input line 22.
 Package epstopdf Info: Output file is already uptodate.
-<images/separableunitstep-eps-converted-to.pdf, id=1018, 578.16pt x 433.62pt>
+<images/separableunitstep-eps-converted-to.pdf, id=963, 578.16pt x 433.62pt>
 File: images/separableunitstep-eps-converted-to.pdf Graphic file (type pdf)
 <use images/separableunitstep-eps-converted-to.pdf>
 Package pdftex.def Info: images/separableunitstep-eps-converted-to.pdf  used on
@@ -2210,8 +2211,8 @@ f>
 -converted-to.pdf images/AD8309_function.eps>
 (epstopdf)             \includegraphics on input line 29.
 Package epstopdf Info: Output file is already uptodate.
-<images/AD8309_function-eps-converted-to.pdf, id=1051, 203.76125pt x 163.61125p
-t>
+<images/AD8309_function-eps-converted-to.pdf, id=996, 203.76125pt x 163.61125pt
+>
 File: images/AD8309_function-eps-converted-to.pdf Graphic file (type pdf)
 <use images/AD8309_function-eps-converted-to.pdf>
 Package pdftex.def Info: images/AD8309_function-eps-converted-to.pdf  used on i
@@ -2227,7 +2228,7 @@ Package epstopdf Info: Source file: <images/AD8309_error.eps>
 nverted-to.pdf images/AD8309_error.eps>
 (epstopdf)             \includegraphics on input line 31.
 Package epstopdf Info: Output file is already uptodate.
-<images/AD8309_error-eps-converted-to.pdf, id=1054, 201.75375pt x 162.6075pt>
+<images/AD8309_error-eps-converted-to.pdf, id=999, 201.75375pt x 162.6075pt>
 File: images/AD8309_error-eps-converted-to.pdf Graphic file (type pdf)
 <use images/AD8309_error-eps-converted-to.pdf>
 Package pdftex.def Info: images/AD8309_error-eps-converted-to.pdf  used on inpu
@@ -2240,7 +2241,7 @@ nction-eps-converted-to.pdf> <./images/AD8309_error-eps-converted-to.pdf>]
 ]
 Kapitola 7.
 [35]
-<images/reflectometer_blockdiagram_simple.png, id=1078, 3824.2875pt x 2107.875p
+<images/reflectometer_blockdiagram_simple.png, id=1023, 3824.2875pt x 2107.875p
 t>
 File: images/reflectometer_blockdiagram_simple.png Graphic file (type png)
 <use images/reflectometer_blockdiagram_simple.png>
@@ -2261,7 +2262,7 @@ Package epstopdf Info: Source file: <images/block_diagram.eps>
 onverted-to.pdf images/block_diagram.eps>
 (epstopdf)             \includegraphics on input line 8.
 Package epstopdf Info: Output file is already uptodate.
-<images/block_diagram-eps-converted-to.pdf, id=1085, 662.475pt x 348.30125pt>
+<images/block_diagram-eps-converted-to.pdf, id=1030, 662.475pt x 348.30125pt>
 File: images/block_diagram-eps-converted-to.pdf Graphic file (type pdf)
 <use images/block_diagram-eps-converted-to.pdf>
 Package pdftex.def Info: images/block_diagram-eps-converted-to.pdf  used on inp
@@ -2310,7 +2311,7 @@ Package epstopdf Info: Source file: <images/timing_section.eps>
 converted-to.pdf images/timing_section.eps>
 (epstopdf)             \includegraphics on input line 70.
 Package epstopdf Info: Output file is already uptodate.
-<images/timing_section-eps-converted-to.pdf, id=1124, 345.29pt x 321.2pt>
+<images/timing_section-eps-converted-to.pdf, id=1068, 345.29pt x 321.2pt>
 File: images/timing_section-eps-converted-to.pdf Graphic file (type pdf)
 <use images/timing_section-eps-converted-to.pdf>
 Package pdftex.def Info: images/timing_section-eps-converted-to.pdf  used on in
@@ -2328,7 +2329,7 @@ ed-to.pdf>
 tion-eps-converted-to.pdf images/pulse_generator_section.eps>
 (epstopdf)             \includegraphics on input line 83.
 Package epstopdf Info: Output file is already uptodate.
-<images/pulse_generator_section-eps-converted-to.pdf, id=1146, 312.16624pt x 28
+<images/pulse_generator_section-eps-converted-to.pdf, id=1091, 312.16624pt x 28
 9.08pt>
 File: images/pulse_generator_section-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -2362,7 +2363,7 @@ Package epstopdf Info: Source file: <images/match_section.eps>
 onverted-to.pdf images/match_section.eps>
 (epstopdf)             \includegraphics on input line 92.
 Package epstopdf Info: Output file is already uptodate.
-<images/match_section-eps-converted-to.pdf, id=1156, 325.215pt x 237.88875pt>
+<images/match_section-eps-converted-to.pdf, id=1101, 325.215pt x 237.88875pt>
 File: images/match_section-eps-converted-to.pdf Graphic file (type pdf)
 <use images/match_section-eps-converted-to.pdf>
 Package pdftex.def Info: images/match_section-eps-converted-to.pdf  used on inp
@@ -2379,7 +2380,7 @@ pdf>
 ps-converted-to.pdf images/ltspice_schematic.eps>
 (epstopdf)             \includegraphics on input line 98.
 Package epstopdf Info: Output file is already uptodate.
-<images/ltspice_schematic-eps-converted-to.pdf, id=1161, 386.44376pt x 261.9787
+<images/ltspice_schematic-eps-converted-to.pdf, id=1106, 386.44376pt x 261.9787
 4pt>
 File: images/ltspice_schematic-eps-converted-to.pdf Graphic file (type pdf)
 <use images/ltspice_schematic-eps-converted-to.pdf>
@@ -2397,7 +2398,7 @@ f>
 -converted-to.pdf images/input_impedance.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
-<images/input_impedance-eps-converted-to.pdf, id=1162, 578.16pt x 433.62pt>
+<images/input_impedance-eps-converted-to.pdf, id=1107, 578.16pt x 433.62pt>
 File: images/input_impedance-eps-converted-to.pdf Graphic file (type pdf)
 <use images/input_impedance-eps-converted-to.pdf>
 Package pdftex.def Info: images/input_impedance-eps-converted-to.pdf  used on i
@@ -2414,7 +2415,7 @@ df>
 s-converted-to.pdf images/input_reflection.eps>
 (epstopdf)             \includegraphics on input line 106.
 Package epstopdf Info: Output file is already uptodate.
-<images/input_reflection-eps-converted-to.pdf, id=1163, 578.16pt x 433.62pt>
+<images/input_reflection-eps-converted-to.pdf, id=1108, 578.16pt x 433.62pt>
 File: images/input_reflection-eps-converted-to.pdf Graphic file (type pdf)
 <use images/input_reflection-eps-converted-to.pdf>
 Package pdftex.def Info: images/input_reflection-eps-converted-to.pdf  used on 
@@ -2444,7 +2445,7 @@ f>
 -converted-to.pdf images/sampler_section.eps>
 (epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
-<images/sampler_section-eps-converted-to.pdf, id=1201, 568.1225pt x 312.16624pt
+<images/sampler_section-eps-converted-to.pdf, id=1146, 568.1225pt x 312.16624pt
 >
 File: images/sampler_section-eps-converted-to.pdf Graphic file (type pdf)
 <use images/sampler_section-eps-converted-to.pdf>
@@ -2464,7 +2465,7 @@ converted-to.pdf>
 function_BF-eps-converted-to.pdf images/frequency_transfer_function_BF.eps>
 (epstopdf)             \includegraphics on input line 127.
 Package epstopdf Info: Output file is already uptodate.
-<images/frequency_transfer_function_BF-eps-converted-to.pdf, id=1220, 578.16pt 
+<images/frequency_transfer_function_BF-eps-converted-to.pdf, id=1165, 578.16pt 
 x 433.62pt>
 File: images/frequency_transfer_function_BF-eps-converted-to.pdf Graphic file (
 type pdf)
@@ -2484,7 +2485,7 @@ Package epstopdf Info: Source file: <images/frequency_transfer_function_all.eps
 function_all-eps-converted-to.pdf images/frequency_transfer_function_all.eps>
 (epstopdf)             \includegraphics on input line 133.
 Package epstopdf Info: Output file is already uptodate.
-<images/frequency_transfer_function_all-eps-converted-to.pdf, id=1222, 578.16pt
+<images/frequency_transfer_function_all-eps-converted-to.pdf, id=1167, 578.16pt
  x 433.62pt>
 File: images/frequency_transfer_function_all-eps-converted-to.pdf Graphic file 
 (type pdf)
@@ -2504,7 +2505,7 @@ ed-to.pdf>
 stic-eps-converted-to.pdf images/transfer_characteristic.eps>
 (epstopdf)             \includegraphics on input line 139.
 Package epstopdf Info: Output file is already uptodate.
-<images/transfer_characteristic-eps-converted-to.pdf, id=1236, 578.16pt x 433.6
+<images/transfer_characteristic-eps-converted-to.pdf, id=1180, 578.16pt x 433.6
 2pt>
 File: images/transfer_characteristic-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -2523,7 +2524,7 @@ d-to.pdf>
 ion-eps-converted-to.pdf images/current_source_section.eps>
 (epstopdf)             \includegraphics on input line 143.
 Package epstopdf Info: Output file is already uptodate.
-<images/current_source_section-eps-converted-to.pdf, id=1237, 428.60126pt x 208
+<images/current_source_section-eps-converted-to.pdf, id=1181, 428.60126pt x 208
 .78pt>
 File: images/current_source_section-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -2545,7 +2546,7 @@ to.pdf>
 n-eps-converted-to.pdf images/power_supply_section.eps>
 (epstopdf)             \includegraphics on input line 149.
 Package epstopdf Info: Output file is already uptodate.
-<images/power_supply_section-eps-converted-to.pdf, id=1261, 450.68375pt x 211.7
+<images/power_supply_section-eps-converted-to.pdf, id=1205, 450.68375pt x 211.7
 9124pt>
 File: images/power_supply_section-eps-converted-to.pdf Graphic file (type pdf)
 <use images/power_supply_section-eps-converted-to.pdf>
@@ -2563,7 +2564,7 @@ erted-to.pdf>
 unction-eps-converted-to.pdf images/denoiser_transfer_function.eps>
 (epstopdf)             \includegraphics on input line 159.
 Package epstopdf Info: Output file is already uptodate.
-<images/denoiser_transfer_function-eps-converted-to.pdf, id=1265, 578.16pt x 43
+<images/denoiser_transfer_function-eps-converted-to.pdf, id=1209, 578.16pt x 43
 3.62pt>
 File: images/denoiser_transfer_function-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -2583,7 +2584,7 @@ rted-to.pdf>
 ection-eps-converted-to.pdf images/secondary_sampler_section.eps>
 (epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
-<images/secondary_sampler_section-eps-converted-to.pdf, id=1275, 345.29pt x 289
+<images/secondary_sampler_section-eps-converted-to.pdf, id=1220, 345.29pt x 289
 .08pt>
 File: images/secondary_sampler_section-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -2602,7 +2603,7 @@ ted-to.pdf>
 whole-eps-converted-to.pdf images/log_function_graph_whole.eps>
 (epstopdf)             \includegraphics on input line 174.
 Package epstopdf Info: Output file is already uptodate.
-<images/log_function_graph_whole-eps-converted-to.pdf, id=1276, 578.16pt x 433.
+<images/log_function_graph_whole-eps-converted-to.pdf, id=1221, 578.16pt x 433.
 62pt>
 File: images/log_function_graph_whole-eps-converted-to.pdf Graphic file (type p
 df)
@@ -2621,7 +2622,7 @@ rted-to.pdf>
 zoomed-eps-converted-to.pdf images/log_function_graph_zoomed.eps>
 (epstopdf)             \includegraphics on input line 178.
 Package epstopdf Info: Output file is already uptodate.
-<images/log_function_graph_zoomed-eps-converted-to.pdf, id=1277, 578.16pt x 433
+<images/log_function_graph_zoomed-eps-converted-to.pdf, id=1222, 578.16pt x 433
 .62pt>
 File: images/log_function_graph_zoomed-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -2662,7 +2663,7 @@ ed-to.pdf>
 tion-eps-converted-to.pdf images/microcontroller_section.eps>
 (epstopdf)             \includegraphics on input line 185.
 Package epstopdf Info: Output file is already uptodate.
-<images/microcontroller_section-eps-converted-to.pdf, id=1288, 454.69875pt x 29
+<images/microcontroller_section-eps-converted-to.pdf, id=1233, 454.69875pt x 29
 9.1175pt>
 File: images/microcontroller_section-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -2692,29 +2693,29 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [52 <./images/secondary_sampler_section-eps-converted-to.pdf>] [53 <./images/l
 og_function_graph_whole-eps-converted-to.pdf> <./images/log_function_graph_zoom
 ed-eps-converted-to.pdf>]
-<images/pcb/pcb_top.jpg, id=1315, 3663.6875pt x 3089.5425pt>
+<images/pcb/pcb_top.jpg, id=1260, 3663.6875pt x 3089.5425pt>
 File: images/pcb/pcb_top.jpg Graphic file (type jpg)
 <use images/pcb/pcb_top.jpg>
 Package pdftex.def Info: images/pcb/pcb_top.jpg  used on input line 195.
 (pdftex.def)             Requested size: 337.3764pt x 284.50536pt.
-<images/pcb/pcb_bottom.jpg, id=1316, 3545.245pt x 3275.23625pt>
+<images/pcb/pcb_bottom.jpg, id=1261, 3545.245pt x 3275.23625pt>
 File: images/pcb/pcb_bottom.jpg Graphic file (type jpg)
 <use images/pcb/pcb_bottom.jpg>
 Package pdftex.def Info: images/pcb/pcb_bottom.jpg  used on input line 199.
 (pdftex.def)             Requested size: 307.9686pt x 284.51346pt.
-<images/pcb/pcb_top_assembled.jpg, id=1317, 3646.62375pt x 3031.325pt>
+<images/pcb/pcb_top_assembled.jpg, id=1262, 3646.62375pt x 3031.325pt>
 File: images/pcb/pcb_top_assembled.jpg Graphic file (type jpg)
 <use images/pcb/pcb_top_assembled.jpg>
 Package pdftex.def Info: images/pcb/pcb_top_assembled.jpg  used on input line 2
 03.
 (pdftex.def)             Requested size: 342.25964pt x 284.5098pt.
-<images/pcb/pcb_bottom_assembled.jpg, id=1318, 3857.41125pt x 3123.67pt>
+<images/pcb/pcb_bottom_assembled.jpg, id=1263, 3857.41125pt x 3123.67pt>
 File: images/pcb/pcb_bottom_assembled.jpg Graphic file (type jpg)
 <use images/pcb/pcb_bottom_assembled.jpg>
 Package pdftex.def Info: images/pcb/pcb_bottom_assembled.jpg  used on input lin
 e 207.
 (pdftex.def)             Requested size: 333.79099pt x 270.2986pt.
-<images/pcb/pcb_coplanar.jpg, id=1319, 3825.29124pt x 2869.72125pt>
+<images/pcb/pcb_coplanar.jpg, id=1264, 3825.29124pt x 2869.72125pt>
 File: images/pcb/pcb_coplanar.jpg Graphic file (type jpg)
 <use images/pcb/pcb_coplanar.jpg>
 Package pdftex.def Info: images/pcb/pcb_coplanar.jpg  used on input line 211.
@@ -2722,37 +2723,37 @@ Package pdftex.def Info: images/pcb/pcb_coplanar.jpg  used on input line 211.
  [54 <./images/microcontroller_section-eps-converted-to.pdf>]
 [55 <./images/pcb/pcb_top.jpg> <./images/pcb/pcb_bottom.jpg>] [56 <./images/pcb
 /pcb_top_assembled.jpg> <./images/pcb/pcb_bottom_assembled.jpg>]
-<images/pcb/pcb_pll_buffer.jpg, id=1338, 3720.90125pt x 2925.93124pt>
+<images/pcb/pcb_pll_buffer.jpg, id=1283, 3720.90125pt x 2925.93124pt>
 File: images/pcb/pcb_pll_buffer.jpg Graphic file (type jpg)
 <use images/pcb/pcb_pll_buffer.jpg>
 Package pdftex.def Info: images/pcb/pcb_pll_buffer.jpg  used on input line 220.
 
 (pdftex.def)             Requested size: 363.0pt x 285.42224pt.
-<images/pcb/pcb_decoupling.png, id=1339, 1068.99374pt x 544.0325pt>
+<images/pcb/pcb_decoupling.png, id=1284, 1068.99374pt x 544.0325pt>
 File: images/pcb/pcb_decoupling.png Graphic file (type png)
 <use images/pcb/pcb_decoupling.png>
 Package pdftex.def Info: images/pcb/pcb_decoupling.png  used on input line 224.
 
 (pdftex.def)             Requested size: 363.0pt x 184.73616pt.
-<images/pcb/pcb_splitter.jpg, id=1343, 1458.95062pt x 1003.49907pt>
+<images/pcb/pcb_splitter.jpg, id=1288, 1458.95062pt x 1003.49907pt>
 File: images/pcb/pcb_splitter.jpg Graphic file (type jpg)
 <use images/pcb/pcb_splitter.jpg>
 Package pdftex.def Info: images/pcb/pcb_splitter.jpg  used on input line 229.
 (pdftex.def)             Requested size: 363.0pt x 249.6798pt.
  [57 <./images/pcb/pcb_coplanar.jpg>] [58 <./images/pcb/pcb_pll_buffer.jpg> <./
 images/pcb/pcb_decoupling.png>]
-<images/pcb/pcb_main_sampler.jpg, id=1355, 1184.92688pt x 838.63312pt>
+<images/pcb/pcb_main_sampler.jpg, id=1299, 1184.92688pt x 838.63312pt>
 File: images/pcb/pcb_main_sampler.jpg Graphic file (type jpg)
 <use images/pcb/pcb_main_sampler.jpg>
 Package pdftex.def Info: images/pcb/pcb_main_sampler.jpg  used on input line 23
 4.
 (pdftex.def)             Requested size: 363.0pt x 256.9152pt.
-<images/pcb/pcb_buffer.jpg, id=1356, 1019.30812pt x 646.66594pt>
+<images/pcb/pcb_buffer.jpg, id=1300, 1019.30812pt x 646.66594pt>
 File: images/pcb/pcb_buffer.jpg Graphic file (type jpg)
 <use images/pcb/pcb_buffer.jpg>
 Package pdftex.def Info: images/pcb/pcb_buffer.jpg  used on input line 238.
 (pdftex.def)             Requested size: 363.0pt x 230.29326pt.
-<images/pcb/pcb_current_source.jpg, id=1358, 2147.02126pt x 1288.815pt>
+<images/pcb/pcb_current_source.jpg, id=1302, 2147.02126pt x 1288.815pt>
 File: images/pcb/pcb_current_source.jpg Graphic file (type jpg)
 <use images/pcb/pcb_current_source.jpg>
 Package pdftex.def Info: images/pcb/pcb_current_source.jpg  used on input line 
@@ -2760,12 +2761,12 @@ Package pdftex.def Info: images/pcb/pcb_current_source.jpg  used on input line
 (pdftex.def)             Requested size: 363.0pt x 217.89604pt.
  [59 <./images/pcb/pcb_splitter.jpg>] [60 <./images/pcb/pcb_main_sampler.jpg> <
 ./images/pcb/pcb_buffer.jpg>]
-<images/pcb/pcb_log.jpg, id=1371, 1202.24156pt x 791.95876pt>
+<images/pcb/pcb_log.jpg, id=1315, 1202.24156pt x 791.95876pt>
 File: images/pcb/pcb_log.jpg Graphic file (type jpg)
 <use images/pcb/pcb_log.jpg>
 Package pdftex.def Info: images/pcb/pcb_log.jpg  used on input line 248.
 (pdftex.def)             Requested size: 363.0pt x 239.12416pt.
-<images/pcb/pcb_analog_supply.jpg, id=1373, 2842.62pt x 2131.965pt>
+<images/pcb/pcb_analog_supply.jpg, id=1317, 2842.62pt x 2131.965pt>
 File: images/pcb/pcb_analog_supply.jpg Graphic file (type jpg)
 <use images/pcb/pcb_analog_supply.jpg>
 Package pdftex.def Info: images/pcb/pcb_analog_supply.jpg  used on input line 2
@@ -2830,7 +2831,7 @@ ted-to.pdf>
 iance-eps-converted-to.pdf images/averaging_float_variance.eps>
 (epstopdf)             \includegraphics on input line 31.
 Package epstopdf Info: Output file is already uptodate.
-<images/averaging_float_variance-eps-converted-to.pdf, id=1396, 578.16pt x 433.
+<images/averaging_float_variance-eps-converted-to.pdf, id=1341, 578.16pt x 433.
 62pt>
 File: images/averaging_float_variance-eps-converted-to.pdf Graphic file (type p
 df)
@@ -2851,7 +2852,7 @@ ference_error-eps-converted-to.pdf images/averaging_float_difference_error.eps>
 
 (epstopdf)             \includegraphics on input line 37.
 Package epstopdf Info: Output file is already uptodate.
-<images/averaging_float_difference_error-eps-converted-to.pdf, id=1398, 578.16p
+<images/averaging_float_difference_error-eps-converted-to.pdf, id=1343, 578.16p
 t x 433.62pt>
 File: images/averaging_float_difference_error-eps-converted-to.pdf Graphic file
  (type pdf)
@@ -2872,7 +2873,7 @@ ifference_error-eps-converted-to.pdf images/averaging_integer_difference_error.
 eps>
 (epstopdf)             \includegraphics on input line 41.
 Package epstopdf Info: Output file is already uptodate.
-<images/averaging_integer_difference_error-eps-converted-to.pdf, id=1399, 578.1
+<images/averaging_integer_difference_error-eps-converted-to.pdf, id=1344, 578.1
 6pt x 433.62pt>
 File: images/averaging_integer_difference_error-eps-converted-to.pdf Graphic fi
 le (type pdf)
@@ -2894,7 +2895,7 @@ Package epstopdf Info: Source file: <images/rising_edge_port_load.eps>
 ad-eps-converted-to.pdf images/rising_edge_port_load.eps>
 (epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
-<images/rising_edge_port_load-eps-converted-to.pdf, id=1425, 578.16pt x 433.62p
+<images/rising_edge_port_load-eps-converted-to.pdf, id=1370, 578.16pt x 433.62p
 t>
 File: images/rising_edge_port_load-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -2927,7 +2928,7 @@ to.pdf>
 n-eps-converted-to.pdf images/rising_edge_DUT_open.eps>
 (epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
-<images/rising_edge_DUT_open-eps-converted-to.pdf, id=1433, 578.16pt x 433.62pt
+<images/rising_edge_DUT_open-eps-converted-to.pdf, id=1378, 578.16pt x 433.62pt
 >
 File: images/rising_edge_DUT_open-eps-converted-to.pdf Graphic file (type pdf)
 <use images/rising_edge_DUT_open-eps-converted-to.pdf>
@@ -2938,29 +2939,29 @@ Package pdftex.def Info: images/rising_edge_DUT_open-eps-converted-to.pdf  used
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [68 <./images/rising_edge_port_load-eps-converted-to.pdf>]
-<images/greeting_screen.png, id=1444, 4144.48375pt x 2088.80376pt>
+<images/greeting_screen.png, id=1389, 4144.48375pt x 2088.80376pt>
 File: images/greeting_screen.png Graphic file (type png)
 <use images/greeting_screen.png>
 Package pdftex.def Info: images/greeting_screen.png  used on input line 74.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/init_5351.png, id=1447, 4144.48375pt x 2088.80376pt>
+<images/init_5351.png, id=1392, 4144.48375pt x 2088.80376pt>
 File: images/init_5351.png Graphic file (type png)
 <use images/init_5351.png>
 Package pdftex.def Info: images/init_5351.png  used on input line 79.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
  [69 <./images/rising_edge_DUT_open-eps-converted-to.pdf> <./images/greeting_sc
 reen.png>]
-<images/stability_5351.png, id=1459, 4144.48375pt x 2088.80376pt>
+<images/stability_5351.png, id=1404, 4144.48375pt x 2088.80376pt>
 File: images/stability_5351.png Graphic file (type png)
 <use images/stability_5351.png>
 Package pdftex.def Info: images/stability_5351.png  used on input line 84.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/offset_user_wait.png, id=1461, 4144.48375pt x 2088.80376pt>
+<images/offset_user_wait.png, id=1406, 4144.48375pt x 2088.80376pt>
 File: images/offset_user_wait.png Graphic file (type png)
 <use images/offset_user_wait.png>
 Package pdftex.def Info: images/offset_user_wait.png  used on input line 89.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/offset_wait.png, id=1465, 4144.48375pt x 2088.80376pt>
+<images/offset_wait.png, id=1410, 4144.48375pt x 2088.80376pt>
 File: images/offset_wait.png Graphic file (type png)
 <use images/offset_wait.png>
 Package pdftex.def Info: images/offset_wait.png  used on input line 94.
@@ -2970,57 +2971,57 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [70 <./images/init_5351.png> <./images/stability_5351.png> <./images/offset_us
 er_wait.png>]
-<images/levels_user_wait.png, id=1474, 4144.48375pt x 2088.80376pt>
+<images/levels_user_wait.png, id=1418, 4144.48375pt x 2088.80376pt>
 File: images/levels_user_wait.png Graphic file (type png)
 <use images/levels_user_wait.png>
 Package pdftex.def Info: images/levels_user_wait.png  used on input line 98.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/levels_complete.png, id=1475, 4144.48375pt x 2088.80376pt>
+<images/levels_complete.png, id=1419, 4144.48375pt x 2088.80376pt>
 File: images/levels_complete.png Graphic file (type png)
 <use images/levels_complete.png>
 Package pdftex.def Info: images/levels_complete.png  used on input line 102.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/edge_wait.png, id=1477, 4144.48375pt x 2088.80376pt>
+<images/edge_wait.png, id=1421, 4144.48375pt x 2088.80376pt>
 File: images/edge_wait.png Graphic file (type png)
 <use images/edge_wait.png>
 Package pdftex.def Info: images/edge_wait.png  used on input line 107.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/edge_user_wait.png, id=1479, 4144.48375pt x 2088.80376pt>
+<images/edge_user_wait.png, id=1423, 4144.48375pt x 2088.80376pt>
 File: images/edge_user_wait.png Graphic file (type png)
 <use images/edge_user_wait.png>
 Package pdftex.def Info: images/edge_user_wait.png  used on input line 112.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/edge_sampling.png, id=1482, 4144.48375pt x 2088.80376pt>
+<images/edge_sampling.png, id=1426, 4144.48375pt x 2088.80376pt>
 File: images/edge_sampling.png Graphic file (type png)
 <use images/edge_sampling.png>
 Package pdftex.def Info: images/edge_sampling.png  used on input line 117.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
  [71 <./images/offset_wait.png> <./images/levels_user_wait.png> <./images/level
 s_complete.png> <./images/edge_wait.png> <./images/edge_user_wait.png>]
-<images/edge_found.png, id=1492, 4144.48375pt x 2088.80376pt>
+<images/edge_found.png, id=1436, 4144.48375pt x 2088.80376pt>
 File: images/edge_found.png Graphic file (type png)
 <use images/edge_found.png>
 Package pdftex.def Info: images/edge_found.png  used on input line 121.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/measurement_user_wait.png, id=1494, 4144.48375pt x 2088.80376pt>
+<images/measurement_user_wait.png, id=1438, 4144.48375pt x 2088.80376pt>
 File: images/measurement_user_wait.png Graphic file (type png)
 <use images/measurement_user_wait.png>
 Package pdftex.def Info: images/measurement_user_wait.png  used on input line 1
 26.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/measurement_avg_wait.png, id=1496, 4144.48375pt x 2088.80376pt>
+<images/measurement_avg_wait.png, id=1440, 4144.48375pt x 2088.80376pt>
 File: images/measurement_avg_wait.png Graphic file (type png)
 <use images/measurement_avg_wait.png>
 Package pdftex.def Info: images/measurement_avg_wait.png  used on input line 13
 1.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/measurement_running.png, id=1498, 4144.48375pt x 2088.80376pt>
+<images/measurement_running.png, id=1442, 4144.48375pt x 2088.80376pt>
 File: images/measurement_running.png Graphic file (type png)
 <use images/measurement_running.png>
 Package pdftex.def Info: images/measurement_running.png  used on input line 136
 .
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/measurement_complete.png, id=1500, 4144.48375pt x 2088.80376pt>
+<images/measurement_complete.png, id=1444, 4144.48375pt x 2088.80376pt>
 File: images/measurement_complete.png Graphic file (type png)
 <use images/measurement_complete.png>
 Package pdftex.def Info: images/measurement_complete.png  used on input line 14
@@ -3030,24 +3031,24 @@ Package pdftex.def Info: images/measurement_complete.png  used on input line 14
 [72 <./images/edge_sampling.png> <./images/edge_found.png> <./images/measuremen
 t_user_wait.png> <./images/measurement_avg_wait.png> <./images/measurement_runn
 ing.png>]
-<images/zooming_start.png, id=1512, 4144.48375pt x 2088.80376pt>
+<images/zooming_start.png, id=1456, 4144.48375pt x 2088.80376pt>
 File: images/zooming_start.png Graphic file (type png)
 <use images/zooming_start.png>
 Package pdftex.def Info: images/zooming_start.png  used on input line 146.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/zooming_complete.png, id=1513, 4144.48375pt x 2088.80376pt>
+<images/zooming_complete.png, id=1457, 4144.48375pt x 2088.80376pt>
 File: images/zooming_complete.png Graphic file (type png)
 <use images/zooming_complete.png>
 Package pdftex.def Info: images/zooming_complete.png  used on input line 150.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/discontinuity_open_after_split.png, id=1515, 4144.48375pt x 2088.80376p
+<images/discontinuity_open_after_split.png, id=1459, 4144.48375pt x 2088.80376p
 t>
 File: images/discontinuity_open_after_split.png Graphic file (type png)
 <use images/discontinuity_open_after_split.png>
 Package pdftex.def Info: images/discontinuity_open_after_split.png  used on inp
 ut line 155.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/discontinuity_split.png, id=1517, 4144.48375pt x 2088.80376pt>
+<images/discontinuity_split.png, id=1461, 4144.48375pt x 2088.80376pt>
 File: images/discontinuity_split.png Graphic file (type png)
 <use images/discontinuity_split.png>
 Package pdftex.def Info: images/discontinuity_split.png  used on input line 160
@@ -3055,19 +3056,19 @@ Package pdftex.def Info: images/discontinuity_split.png  used on input line 160
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
  [73 <./images/measurement_complete.png> <./images/zooming_start.png> <./images
 /zooming_complete.png> <./images/discontinuity_open_after_split.png>]
-<images/discontinuity_open.png, id=1528, 4144.48375pt x 2088.80376pt>
+<images/discontinuity_open.png, id=1473, 4144.48375pt x 2088.80376pt>
 File: images/discontinuity_open.png Graphic file (type png)
 <use images/discontinuity_open.png>
 Package pdftex.def Info: images/discontinuity_open.png  used on input line 165.
 
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/discontinuity_open_report.png, id=1531, 4144.48375pt x 2088.80376pt>
+<images/discontinuity_open_report.png, id=1476, 4144.48375pt x 2088.80376pt>
 File: images/discontinuity_open_report.png Graphic file (type png)
 <use images/discontinuity_open_report.png>
 Package pdftex.def Info: images/discontinuity_open_report.png  used on input li
 ne 170.
 (pdftex.def)             Requested size: 108.90111pt x 54.8845pt.
-<images/discontinuities_shown.png, id=1533, 4144.48375pt x 2088.80376pt>
+<images/discontinuities_shown.png, id=1478, 4144.48375pt x 2088.80376pt>
 File: images/discontinuities_shown.png Graphic file (type png)
 <use images/discontinuities_shown.png>
 Package pdftex.def Info: images/discontinuities_shown.png  used on input line 1
@@ -3077,7 +3078,7 @@ Package pdftex.def Info: images/discontinuities_shown.png  used on input line 1
 <./images/discontinuity_open.png> <./images/discontinuity_open_report.png> <./i
 mages/discontinuities_shown.png>]
 Kapitola 10.
-<images/gui/serial_probe.png, id=1543, 805.0075pt x 633.36626pt>
+<images/gui/serial_probe.png, id=1488, 805.0075pt x 633.36626pt>
 File: images/gui/serial_probe.png Graphic file (type png)
 <use images/gui/serial_probe.png>
 Package pdftex.def Info: images/gui/serial_probe.png  used on input line 11.
@@ -3088,20 +3089,20 @@ Underfull \vbox (badness 3769) has occurred while \output is active []
  [75
 
 ]
-<images/gui/serial_port_unsupported_cut.png, id=1549, 793.96625pt x 141.52875pt
+<images/gui/serial_port_unsupported_cut.png, id=1494, 793.96625pt x 141.52875pt
 >
 File: images/gui/serial_port_unsupported_cut.png Graphic file (type png)
 <use images/gui/serial_port_unsupported_cut.png>
 Package pdftex.def Info: images/gui/serial_port_unsupported_cut.png  used on in
 put line 16.
 (pdftex.def)             Requested size: 363.0pt x 64.7088pt.
-<images/gui/serial_port_lookup_cut.png, id=1551, 795.97375pt x 81.30376pt>
+<images/gui/serial_port_lookup_cut.png, id=1496, 795.97375pt x 81.30376pt>
 File: images/gui/serial_port_lookup_cut.png Graphic file (type png)
 <use images/gui/serial_port_lookup_cut.png>
 Package pdftex.def Info: images/gui/serial_port_lookup_cut.png  used on input l
 ine 21.
 (pdftex.def)             Requested size: 363.0pt x 37.0776pt.
-<images/gui/serial_no_port_available_cut.png, id=1554, 795.97375pt x 71.26625pt
+<images/gui/serial_no_port_available_cut.png, id=1499, 795.97375pt x 71.26625pt
 >
 File: images/gui/serial_no_port_available_cut.png Graphic file (type png)
 <use images/gui/serial_no_port_available_cut.png>
@@ -3111,25 +3112,25 @@ nput line 26.
 
 [76 <./images/gui/serial_probe.png> <./images/gui/serial_port_unsupported_cut.p
 ng> <./images/gui/serial_port_lookup_cut.png>]
-<images/gui/serial_port_found_cut.png, id=1563, 796.9775pt x 73.27374pt>
+<images/gui/serial_port_found_cut.png, id=1508, 796.9775pt x 73.27374pt>
 File: images/gui/serial_port_found_cut.png Graphic file (type png)
 <use images/gui/serial_port_found_cut.png>
 Package pdftex.def Info: images/gui/serial_port_found_cut.png  used on input li
 ne 30.
 (pdftex.def)             Requested size: 363.0pt x 33.37425pt.
-<images/gui/serial_device_found_cut.png, id=1566, 796.9775pt x 130.4875pt>
+<images/gui/serial_device_found_cut.png, id=1511, 796.9775pt x 130.4875pt>
 File: images/gui/serial_device_found_cut.png Graphic file (type png)
 <use images/gui/serial_device_found_cut.png>
 Package pdftex.def Info: images/gui/serial_device_found_cut.png  used on input 
 line 35.
 (pdftex.def)             Requested size: 363.0pt x 59.43361pt.
-<images/gui/serial_accepted_cut.png, id=1567, 795.97375pt x 69.25874pt>
+<images/gui/serial_accepted_cut.png, id=1512, 795.97375pt x 69.25874pt>
 File: images/gui/serial_accepted_cut.png Graphic file (type png)
 <use images/gui/serial_accepted_cut.png>
 Package pdftex.def Info: images/gui/serial_accepted_cut.png  used on input line
  39.
 (pdftex.def)             Requested size: 363.0pt x 31.58463pt.
-<images/gui/edge_wait.png, id=1569, 805.0075pt x 633.36626pt>
+<images/gui/edge_wait.png, id=1514, 805.0075pt x 633.36626pt>
 File: images/gui/edge_wait.png Graphic file (type png)
 <use images/gui/edge_wait.png>
 Package pdftex.def Info: images/gui/edge_wait.png  used on input line 44.
@@ -3137,12 +3138,12 @@ Package pdftex.def Info: images/gui/edge_wait.png  used on input line 44.
  [77 <./images/gui/serial_no_port_available_cut.png> <./images/gui/serial_port_
 found_cut.png> <./images/gui/serial_device_found_cut.png> <./images/gui/serial_
 accepted_cut.png>]
-<images/gui/dut_ready.png, id=1579, 805.0075pt x 633.36626pt>
+<images/gui/dut_ready.png, id=1524, 805.0075pt x 633.36626pt>
 File: images/gui/dut_ready.png Graphic file (type png)
 <use images/gui/dut_ready.png>
 Package pdftex.def Info: images/gui/dut_ready.png  used on input line 51.
 (pdftex.def)             Requested size: 363.0pt x 285.60172pt.
-<images/gui/measured_data.png, id=1581, 805.0075pt x 633.36626pt>
+<images/gui/measured_data.png, id=1526, 805.0075pt x 633.36626pt>
 File: images/gui/measured_data.png Graphic file (type png)
 <use images/gui/measured_data.png>
 Package pdftex.def Info: images/gui/measured_data.png  used on input line 56.
@@ -3151,43 +3152,13 @@ Package pdftex.def Info: images/gui/measured_data.png  used on input line 56.
 (./diplomova_prace_4_kalibrace.tex [78 <./images/gui/edge_wait.png>] [79 <./ima
 ges/gui/dut_ready.png> <./images/gui/measured_data.png>] [80]
 Kapitola 11.
+) (./diplomova_prace_5_detekce_zavad.tex [81
 
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5.
+] [82
 
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 7.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 7.
-
-
-Package hyperref Warning: Composite letter `\textring+u'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 7.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 11.
-
-[81
-
-]) (./diplomova_prace_5_detekce_zavad.tex [82]
+]
 Kapitola 12.
-[83
-
-]) (./diplomova_prace_6_zmerene_parametry.tex [84]
+[83]) (./diplomova_prace_6_zmerene_parametry.tex [84]
 Kapitola 13.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
@@ -3209,19 +3180,19 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 3.
 
-<images/measurements/lecroy_photo.jpg, id=1620, 954.9276pt x 716.1957pt>
+<images/measurements/lecroy_photo.jpg, id=1560, 954.9276pt x 716.1957pt>
 File: images/measurements/lecroy_photo.jpg Graphic file (type jpg)
 <use images/measurements/lecroy_photo.jpg>
 Package pdftex.def Info: images/measurements/lecroy_photo.jpg  used on input li
 ne 7.
 (pdftex.def)             Requested size: 363.0pt x 272.24461pt.
-<images/measurements/lecroy.png, id=1621, 963.6pt x 402.00188pt>
+<images/measurements/lecroy.png, id=1561, 963.6pt x 402.00188pt>
 File: images/measurements/lecroy.png Graphic file (type png)
 <use images/measurements/lecroy.png>
 Package pdftex.def Info: images/measurements/lecroy.png  used on input line 11.
 
 (pdftex.def)             Requested size: 363.0pt x 151.43733pt.
-<images/measurements/tdr_photo.jpg, id=1624, 1093.2042pt x 819.7827pt>
+<images/measurements/tdr_photo.jpg, id=1564, 1093.2042pt x 819.7827pt>
 File: images/measurements/tdr_photo.jpg Graphic file (type jpg)
 <use images/measurements/tdr_photo.jpg>
 Package pdftex.def Info: images/measurements/tdr_photo.jpg  used on input line 
@@ -3230,7 +3201,7 @@ Package pdftex.def Info: images/measurements/tdr_photo.jpg  used on input line
 [85
 
  <./images/measurements/lecroy_photo.jpg>]
-<images/measurements/agilent_fall.png, id=1630, 481.8pt x 361.35pt>
+<images/measurements/agilent_fall.png, id=1570, 481.8pt x 361.35pt>
 File: images/measurements/agilent_fall.png Graphic file (type png)
 <use images/measurements/agilent_fall.png>
 Package pdftex.def Info: images/measurements/agilent_fall.png  used on input li
@@ -3252,7 +3223,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 26.
 
-<images/measurements/tdr_profile.png, id=1632, 481.8pt x 361.35pt>
+<images/measurements/tdr_profile.png, id=1572, 481.8pt x 361.35pt>
 File: images/measurements/tdr_profile.png Graphic file (type png)
 <use images/measurements/tdr_profile.png>
 Package pdftex.def Info: images/measurements/tdr_profile.png  used on input lin
@@ -3285,7 +3256,7 @@ rted-to.pdf>
 gh_low-eps-converted-to.pdf images/measurements/vna_high_low.eps>
 (epstopdf)             \includegraphics on input line 38.
 Package epstopdf Info: Output file is already uptodate.
-<images/measurements/vna_high_low-eps-converted-to.pdf, id=1649, 578.16pt x 433
+<images/measurements/vna_high_low-eps-converted-to.pdf, id=1590, 578.16pt x 433
 .62pt>
 File: images/measurements/vna_high_low-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -3304,7 +3275,7 @@ erted-to.pdf>
 w_blank-eps-converted-to.pdf images/measurements/vna_low_blank.eps>
 (epstopdf)             \includegraphics on input line 42.
 Package epstopdf Info: Output file is already uptodate.
-<images/measurements/vna_low_blank-eps-converted-to.pdf, id=1650, 578.16pt x 43
+<images/measurements/vna_low_blank-eps-converted-to.pdf, id=1591, 578.16pt x 43
 3.62pt>
 File: images/measurements/vna_low_blank-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -3328,128 +3299,159 @@ Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textring' on input line 45.
 
-<images/measurements/match.jpg, id=1655, 2505.36pt x 1718.42pt>
+<images/measurements/match.jpg, id=1596, 2505.36pt x 1718.42pt>
 File: images/measurements/match.jpg Graphic file (type jpg)
 <use images/measurements/match.jpg>
 Package pdftex.def Info: images/measurements/match.jpg  used on input line 48.
 (pdftex.def)             Requested size: 363.0pt x 248.96786pt.
-<images/measurements/uoml.jpg, id=1656, 3300.33pt x 3674.72874pt>
+<images/measurements/uoml.jpg, id=1597, 3300.33pt x 3674.72874pt>
 File: images/measurements/uoml.jpg Graphic file (type jpg)
 <use images/measurements/uoml.jpg>
 Package pdftex.def Info: images/measurements/uoml.jpg  used on input line 52.
 (pdftex.def)             Requested size: 363.0pt x 404.16534pt.
-) (./diplomova_prace_7_uzivatelske_rozhrani_a_popis_ovladani.tex [89 <./images/
-measurements/vna_high_low-eps-converted-to.pdf>] [90 <./images/measurements/vna
-_low_blank-eps-converted-to.pdf> <./images/measurements/match.jpg>] [91 <./imag
-es/measurements/uoml.jpg>] [92
+[89 <./images/measurements/vna_high_low-eps-converted-to.pdf>] [90 <./images/me
+asurements/vna_low_blank-eps-converted-to.pdf> <./images/measurements/match.jpg
+>] [91 <./images/measurements/uoml.jpg>]
+
+Package hyperref Warning: Composite letter `\textasciicaron+e'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 91.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+r'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 91.
+
+Package epstopdf Info: Source file: <images/self-measurements/measure_open_rise
+time.eps>
+(epstopdf)                    date: 2019-12-23 23:04:30
+(epstopdf)                    size: 12416 bytes
+(epstopdf)             Output file: <images/self-measurements/measure_open_rise
+time-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-12-23 23:07:39
+(epstopdf)                    size: 7466 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/self-measurements/m
+easure_open_risetime-eps-converted-to.pdf images/self-measurements/measure_open
+_risetime.eps>
+(epstopdf)             \includegraphics on input line 94.
+Package epstopdf Info: Output file is already uptodate.
+<images/self-measurements/measure_open_risetime-eps-converted-to.pdf, id=1630, 
+578.16pt x 433.62pt>
+File: images/self-measurements/measure_open_risetime-eps-converted-to.pdf Graph
+ic file (type pdf)
+<use images/self-measurements/measure_open_risetime-eps-converted-to.pdf>
+Package pdftex.def Info: images/self-measurements/measure_open_risetime-eps-con
+verted-to.pdf  used on input line 94.
+(pdftex.def)             Requested size: 363.0pt x 272.24911pt.
+Package epstopdf Info: Source file: <images/self-measurements/measured_open.eps
+>
+(epstopdf)                    date: 2019-12-23 23:04:29
+(epstopdf)                    size: 83858 bytes
+(epstopdf)             Output file: <images/self-measurements/measured_open-eps
+-converted-to.pdf>
+(epstopdf)                    date: 2019-12-23 23:07:39
+(epstopdf)                    size: 28251 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/self-measurements/m
+easured_open-eps-converted-to.pdf images/self-measurements/measured_open.eps>
+(epstopdf)             \includegraphics on input line 98.
+Package epstopdf Info: Output file is already uptodate.
+<images/self-measurements/measured_open-eps-converted-to.pdf, id=1631, 578.16pt
+ x 433.62pt>
+File: images/self-measurements/measured_open-eps-converted-to.pdf Graphic file 
+(type pdf)
+<use images/self-measurements/measured_open-eps-converted-to.pdf>
+Package pdftex.def Info: images/self-measurements/measured_open-eps-converted-t
+o.pdf  used on input line 98.
+(pdftex.def)             Requested size: 363.0pt x 272.24911pt.
+Package epstopdf Info: Source file: <images/self-measurements/measure_short_ris
+etime.eps>
+(epstopdf)                    date: 2019-12-23 23:04:31
+(epstopdf)                    size: 13753 bytes
+(epstopdf)             Output file: <images/self-measurements/measure_short_ris
+etime-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-12-23 23:07:39
+(epstopdf)                    size: 7804 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/self-measurements/m
+easure_short_risetime-eps-converted-to.pdf images/self-measurements/measure_sho
+rt_risetime.eps>
+(epstopdf)             \includegraphics on input line 104.
+Package epstopdf Info: Output file is already uptodate.
+<images/self-measurements/measure_short_risetime-eps-converted-to.pdf, id=1634,
+ 578.16pt x 433.62pt>
+File: images/self-measurements/measure_short_risetime-eps-converted-to.pdf Grap
+hic file (type pdf)
+<use images/self-measurements/measure_short_risetime-eps-converted-to.pdf>
+Package pdftex.def Info: images/self-measurements/measure_short_risetime-eps-co
+nverted-to.pdf  used on input line 104.
+(pdftex.def)             Requested size: 363.0pt x 272.24911pt.
+Package epstopdf Info: Source file: <images/self-measurements/measured_short.ep
+s>
+(epstopdf)                    date: 2019-12-23 23:04:31
+(epstopdf)                    size: 83840 bytes
+(epstopdf)             Output file: <images/self-measurements/measured_short-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2019-12-23 23:07:40
+(epstopdf)                    size: 28163 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/self-measurements/m
+easured_short-eps-converted-to.pdf images/self-measurements/measured_short.eps>
+
+(epstopdf)             \includegraphics on input line 108.
+Package epstopdf Info: Output file is already uptodate.
+<images/self-measurements/measured_short-eps-converted-to.pdf, id=1635, 578.16p
+t x 433.62pt>
+File: images/self-measurements/measured_short-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use images/self-measurements/measured_short-eps-converted-to.pdf>
+Package pdftex.def Info: images/self-measurements/measured_short-eps-converted-
+to.pdf  used on input line 108.
+(pdftex.def)             Requested size: 363.0pt x 272.24911pt.
+[92] [93 <./images/self-measurements/measure_open_risetime-eps-converted-to.pdf
+> <./images/self-measurements/measured_open-eps-converted-to.pdf>] [94 <./image
+s/self-measurements/measure_short_risetime-eps-converted-to.pdf> <./images/self
+-measurements/measured_short-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <images/self-measurements/measured_load.eps
+>
+(epstopdf)                    date: 2019-12-23 23:04:32
+(epstopdf)                    size: 84240 bytes
+(epstopdf)             Output file: <images/self-measurements/measured_load-eps
+-converted-to.pdf>
+(epstopdf)                    date: 2019-12-23 23:07:40
+(epstopdf)                    size: 28245 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/self-measurements/m
+easured_load-eps-converted-to.pdf images/self-measurements/measured_load.eps>
+(epstopdf)             \includegraphics on input line 114.
+Package epstopdf Info: Output file is already uptodate.
+<images/self-measurements/measured_load-eps-converted-to.pdf, id=1669, 578.16pt
+ x 433.62pt>
+File: images/self-measurements/measured_load-eps-converted-to.pdf Graphic file 
+(type pdf)
+<use images/self-measurements/measured_load-eps-converted-to.pdf>
+Package pdftex.def Info: images/self-measurements/measured_load-eps-converted-t
+o.pdf  used on input line 114.
+(pdftex.def)             Requested size: 363.0pt x 272.24911pt.
+)
+(./diplomova_prace_8_zaver.tex [95 <./images/self-measurements/measured_load-ep
+s-converted-to.pdf>] [96
 
 ]
 Kapitola 14.
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 13.
-
-
-Package hyperref Warning: Composite letter `\textring+u'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 13.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 15.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 15.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 17.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 17.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 19.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 19.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 19.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 19.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 23.
-
-
-Package hyperref Warning: Composite letter `\textring+u'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 23.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 25.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 25.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 27.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+r'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 27.
-
-) (./diplomova_prace_8_zaver.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [93]
-[94]
-Kapitola 15.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 1.
 
-)
-No file diplomova_prace.ind.
-(./diplomova_prace.bbl [95
 
-] [96
+Package hyperref Warning: Composite letter `\textasciicaron+e'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 3.
+
+[97])
+No file diplomova_prace.ind.
+(./diplomova_prace.bbl [98]
+P\v {r}\'{\i }loha A.
+[99
 
 ]
-P\v {r}\'{\i }loha A.
-[97]
 Underfull \hbox (badness 2237) in paragraph at lines 79--81
 []\T1/lmr/m/n/10.95 (+20) John Mi-les (KE5FX) Ja-son Mil-drum (NT7S), \T1/lmr/m
 /it/10.95 (+20) Si5351 In-
@@ -3461,9 +3463,9 @@ Underfull \hbox (badness 3492) in paragraph at lines 79--81
 4, []$\T1/lmtt/m/n/10.95 https : / / nt7s . com / 2014 / 11 /
  []
 
-[98])
+[100])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 271.
- [99
+ [101
 runsystem(makeindex -s diplomova_prace.ist -t diplomova_prace.glg -o diplomova_
 prace.gls diplomova_prace.glo)...executed safely (allowed).
 
@@ -3476,14 +3478,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 271.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 271.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 271.
 Package rerunfilecheck Info: File `diplomova_prace.out' has not changed.
-(rerunfilecheck)             Checksum: 9D1841E963DE3825F2377E145892C919;5419.
+(rerunfilecheck)             Checksum: BF9E10AE5508FA40E25616BA8E213CA5;4221.
  ) 
 Here is how much of TeX's memory you used:
- 33329 strings out of 493738
- 602035 string characters out of 6153002
- 772615 words of memory out of 5000000
- 35912 multiletter control sequences out of 15000+600000
- 687476 words of font info for 203 fonts, out of 8000000 for 9000
+ 33340 strings out of 493738
+ 603196 string characters out of 6153002
+ 773245 words of memory out of 5000000
+ 35924 multiletter control sequences out of 15000+600000
+ 687772 words of font info for 206 fonts, out of 8000000 for 9000
  428 hyphenation exceptions out of 8191
  56i,18n,92p,2030b,1537s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
@@ -3500,10 +3502,10 @@ lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmtt10.pfb>
-Output written on diplomova_prace.pdf (111 pages, 49395043 bytes).
+Output written on diplomova_prace.pdf (113 pages, 49485596 bytes).
 PDF statistics:
- 1859 PDF objects out of 2073 (max. 8388607)
- 1484 compressed objects within 15 object streams
- 340 named destinations out of 1000 (max. 500000)
- 45089 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 1845 PDF objects out of 2073 (max. 8388607)
+ 1457 compressed objects within 15 object streams
+ 330 named destinations out of 1000 (max. 500000)
+ 45010 words of extra memory for PDF output out of 51595 (max. 10000000)
 
