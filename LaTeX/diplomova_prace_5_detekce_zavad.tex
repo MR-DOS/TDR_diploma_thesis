@@ -1,9 +1,19 @@
 \chapter{Detekce závad}
+Aby reflektometr nevyžadoval proškolenou obsluhu znalou teorie reflektometrie, je firmware vybaven automatickou detekcí základních typů diskontinuit. Firmware automaticky hledá prvních 8 největších zákadních diskontinuit.
 
 \section{Princip hledání závad}
+Reflektometr hledá diskontinuity ve změřených a zprůměrovaných datech, které jsou při výpočtech ještě normovány podle změřených úrovní tak, aby odpovídaly rozsahu koeficientu odrazu $\Gamma \in \left\langle -1, 1 \right\rangle$. V takto znormovaných datech hledá diferenci přes 16 vzorků. Firmware nejprve najde největší diferenci, je-li její absolutní hodnota větší než \SI{0.15}{}, pak ji firmware přidá do seznamu nalezených diskontinuit. Okolo bodu, kde byla nalezena největší diference se vytvoří zakázané pásmo o šířce $\pm 16$~vzorků, kde se dále již diskontinuity nehledají. Poté firmware najde další největší diferenci, přičemž ignoruje oblast okolo první nalezené největší diference. Takto firmware postupuje, dokud nachází diskontinuity, jimž odpovídá koeficient odrazu větší než \SI{0.15}{}, nebo dokud není nalezeno osm diskontinuit.
 
 \section{Základní typy závad}
+Podle typu diskontinuity se zobrazí na displeji reflektometru její identifikace. Firmare je schopen identifikovat celkem 6 druhů diskontinuit:
+\begin{itemize}
+	\item{$\Gamma>\SI{0.9}{}$}\\* Diskontinuita je považována za \verb|OPEN|, tedy rozpojený konec vedení.
+	\item{$\Gamma<\SI{-0.9}{}$}\\* Diskontinuita je považována za \verb|SHORT|, tedy zkratovaný konec vedení. K této i předchozí diskontinuitě může dojít buď mechanickým poškozením vedení nebo jeho rozpojením.
+	\item{$\Gamma=1/3 \pm \SI{-0.08}{}$}\\* Diskontinuita je považována za \verb|IMPEDANCE DOUBLED|, tedy zdvojnásobení impedance.
+	\item{$\Gamma=-1/3 \mp \SI{-0.08}{}$}\\* Diskontinuita je považována za \verb|IMPEDANCE HALVED|, tedy přechod na poloviční impedanci vedení. K této závadě může dojít například v místě, kde je vedení rozdvojeno a jsou na něj připojena dvě vedení o stené impedanci jako první vedení.
+	\item{$\Gamma>\SI{0}{}$}\\* V případě, že diskontinuita neodpovídá ani jedné z předchozích chyb, je indikována buď tato nebo následující chyba. Tato je označena jako \verb|HIGHER IMPEDANCE|, tedy přechod vedení na vyšší impedanci.
+	\item{$\Gamma<\SI{0}{}$}\\* Tato diskontinuita je označena jako \verb|LOWER IMPEDANCE| , tedy přechod vedení na nižší impedanci.
+\end{itemize}
 
 \section{Složené závady}
-
-\section{Výpočet impedančního profilu}
+Firmware není schopen identifikovat vícenásobné odrazy. K identifikaci vícenásobných odrazů by bylo nezbytné provádět simulaci vedení a postupně simulací získat impedanční profil vedení. Bohužel pro takovouto operaci nedisponuje použitý mikrokontrolér dostatkem paměti ani výpočetního výkonu. Výpočet impedančního profilu ze změřené odezvy navíc není jednoznačný, navíc není možné identifikovat jevy na vedení, které se neprojevují odrazy. Není možné například identifikovat v signálové cestě útlumové články nebo rozbočovače, pokud doržují impedanci vedení. Z těchto důvodů nebyl ve firmware implementován režim identifikace složených závad a vícenásobných odrazů.

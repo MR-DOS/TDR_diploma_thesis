@@ -120,6 +120,12 @@ Silicon Laboratories Inc., Austin, \emph{{AN}619: {M}anually {G}enerating an
 \bibitem[Sil18]{Si5351datasheet}
 Silicon Laboratories Inc., Austin, \emph{{S}i5351 datasheet}, 2018.
 
+\bibitem[SP18]{pcb_surface}
+P.~{Seiler} and D.~{Plettemeier}, \emph{Measurement of pcb surface finishes for
+  substrate characterization up to 67 ghz}, 2018 IEEE International Symposium
+  on Antennas and Propagation USNC/URSI National Radio Science Meeting, July
+  2018, pp.~1059--1060.
+
 \bibitem[Tek68]{S-1manual}
 Tektronix, Inc., Beaverton, Oregon, \emph{Type {S-1} {S}ampling {H}ead
   {I}nstruction {M}anual}, 1968.
@@ -150,6 +156,11 @@ D.~{Trebbels}, A.~{Kern}, F.~{Fellhauer}, C.~{Huebner}, and R.~{Zengerle},
 Elmin Tutkur, \emph{{W}ideband {D}irectional {C}ouplers and {P}ower
   {S}plitters}, Master's thesis, Chalmers University of Technology, Gothenburg,
   2014.
+
+\bibitem[WCBR08]{pcb_surface_simple}
+X.~{Wu}, D.~{Cullen}, G.~{Brist}, and O.~M. {Ramahi}, \emph{Surface finish
+  effects on high-speed signal degradation}, IEEE Transactions on Advanced
+  Packaging \textbf{31} (2008), no.~1, 182--189.
 
 \bibitem[Wil98]{AN72LT}
 Jim Williams, \emph{{AN72}: {A} {S}even-{N}anosecond {C}omparator for {S}ingle

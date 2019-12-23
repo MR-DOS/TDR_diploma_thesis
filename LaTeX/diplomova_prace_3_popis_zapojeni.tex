@@ -192,25 +192,63 @@ Komunikace reflektometru s počítačem je zajištěna pomocí virtuálního sé
 Plošný spoj reflektometru byl navržen v návrhovém prostředí KiCAD. Vysokofrekvenční část spojů zahrnuje pouze cestu mezi konektorem, budičem a vzorkovačem. Tato cesta je dlouhá pouze několik milimetrů. Proto byl spoj navržen s předpokladem, že na takto krátkou vzdálenost není nezbytné použít materiál určený pro vysokofrekvenční zapojení. Byl proto použit obyčejný substrát typu FR-4 o tloušťce \SI{0.6}{\milli\meter}, motiv je pouze oboustranný. Tloušťka byla zvolena tak, aby koplanární vedení nemusela být širší než přibližně \SI{1}{\milli\meter} při mezeře mezi vedením a zemnicí plochou větší než \SI{0.2}{\milli\meter}. Požadavek na mezeru vychází z běžných výrobních požadavků a tolerancí výrobců plošných spojů. Navržená a vyrobená deska plošných spojů je vyfocena na obr. \ref{pcb_top_unassembled} a \ref{pcb_bottom_unassembled}. Osazená a otestovaná deska plošných spojů je na obrázcích \ref{pcb_top_assembled} a \ref{pcb_bottom_assembled}. Velké hnědé součástky, které jsou osazeny z obou stran desky plošných spojů, jsou kondenzátorová pole, která slouží ke spojení virtuální a skutečné signálové země pro vysoké frekvence, ohraničují celou oblast virtuální země. Okolí testovacího portu s koplanárním vedením je na obr. \ref{pcb_coplanar}.
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_top.jpg}\caption{Vrchní strana desky plošných spojů, neosazená.}\label{pcb_top_unassembled}
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb/pcb_top.jpg}\caption{Vrchní strana desky plošných spojů, neosazená.}\label{pcb_top_unassembled}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_bottom.jpg}\caption{Spodní strana desky plošných spojů, neosazená.}\label{pcb_bottom_unassembled}
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb/pcb_bottom.jpg}\caption{Spodní strana desky plošných spojů, neosazená.}\label{pcb_bottom_unassembled}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_top_assembled.jpg}\caption{Vrchní strana desky plošných spojů, osazená.}\label{pcb_top_assembled}
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb/pcb_top_assembled.jpg}\caption{Vrchní strana desky plošných spojů, osazená.}\label{pcb_top_assembled}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=9.5cm,keepaspectratio]{images/pcb_bottom_assembled.jpg}\caption{Spodní strana desky plošných spojů, osazená.}\label{pcb_bottom_assembled}
+\includegraphics[width=\textwidth,height=9.5cm,keepaspectratio]{images/pcb/pcb_bottom_assembled.jpg}\caption{Spodní strana desky plošných spojů, osazená.}\label{pcb_bottom_assembled}
 \end{figure}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb_coplanar.jpg}\caption{Testovací konektor, koplanární vedení a motiv budiče a vzorkovače.}\label{pcb_coplanar}
+\includegraphics[width=\textwidth,height=10cm,keepaspectratio]{images/pcb/pcb_coplanar.jpg}\caption{Testovací konektor, koplanární vedení a motiv budiče a vzorkovače.}\label{pcb_coplanar}
 \end{figure}
 
 Na obr. \ref{pcb_coplanar} je vidět koplanární vedení vedoucí ke konektoru. Délka tohoto vedení je necelých \SI{8}{\milli\meter}, šířka vodiče je \SI{0.775}{\milli\meter} a šířka mezery \SI{0.2}{\milli\meter}. Při tloušťce substrátu \SI{0.6}{\milli\meter} a permitivitě $\epsilon _r= \SI{4.6}{}$ vychází impedance tohoto koplanárního vedení na \SI{50.01}{\ohm}.
 
 Pod konektorem se nachází také koplanární vedení. Jeo délka je \SI{5.3}{\milli\meter}, šířka vodiče je \SI{2}{\milli\meter} a šířka mezery \SI{0.2}{\milli\meter}. Tato část vedení byla bohužel nesprávně navržena, šířka pájecí plošky pro konektor měla být správně přibližně \SI{1.1}{\milli\meter} a mezera \SI{0.9}{\milli\meter}. Takto má tato část vedení impedanci přibližně \SIrange{30}{40}{\ohm} namísto \SI{50}{\ohm}. Spočtená impedance je uvedená jako rozsah, protože geometrické rozměry se nacházejí v rozsahu, kde se různé analytické nástroje ve výsledku lišily, protože obvykle pracují pouze pro určitý rozsah poměru šířky vedení k tloušťce substrátu. Během měření se také ukázalo, že použitý SMA konektor nebyl pro toto použití vhodný, neboť má velké výrobní tolerance a malou opakovatelnost montáže.
+
+Na obrázku \ref{pcb_pll_buffer} se nachází napravo uprostřed fázový závěs Si5351 s referenčním krystalem. Nad ním se nachází budič SY54020. Nalevo se nacházejí celkem čtyři napájecí zdroje. Spodní dva zdroje slouží pro napájení fázového závěsu. Jeden napájí výstupní budiče, druhý vnitřní logiku a oba vnitřní oscilátory. Horní dva zdroje slouží pro napájení budiče SY54020, jeden napájí vstupní obvody, druhý výstupní budiče. Obě komponenty vyžadují nízkou impedanci napájecích větví, proto je blízko těchto komponent na každé napájecí větvi velké množství vyrovnávacích kondenzátorů. Většinu těchto kondenzátorů není možné vyfotit, protože se nacházejí pod displejem, který je na druhé straně plošného spoje. Jejich poloha je vidět v obr. \ref{pcb_decoupling}, jde o snímek z návrhového prostředí KiCAD. Zmíněné kondenzátory byly zvýrazněny. Červená vrstva je strana, kde se nachází fázový závěs a budič. Zelená vrstva je strana s diplejem. Většina kondenzátorů se nachází z opačné strany desky plošných spojů než fázový závěs a budič, aby byly se zemí spojeny co nejkratší cestou. Pro napájecí zdroje byly použity lineární stabilizátory pro zajištění co nejmenšího šumu na napájecích větvích.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_pll_buffer.jpg}\caption{Fázový závěs, generátor budicích impulzů a napájecí zdroje.}\label{pcb_pll_buffer}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_decoupling.png}\caption{Okolí fázového závěsu a budiče v návrhovém prostředí KiCAD.}\label{pcb_decoupling}
+\end{figure}
+
+Na obrázku \ref{pcb_splitter} je okolí testovacího konektoru. Na spodním okraji se nachází budič SY54020, přímo nad ním se nachází rezistivní splitter určený k přizpůsobení budiče a vzorkovače k \SI{50}{\ohm} vedení. Splitter je připojen ke konektoru pomocí koplanárního vedení. Pro zajištění správné impedance a minimálních ztrát je z koplanárního vedení odstraněna nepájivá maska. U zvoleného výrobce bohužel nebyla k dispozici možnost nechat vyrobit desku plošných spojů bez povrchové úpravy. Možnosti povrchové úpravy byly olovnatý \acrshort{HAL}, bezolovnatý HAL a zlacení ENIG. Podle \cite{pcb_surface} a \cite{pcb_surface_simple} je z těchto možností lepší volba HAL, protože vedení s touto povrchovou úpravou má vlivem menší drsnosti povrchu nižší ztráty.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_splitter.jpg}\caption{Budič, rezistivní dělič, koplanární vedení a testovací konektor.}\label{pcb_splitter}
+\end{figure}
+
+Na obr. \ref{pcb_main_sampler} je vidět hlavní vzorkovač. V plastovém pouzdře se 6 vývody se nachází diodový můstek SMS3923-081. Pod ním se nachází \SI{150}{\ohm} rezistory a balun, přes které je přivedeno buzení z fázového závěsu Si5351. Tyto komponenty byly použity pro zvýšení souhlasné impedance buzení a tedy zvýšení vstupní impedance vzorkovače. Balun byl později odstraněn, neboť způsoboval rezonanční zákmity na hranách měřeného průběhu. Napravo od vzorkovače je oddělovací zesilovač, lépe je vidět na obr. \ref{pcb_buffer}. Nad tranzistorem BF998 se nachází odpory pro nastavení pracovního bodu. Vpravo se nachází operační zesilovač TL072, ve spodní části odpor, který vede do proudového zdroje, který se využívá pro autokalibraci.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_main_sampler.jpg}\caption{Hlavní vzorkovač.}\label{pcb_main_sampler}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_buffer.jpg}\caption{Oddělovací zesilovač.}\label{pcb_buffer}
+\end{figure}
+
+Na obr. \ref{pcb_current_source} je proudový zdroj, který je součástí oddělovacího zesilovače. Pouzdro s 6 vývody v levé části je DAC, kterým se celý zdroj řídí. Ve spodní části se nachází převodník z napětí na proud, vpravo proudové zrcadlo. Tranzistor Q202 je VF tranzistor 2SC5773, jeho kolektor je připojen k oddělovacímu zesilovači.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_current_source.jpg}\caption{Proudový zdroj.}\label{pcb_current_source}
+\end{figure}
+
+Na obr. \ref{pcb_log} je sekundární vzorkovač a logaritmický detektor. Vzorkovací můstek je opět připojen k fázovému závěsu přes odpory a balun, který byl také později odstraněn. V levé spodní části fotografie je vidět meandr sloužící k vyvážení délek diferenciálního páru. Diferenciální pár, který budí vzorkovací můstek primárního i sekundárního vzorkovače, má takto vyvažované délky vodičů, aby se všechny diody ve vzorkovacích můstcích spínaly ve stejný okamžik. Výstup sekundárního vzorkovače je připojen do operačního zesilovače TL072. Zde se zesílí, aby byl co nejlépe využit rozsah použitého ADC. Zároveň je tento signál přiveden do logaritmického detektoru kvůli možnosti rozšíření dynamického rozsahu měření. Bohužel se později ukázalo, že úroveň šumu v navzorkovaném signálu je příliš vysoká, a tedy nepřináší detektor rozšíření dynamického rozsahu. Dynamický rozsah měření se tedy ve výsledku vylepšuje pomocí průměrování podle \cite{HP54100_article_journal}.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_log.jpg}\caption{Sekundární vzorkovač a logaritmický detektor.}\label{pcb_log}
+\end{figure}
+
+Na fotografii \ref{pcb_analog_supply} je symetrický spínaný zdroj pro analogové části reflektometru. Napájí oddělovací zesilovač, proudový zdroj oddělovacího zesilovače a operační zesilovač. V šestinohém pouzdře je samotný měnič MT3608, v těsné blízkosti jsou umístěny blokovací keramické kondenzátory a zpětná vazba kladné napájecí větve. Nalevo od cívky měniče se nachází nábojová pumpa, která vytváří zápornou napájecí větev. Mezi elektrolytickými kondenzátory v levé části se nachází aktivní filtr záporné napájecí větve.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/pcb/pcb_analog_supply.jpg}\caption{Kombinovaný symetrický zdroj pro analogové části reflektometru.}\label{pcb_analog_supply}
+\end{figure}

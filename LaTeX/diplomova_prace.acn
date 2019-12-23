@@ -84,8 +84,12 @@
 \glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{51}
 \glossaryentry{DAC?\glossentry{DAC}|setentrycounter[]{page}\glsnumberformat}{51}
 \glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{51}
-\glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{59}
-\glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{59}
-\glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{60}
-\glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{60}
-\glossaryentry{DAC?\glossentry{DAC}|setentrycounter[]{page}\glsnumberformat}{60}
+\glossaryentry{HAL?\glossentry{HAL}|setentrycounter[]{page}\glsnumberformat}{59}
+\glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{63}
+\glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{63}
+\glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{64}
+\glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{64}
+\glossaryentry{DAC?\glossentry{DAC}|setentrycounter[]{page}\glsnumberformat}{64}
+\glossaryentry{VNA?\glossentry{VNA}|setentrycounter[]{page}\glsnumberformat}{88}
+\glossaryentry{TRL?\glossentry{TRL}|setentrycounter[]{page}\glsnumberformat}{89}
+\glossaryentry{UOML?\glossentry{UOML}|setentrycounter[]{page}\glsnumberformat}{89}

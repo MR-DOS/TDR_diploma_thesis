@@ -46,25 +46,22 @@
 \BOOKMARK [1][-]{section.12.1}{Princip hled\341n\355 z\341vad}{chapter.12}% 46
 \BOOKMARK [1][-]{section.12.2}{Z\341kladn\355 typy z\341vad}{chapter.12}% 47
 \BOOKMARK [1][-]{section.12.3}{Slo\236en\351 z\341vady}{chapter.12}% 48
-\BOOKMARK [1][-]{section.12.4}{V\375pocet impedancn\355ho profilu}{chapter.12}% 49
-\BOOKMARK [0][-]{chapter.13}{Zmeren\351 parametry}{}% 50
-\BOOKMARK [1][-]{section.13.1}{Budic\355 pulz}{chapter.13}% 51
-\BOOKMARK [2][-]{subsection.13.1.1}{Prubeh budic\355ho pulzu}{section.13.1}% 52
-\BOOKMARK [2][-]{subsection.13.1.2}{Spektrum budic\355ho pulzu}{section.13.1}% 53
-\BOOKMARK [1][-]{section.13.2}{Parametry f\341zov\351ho z\341vesu}{chapter.13}% 54
-\BOOKMARK [2][-]{subsection.13.2.1}{Jitter f\341zov\351ho z\341vesu v celoc\355seln\351m re\236imu}{section.13.2}% 55
-\BOOKMARK [2][-]{subsection.13.2.2}{Jitter f\341zov\351ho z\341vesu v racion\341ln\355m re\236imu}{section.13.2}% 56
-\BOOKMARK [2][-]{subsection.13.2.3}{Drift f\341zov\351ho z\341vesu}{section.13.2}% 57
-\BOOKMARK [0][-]{chapter.14}{U\236ivatelsk\351 rozhran\355 a popis ovl\341d\341n\355}{}% 58
-\BOOKMARK [1][-]{section.14.1}{Chov\341n\355 zar\355zen\355 v autonomn\355m re\236imu}{chapter.14}% 59
-\BOOKMARK [2][-]{subsection.14.1.1}{Autokalibrace}{section.14.1}% 60
-\BOOKMARK [2][-]{subsection.14.1.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.14.1}% 61
-\BOOKMARK [2][-]{subsection.14.1.3}{Meren\355}{section.14.1}% 62
-\BOOKMARK [2][-]{subsection.14.1.4}{Vyhodnocen\355 zmeren\375ch dat}{section.14.1}% 63
-\BOOKMARK [1][-]{section.14.2}{Chov\341n\355 zar\355zen\355 v re\236imu s pripojen\375m poc\355tacem}{chapter.14}% 64
-\BOOKMARK [2][-]{subsection.14.2.1}{Autokalibrace}{section.14.2}% 65
-\BOOKMARK [2][-]{subsection.14.2.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.14.2}% 66
-\BOOKMARK [2][-]{subsection.14.2.3}{Meren\355}{section.14.2}% 67
-\BOOKMARK [2][-]{subsection.14.2.4}{Vyhodnocen\355 zmeren\375ch dat}{section.14.2}% 68
-\BOOKMARK [0][-]{chapter.15}{Z\341ver}{}% 69
-\BOOKMARK [0][-]{appendix.A}{Literatura}{}% 70
+\BOOKMARK [0][-]{chapter.13}{Zmeren\351 parametry}{}% 49
+\BOOKMARK [1][-]{section.13.1}{Prubeh budic\355ho pulzu}{chapter.13}% 50
+\BOOKMARK [1][-]{section.13.2}{Parametry f\341zov\351ho z\341vesu}{chapter.13}% 51
+\BOOKMARK [1][-]{section.13.3}{TDR meren\355 vstupn\355 impedance reflektometru}{chapter.13}% 52
+\BOOKMARK [1][-]{section.13.4}{Meren\355 vstupn\355 impedance reflektometru pomoc\355 VNA}{chapter.13}% 53
+\BOOKMARK [1][-]{section.13.5}{Meren\355 parametru pou\236it\351ho substr\341tu}{chapter.13}% 54
+\BOOKMARK [0][-]{chapter.14}{U\236ivatelsk\351 rozhran\355 a popis ovl\341d\341n\355}{}% 55
+\BOOKMARK [1][-]{section.14.1}{Chov\341n\355 zar\355zen\355 v autonomn\355m re\236imu}{chapter.14}% 56
+\BOOKMARK [2][-]{subsection.14.1.1}{Autokalibrace}{section.14.1}% 57
+\BOOKMARK [2][-]{subsection.14.1.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.14.1}% 58
+\BOOKMARK [2][-]{subsection.14.1.3}{Meren\355}{section.14.1}% 59
+\BOOKMARK [2][-]{subsection.14.1.4}{Vyhodnocen\355 zmeren\375ch dat}{section.14.1}% 60
+\BOOKMARK [1][-]{section.14.2}{Chov\341n\355 zar\355zen\355 v re\236imu s pripojen\375m poc\355tacem}{chapter.14}% 61
+\BOOKMARK [2][-]{subsection.14.2.1}{Autokalibrace}{section.14.2}% 62
+\BOOKMARK [2][-]{subsection.14.2.2}{Kalibrace pomoc\355 kalibracn\355ch standardu}{section.14.2}% 63
+\BOOKMARK [2][-]{subsection.14.2.3}{Meren\355}{section.14.2}% 64
+\BOOKMARK [2][-]{subsection.14.2.4}{Vyhodnocen\355 zmeren\375ch dat}{section.14.2}% 65
+\BOOKMARK [0][-]{chapter.15}{Z\341ver}{}% 66
+\BOOKMARK [0][-]{appendix.A}{Literatura}{}% 67

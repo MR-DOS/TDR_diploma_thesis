@@ -160,16 +160,6 @@ Následně se zobrazí informační text, který informuje o pořadí diskontinu
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_split.png}\caption{Informační obrazovka o typu diskontinuity, obecná diskontinuita.}\label{discontinuity_split}
 \end{figure}
 
-Podle typu diskontinuity se zobrazí její identifikace. Firmare je schopen identifikovat celkem 6 druhů diskontinuit:
-\begin{itemize}
-	\item{$\Gamma>\SI{0.9}{}$}\\* Diskontinuita je považována za \quotedblbase OPEN\textquotedblleft, tedy rozpojený konec vedení.
-	\item{$\Gamma<\SI{-0.9}{}$}\\* Diskontinuita je považována za \quotedblbase SHORT\textquotedblleft, tedy zkratovaný konec vedení. K této i předchozí diskontinuitě může dojít buď mechanickým poškozením vedení nebo jeho rozpojením.
-	\item{$\Gamma=1/3 \pm \SI{-0.08}{}$}\\* Diskontinuita je považována za \quotedblbase IMPEDANCE DOUBLED\textquotedblleft, tedy zdvojnásobení impedance.
-	\item{$\Gamma=-1/3 \mp \SI{-0.08}{}$}\\* Diskontinuita je považována za \quotedblbase IMPEDANCE HALVED\textquotedblleft, tedy přechod na poloviční impedanci vedení. K této závadě může dojít například v místě, kde je vedení rozdvojeno a jsou na něj připojena dvě vedení o stené impedanci jako první vedení.
-	\item{$\Gamma>\SI{0}{}$}\\* V případě, že diskontinuita neodpovídá ani jedné z předchozích chyb, je indikována buď tato nebo následující chyba. Tato je označena jako \quotedblbase HIGHER IMPEDANCE\textquotedblleft , tedy přechod vedení na vyšší impedanci.
-	\item{$\Gamma<\SI{0}{}$}\\* Tato diskontinuita je označena jako \quotedblbase LOWER IMPEDANCE\textquotedblleft , tedy přechod vedení na nižší impedanci.
-\end{itemize}
-
 Odezva na kalibr typu \quotedblbase open\textquotedblleft{} je na obr. \ref{discontinuity_open}. Z levé strany je průběh uprostřed obrazovky, odpovídá $\Gamma=0$, v místě diskontinuity přejde až k vrchnímu okraji obrazovky, který odpovídá $\Gamma=1$. Spodní okraj obrazovky odpovídá $\Gamma=-1$.
 \begin{figure}[H]
 \includegraphics[width=0.3\textwidth,keepaspectratio,interpolate=false]{images/discontinuity_open.png}\caption{Přiblížená odezva na kalibr typu \quotedblbase open\textquotedblleft .}\label{discontinuity_open}
