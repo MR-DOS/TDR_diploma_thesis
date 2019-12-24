@@ -4,8 +4,8 @@
 \glossentry{ADC}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{23}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{39}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{45}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{51}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{44}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{51\delimN 52}}}\glsgroupskip
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossentry{CML}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{ix}\delimN 
@@ -19,7 +19,7 @@
 \glossentry{DAC}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{48}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{51}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{66}}}%
 \glossentry{DDS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{16}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{24}\delimN 
@@ -35,7 +35,7 @@
 		\setentrycounter[]{page}\glsnumberformat{40}}}\glsgroupskip
 \glsgroupheading{H}\relax \glsresetentrylist %
 \glossentry{HAL}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{59}}}%
+		\setentrycounter[]{page}\glsnumberformat{58}}}%
 \glossentry{HCMOS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{18}}}%
 \glossentry{HCSL}{\glossaryentrynumbers{\relax 
@@ -61,7 +61,7 @@
 		\setentrycounter[]{page}\glsnumberformat{35}}}\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossentry{RAM}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{63}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{65}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{SAS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{15}\delimN 
@@ -83,13 +83,13 @@
 		\setentrycounter[]{page}\glsnumberformat{7}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{10}}}%
 \glossentry{TRL}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{89}}}%
+		\setentrycounter[]{page}\glsnumberformat{91}}}%
 \glossentry{TTL}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{18}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{40}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossentry{UOML}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{89}}}%
+		\setentrycounter[]{page}\glsnumberformat{91}}}%
 \glossentry{USB}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{15}\delimN 
@@ -100,10 +100,10 @@
 		\setentrycounter[]{page}\glsnumberformat{24}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{37}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{40}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{66}}}%
 \glossentry{VML}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{VNA}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{88}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{91}}}%
+		\setentrycounter[]{page}\glsnumberformat{90}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{93}}}%
 \end{theglossary}\glossarypostamble

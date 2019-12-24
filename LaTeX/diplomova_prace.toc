@@ -38,36 +38,36 @@
 \contentsline {section}{\numberline {8.3}Generov\IeC {\'a}n\IeC {\'\i } pot\IeC {\v r}ebn\IeC {\'y}ch hodinov\IeC {\'y}ch sign\IeC {\'a}l\IeC {\r u}}{37}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Tvorba budic\IeC {\'\i }ho pulzu}{41}{section.8.4}% 
 \contentsline {section}{\numberline {8.5}P\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i } obvody a testovac\IeC {\'\i } port}{43}{section.8.5}% 
-\contentsline {section}{\numberline {8.6}Vzorkovac\IeC {\'\i } obvody a odd\IeC {\v e}lovac\IeC {\'\i } zesilova\IeC {\v c}}{45}{section.8.6}% 
+\contentsline {section}{\numberline {8.6}Vzorkovac\IeC {\'\i } obvody a odd\IeC {\v e}lovac\IeC {\'\i } zesilova\IeC {\v c}}{44}{section.8.6}% 
 \contentsline {section}{\numberline {8.7}Logaritmick\IeC {\'y} detektor}{51}{section.8.7}% 
-\contentsline {section}{\numberline {8.8}Digitalizace m\IeC {\v e}\IeC {\v r}en\IeC {\'e}ho pr\IeC {\r u}b\IeC {\v e}hu}{51}{section.8.8}% 
+\contentsline {section}{\numberline {8.8}Digitalizace m\IeC {\v e}\IeC {\v r}en\IeC {\'e}ho pr\IeC {\r u}b\IeC {\v e}hu}{52}{section.8.8}% 
 \contentsline {section}{\numberline {8.9}Komunikace s po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{52}{section.8.9}% 
 \contentsline {section}{\numberline {8.10}Navr\IeC {\v z}en\IeC {\'a} deska plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}}{54}{section.8.10}% 
-\contentsline {chapter}{\numberline {9}Popis firmware}{63}{chapter.9}% 
-\contentsline {section}{\numberline {9.1}Technick\IeC {\'e} parametry firmware}{63}{section.9.1}% 
-\contentsline {section}{\numberline {9.2}Autokalibrace a autodiagnostika za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{63}{section.9.2}% 
-\contentsline {subsection}{\numberline {9.2.1}Detekce stability f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{63}{subsection.9.2.1}% 
-\contentsline {subsection}{\numberline {9.2.2}Autokalibrace stejnosm\IeC {\v e}rn\IeC {\'e} slo\IeC {\v z}ky}{64}{subsection.9.2.2}% 
-\contentsline {subsection}{\numberline {9.2.3}Kalibrace nap\IeC {\v e}\IeC {\v t}ov\IeC {\'y}ch \IeC {\'u}rovn\IeC {\'\i }}{64}{subsection.9.2.3}% 
-\contentsline {subsection}{\numberline {9.2.4}Odhad \IeC {\v s}umov\IeC {\'e} \IeC {\'u}rovn\IeC {\v e} a pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{64}{subsection.9.2.4}% 
-\contentsline {subsection}{\numberline {9.2.5}Autokalibrace polohy budic\IeC {\'\i }ho pulzu}{67}{subsection.9.2.5}% 
-\contentsline {subsection}{\numberline {9.2.6}Kalibrace polohy roviny m\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{68}{subsection.9.2.6}% 
-\contentsline {section}{\numberline {9.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{69}{section.9.3}% 
-\contentsline {chapter}{\numberline {10}Popis software}{75}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}Ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } software}{75}{section.10.1}% 
-\contentsline {chapter}{\numberline {11}Kalibrace}{81}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Chybov\IeC {\'y} model}{81}{section.11.1}% 
-\contentsline {chapter}{\numberline {12}Detekce z\IeC {\'a}vad}{83}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{83}{section.12.1}% 
-\contentsline {section}{\numberline {12.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{83}{section.12.2}% 
-\contentsline {section}{\numberline {12.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{84}{section.12.3}% 
-\contentsline {chapter}{\numberline {13}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{85}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{85}{section.13.1}% 
-\contentsline {section}{\numberline {13.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{86}{section.13.2}% 
-\contentsline {section}{\numberline {13.3}TDR m\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru}{88}{section.13.3}% 
-\contentsline {section}{\numberline {13.4}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru pomoc\IeC {\'\i } VNA}{88}{section.13.4}% 
-\contentsline {section}{\numberline {13.5}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} pou\IeC {\v z}it\IeC {\'e}ho substr\IeC {\'a}tu}{89}{section.13.5}% 
-\contentsline {section}{\numberline {13.6}Parametry zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{92}{section.13.6}% 
-\contentsline {chapter}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{97}{chapter.14}% 
-\contentsline {section}{\numberline {14.1}Spln\IeC {\v e}n\IeC {\'\i } zad\IeC {\'a}n\IeC {\'\i }}{97}{section.14.1}% 
-\contentsline {chapter}{\numberline {A}Literatura}{99}{appendix.A}% 
+\contentsline {chapter}{\numberline {9}Popis firmware}{65}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}Technick\IeC {\'e} parametry firmware}{65}{section.9.1}% 
+\contentsline {section}{\numberline {9.2}Autokalibrace a autodiagnostika za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{65}{section.9.2}% 
+\contentsline {subsection}{\numberline {9.2.1}Detekce stability f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{65}{subsection.9.2.1}% 
+\contentsline {subsection}{\numberline {9.2.2}Autokalibrace stejnosm\IeC {\v e}rn\IeC {\'e} slo\IeC {\v z}ky}{66}{subsection.9.2.2}% 
+\contentsline {subsection}{\numberline {9.2.3}Kalibrace nap\IeC {\v e}\IeC {\v t}ov\IeC {\'y}ch \IeC {\'u}rovn\IeC {\'\i }}{66}{subsection.9.2.3}% 
+\contentsline {subsection}{\numberline {9.2.4}Odhad \IeC {\v s}umov\IeC {\'e} \IeC {\'u}rovn\IeC {\v e} a pr\IeC {\r u}m\IeC {\v e}rov\IeC {\'a}n\IeC {\'\i }}{66}{subsection.9.2.4}% 
+\contentsline {subsection}{\numberline {9.2.5}Autokalibrace polohy budic\IeC {\'\i }ho pulzu}{69}{subsection.9.2.5}% 
+\contentsline {subsection}{\numberline {9.2.6}Kalibrace polohy roviny m\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{70}{subsection.9.2.6}% 
+\contentsline {section}{\numberline {9.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{71}{section.9.3}% 
+\contentsline {chapter}{\numberline {10}Popis software}{77}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } software}{77}{section.10.1}% 
+\contentsline {chapter}{\numberline {11}Kalibrace}{83}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Chybov\IeC {\'y} model}{83}{section.11.1}% 
+\contentsline {chapter}{\numberline {12}Detekce z\IeC {\'a}vad}{85}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{85}{section.12.1}% 
+\contentsline {section}{\numberline {12.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{85}{section.12.2}% 
+\contentsline {section}{\numberline {12.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{86}{section.12.3}% 
+\contentsline {chapter}{\numberline {13}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{87}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{87}{section.13.1}% 
+\contentsline {section}{\numberline {13.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{88}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}TDR m\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru}{90}{section.13.3}% 
+\contentsline {section}{\numberline {13.4}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru pomoc\IeC {\'\i } VNA}{90}{section.13.4}% 
+\contentsline {section}{\numberline {13.5}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} pou\IeC {\v z}it\IeC {\'e}ho substr\IeC {\'a}tu}{91}{section.13.5}% 
+\contentsline {section}{\numberline {13.6}Parametry zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{94}{section.13.6}% 
+\contentsline {chapter}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{99}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Spln\IeC {\v e}n\IeC {\'\i } zad\IeC {\'a}n\IeC {\'\i }}{99}{section.14.1}% 
+\contentsline {chapter}{\numberline {A}Literatura}{101}{appendix.A}% 

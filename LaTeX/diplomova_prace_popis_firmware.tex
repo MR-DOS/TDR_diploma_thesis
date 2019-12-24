@@ -17,12 +17,13 @@ Dalším krokem autokalibrace je nastavení stejnosměrného posuvu měřeného 
 V dalším kroku se provede kalibrace logických úrovní a zjištění úrovně šumu v měřeném signálu. V obou logických úrovních budicího pulzu je nejprve změřeno 4096 vzorků, ze kterých se spočítá průměr. Potom se změří dalších 4096 vzorků, které jsou použity pro spočítání rozptylu měřených hodnot. Tím se získá informace o statických napěťových úrovních pro stavy odpovídající vedení zakončenému otevřeným koncem a zkratem, tedy pro koeficienty odrazu $-1$ a $+1$, čímž je získán teoretický rozsah měřených hodnot. Rozptyl hodnot je podstatný pro odhad vhodného počtu průměrování. Vhodný počet průměrování byl uvažován jako počet průměrů, při kterých již byl šum podstatně potlačen, avšak dále by jeho úroveň klesala již pomalu.
 
 \subsection{Odhad šumové úrovně a průměrování}
-Pro průměrování je použit algoritmus, který se v minulosti objevil např. v osciloskopech značky Hewlett-Packard \cite{HP54100_article_journal}. Tento algoritmus je počítán celočíselně a pro svůj chod potřebuje množství paměti odpovídající pouze jedinému zaznamenanému průběhu. Pro algoritmus je potřeba jen soubor předchozích změřených dat $ y_{i-1}$, nový změřený vzorek $x$ a proměnná $i$ vyjadřující, kolikátý průměr je právě měřen.
+Pro průměrování je použit algoritmus, který se v minulosti objevil např. v osciloskopech značky Hewlett-Packard \cite{HP54100_article_journal}. Tento algoritmus je počítán celočíselně a pro svůj chod potřebuje množství paměti odpovídající pouze jedinému zaznamenanému průběhu. Pro algoritmus je potřeba jen soubor předchozích změřených dat $ y_{i-1}$, nový změřený vzorek $x$ a proměnná $i$ vyjadřující, kolikátý průměr je právě měřen. Při změření nového $n$-tého vzorku se odpovídající $n$-tý zprůměrovaný vzorek získá podle rovnice \ref{equation_averaging}.
 
 \begin{equation}
 \begin{gathered}
-	y_i[n]=	\frac{x+i \cdot y_{i-1}[n]}{i+1}
+	y_i[n]=	\frac{x[n]+i \cdot y_{i-1}[n]}{i+1}
 \end{gathered}
+\label{equation_averaging}
 \end{equation}
 
 Tento algoritmus byl numericky simulován, nejprve v přesné podobě v plovoucí desetinné čárce a poté v celočíselné podobě. Pro simulaci byla použita náhodná data s rozptylem 1024, a tedy směrodatnou odchylkou 32. Tato hodnota je blízká reálně měřeným hodnotám v realizovaném zapojení reflektometru. Graf \ref{averaging_variance} vychází z dat simulovaných v plovoucí desetinné čárce, pro celočíselnou variantu není graf uveden, neboť rozdíl mezi nimi není rozpoznatelný. Rozdíly jsou znázorněny na následujících grafech. Výpočty byly provedeny $256\times$, výsledky byly zprůměrovány, aby byly křivky v grafech hladké. Bez průměrování jsou křivky lehce zatížené šumem.

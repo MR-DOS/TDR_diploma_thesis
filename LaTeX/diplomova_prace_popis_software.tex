@@ -6,7 +6,7 @@ Software je napsán v prostředí GNU Octave a určen pro operační systém GNU
 
 \section{Ovládání software}
 
-Nejprve software testuje dostupnost sériových portů podle obr. \ref{serial_probe}. Tento pproblém může na operačním systému GNU/Linux nastat v příadě, kdy uživatel, který prostředí Octave spouští, nemá dostatečná práva na přístup k sériovým portům. Druhou možností, kdy k této chybě může dojít, je v případě, kdy je Octave spouštěno z kontejneru Flatpak bez povolení k přístupu k hardware. V případě operačního systému Windows může být příčinou chyby buď nedostatečné oprávnění uživatele nebo otevření sériovéo portu jiným programem, protože oproti operačnímu systému GNU/Linux neumožňuje otevřít sériový port ve více programech najednou.
+Nejprve software testuje dostupnost sériových portů podle obr. \ref{serial_probe}. Tento problém může na operačním systému GNU/Linux nastat v příadě, kdy uživatel, který prostředí Octave spouští, nemá dostatečná práva na přístup k sériovým portům. Druhou možností, kdy k této chybě může dojít, je v případě, kdy je Octave spouštěno z kontejneru Flatpak bez povolení k přístupu k hardware. V případě operačního systému Windows může být příčinou chyby buď nedostatečné oprávnění uživatele nebo otevření sériového portu jiným programem, protože oproti operačnímu systému GNU/Linux neumožňuje otevřít sériový port ve více programech najednou.
 \begin{figure}[H]
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/serial_probe.png}\caption{Test dostupnosti sériových portů.}\label{serial_probe}
 \end{figure}	
@@ -30,7 +30,7 @@ Pokud není nalezen žádný virtuální sériový port, je zobrazeno hlášení
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/serial_port_found_cut.png}\caption{Hlášení v případě, kdy je nalezen vhodný virtuální sériový port.}\label{serial_port_found}
 \end{figure}
 
-Software následně nalezený port otestuje tak, že na něj pošle zprávu \verb"DEV?", na kterou očekává odpověď. V případě, že je součástí odpovědí text \verb"TDR5351_CORE", je port považován za port, na kterém se nachází reflektometr. Plná identifikace zařízení obsahuje ještě informaci o datu a času kompilace firmware, tento identifikátor je vidět na obr. \ref{serial_device_found}. Zařízení je následně poslán příkaz \verb"REM!", kterým je zařízení informováno o požadavku na dálkové ovládání. Software očekává potvrzení ve formě zprávy \verb"REM.", načež se spustí vlastní rozhraní pro ovládání reflektometru. Celý úspěšný proces potvrzování je ještě indikován zprávou na obr. \ref{serial_accepted}.
+Software následně nalezený port otestuje tak, že na něj pošle zprávu \verb"DEV?", na kterou očekává odpověď. V případě, že je součástí odpovědí text \verb"TDR5351_CORE", software použije tento port pro komunikaci s reflektometrem. Plná identifikace zařízení obsahuje ještě informaci o datu a času kompilace firmware, tento identifikátor je vidět na obr. \ref{serial_device_found}. Zařízení je následně poslán příkaz \verb"REM!", kterým je zařízení informováno o požadavku na dálkové ovládání. Software očekává potvrzení ve formě zprávy \verb"REM.", načež se spustí vlastní rozhraní pro ovládání reflektometru. Celý úspěšný proces potvrzování je ještě indikován zprávou na obr. \ref{serial_accepted}.
 \begin{figure}[H]
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/serial_device_found_cut.png}\caption{Hlášení v případě, kdy je nalezen vhodný virtuální sériový port.}\label{serial_device_found}
 \end{figure}
@@ -46,7 +46,7 @@ Po připojení k reflektometru se zobrazí ovládací rozhraní, které je vidě
 
 Grafické rozhraní postupně uživatele provází autokalibrací, vždy poskytuje informace o aktuálním probíhajícím kroku. Zároveň informuje uživatele srozumitelnou formou o tom, co se od něj očekává. Veškerá tlačítka se podle aktuálního stavu automaticky uzamykají a odemykají, případně podbarvují nebo mizí tak, aby uživatel nemohl provést neočekávaný požadavek, který by v dané chvíli buď nedával smysl, případně uživatele mátl.
 
-V okamžiku, kdy jsou provedeny všechny autokalibrační procesy, je uživateli předloženo rozhraní podle obr. \ref{dut_ready}. Objevily se nové ovládací prvky, tlačítko START a posuvník pro nastavení počtu průměrování. Uživatel může nastavit pomocí posuvníku požadovaný počet průměrování. Program automaticky nastaví na posuvníku počet průměrování, který je dle odhadu šumové úrovně ideální, nicméně uživatel může toto nastavení dle svých potřeb změnit v rozsahu \SIrange{1}{64}{}. 
+V okamžiku, kdy jsou provedeny všechny autokalibrační procesy, je uživateli předloženo rozhraní podle obr. \ref{dut_ready}. Objevily se nové ovládací prvky, tlačítko RUN a posuvník pro nastavení počtu průměrování. Uživatel může nastavit pomocí posuvníku požadovaný počet průměrování. Program automaticky nastaví na posuvníku počet průměrování, který je dle odhadu šumové úrovně ideální, nicméně uživatel může toto nastavení dle svých potřeb změnit v rozsahu \SIrange{1}{64}{}. 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/dut_ready.png}\caption{Grafické rozhraní, zařízení je připraveno na měření.}\label{dut_ready}
 \end{figure}
@@ -56,4 +56,4 @@ Jakmile software obdrží první měřená data, zobrazí je v grafu jako na obr
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/measured_data.png}\caption{Probíhající měření s aktuálními změřenými daty.}\label{measured_data}
 \end{figure}
 
-Ve stavu, kdy je reflektometr připraven k měření, je možné stisknout tlačítka na kalibračním panelu. Stiskem tlačítek \quotedblbase Open\textquotedblleft, \quotedblbase Short\textquotedblleft{} nebo \quotedblbase Load\textquotedblleft{} se započne měření daného mechanického kalibru. Také je možné kalibrační data načíst ze souboru.
+Ve stavu, kdy je reflektometr připraven k měření, je možné stisknout tlačítka na kalibračním panelu. Stiskem tlačítek \quotedblbase Open\textquotedblleft, \quotedblbase Short\textquotedblleft{} nebo \quotedblbase Load\textquotedblleft{} se započne měření daného mechanického kalibru.

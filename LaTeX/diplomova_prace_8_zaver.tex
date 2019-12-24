@@ -1,7 +1,7 @@
 \chapter{Závěr}
 
 \section{Splnění zadání}
-V rámci této práce byla prostudována problematika reflektometrie a různé architektury reflektometrů. Na základě takto získaných poznatků byly teoreticky vybrány použitelné techniky a základní bloky pro vytvoření reflektometru v časové doméně. Praktičnost těchto technik a základních bloků byla zevrubně prostudována, vybrány z nich byly jen ty nejvhodnější, případně nejjednodušší na implementaci. Z takto vytvořené sady konceptů již bylo možné navrhnout základní blokovou architekturu reflektometru vzorkujícím v ekvivalentním čase, navrhnout podobu jednotlivých bloků a metody jejich propojení do jednoho celku. 
+V rámci této práce byla prostudována problematika reflektometrie a různé architektury reflektometrů. Na základě takto získaných poznatků byly teoreticky vybrány použitelné techniky a základní bloky pro vytvoření reflektometru v časové doméně. Z těchto základních prvků byly vybrány jen ty nejvhodnější, případně nejjednodušší na implementaci. Poté již bylo možné navrhnout základní blokovou architekturu reflektometru vzorkujícím v ekvivalentním čase, navrhnout podobu jednotlivých bloků a metody jejich propojení do jednoho celku. 
 
 Základní bloky reflektometru byly odsimulovány a na základě těchto simulací byly zapojení a hodnoty použitých součástek optimalizovány tak, aby co nejlépe plnily svou funkci. Takto optimalizované zapojení bylo překresleno v návrhovém prostředí a převedeno do podoby desky plošných spojů. Po osazení a oživení byl vytvořen základní firmware, kterým bylo již možné zjistit funkčnost celého zařízení. Z dat získaných z této první fáze vývoje byly opraveny simulace a opět byla provedena řada optimalizací. Vzhledem k tomu, že deska plošných spojů byla navržena s předpokladem nezbytnosti této druhé řady optimalizací, bylo možné zapojení snadno upravit. Po této první iteraci oprav se již zapojení ustálilo a nadále byl vyvíjen již jen firmware a software.
 
@@ -11,6 +11,6 @@ Reflektometr je schopen měřit v kroku \SI{20}{\pico\second}, tedy s ekvivalent
 
 Nad rámec zadání byl vytvořen ovládací software pro PC, který umožňuje rozšířené ovládání reflektometru a pohodlnější zobrazení a manipulaci změřených dat.
 
-V rámci práce tedy byl vytvořen funkční reflektometr s jednoduchým ovládáním, který je schopen detekovat základní diskontinuity a jejich typ a polohu.
+V rámci práce tedy byl vytvořen funkční reflektometr s jednoduchým ovládáním, který je schopen detekovat základní diskontinuity a jejich typ a polohu. Podařilo se splnit i vlastní cíle, zapojení je vcelku jednoduché a snadno znovuvyrobitelné, nevyžaduje žádné neobvyklé součástky ani speciální pracovní podmínky a je schopno komunikace s počítačem.
 
 Dále by bylo možné reflektometr vylepšit použitím kvalitnějšího konektoru na měřicím portu a opravou vedení vedoucího ke konektoru, případně rozšířením analogové šířky pásma a snížením úrovně šumu.
