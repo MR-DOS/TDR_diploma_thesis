@@ -712,9 +712,9 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 							char position_string[11];
 							getnum32(abs((10000000/NUMBER_OF_POINTS)*((int32_t)discontinuities[discontinuity_counter] - ((int32_t)Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index))),position_string);
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-11*7,5,position_string);
-							if (((int32_t)discontinuities[discontinuity_counter] - ((int32_t)Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index))<=0) SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-11*8,5,"-");
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,5,"Position:");
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-2*7,5,"ps");
+							if (discontinuities[discontinuity_counter] < (Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index)) SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,10*6,5,"-");
 
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 7, "    Press button");
 
