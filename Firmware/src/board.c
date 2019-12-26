@@ -6,7 +6,7 @@
  */
 
 #define INT_DIVIDER 46
-#define NUMBER_OF_POINTS 500000
+#define NUMBER_OF_POINTS 50000
 #define DRAMATIC_PAUSE 250
 #define SAMPLE_MEMORY_SIZE	4096
 #define DEVICE_NAME "TDR5351_CORE"
@@ -76,28 +76,6 @@ void Wait_For_User_Action(void)
 	while(GPIO_ReadInputDataBit(BTN_PORT,BTN)==RESET){}
 	remote_user_action=FALSE;
 }
-
-/*
-void Find_Discontinuities(uint16_t data[SAMPLE_MEMORY_SIZE], uint16_t error_positions[8], int16_t diff_values[8], uint16_t low, uint16_t high)
-{
-	uint8_t error_counter=0;
-	uint16_t i16;
-	int16_t last_tmp=0;
-	for(i16=16; i16<SAMPLE_MEMORY_SIZE; i16++)
-	{
-		int16_t tmp=-(2000*((int32_t)data[i16]-data[i16-16]))/(high-low);
-		if (((tmp>100)|(tmp<-100))&(abs(last_tmp)>abs(tmp)))
-		{
-			error_positions[error_counter]=i16-8;
-			diff_values[error_counter]=tmp;
-			error_counter++;
-			i16=i16+32;
-			if (error_counter==8) return;
-		}
-		last_tmp=tmp;
-	}
-}
-*/
 
 void Find_Discontinuities(uint16_t data[SAMPLE_MEMORY_SIZE], uint16_t error_positions[8], int16_t diff_values[8], uint16_t low, uint16_t high)
 {
@@ -455,6 +433,7 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	LED_Init();
 	OLED_Init(SSD1306_ConfigStruct, display_buffer);
 	SERIAL_Init();
+	Timer_Init();
 
 	SSD1306_ConfigStruct->Display_Contrast=0;
 	SSD1306_SetContrast(SSD1306_ConfigStruct);
@@ -482,45 +461,14 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 	MCP4725_Init();
 	ADC_BoardInit();
 
+	while(Board_ReflectometerState->samples_missed) Board_ReflectometerState->samples_missed=0;
+
 	Board_CalibrationState=CAL_WAIT_EDGE;
 	Calibrate_Sampler_Offset(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, ON);
 	Board_CalibrationState=CAL_NOISE_ESTIMATION;
 	Calibrate_Logic_Levels(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_OPEN, ON);
 	Board_CalibrationState=CAL_FINDING_EDGE;
 	Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, ON);
-
-	while(0){
-	//Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_OPEN, ON);
-
-	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, "Please connect short");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, " standard to the end");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 2, "   of an airline.");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "    Press button");
-	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
-	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
-	Wait_For_User_Action();
-	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
-
-	Calibrate_Logic_Levels(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_SHORT, ON);
-	//Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_SHORT, ON);
-
-	ReflectometerMode_Init(Si5351_ConfigStruct, ReflectometerMode_Run);
-	Delay_ms(100);
-	Si5351_ClearStickyBits(Si5351_ConfigStruct);
-
-	SSD1306_ClearPartialDisplayBuffer(SSD1306_ConfigStruct, 0,5);
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 0, " Please connect load");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 1, "      standard.");
-	SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct, 0, 4, "    Press button");
-	SSD1306_StopProgressBar(SSD1306_ConfigStruct);
-	SSD1306_DrawPartialBuffer(SSD1306_ConfigStruct,0,5);
-	Wait_For_User_Action();
-	SSD1306_StartProgressBar(SSD1306_ConfigStruct);
-
-	Calibrate_Logic_Levels(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_LOAD, ON);
-	Calibrate_Get_Calibration_Normal_Response(Si5351_ConfigStruct, SSD1306_ConfigStruct, display_buffer, Board_ReflectometerState, CAL_LOAD, ON);
-	}
 
 	Board_ReflectometerState->open_low_variation=Board_ReflectometerState->calibration[CAL_OPEN].low_variance;
 	Board_ReflectometerState->open_high_variation=Board_ReflectometerState->calibration[CAL_OPEN].high_variance;
@@ -762,8 +710,9 @@ void Init_Board(Si5351_ConfigTypeDef *Si5351_ConfigStruct, SSD1306_ConfigTypeDef
 							}
 
 							char position_string[11];
-							getnum32((10000000/NUMBER_OF_POINTS)*((uint32_t)discontinuities[discontinuity_counter] - (Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index)),position_string);
+							getnum32(abs((10000000/NUMBER_OF_POINTS)*((int32_t)discontinuities[discontinuity_counter] - ((int32_t)Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index))),position_string);
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-11*7,5,position_string);
+							if (((int32_t)discontinuities[discontinuity_counter] - ((int32_t)Board_ReflectometerState->rising_edge_center_index - Board_ReflectometerState->start_sample_index))<=0) SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-11*8,5,"-");
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,0,5,"Position:");
 							SSD1306_DrawStringToBuffer(SSD1306_ConfigStruct,127-2*7,5,"ps");
 
@@ -921,6 +870,14 @@ void Si5351_Board_Init(Si5351_ConfigTypeDef *Si5351_ConfigStruct)
 
 
 	Si5351_StructInit(Si5351_ConfigStruct);
+
+	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Invert = OFF;
+	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_QuarterPeriod_Offset = 127;
+	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Invert = ON;
+	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_QuarterPeriod_Offset = 0;
+	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Invert = OFF;
+	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_QuarterPeriod_Offset = 127;
+
 	/*---------------------------------------------------------------------------------------*/
 	Si5351_ConfigStruct->Interrupt_Mask_CLKIN = ON;
 	Si5351_ConfigStruct->Interrupt_Mask_PLLA = OFF;
@@ -949,8 +906,8 @@ void Si5351_Board_Init(Si5351_ConfigTypeDef *Si5351_ConfigStruct)
 	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Disable_State = CLK_Disable_State_LOW;
 	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Enable = OFF;
 	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_I_Drv = CLK_I_Drv_8mA;
-	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Invert = OFF;
-	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_QuarterPeriod_Offset = 127;
+	//Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Invert = OFF;
+	//Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_QuarterPeriod_Offset = 0;
 	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_R_Div = CLK_R_Div128;
 	Si5351_ConfigStruct->CLK[CH_MAINSAMP_P].CLK_Use_OEB_Pin = OFF;
 
@@ -976,10 +933,10 @@ void Si5351_Board_Init(Si5351_ConfigTypeDef *Si5351_ConfigStruct)
 
 	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Clock_Source = CLK_Clock_Source_MS_Own;
 	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Disable_State = CLK_Disable_State_LOW;
-	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Enable = OFF;
+	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Enable = ON;
 	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_I_Drv = CLK_I_Drv_8mA;
-	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Invert = ON;
-	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_QuarterPeriod_Offset = 0;
+	//Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Invert = ON;
+	//Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_QuarterPeriod_Offset = 127;
 	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_R_Div = CLK_R_Div128;
 	Si5351_ConfigStruct->CLK[CH_SLAVESAMP_P].CLK_Use_OEB_Pin = OFF;
 
@@ -1051,8 +1008,8 @@ void Si5351_Board_Init(Si5351_ConfigTypeDef *Si5351_ConfigStruct)
 	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Disable_State = CLK_Disable_State_HIGH_Z;
 	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Enable = OFF;
 	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_I_Drv = CLK_I_Drv_2mA;
-	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Invert = ON;
-	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_QuarterPeriod_Offset = 0;
+	//Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Invert = ON;
+	//Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_QuarterPeriod_Offset = 0;
 	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_R_Div = CLK_R_Div128;
 	Si5351_ConfigStruct->CLK[CH_ADC_TRIGGER].CLK_Use_OEB_Pin = OFF;
 
@@ -1348,7 +1305,7 @@ void ADC_BoardInit(void)
 	NVIC_InitTypeDef NVIC_InitStruct;
 
 	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_AIN;	//set analog pins as analog inputs
-	GPIO_InitStruct.GPIO_Pin = OUT_REF | OUT_LOG | OUT_LIN;
+	GPIO_InitStruct.GPIO_Pin = OUT_REF | OUT_LIN;
 	GPIO_Init(OUT_PORT, &GPIO_InitStruct);
 
 	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_IPD;	//set trigger input as floating input
@@ -1360,7 +1317,7 @@ void ADC_BoardInit(void)
 	GPIO_PinRemapConfig(GPIO_Remap_ADC2_ETRGREG, DISABLE);
 	GPIO_EXTILineConfig(ADC_TRG_PORTSOURCE, ADC_TRG_PINSOURCE);
 
-	EXTI_StructInit(&EXTI_InitStruct);	//configure EXTI to handle rising edge on EXTI11
+	EXTI_StructInit(&EXTI_InitStruct);	//configure EXTI to handle falling edge on EXTI11
 	EXTI_InitStruct.EXTI_Line=EXTI_Line11;
 	EXTI_InitStruct.EXTI_LineCmd=ENABLE;
 	EXTI_InitStruct.EXTI_Mode=EXTI_Mode_Interrupt;
@@ -1380,17 +1337,17 @@ void ADC_BoardInit(void)
 	ADC_InitStruct.ADC_NbrOfChannel = 1;
 	ADC_InitStruct.ADC_ScanConvMode = DISABLE;
 
-	ADC_RegularChannelConfig(ADC1, OUT_LOG_ADC_CHANNEL, 1, ADC_SampleTime_28Cycles5);
-	ADC_RegularChannelConfig(ADC2, OUT_LIN_ADC_CHANNEL, 1, ADC_SampleTime_28Cycles5);
-	ADC_ExternalTrigConvCmd(ADC1, ENABLE);
+	//ADC_RegularChannelConfig(ADC1, OUT_LOG_ADC_CHANNEL, 1, ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC2, OUT_LIN_ADC_CHANNEL, 1, ADC_SampleTime_239Cycles5);
+	//ADC_ExternalTrigConvCmd(ADC1, ENABLE);
 	ADC_ExternalTrigConvCmd(ADC2, ENABLE);
 
-	ADC_Init(ADC1, &ADC_InitStruct);
+	//ADC_Init(ADC1, &ADC_InitStruct);
 	ADC_Init(ADC2, &ADC_InitStruct);
-	ADC_StartCalibration(ADC1);
+	//ADC_StartCalibration(ADC1);
 	ADC_StartCalibration(ADC2);
-	while((ADC_GetCalibrationStatus(ADC1)==RESET)|(ADC_GetCalibrationStatus(ADC2)==RESET)){__asm volatile ("NOP");}
-	ADC_Cmd(ADC1, ENABLE);
+	while(ADC_GetCalibrationStatus(ADC2)==RESET){__asm volatile ("NOP");}
+	//ADC_Cmd(ADC1, ENABLE);
 	ADC_Cmd(ADC2, ENABLE);
 	ADC_ITConfig(ADC2, ADC_IT_EOC, ENABLE);
 
@@ -1407,6 +1364,28 @@ void ADC_BoardInit(void)
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority=0;
 	NVIC_Init(&NVIC_InitStruct);
+}
+
+
+void Timer_Init(void)
+{
+	GPIO_InitTypeDef GPIO_InitStruct;
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1 | RCC_APB2Periph_AFIO | TIM_ETR_PERIPH,ENABLE);
+
+	GPIO_InitStruct.GPIO_Pin = TIM_ETR;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(TIM_ETR_PORT, &GPIO_InitStruct);
+
+	TIM_TimeBaseStructInit(&TIM_TimeBaseInitStruct);
+	TIM_TimeBaseInitStruct.TIM_Period=0xFFFF;
+	TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+	TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStruct);
+
+	TIM_ETRClockMode2Config(TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 7);
+	TIM_Cmd(TIM1, ENABLE);
 }
 
 void SERIAL_Init(void)
@@ -2236,6 +2215,20 @@ void ADC1_2_IRQHandler(void)
 	static uint16_t local_sample_lin=0, local_sample_lin_last[DIFF_POINTS];
 	static uint16_t local_window_max=0, local_window_min=4095, local_sample_max=0, local_sample_min=4095;
 	static uint32_t local_largest_diff_point=0, local_current_sample_index=0, local_start_sample_index=0;
+	static uint16_t local_last_timer=0;
+	uint16_t timer_difference;
+	static bool timer_initialized=FALSE;
+
+	if(timer_initialized==FALSE)
+	{
+		timer_initialized=TRUE;
+		local_last_timer=((uint16_t)TIM1->CNT)-1;
+	}
+	timer_difference=(int32_t)(0x0000FFFF & TIM1->CNT)-local_last_timer;
+	local_last_timer=timer_difference+local_last_timer;
+	Board_ReflectometerState.samples_missed+=(int32_t)timer_difference-2;
+	local_current_sample_index+=(timer_difference-2)%NUMBER_OF_POINTS;
+	differentiation_index=(differentiation_index+timer_difference-2)%DIFF_POINTS;
 
 	//save last measured value from previous call
 	local_sample_lin_last[(differentiation_index-1)%DIFF_POINTS]=local_sample_lin;

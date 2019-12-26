@@ -29,6 +29,10 @@ typedef enum {FALSE=0, TRUE=1} bool;
 #define CH_PULSE_N		6
 #define CH_ADC_TRIGGER	7
 
+#define TIM_ETR_PORT	GPIOA
+#define TIM_ETR_PERIPH	RCC_APB2Periph_GPIOA
+#define TIM_ETR			GPIO_Pin_12
+
 #define OUT_PORT		GPIOA
 #define OUT_PERIPH		RCC_APB2Periph_GPIOA
 #define OUT_REF			GPIO_Pin_6
@@ -216,6 +220,8 @@ typedef struct
 	Board_ReflectometerModeTypeDef Board_ReflectometerMode;
 
 	Board_ReflectometerCalibrationTypeDef calibration[3];
+
+	volatile uint32_t samples_missed;
 } Board_ReflectometerStateTypeDef;
 
 #include "main.h"
@@ -250,6 +256,8 @@ void MCP4725_Init(void);
 int MCP4725_SetVoltage(uint16_t data_code);
 
 void SERIAL_Init(void);
+
+void Timer_Init(void);
 
 void ReflectometerMode_Init(Si5351_ConfigTypeDef *Si5351_ConfigStruct, Board_ReflectometerModeTypeDef mode);
 
