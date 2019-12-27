@@ -2,8 +2,61 @@ pkg load instrument-control;
 close all;
 clear all;
 graphics_toolkit qt;
+warning('off', 'Octave:possible-matlab-short-circuit-operator');
+warning('off', 'Octave:missing-glyph');
+
+global calibration_data;
+calibration_data.open=[];
+calibration_data.short=[];
+calibration_data.load=[];
+
+global decoded_data=[];
 
 %------------------------------------------------------------------------------- 
+
+function calibration_io(calling_object,event_data,h)
+  global calibration_data;
+  
+  if (gcbo()==h.calibration_store) 
+    save calibration.cal calibration_data;
+  endif;
+  if (gcbo()==h.calibration_restore)
+    load calibration.cal;
+    update_graph_data([],[],h);
+  endif;
+endfunction
+
+function update_graph_data(calling_object,event_data,h)
+  global decoded_data;
+  global calibration_data;
+  
+  if (get(h.calibration_use,"value")==0)
+    if(length(calibration_data.load)==4096) 
+      set(h.plot,"YData",decoded_data-calibration_data.load);
+    else
+      set(h.plot,"YData",decoded_data);
+    endif;
+  else
+    S11L=fft(calibration_data.load);
+    S11O=fft(calibration_data.open);
+    S11S=fft(calibration_data.short);
+    S11M=fft(decoded_data);
+    
+    Ed=S11L;
+    Er=2.*( ( (S11O-S11L).*S11S - S11L.*S11O + S11L.*S11L) ./ (S11S-S11O) );
+    Es=-( (S11S+S11O-2.*S11L) ./ (S11S-S11O) );
+    
+    S11A= (S11M-Ed) ./ ( Es.*(S11M-Ed)+Er );
+    
+    calibrated_data=real(ifft(S11A));
+    
+    set(h.plot,"YData",calibrated_data);
+  endif;
+  
+  xlim(h.graph_axes,[0 20*numel(decoded_data)]);
+  ylim(h.graph_axes, [-1.2 1.2]);
+  drawnow;
+endfunction
 
 function ret=GetChildCoord(parent_coord, child_coord)
     ret=[parent_coord(1)+parent_coord(3)*(child_coord(1)-child_coord(3)/2) parent_coord(2)-parent_coord(4)*(child_coord(2)-child_coord(4)/2) parent_coord(3)*child_coord(3) parent_coord(4)*child_coord(4)];
@@ -28,7 +81,46 @@ function update_average(calling_object,event_data,h)
     set(h.device_slider_text, "string", strcat("Averages: ",sprintf("%d",round(63*get(h.device_average_slider, "value")+1))));
 endfunction     
 
-function update_gui_state(h,state,data_length)  
+function calibration_action(calling_object,event_data,h)
+    global calibration_data;
+    global decoded_data;
+    if (length(decoded_data)==4096)
+      
+      if (gcbo()==h.calibration_open) 
+        if(length(calibration_data.open)==4096)
+          calibration_data.open=[];
+          set(h.calibration_use,"value",0);
+        else
+          calibration_data.open=decoded_data;
+        endif;
+      endif;
+
+      if (gcbo()==h.calibration_short) 
+        if(length(calibration_data.short)==4096)
+          calibration_data.short=[];
+          set(h.calibration_use,"value",0);
+        else
+          calibration_data.short=decoded_data;
+        endif;
+      endif;
+      
+      if (gcbo()==h.calibration_load) 
+        if(length(calibration_data.load)==4096)
+          calibration_data.load=[];
+          set(h.calibration_use,"value",0);
+        else
+          calibration_data.load=decoded_data;
+        endif;
+      endif;
+      
+    endif;
+    
+    update_graph_data([],[],h);
+endfunction
+
+function update_gui_state(h,state,data_length) 
+    global calibration_data; 
+  
     if length(state>2)
       if (state(1:2)==[13 10]) 
         state=state(3:end);
@@ -363,8 +455,28 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_open,"enable","on");
         set(h.calibration_short,"enable","on");
         set(h.calibration_load,"enable","on");
-        set(h.calibration_use,"enable","off");
-        set(h.calibration_store,"enable","off");
+        if(length(calibration_data.open)==4096)
+          set(h.calibration_open,"backgroundcolor",[0.94 0.94 0.5]);
+        else
+          set(h.calibration_open,"backgroundcolor",[0.94 0.94 0.94]);
+        endif;
+        if(length(calibration_data.load)==4096)
+          set(h.calibration_load,"backgroundcolor",[0.94 0.94 0.5]);
+        else
+          set(h.calibration_load,"backgroundcolor",[0.94 0.94 0.94]);
+        endif;
+        if(length(calibration_data.short)==4096)
+          set(h.calibration_short,"backgroundcolor",[0.94 0.94 0.5]);
+        else
+          set(h.calibration_short,"backgroundcolor",[0.94 0.94 0.94]);
+        endif;
+        if((length(calibration_data.open)==4096)&(length(calibration_data.load)==4096)&(length(calibration_data.short)==4096))
+          set(h.calibration_use,"enable","on");
+          set(h.calibration_store,"enable","on");
+        else
+          set(h.calibration_use,"enable","off");
+          set(h.calibration_store,"enable","off");
+        endif;
         set(h.calibration_restore,"enable","on");  
         set(h.device_state_text,"string","The device is ready to measure the DUT.");
         set(h.device_instruction_text,"string","Please connect the DUT. Then press \neither the Continue button or button\non the device.");
@@ -703,30 +815,35 @@ h.vertical_amplitude_in = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "+",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to zoom into the graph vertically.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", VERTICAL_AMPLITUDE_IN_COORD, "parent", h.vertical_panel);
                                 
 h.vertical_amplitude_out = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "-",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to zoom out of the graph vertically.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", VERTICAL_AMPLITUDE_OUT_COORD, "parent", h.vertical_panel);  
   
 h.vertical_position_up = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "↑",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to move up in the graph.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", VERTICAL_POSITION_UP_COORD, "parent", h.vertical_panel);  
                                 
 h.vertical_position_down = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "↓",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to move down in the graph.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", VERTICAL_POSITION_DOWN_COORD, "parent", h.vertical_panel);    
   
 h.vertical_reset = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "R",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to reset any changes made to the graph using\nbuttons in this panel.",
                                 "position", VERTICAL_RESET_COORD, "parent", h.vertical_panel);    
     
 %------------------------------------------------------------------------------- 
@@ -740,30 +857,35 @@ h.horizontal_amplitude_in = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "+",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to zoom into the graph horizontally.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", HORIZONTAL_AMPLITUDE_IN_COORD, "parent", h.horizontal_panel);
                                 
 h.horizontal_amplitude_out = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "-",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to zoom out of the graph horizontally.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", HORIZONTAL_AMPLITUDE_OUT_COORD, "parent", h.horizontal_panel);  
   
 h.horizontal_position_up = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "→",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to move right in the graph.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", HORIZONTAL_POSITION_UP_COORD, "parent", h.horizontal_panel);  
                                 
 h.horizontal_position_down = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "←",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to move left in the graph.\nTo reset changes made by this button, press the \'R\' button near this button.",
                                 "position", HORIZONTAL_POSITION_DOWN_COORD, "parent", h.horizontal_panel);    
  
 h.horizontal_reset = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "R",
                                 "callback", @update_plot_axes,
+                                "TooltipString", "Use this button to reset any changes made to the graph using\nbuttons in this panel.",
                                 "position", HORIZONTAL_RESET_COORD, "parent", h.horizontal_panel);    
 
 %------------------------------------------------------------------------------- 
@@ -777,6 +899,7 @@ h.device_continue = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "CONTINUE",
                                 "callback", {@send_continue, serial_port},
+                                "TooltipString", "Use this button to confirm that you have followed the required\nsteps aw ritten in the \'Instructions\' box and to proceed to next step.",
                                 "position", DEVICE_CONTINUE_BUTTON_COORD, "parent", h.device_state_panel); 
  
 h.device_state_text_panel = uipanel ("title", "Device state", 
@@ -814,6 +937,7 @@ h.device_average_slider = uicontrol ("style", "slider",
                             "value", 0/63,
                             "sliderstep", [1/63 1/63],
                             "visible","off",
+                            "TooltipString", "Use this slider to set how many times should be the measured data averaged.\nUnless you need to change this setting, let it be as it was initially set, since it is set to an optimal value.",
                             "position", DEVICE_AVERAGE_SLIDER_COORD, "parent", h.device_state_panel);
                             
 set(h.device_average_slider, "callback",{@update_average, h});                            
@@ -824,6 +948,7 @@ h.device_run = uicontrol ("style", "pushbutton",
                                 "callback", {@send_start, serial_port, h},
                                 "visible","off",
                                 "backgroundcolor",[0.5 0.94 0.5],
+                                "TooltipString", "Use this button to start measurement.",
                                 "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
 
 h.device_stop = uicontrol ("style", "pushbutton",
@@ -832,6 +957,7 @@ h.device_stop = uicontrol ("style", "pushbutton",
                                 "callback", {@send_continue, serial_port},
                                 "visible","off",
                                 "backgroundcolor",[0.94 0.5 0.5],
+                                "TooltipString", "Use this button to interrupt measurement. The device will\nfinish the running measurement cycle and send back averaged data.",
                                 "position", DEVICE_RUN_STOP_COORD, "parent", h.device_state_panel); 
                                  
                             
@@ -845,40 +971,52 @@ h.calibration_panel = uipanel ("title", "Calibration panel",
 h.calibration_open = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "Open",
-                                "callback", @update_plot_axes,
+                                %"callback", {@store_calibration, h},
+                                "TooltipString", "After performing a measurement of the OPEN standard, push this button to store the calibration.\nIf you wish to remove the calibration, push the button again. If it is yellow, then the calibration is set.",
                                 "position", CALIBRATION_OPEN_COORD, "parent", h.calibration_panel);  
       
 h.calibration_short = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "Short",
-                                "callback", @update_plot_axes,
+                                %"callback", {@store_calibration, h},
+                                "TooltipString", "After performing a measurement of the SHORT standard, push this button to store the calibration.\nIf you wish to remove the calibration, push the button again. If it is yellow, then the calibration is set.",
                                 "position", CALIBRATION_SHORT_COORD, "parent", h.calibration_panel);    
                           
 h.calibration_load = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "Load",
-                                "callback", @update_plot_axes,
+                                %"callback", {@store_calibration, h},
+                                "TooltipString", "After performing a measurement of the LOAD standard, push this button to store the calibration.\nIf you wish to remove the calibration, push the button again. If it is yellow, then the calibration is set.\nAt the moment this calibration is stored, it is non-conditionally applied to the displayed data, since it ALWAYS improves the displayed data.\nIf you wish to display the uncalibrated data, remove this calibration.",
                                 "position", CALIBRATION_LOAD_COORD, "parent", h.calibration_panel);     
 
 h.calibration_use = uicontrol ("style", "checkbox",
                                 "units", "normalized",
                                 "string", "Use calibration",
                                 "value", 0,
-                                "callback", @update_plot_axes,
+                                "TooltipString", "To apply the OSL calibration to the measured data and display the calibrated data, check this box.\nThis box can be checked only after the OPEN, SHORT and LOAD calibration is performed or loaded from file.",
                                 "position", CALIBRATION_USE_COORD, "parent", h.calibration_panel);                                             
 
 h.calibration_store = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "Store calibration",
-                                "callback", @update_plot_axes,
+                                %"callback", @update_plot_axes,
+                                "TooltipString", "To store the OSL calibration to a file, push this button. It is stored to a file in the current working directory of this script.\nYou cannot select the file to which it will be stored.\nYou have to perform the OSL calibration to be able to use this button.",
                                 "position", CALIBRATION_STORE_COORD, "parent", h.calibration_panel);  
       
 h.calibration_restore = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "Restore calibration",
-                                "callback", @update_plot_axes,
+                                %"callback", @update_plot_axes,
+                                "TooltipString", "To restore the OSL calibration from a file, push this button. It is loaded from a file in the current working directory of this script.\nYou cannot select the file to which it will be stored.",
                                 "position", CALIBRATION_RESTORE_COORD, "parent", h.calibration_panel);   
-                                
+ 
+set(h.calibration_open, "callback",{@calibration_action, h});   
+set(h.calibration_short, "callback",{@calibration_action, h}); 
+set(h.calibration_load, "callback",{@calibration_action, h});  
+set(h.calibration_use, "callback",{@update_graph_data, h}); 
+set(h.calibration_store, "callback",{@calibration_io, h}); 
+set(h.calibration_restore, "callback",{@calibration_io, h});  
+ 
 guidata(main_window, h);
 
 set(serial_port,"timeout",1);
@@ -922,12 +1060,9 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   endif;
   set(h.plot,"visible","on");
   set(h.graph_axes,"visible","on");
-  decoded_data=4096-typecast(data,'uint16');
+  decoded_data=2*(double(4096-typecast(data,'uint16'))-levels(1))/(levels(2)-levels(1))-1;
   set(h.plot,"XData",20*(0:4095));
-  set(h.plot,"YData",2*(double(decoded_data)-levels(1))/(levels(2)-levels(1))-1);
-  xlim(h.graph_axes,[0 20*numel(decoded_data)]);
-  ylim(h.graph_axes, [-1.2 1.2]);
-  %yticks(h.graph_axes,-1:0.5:1);
+  update_graph_data([],[],h);
   drawnow;
 endif;
 
