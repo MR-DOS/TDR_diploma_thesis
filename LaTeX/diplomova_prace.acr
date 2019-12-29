@@ -25,7 +25,7 @@
 		\setentrycounter[]{page}\glsnumberformat{24}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{40}}}%
 \glossentry{DUT}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{84}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{86}}}\glsgroupskip
 \glsgroupheading{E}\relax \glsresetentrylist %
 \glossentry{ECL}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{18}\delimN 
@@ -85,15 +85,15 @@
 		\setentrycounter[]{page}\glsnumberformat{7}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{10}}}%
 \glossentry{TDT}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{85}}}%
+		\setentrycounter[]{page}\glsnumberformat{87}}}%
 \glossentry{TRL}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{93}}}%
+		\setentrycounter[]{page}\glsnumberformat{95}}}%
 \glossentry{TTL}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{18}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{40}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossentry{UOML}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{93}}}%
+		\setentrycounter[]{page}\glsnumberformat{95}}}%
 \glossentry{USB}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{15}\delimN 
@@ -108,6 +108,6 @@
 \glossentry{VML}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{VNA}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{92}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{95}}}%
+		\setentrycounter[]{page}\glsnumberformat{94}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{97}}}%
 \end{theglossary}\glossarypostamble

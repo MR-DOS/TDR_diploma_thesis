@@ -53,7 +53,7 @@ function update_graph_data(calling_object,event_data,h)
     set(h.plot,"YData",calibrated_data);
   endif;
   
-  xlim(h.graph_axes,[0 20*numel(decoded_data)]);
+  xlim(h.graph_axes,[get(h.plot,"XData")(1) get(h.plot,"XData")(end)]);
   ylim(h.graph_axes, [-1.2 1.2]);
   drawnow;
 endfunction
@@ -1061,7 +1061,7 @@ if (strcmp(char(device_state),"STATE READY_TO_SEND\r\n"))
   set(h.plot,"visible","on");
   set(h.graph_axes,"visible","on");
   decoded_data=2*(double(4096-typecast(data,'uint16'))-levels(1))/(levels(2)-levels(1))-1;
-  set(h.plot,"XData",20*(0:4095));
+  set(h.plot,"XData",1E12*(46*128/(24*25000000))*(1/(1+24*500000/24))*(0:4095));
   update_graph_data([],[],h);
   drawnow;
 endif;

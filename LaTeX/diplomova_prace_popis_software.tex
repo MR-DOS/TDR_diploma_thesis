@@ -56,4 +56,18 @@ Jakmile software obdrží první měřená data, zobrazí je v grafu jako na obr
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/measured_data.png}\caption{Probíhající měření s aktuálními změřenými daty.}\label{measured_data}
 \end{figure}
 
-Ve stavu, kdy již bylo provedeno měření a reflektometr je připraven k dalšímu měření, je možné stisknout tlačítka na kalibračním panelu. Stiskem tlačítek \quotedblbase Open\textquotedblleft, \quotedblbase Short\textquotedblleft{} nebo \quotedblbase Load\textquotedblleft{} se uloží kalibrační data pro daný mechanický kalibr, který byl předtím takto změřen. Kalibrační data je možné odstranit opětovným stiskem tlačítka. Je-li tlačítko vybraveno žlutě, má software pro daný kalibr již uložena kalibrační data. Od okamžiku, kdy se uloží kalibrační data pro standard \quotedblbase load\textquotedblleft , je pro zobrazování změřených dat použita jednoduchá základní kalibrace, která spočívá v tom, že od měřených dat je odečten průběh dpovídající kalibru \quotedblbase load\textquotedblleft . Tato částečná kalibrace se dá vypnout pouze tak, že se odstraní data pro kalibr \quotedblbase load\textquotedblleft , protože bylo vypozorováno, že aplikace této základní kalibrace výrazně potlačuje stejnosměrný posun měřených dat a zvlnění průběhu. Toto zvlnění je opakovatelné a prakticky neměnné, proto je možné jej takto jednoduše potlačit. 
+Ve stavu, kdy již bylo provedeno měření a reflektometr je připraven k dalšímu měření, je možné stisknout tlačítka na kalibračním panelu. Stiskem tlačítek \quotedblbase Open\textquotedblleft, \quotedblbase Short\textquotedblleft{} nebo \quotedblbase Load\textquotedblleft{} se uloží kalibrační data pro daný mechanický kalibr, který byl předtím takto změřen. Kalibrační data je možné odstranit opětovným stiskem tlačítka. Je-li tlačítko vybraveno žlutě, má software pro daný kalibr již uložena kalibrační data. Od okamžiku, kdy se uloží kalibrační data pro standard \quotedblbase load\textquotedblleft , je pro zobrazování změřených dat použita jednoduchá základní kalibrace, která spočívá v tom, že od měřených dat je odečten průběh dpovídající kalibru \quotedblbase load\textquotedblleft . Tato částečná kalibrace se dá vypnout pouze tak, že se odstraní data pro kalibr \quotedblbase load\textquotedblleft , protože bylo vypozorováno, že aplikace této základní kalibrace výrazně potlačuje stejnosměrný posun měřených dat a zvlnění průběhu. Toto zvlnění je opakovatelné a prakticky neměnné, proto je možné jej takto jednoduše potlačit. Rozdíl mezi zobrazovanými průběhy před a po této základní kalibraci je vidět na obrázcích \ref{calibration_running} a \ref{calibrations_performed}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/gui/calibration_running.png}\caption{Měřený průběh před základní kalibrací pomocí kalibru \quotedblbase load\textquotedblleft .}\label{calibration_running}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/gui/calibrations_performed.png}\caption{Měřený průběh po základní kalibrací pomocí kalibru \quotedblbase load\textquotedblleft .}\label{calibrations_performed}
+\end{figure}
+
+V okamžiku, kdy jsou změřeny všechny tři kalibrační průběhy, je možné zapnout plnou kalibraci. Ta je implementována formou OSL kalibrace s předpokládanými ideálními mechanickými kalibry. Zaškrtnutím políčka \quotedblbase Use calibration\textquotedblleft se přepne zobrazování surových dat na zobrazení dat po OSL kalibraci. Zobrazená data po OSL kalibraci jsou vidět na obrázku \ref{calibration_applied_on_new_short}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/gui/calibration_applied_on_new_short.png}\caption{Měřený průběh po plné kalibraci OSL.}\label{calibration_applied_on_new_short}
+\end{figure}

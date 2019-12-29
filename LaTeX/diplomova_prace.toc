@@ -55,21 +55,21 @@
 \contentsline {section}{\numberline {9.3}Postup ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } firmware}{71}{section.9.3}% 
 \contentsline {chapter}{\numberline {10}Popis software}{77}{chapter.10}% 
 \contentsline {section}{\numberline {10.1}Ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } software}{77}{section.10.1}% 
-\contentsline {chapter}{\numberline {11}Kalibrace}{83}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Autokalibrace \IeC {\'u}rovn\IeC {\'\i }}{83}{section.11.1}% 
-\contentsline {section}{\numberline {11.2}Z\IeC {\'a}kladn\IeC {\'\i } kalibrace pomoc\IeC {\'\i } standardu \quotedblbase open\textquotedblleft }{83}{section.11.2}% 
-\contentsline {section}{\numberline {11.3}Kalibrace typu OSL}{84}{section.11.3}% 
-\contentsline {subsection}{\numberline {11.3.1}Chybov\IeC {\'y} model}{84}{subsection.11.3.1}% 
-\contentsline {chapter}{\numberline {12}Detekce z\IeC {\'a}vad}{87}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{87}{section.12.1}% 
-\contentsline {section}{\numberline {12.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{87}{section.12.2}% 
-\contentsline {section}{\numberline {12.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{88}{section.12.3}% 
-\contentsline {chapter}{\numberline {13}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{89}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{89}{section.13.1}% 
-\contentsline {section}{\numberline {13.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{90}{section.13.2}% 
-\contentsline {section}{\numberline {13.3}TDR m\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru}{92}{section.13.3}% 
-\contentsline {section}{\numberline {13.4}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru pomoc\IeC {\'\i } VNA}{92}{section.13.4}% 
-\contentsline {section}{\numberline {13.5}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} pou\IeC {\v z}it\IeC {\'e}ho substr\IeC {\'a}tu}{93}{section.13.5}% 
-\contentsline {section}{\numberline {13.6}Parametry zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{96}{section.13.6}% 
-\contentsline {chapter}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{101}{chapter.14}% 
-\contentsline {chapter}{\numberline {A}Literatura}{103}{appendix.A}% 
+\contentsline {chapter}{\numberline {11}Kalibrace}{85}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Autokalibrace \IeC {\'u}rovn\IeC {\'\i }}{85}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Z\IeC {\'a}kladn\IeC {\'\i } kalibrace pomoc\IeC {\'\i } standardu \quotedblbase open\textquotedblleft }{85}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}Kalibrace typu OSL}{86}{section.11.3}% 
+\contentsline {subsection}{\numberline {11.3.1}Chybov\IeC {\'y} model}{86}{subsection.11.3.1}% 
+\contentsline {chapter}{\numberline {12}Detekce z\IeC {\'a}vad}{89}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Princip hled\IeC {\'a}n\IeC {\'\i } z\IeC {\'a}vad}{89}{section.12.1}% 
+\contentsline {section}{\numberline {12.2}Z\IeC {\'a}kladn\IeC {\'\i } typy z\IeC {\'a}vad}{89}{section.12.2}% 
+\contentsline {section}{\numberline {12.3}Slo\IeC {\v z}en\IeC {\'e} z\IeC {\'a}vady}{90}{section.12.3}% 
+\contentsline {chapter}{\numberline {13}Zm\IeC {\v e}\IeC {\v r}en\IeC {\'e} parametry}{91}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Pr\IeC {\r u}b\IeC {\v e}h budic\IeC {\'\i }ho pulzu}{91}{section.13.1}% 
+\contentsline {section}{\numberline {13.2}Parametry f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su}{92}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}TDR m\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru}{94}{section.13.3}% 
+\contentsline {section}{\numberline {13.4}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru pomoc\IeC {\'\i } VNA}{94}{section.13.4}% 
+\contentsline {section}{\numberline {13.5}M\IeC {\v e}\IeC {\v r}en\IeC {\'\i } parametr\IeC {\r u} pou\IeC {\v z}it\IeC {\'e}ho substr\IeC {\'a}tu}{95}{section.13.5}% 
+\contentsline {section}{\numberline {13.6}Parametry zm\IeC {\v e}\IeC {\v r}en\IeC {\'y}ch dat}{98}{section.13.6}% 
+\contentsline {chapter}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{103}{chapter.14}% 
+\contentsline {chapter}{\numberline {A}Literatura}{105}{appendix.A}% 
