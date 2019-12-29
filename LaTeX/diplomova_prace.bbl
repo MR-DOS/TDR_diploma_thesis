@@ -60,6 +60,12 @@ A.~{De Angelis}, M.~{Dionigi}, R.~{Giglietti}, and P.~{Carbone},
 N.~{Drobotun} and P.~{Mikheev}, \emph{A {300\,kHz--13.5\,GHz} directional
   bridge}, 2015 European Microwave Conference (EuMC), Sep. 2015, pp.~287--290.
 
+\bibitem[DMD94]{time_domain_analyzer_calibration_normalization}
+T.~{Dhaene}, L.~{Martens}, and D.~{De Zutter}, \emph{Calibration and
+  normalization of time domain network analyzer measurements}, IEEE
+  Transactions on Microwave Theory and Techniques \textbf{42} (1994), no.~4,
+  580--589.
+
 \bibitem[Hew08]{usb30standard}
 Hewlett-Packard Company and Intel Corporation and Microsoft Corporation and NEC
   Corporation and ST-NXP Wireless and Texas Instruments, \emph{{U}niversal
@@ -121,6 +127,11 @@ P.~{Seiler} and D.~{Plettemeier}, \emph{Measurement of pcb surface finishes for
   substrate characterization up to 67 ghz}, 2018 IEEE International Symposium
   on Antennas and Propagation USNC/URSI National Radio Science Meeting, July
   2018, pp.~1059--1060.
+
+\bibitem[SR93]{time_domain_analyzer_calibration}
+W.~{Su} and S.~M. {Riad}, \emph{Calibration of time domain network analyzers},
+  IEEE Transactions on Instrumentation and Measurement \textbf{42} (1993),
+  no.~2, 157--161.
 
 \bibitem[SY09]{TRL_calibration}
 J.~{Stenarson} and K.~{Yhland}, \emph{A reformulation and stability study of

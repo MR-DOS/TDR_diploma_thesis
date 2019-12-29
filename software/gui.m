@@ -43,7 +43,7 @@ function update_graph_data(calling_object,event_data,h)
     S11M=fft(decoded_data);
     
     Ed=S11L;
-    Er=2.*( ( (S11O-S11L).*S11S - S11L.*S11O + S11L.*S11L) ./ (S11S-S11O) );
+    Er=2.*( ( (S11O-S11L).*(S11S - S11L) ) ./ (S11S-S11O) );
     Es=-( (S11S+S11O-2.*S11L) ./ (S11S-S11O) );
     
     S11A= (S11M-Ed) ./ ( Es.*(S11M-Ed)+Er );
@@ -899,7 +899,7 @@ h.device_continue = uicontrol ("style", "pushbutton",
                                 "units", "normalized",
                                 "string", "CONTINUE",
                                 "callback", {@send_continue, serial_port},
-                                "TooltipString", "Use this button to confirm that you have followed the required\nsteps aw ritten in the \'Instructions\' box and to proceed to next step.",
+                                "TooltipString", "Use this button to confirm that you have followed the required\nsteps as written in the \'Instructions\' box and to proceed to next step.",
                                 "position", DEVICE_CONTINUE_BUTTON_COORD, "parent", h.device_state_panel); 
  
 h.device_state_text_panel = uipanel ("title", "Device state", 
