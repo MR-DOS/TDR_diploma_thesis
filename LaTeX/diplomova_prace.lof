@@ -44,37 +44,36 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Z\IeC {\'a}kladn\IeC {\'\i } blokov\IeC {\'e} sch\IeC {\'e}ma navr\IeC {\v z}en\IeC {\'e} architektury reflektometru.\relax }}{36}{figure.7.1}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Blokov\IeC {\'e} zapojen\IeC {\'\i } reflektometru.\relax }}{38}{figure.8.1}% 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Vnit\IeC {\v r}n\IeC {\'\i } blokov\IeC {\'e} zapojen\IeC {\'\i } obvodu Si5351, p\IeC {\v r}evzato z \cite {Si5351datasheet}.\relax }}{38}{figure.8.2}% 
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Zapojen\IeC {\'\i } hodinov\IeC {\'e}ho gener\IeC {\'a}toru Si5351.\relax }}{41}{figure.8.3}% 
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Zapojen\IeC {\'\i } gener\IeC {\'a}toru budic\IeC {\'\i }ch pulz\IeC {\r u}\relax }}{42}{figure.8.4}% 
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Sch\IeC {\'e}ma p\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{43}{figure.8.5}% 
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Sch\IeC {\'e}ma pou\IeC {\v z}it\IeC {\'e} pro simulaci vstupn\IeC {\'\i } impedance v programu LTSpice.\relax }}{44}{figure.8.6}% 
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Vstupn\IeC {\'\i } impedance reflektometru.\relax }}{44}{figure.8.7}% 
-\contentsline {figure}{\numberline {8.8}{\ignorespaces P\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru.\relax }}{45}{figure.8.8}% 
-\contentsline {figure}{\numberline {8.9}{\ignorespaces Zapojen\IeC {\'\i } vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{46}{figure.8.9}% 
-\contentsline {figure}{\numberline {8.10}{\ignorespaces P\IeC {\v r}enos odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{47}{figure.8.10}% 
-\contentsline {figure}{\numberline {8.11}{\ignorespaces P\IeC {\v r}enos cel\IeC {\'e}ho syst\IeC {\'e}mu p\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i }-vzorkova\IeC {\v c}-zesilova\IeC {\v c}.\relax }}{48}{figure.8.11}% 
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Absolutn\IeC {\'\i } chyba linearity odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{49}{figure.8.12}% 
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Zapojen\IeC {\'\i } proudov\IeC {\'e}ho zdroje.\relax }}{49}{figure.8.13}% 
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Zapojen\IeC {\'\i } nap\IeC {\'a}jec\IeC {\'\i }ch zdroj\IeC {\r u} vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{50}{figure.8.14}% 
-\contentsline {figure}{\numberline {8.15}{\ignorespaces P\IeC {\v r}enosov\IeC {\'a} charakteristika aktivn\IeC {\'\i }ch nap\IeC {\'a}jec\IeC {\'\i }ch filtr\IeC {\r u}.\relax }}{51}{figure.8.15}% 
-\contentsline {figure}{\numberline {8.16}{\ignorespaces Sch\IeC {\'e}ma sekund\IeC {\'a}rn\IeC {\'\i }ho vzorkova\IeC {\v c}e a logaritmick\IeC {\'e}ho detektoru.\relax }}{52}{figure.8.16}% 
-\contentsline {figure}{\numberline {8.17}{\ignorespaces Zm\IeC {\v e}\IeC {\v r}en\IeC {\'a} z\IeC {\'a}vislost v\IeC {\'y}stupn\IeC {\'\i }ho nap\IeC {\v e}t\IeC {\'\i } na k\IeC {\'o}dov\IeC {\'e}m slov\IeC {\v e} DAC, celkov\IeC {\'e} zobrazen\IeC {\'\i }.\relax }}{53}{figure.8.17}% 
-\contentsline {figure}{\numberline {8.18}{\ignorespaces Zm\IeC {\v e}\IeC {\v r}en\IeC {\'a} z\IeC {\'a}vislost v\IeC {\'y}stupn\IeC {\'\i }ho nap\IeC {\v e}t\IeC {\'\i } na k\IeC {\'o}dov\IeC {\'e}m slov\IeC {\v e} DAC, v\IeC {\'y}\IeC {\v r}ez problematick\IeC {\'e} oblasti.\relax }}{53}{figure.8.18}% 
-\contentsline {figure}{\numberline {8.19}{\ignorespaces Zapojen\IeC {\'\i } mikrokontrol\IeC {\'e}ru.\relax }}{54}{figure.8.19}% 
-\contentsline {figure}{\numberline {8.20}{\ignorespaces Vrchn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, neosazen\IeC {\'a}.\relax }}{55}{figure.8.20}% 
-\contentsline {figure}{\numberline {8.21}{\ignorespaces Spodn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, neosazen\IeC {\'a}.\relax }}{55}{figure.8.21}% 
-\contentsline {figure}{\numberline {8.22}{\ignorespaces Vrchn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, osazen\IeC {\'a}.\relax }}{56}{figure.8.22}% 
-\contentsline {figure}{\numberline {8.23}{\ignorespaces Spodn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, osazen\IeC {\'a}.\relax }}{56}{figure.8.23}% 
-\contentsline {figure}{\numberline {8.24}{\ignorespaces Testovac\IeC {\'\i } konektor, koplan\IeC {\'a}rn\IeC {\'\i } veden\IeC {\'\i } a motiv budi\IeC {\v c}e a vzorkova\IeC {\v c}e.\relax }}{57}{figure.8.24}% 
-\contentsline {figure}{\numberline {8.25}{\ignorespaces F\IeC {\'a}zov\IeC {\'y} z\IeC {\'a}v\IeC {\v e}s, gener\IeC {\'a}tor budic\IeC {\'\i }ch impulz\IeC {\r u} a nap\IeC {\'a}jec\IeC {\'\i } zdroje.\relax }}{58}{figure.8.25}% 
-\contentsline {figure}{\numberline {8.26}{\ignorespaces Okol\IeC {\'\i } f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su a budi\IeC {\v c}e v n\IeC {\'a}vrhov\IeC {\'e}m prost\IeC {\v r}ed\IeC {\'\i } KiCAD. \IeC {\v C}ervenou barvou je vyzna\IeC {\v c}ena vrstva, kde se nach\IeC {\'a}z\IeC {\'\i } v\IeC {\v e}t\IeC {\v s}ina sou\IeC {\v c}\IeC {\'a}stek, zelen\IeC {\v e} vrstva, na kter\IeC {\'e} se nach\IeC {\'a}z\IeC {\'\i } displej.\relax }}{58}{figure.8.26}% 
-\contentsline {figure}{\numberline {8.27}{\ignorespaces Budi\IeC {\v c}, rezistivn\IeC {\'\i } d\IeC {\v e}li\IeC {\v c}, koplan\IeC {\'a}rn\IeC {\'\i } veden\IeC {\'\i } a testovac\IeC {\'\i } konektor.\relax }}{59}{figure.8.27}% 
-\contentsline {figure}{\numberline {8.28}{\ignorespaces Hlavn\IeC {\'\i } vzorkova\IeC {\v c}.\relax }}{60}{figure.8.28}% 
-\contentsline {figure}{\numberline {8.29}{\ignorespaces Odd\IeC {\v e}lovac\IeC {\'\i } zesilova\IeC {\v c}.\relax }}{60}{figure.8.29}% 
-\contentsline {figure}{\numberline {8.30}{\ignorespaces Proudov\IeC {\'y} zdroj.\relax }}{61}{figure.8.30}% 
-\contentsline {figure}{\numberline {8.31}{\ignorespaces Sekund\IeC {\'a}rn\IeC {\'\i } vzorkova\IeC {\v c} a logaritmick\IeC {\'y} detektor.\relax }}{62}{figure.8.31}% 
-\contentsline {figure}{\numberline {8.32}{\ignorespaces Kombinovan\IeC {\'y} symetrick\IeC {\'y} zdroj pro analogov\IeC {\'e} \IeC {\v c}\IeC {\'a}sti reflektometru.\relax }}{62}{figure.8.32}% 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Zapojen\IeC {\'\i } hodinov\IeC {\'e}ho gener\IeC {\'a}toru Si5351.\relax }}{40}{figure.8.2}% 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Zapojen\IeC {\'\i } gener\IeC {\'a}toru budic\IeC {\'\i }ch pulz\IeC {\r u}\relax }}{42}{figure.8.3}% 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Sch\IeC {\'e}ma p\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{43}{figure.8.4}% 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Sch\IeC {\'e}ma pou\IeC {\v z}it\IeC {\'e} pro simulaci vstupn\IeC {\'\i } impedance v programu LTSpice.\relax }}{43}{figure.8.5}% 
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Vstupn\IeC {\'\i } impedance reflektometru.\relax }}{44}{figure.8.6}% 
+\contentsline {figure}{\numberline {8.7}{\ignorespaces P\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i } vstupn\IeC {\'\i } impedance reflektometru.\relax }}{44}{figure.8.7}% 
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Zapojen\IeC {\'\i } vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{46}{figure.8.8}% 
+\contentsline {figure}{\numberline {8.9}{\ignorespaces P\IeC {\v r}enos odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{47}{figure.8.9}% 
+\contentsline {figure}{\numberline {8.10}{\ignorespaces P\IeC {\v r}enos cel\IeC {\'e}ho syst\IeC {\'e}mu p\IeC {\v r}izp\IeC {\r u}soben\IeC {\'\i }-vzorkova\IeC {\v c}-zesilova\IeC {\v c}.\relax }}{47}{figure.8.10}% 
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Absolutn\IeC {\'\i } chyba linearity odd\IeC {\v e}lovac\IeC {\'\i }ho zesilova\IeC {\v c}e.\relax }}{48}{figure.8.11}% 
+\contentsline {figure}{\numberline {8.12}{\ignorespaces Zapojen\IeC {\'\i } proudov\IeC {\'e}ho zdroje.\relax }}{49}{figure.8.12}% 
+\contentsline {figure}{\numberline {8.13}{\ignorespaces Zapojen\IeC {\'\i } nap\IeC {\'a}jec\IeC {\'\i }ch zdroj\IeC {\r u} vzorkovac\IeC {\'\i }ch obvod\IeC {\r u}.\relax }}{49}{figure.8.13}% 
+\contentsline {figure}{\numberline {8.14}{\ignorespaces P\IeC {\v r}enosov\IeC {\'a} charakteristika aktivn\IeC {\'\i }ch nap\IeC {\'a}jec\IeC {\'\i }ch filtr\IeC {\r u}.\relax }}{50}{figure.8.14}% 
+\contentsline {figure}{\numberline {8.15}{\ignorespaces Sch\IeC {\'e}ma sekund\IeC {\'a}rn\IeC {\'\i }ho vzorkova\IeC {\v c}e a logaritmick\IeC {\'e}ho detektoru.\relax }}{51}{figure.8.15}% 
+\contentsline {figure}{\numberline {8.16}{\ignorespaces Zm\IeC {\v e}\IeC {\v r}en\IeC {\'a} z\IeC {\'a}vislost v\IeC {\'y}stupn\IeC {\'\i }ho nap\IeC {\v e}t\IeC {\'\i } na k\IeC {\'o}dov\IeC {\'e}m slov\IeC {\v e} DAC, celkov\IeC {\'e} zobrazen\IeC {\'\i }.\relax }}{52}{figure.8.16}% 
+\contentsline {figure}{\numberline {8.17}{\ignorespaces Zm\IeC {\v e}\IeC {\v r}en\IeC {\'a} z\IeC {\'a}vislost v\IeC {\'y}stupn\IeC {\'\i }ho nap\IeC {\v e}t\IeC {\'\i } na k\IeC {\'o}dov\IeC {\'e}m slov\IeC {\v e} DAC, v\IeC {\'y}\IeC {\v r}ez problematick\IeC {\'e} oblasti.\relax }}{52}{figure.8.17}% 
+\contentsline {figure}{\numberline {8.18}{\ignorespaces Zapojen\IeC {\'\i } mikrokontrol\IeC {\'e}ru.\relax }}{53}{figure.8.18}% 
+\contentsline {figure}{\numberline {8.19}{\ignorespaces Vrchn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, neosazen\IeC {\'a}.\relax }}{54}{figure.8.19}% 
+\contentsline {figure}{\numberline {8.20}{\ignorespaces Spodn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, neosazen\IeC {\'a}.\relax }}{55}{figure.8.20}% 
+\contentsline {figure}{\numberline {8.21}{\ignorespaces Vrchn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, osazen\IeC {\'a}.\relax }}{55}{figure.8.21}% 
+\contentsline {figure}{\numberline {8.22}{\ignorespaces Spodn\IeC {\'\i } strana desky plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}, osazen\IeC {\'a}.\relax }}{56}{figure.8.22}% 
+\contentsline {figure}{\numberline {8.23}{\ignorespaces Testovac\IeC {\'\i } konektor, koplan\IeC {\'a}rn\IeC {\'\i } veden\IeC {\'\i } a motiv budi\IeC {\v c}e a vzorkova\IeC {\v c}e.\relax }}{56}{figure.8.23}% 
+\contentsline {figure}{\numberline {8.24}{\ignorespaces F\IeC {\'a}zov\IeC {\'y} z\IeC {\'a}v\IeC {\v e}s, gener\IeC {\'a}tor budic\IeC {\'\i }ch impulz\IeC {\r u} a nap\IeC {\'a}jec\IeC {\'\i } zdroje.\relax }}{57}{figure.8.24}% 
+\contentsline {figure}{\numberline {8.25}{\ignorespaces Okol\IeC {\'\i } f\IeC {\'a}zov\IeC {\'e}ho z\IeC {\'a}v\IeC {\v e}su a budi\IeC {\v c}e v n\IeC {\'a}vrhov\IeC {\'e}m prost\IeC {\v r}ed\IeC {\'\i } KiCAD. \IeC {\v C}ervenou barvou je vyzna\IeC {\v c}ena vrstva, kde se nach\IeC {\'a}z\IeC {\'\i } v\IeC {\v e}t\IeC {\v s}ina sou\IeC {\v c}\IeC {\'a}stek, zelen\IeC {\v e} vrstva, na kter\IeC {\'e} se nach\IeC {\'a}z\IeC {\'\i } displej.\relax }}{58}{figure.8.25}% 
+\contentsline {figure}{\numberline {8.26}{\ignorespaces Budi\IeC {\v c}, rezistivn\IeC {\'\i } d\IeC {\v e}li\IeC {\v c}, koplan\IeC {\'a}rn\IeC {\'\i } veden\IeC {\'\i } a testovac\IeC {\'\i } konektor.\relax }}{59}{figure.8.26}% 
+\contentsline {figure}{\numberline {8.27}{\ignorespaces Hlavn\IeC {\'\i } vzorkova\IeC {\v c}.\relax }}{59}{figure.8.27}% 
+\contentsline {figure}{\numberline {8.28}{\ignorespaces Odd\IeC {\v e}lovac\IeC {\'\i } zesilova\IeC {\v c}.\relax }}{60}{figure.8.28}% 
+\contentsline {figure}{\numberline {8.29}{\ignorespaces Proudov\IeC {\'y} zdroj.\relax }}{60}{figure.8.29}% 
+\contentsline {figure}{\numberline {8.30}{\ignorespaces Sekund\IeC {\'a}rn\IeC {\'\i } vzorkova\IeC {\v c} a logaritmick\IeC {\'y} detektor.\relax }}{61}{figure.8.30}% 
+\contentsline {figure}{\numberline {8.31}{\ignorespaces Kombinovan\IeC {\'y} symetrick\IeC {\'y} zdroj pro analogov\IeC {\'e} \IeC {\v c}\IeC {\'a}sti reflektometru.\relax }}{62}{figure.8.31}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {9.1}{\ignorespaces Z\IeC {\'a}vislost rozptylu na po\IeC {\v c}tu proveden\IeC {\'y}ch pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u}.\relax }}{65}{figure.9.1}% 
 \contentsline {figure}{\numberline {9.2}{\ignorespaces Z\IeC {\'a}vislost diference rozptylu (\IeC {\v c}erven\IeC {\v e}) a sou\IeC {\v c}inu rozptylu s po\IeC {\v c}tem pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} (mod\IeC {\v r}e) na po\IeC {\v c}tu proveden\IeC {\'y}ch pr\IeC {\r u}m\IeC {\v e}r\IeC {\r u} pro v\IeC {\'y}po\IeC {\v c}et v plovouc\IeC {\'\i } desetinn\IeC {\'e} \IeC {\v r}\IeC {\'a}dce.\relax }}{66}{figure.9.2}% 

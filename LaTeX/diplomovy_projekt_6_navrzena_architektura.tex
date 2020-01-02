@@ -18,6 +18,6 @@ V předchozích kapitolách byly vysvětleny technologie, které byly uvažován
 	Pro řízení jednotlivých částí reflektometru bude použita \acrshort{PLL} Si5351, která disponuje 8 výstupy, které je možné konfigurovat jako diferenciální výstupy. Jednotlivé výstupy mohou mít neceločíselné vzájemné poměry frekvencí (krok nastavení je menší než \SI{1}{ppm}), je možné dosáhnout vzorkování s krokem menším než \SI{100}{\pico\second}, tedy ekvivalentní vzorkovací frekvence větší než \SI{10}{\gigasample}. Díky proudovým výstupům je možné ji přímo propojit jak se vstupy \acrshort{CML} logických prvků, tak ji použít pro spínání diodových vzorkovačů. Je možné i vygenerovat synchronizační hodinový signál pro mikrokontrolér, aby se provádělo vzorkování v přesně stanovený čas.
 \end{itemize}
 
-Z těchto jednotlivých prvků je tedy již možné navrhnout základní blokové zapojení navrhované architektury.
+Z těchto jednotlivých prvků je tedy již možné navrhnout základní blokové zapojení navrhované architektury. Toto blokové zapojení je na obrázku \ref{reflectometer_blockdiagram}.
 
 \begin{figure}[htbp]\includegraphics[width=\textwidth,keepaspectratio]{images/reflectometer_blockdiagram_simple.png}\caption{Základní blokové schéma navržené architektury reflektometru.}\label{reflectometer_blockdiagram}\end{figure}

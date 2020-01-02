@@ -24,7 +24,7 @@ Jako základní metoda kalibrace pro potlačení zvlnění a stejnosměrného po
 \section{Kalibrace typu OSL}
 
 \subsection{Chybový model}
-Systematické chyby měření reflektometru jsou idealizovány pomocí lineárního dvoubranu, který je virtuálně vložen mezi idealizovaný měřicí port reflektometru a \acrshort{DUT}. Tento model a odvození odstranění jeho vlivu byl převzat z \cite{time_domain_analyzer_calibration} a \cite{time_domain_analyzer_calibration_normalization}. Znázornění chybového modelu se nachází v grafu \ref{error_model}. Jako $a_0$ je označena napěťová vlna z generátoru budicích pulzů, $b_0$ je napěťová vlna měřená reflektometrem. Chybový model jeuvažován pro práci ve frekvenční doméně. S-parametr měřený reflektometrem je označen jako $S_\mathrm{M}$. Skutečný S-parametr DUT je uveden jako $S_\mathrm{A}$. Chybový model obsahuje čtyři chybové parametry, přičemž jeden byl normalizován na 1 a stal se součástí jednoho ze třech zbývajících parametrů. Pro jednostranné měření, které se používá pro reflektometr pracující pouze v režimu TDR a nikoli \acrshort{TDT}, je možné takto redukovat počet stupňů volnosti a ke kalibraci tak stačí pouze tři mechanické kalibry místo čtyř. Parametr $E_\textrm{D}$ je chyba direktivity, která vyjadřuje prosakování budicího pulzu do měřených dat. Parametr $E_\textrm{R}$ je sdružená chyba dopředného a zpětného přenosu chybového dvoubranu, vyjadřuje útlum mezi reflektometrem a DUT, který je způsobený např. útlumem použitého vedení. Parametr $E_\textrm{S}$ vyjadřuje odraz od reflektometru, popř. jeho prodlužovacího vedení.
+Systematické chyby měření reflektometru jsou idealizovány pomocí lineárního dvoubranu, který je virtuálně vložen mezi idealizovaný měřicí port reflektometru a \acrshort{DUT}. Tento model a odvození odstranění jeho vlivu byl převzat z \cite{time_domain_analyzer_calibration} a \cite{time_domain_analyzer_calibration_normalization}. Znázornění chybového modelu se nachází v grafu \ref{error_model}. Jako $a_0$ je označena napěťová vlna z generátoru budicích pulzů, $b_0$ je napěťová vlna měřená reflektometrem. Chybový model jeuvažován pro práci ve frekvenční doméně. S-parametr měřený reflektometrem je označen jako $S_\mathrm{M}$. Skutečný S-parametr DUT je uveden jako $S_\mathrm{A}$. Chybový model obsahuje čtyři chybové parametry, přičemž jeden byl normalizován na 1 a stal se součástí jednoho ze třech zbývajících parametrů, a sice $E_\textrm{R}$. Pro jednostranné měření, které se používá pro reflektometr pracující pouze v režimu TDR a nikoli \acrshort{TDT}, je možné takto redukovat počet stupňů volnosti a ke kalibraci tak stačí pouze tři mechanické kalibry místo čtyř. Parametr $E_\textrm{D}$ je chyba direktivity, která vyjadřuje prosakování budicího pulzu do měřených dat. Parametr $E_\textrm{R}$ je sdružená chyba dopředného a zpětného přenosu chybového dvoubranu, vyjadřuje útlum mezi reflektometrem a DUT, který je způsobený např. útlumem použitého vedení. Parametr $E_\textrm{S}$ vyjadřuje odraz od reflektometru, popř. jeho prodlužovacího vedení.
 \begin{figure}[htbp]
 \includegraphics[width=0.7\textwidth,keepaspectratio]{images/error_box.pdf}\caption{Chybový model reflektometru.}\label{error_model}
 \end{figure}
@@ -32,14 +32,14 @@ Systematické chyby měření reflektometru jsou idealizovány pomocí lineárn�
 Podle \cite{time_domain_analyzer_calibration_normalization} odpovídá měřený koeficient odrazu
 \begin{equation}
 \begin{gathered}
-	S_\mathrm{M} = E_\textrm{D} + E_\textrm{R} \left( \dfrac{S_\mathrm{A}}{1-E_\mathrm{S} S_\mathrm{A}} \right) 
+	S_\mathrm{M} = E_\textrm{D} + E_\textrm{R} \left( \dfrac{S_\mathrm{A}}{1-E_\mathrm{S} S_\mathrm{A}} \right). 
 \end{gathered}
 \end{equation}
 
 Z této rovnice je možné získat skutečný koeficient odrazu měřeného DUT
 \begin{equation}
 \begin{gathered}
-	S_\mathrm{A} = \dfrac{S_\mathrm{M} - E_\textrm{D}}{E_\textrm{R} + E_\textrm{S} \left( S_\mathrm{M} - E_\textrm{D} \right) }
+	S_\mathrm{A} = \dfrac{S_\mathrm{M} - E_\textrm{D}}{E_\textrm{R} + E_\textrm{S} \left( S_\mathrm{M} - E_\textrm{D} \right) }.
 \end{gathered}
 \label{equation_s_parameter_calibration}
 \end{equation}
@@ -51,7 +51,7 @@ S_\mathrm{M}=
    \begin{dcases}
 	S_\mathrm{ML} = E_\textrm{D} & S_\mathrm{A}=0	\\
 	S_\mathrm{MO} = E_\textrm{D} + \dfrac{E_\textrm{R}}{1-E_\mathrm{S}}  & S_\mathrm{A}=+1	\\
-	S_\mathrm{MS} = E_\textrm{D} - \dfrac{E_\textrm{R}}{1+E_\mathrm{S}}  & S_\mathrm{A}=-1
+	S_\mathrm{MS} = E_\textrm{D} - \dfrac{E_\textrm{R}}{1+E_\mathrm{S}}  & S_\mathrm{A}=-1.
    \end{dcases}
 \end{gathered}
 \end{equation}
@@ -61,7 +61,7 @@ Pak je možné odvodit výpočty jednotlivých chybových parametrů
 \begin{gathered}
    E_\textrm{D}=S_\mathrm{ML} \\
    E_\mathrm{S}=\dfrac{\left( \dfrac{S_\mathrm{MO}-S_\mathrm{ML}}{S_\mathrm{MS}-S_\mathrm{ML}}\right)  +1}{\left( \dfrac{S_\mathrm{MO}-S_\mathrm{ML}}{S_\mathrm{MS}-S_\mathrm{ML}}\right) -1} = \dfrac{S_\mathrm{MO} + S_\mathrm{MS} -2\cdot S_\mathrm{ML}}{S_\mathrm{MO} - S_\mathrm{MS}} \\
-   E_\mathrm{R}=\dfrac{2}{\left( \dfrac{1}{S_\mathrm{MO}-S_\mathrm{ML}}\right)  - \left( \dfrac{1}{S_\mathrm{MS}-S_\mathrm{ML}} \right) } = \dfrac{\left( S_\mathrm{MS} - S_\mathrm{ML} \right) \cdot \left( S_\mathrm{MO} - S_\mathrm{ML} \right) }{S_\mathrm{MS} - S_\mathrm{MO}}
+   E_\mathrm{R}=\dfrac{2}{\left( \dfrac{1}{S_\mathrm{MO}-S_\mathrm{ML}}\right)  - \left( \dfrac{1}{S_\mathrm{MS}-S_\mathrm{ML}} \right) } = \dfrac{\left( S_\mathrm{MS} - S_\mathrm{ML} \right) \cdot \left( S_\mathrm{MO} - S_\mathrm{ML} \right) }{S_\mathrm{MS} - S_\mathrm{MO}}.
 \end{gathered}
 \end{equation}
 

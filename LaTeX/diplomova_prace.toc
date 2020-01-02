@@ -37,12 +37,12 @@
 \contentsline {section}{\numberline {8.2}Blokov\IeC {\'e} zapojen\IeC {\'\i }}{37}{section.8.2}% 
 \contentsline {section}{\numberline {8.3}Generov\IeC {\'a}n\IeC {\'\i } pot\IeC {\v r}ebn\IeC {\'y}ch hodinov\IeC {\'y}ch sign\IeC {\'a}l\IeC {\r u}}{37}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Tvorba budic\IeC {\'\i }ho pulzu}{41}{section.8.4}% 
-\contentsline {section}{\numberline {8.5}P\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i } obvody a testovac\IeC {\'\i } port}{43}{section.8.5}% 
+\contentsline {section}{\numberline {8.5}P\IeC {\v r}izp\IeC {\r u}sobovac\IeC {\'\i } obvody a testovac\IeC {\'\i } port}{41}{section.8.5}% 
 \contentsline {section}{\numberline {8.6}Vzorkovac\IeC {\'\i } obvody a odd\IeC {\v e}lovac\IeC {\'\i } zesilova\IeC {\v c}}{45}{section.8.6}% 
 \contentsline {section}{\numberline {8.7}Logaritmick\IeC {\'y} detektor}{51}{section.8.7}% 
 \contentsline {section}{\numberline {8.8}Digitalizace m\IeC {\v e}\IeC {\v r}en\IeC {\'e}ho pr\IeC {\r u}b\IeC {\v e}hu}{51}{section.8.8}% 
-\contentsline {section}{\numberline {8.9}Komunikace s po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{52}{section.8.9}% 
-\contentsline {section}{\numberline {8.10}Navr\IeC {\v z}en\IeC {\'a} deska plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}}{54}{section.8.10}% 
+\contentsline {section}{\numberline {8.9}Komunikace s po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}em}{53}{section.8.9}% 
+\contentsline {section}{\numberline {8.10}Navr\IeC {\v z}en\IeC {\'a} deska plo\IeC {\v s}n\IeC {\'y}ch spoj\IeC {\r u}}{53}{section.8.10}% 
 \contentsline {chapter}{\numberline {9}Popis firmware}{63}{chapter.9}% 
 \contentsline {section}{\numberline {9.1}Technick\IeC {\'e} parametry firmware}{63}{section.9.1}% 
 \contentsline {section}{\numberline {9.2}Autokalibrace a autodiagnostika za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{63}{section.9.2}% 

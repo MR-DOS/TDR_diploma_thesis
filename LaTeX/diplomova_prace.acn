@@ -62,12 +62,12 @@
 \glossaryentry{PLL?\glossentry{PLL}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{39}
-\glossaryentry{TCXO?\glossentry{TCXO}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{FPGA?\glossentry{FPGA}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{40}
+\glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{TCXO?\glossentry{TCXO}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{FPGA?\glossentry{FPGA}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{DDS?\glossentry{DDS}|setentrycounter[]{page}\glsnumberformat}{39}
 \glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{CMOS?\glossentry{CMOS}|setentrycounter[]{page}\glsnumberformat}{40}
@@ -75,7 +75,7 @@
 \glossaryentry{ECL?\glossentry{ECL}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{LVDS?\glossentry{LVDS}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{40}
+\glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{41}
 \glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{41}
 \glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{41}
 \glossaryentry{CML?\glossentry{CML}|setentrycounter[]{page}\glsnumberformat}{41}
@@ -84,7 +84,7 @@
 \glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{51}
 \glossaryentry{DAC?\glossentry{DAC}|setentrycounter[]{page}\glsnumberformat}{51}
 \glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}\glsnumberformat}{51}
-\glossaryentry{HAL?\glossentry{HAL}|setentrycounter[]{page}\glsnumberformat}{59}
+\glossaryentry{HAL?\glossentry{HAL}|setentrycounter[]{page}\glsnumberformat}{58}
 \glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{63}
 \glossaryentry{RAM?\glossentry{RAM}|setentrycounter[]{page}\glsnumberformat}{63}
 \glossaryentry{VCO?\glossentry{VCO}|setentrycounter[]{page}\glsnumberformat}{64}
@@ -95,5 +95,5 @@
 \glossaryentry{TDT?\glossentry{TDT}|setentrycounter[]{page}\glsnumberformat}{85}
 \glossaryentry{VNA?\glossentry{VNA}|setentrycounter[]{page}\glsnumberformat}{92}
 \glossaryentry{TRL?\glossentry{TRL}|setentrycounter[]{page}\glsnumberformat}{93}
-\glossaryentry{UOML?\glossentry{UOML}|setentrycounter[]{page}\glsnumberformat}{93}
+\glossaryentry{UOSM?\glossentry{UOSM}|setentrycounter[]{page}\glsnumberformat}{93}
 \glossaryentry{VNA?\glossentry{VNA}|setentrycounter[]{page}\glsnumberformat}{95}

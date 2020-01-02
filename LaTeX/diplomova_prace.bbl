@@ -235,6 +235,11 @@ Rodney~T. Schlater.
 \newblock {\em Hewlett-Packard Journal}, 37(4):20--25, April 1986.
 \newblock \url{https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1986-04.pdf}.
 
+\bibitem{VNAcalibrationarticle}
+A.~{Rumiantsev} and N.~{Ridler}.
+\newblock {VNA calibration}.
+\newblock {\em IEEE Microwave Magazine}, 9(3):86--99, June 2008.
+
 \bibitem{time_domain_analyzer_calibration}
 W.~{Su} and S.~M. {Riad}.
 \newblock Calibration of time domain network analyzers.
