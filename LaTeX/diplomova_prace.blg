@@ -1,51 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: diplomova_prace.aux
-The style file: amsalpha.bst
+The style file: unsrt.bst
 Database file #1: diplomova_prace.bib
 Warning--entry type for "Si5351_phase_noise_measurement" isn't style-file defined
 --line 101 of file diplomova_prace.bib
 Warning--I'm ignoring oscilloscopefrontend's extra "note" field
 --line 439 of file diplomova_prace.bib
 You've used 38 entries,
-            2624 wiz_defined-function locations,
-            806 strings with 12613 characters,
-and the built_in function-call counts, 13241 in all, are:
-= -- 1271
-> -- 512
-< -- 8
-+ -- 174
-- -- 171
-* -- 1118
-:= -- 2056
-add.period$ -- 38
+            1791 wiz_defined-function locations,
+            694 strings with 11763 characters,
+and the built_in function-call counts, 7424 in all, are:
+= -- 703
+> -- 249
+< -- 5
++ -- 103
+- -- 65
+* -- 500
+:= -- 1135
+add.period$ -- 135
 call.type$ -- 38
-change.case$ -- 235
-chr.to.int$ -- 36
+change.case$ -- 25
+chr.to.int$ -- 0
 cite$ -- 38
-duplicate$ -- 575
-empty$ -- 1120
-format.name$ -- 197
-if$ -- 2802
-int.to.chr$ -- 3
-int.to.str$ -- 0
-missing$ -- 57
-newline$ -- 125
-num.names$ -- 68
-pop$ -- 189
+duplicate$ -- 334
+empty$ -- 758
+format.name$ -- 65
+if$ -- 1710
+int.to.chr$ -- 0
+int.to.str$ -- 38
+missing$ -- 19
+newline$ -- 214
+num.names$ -- 23
+pop$ -- 49
 preamble$ -- 1
-purify$ -- 270
+purify$ -- 0
 quote$ -- 0
-skip$ -- 437
+skip$ -- 157
 stack$ -- 0
-substring$ -- 725
-swap$ -- 75
-text.length$ -- 8
-text.prefix$ -- 21
+substring$ -- 428
+swap$ -- 79
+text.length$ -- 5
+text.prefix$ -- 0
 top$ -- 0
-type$ -- 300
+type$ -- 0
 warning$ -- 0
-while$ -- 82
-width$ -- 41
-write$ -- 450
+while$ -- 44
+width$ -- 40
+write$ -- 464
 (There were 2 warnings)

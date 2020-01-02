@@ -39,6 +39,7 @@
 \newacronym{TRL}{TRL}{Thru-Reflect-Line}
 \newacronym{UOML}{UOML}{Unknown-Open-Match-Line}
 \newacronym{DUT}{DUT}{Device under test}
+\newacronym{OSL}{OSL}{Open-Short-Load}
 
 \newacronym{TDR}{TDR}{Time domain reflectometry}
 \newacronym{TDT}{TDT}{Time domain transmisometry}
@@ -62,13 +63,17 @@
 \newglossaryentry{gama}
 {
         name={Koeficient odrazu ($\Gamma$)},
-        description={Je definován jako $\Gamma=\frac{Z_L-Z_0}{Z_L+Z_0}$. $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
+        description={Je definován jako poměr napěťových vln $a_0$ a $b_0$. Napěťová vlna $a_0$ odpovídá buzení, které je přiváděno do měřeného systému, vlna $b_0$ pak odpovídá odražené vlně. Koeficient v absolutní hodnotě vyjadřuje, kolik energie vložené do systému se vrátí zpět. Pro ideální vedení se zátěží na konci platí
+        \begin{equation}
+        \Gamma=\dfrac{Z_L-Z_0}{Z_L+Z_0}
+        \end{equation} 
+        $Z_0$ je charakteristická impedance vedení a $Z_L$ je impedance zátěže}
 }
 
 \newglossaryentry{transmise}
 {
         name={Koeficient prostupu ($T$)},
-        description={Je definován jako $T=\frac{2Z_0}{Z_L+Z_0}$. Platí, že $T+\Gamma=1$}
+        description={Je definován jako poměr napěťových vln $a_1$ a $a_0$. Napěťová vlna $a_0$ odpovídá buzení, které je přiváděno do měřeného systému, vlna $a_1$ pak odpovídá vlně prostupující systémem dále}
 }
 
 \newglossaryentry{clipline}
@@ -92,7 +97,7 @@
 \newglossaryentry{redriver}
 {
         name={redriver},
-        description={Speciální budič sběrnice, který se používá ve sběrnicích USB, SATA a SAS v případě, kdy je sběrnice vedena dlouhou cestou po desceplošných spojů. V takovém případě vlivem disperze dochází k deformaci náběžných hran na přenášených datech. Redrivery dokáží vliv disperze potlačovat tím, že na vstupu mají tvarovací obvody, které zajišťují korektní příjem dat. Na výstupu pak mají možnost na náběžných hranách vytvářet překmit, který kompenzuje disperzní ztráty. Míru vstupní i výstupní korekce bývá možné v krocích nastavit tak, aby odpovídaly fyzickým parametrům vytvořených spojů \cite{SN75LVCP601datasheet}}
+        description={Speciální budič sběrnice, který se používá ve sběrnicích USB, SATA a SAS v případě, kdy je sběrnice vedena dlouhou cestou po desce plošných spojů. V takovém případě vlivem disperze dochází k deformaci náběžných hran na přenášených datech. Redrivery dokáží vliv disperze potlačovat tím, že na vstupu mají tvarovací obvody, které zajišťují korektní příjem dat. Na výstupu pak mají možnost na náběžných hranách vytvářet překmit, který kompenzuje disperzní ztráty. Míru vstupní i výstupní korekce bývá možné v krocích nastavit tak, aby odpovídaly fyzickým parametrům vytvořených spojů \cite{SN75LVCP601datasheet}}
 }
 
 \makeglossaries
@@ -265,7 +270,7 @@ V Praze, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
 
 \printindex
 
-\bibliographystyle{amsalpha}
+\bibliographystyle{unsrt}
 \bibliography{diplomova_prace}
 
 %\ctutemplate{specification.as.chapter}

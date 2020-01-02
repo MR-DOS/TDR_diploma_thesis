@@ -1,6 +1,6 @@
 \chapter{Popis software}
 
-Pojmem firmware je v této kapitole myšlen program, který je spuštěn v počítači, ke kterému je připojen reflektometr. Tento program slouží pro ovládání reflektometru, zobrazování změřených dat a kalibraci reflektometru. Kalibrace probíhá pomocí změření odezvy na tři mechanické kalibry. Software předpokládá kalibry \quotedblbase open\textquotedblleft, \quotedblbase short\textquotedblleft{} a \quotedblbase match\textquotedblleft{}.
+Pojmem software je v této kapitole myšlen program, který je spuštěn v počítači, ke kterému je připojen reflektometr. Tento program slouží pro ovládání reflektometru, zobrazování změřených dat a kalibraci reflektometru. Kalibrace probíhá pomocí změření odezvy na tři mechanické kalibry. Software předpokládá ideální kalibry \quotedblbase open\textquotedblleft, \quotedblbase short\textquotedblleft{} a \quotedblbase match\textquotedblleft{}.
 
 Software je napsán v prostředí GNU Octave a určen pro operační systém GNU/Linux. S menšími úpravami by mělo být možné tento software provozovat i pod operačním systémem Windows. Prostředí Octave je z převážné části kompatibilní s programovacím jazykem MATLAB, v lehce upravené podobě by mělo být možné ovládací program spustit i  v prostředí MATLAB. Prostředí Octave bylo zvoleno, protože jde o jazyk určený pro matematické úlohy, podobně jako MATLAB, ovšem je šířeno zdarma pod licencí GNU GPL, k obsluze reflektometru tedy není třeba pořizovat nákladnou licenci na prostředí MATLAB. Další výhodou je, že Octave je multiplatformní, a není tedy vázáno jen na běžné počítače, ale je možné jej provozovat i na levných jednodeskových počítačích, např. na Raspberry Pi.
 
@@ -11,7 +11,7 @@ Nejprve software testuje dostupnost sériových portů podle obr. \ref{serial_pr
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/serial_probe.png}\caption{Test dostupnosti sériových portů.}\label{serial_probe}
 \end{figure}	
 
-V případě, že dojde k problému s přístupem k sériovému portu, je o této skutečnosti uživatel nformován včetně nápovědy, co je možné v tomto případě dělat podle obr. \ref{serial_port_unsupported}. Uveden je příklad opravy spouštěcího příkazu pro kontejnery Flatpak.
+V případě, že dojde k problému s přístupem k sériovému portu, je o této skutečnosti uživatel informován včetně nápovědy, co je možné v tomto případě dělat podle obr. \ref{serial_port_unsupported}. Uveden je příklad opravy spouštěcího příkazu pro kontejnery Flatpak.
 \begin{figure}[H]
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/serial_port_unsupported_cut.png}\caption{Chybové hlášení o nedostupnosti sériových portů, oříznuto.}\label{serial_port_unsupported}
 \end{figure}	
@@ -66,7 +66,7 @@ Ve stavu, kdy již bylo provedeno měření a reflektometr je připraven k dalš
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/calibrations_performed.png}\caption{Měřený průběh po základní kalibrací pomocí kalibru \quotedblbase load\textquotedblleft .}\label{calibrations_performed}
 \end{figure}
 
-V okamžiku, kdy jsou změřeny všechny tři kalibrační průběhy, je možné zapnout plnou kalibraci. Ta je implementována formou OSL kalibrace s předpokládanými ideálními mechanickými kalibry. Zaškrtnutím políčka \quotedblbase Use calibration\textquotedblleft se přepne zobrazování surových dat na zobrazení dat po OSL kalibraci. Zobrazená data po OSL kalibraci jsou vidět na obrázku \ref{calibration_applied_on_new_short}.
+V okamžiku, kdy jsou změřeny všechny tři kalibrační průběhy, je možné zapnout plnou kalibraci. Ta je implementována formou OSL kalibrace s předpokládanými ideálními mechanickými kalibry. Zaškrtnutím políčka \quotedblbase Use calibration\textquotedblleft se přepne zobrazování z nekalibrovaných dat na zobrazení dat po OSL kalibraci. Zobrazená data po \acrshort{OSL} kalibraci jsou vidět na obrázku \ref{calibration_applied_on_new_short}.
 
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/gui/calibration_applied_on_new_short.png}\caption{Měřený průběh po plné kalibraci OSL.}\label{calibration_applied_on_new_short}

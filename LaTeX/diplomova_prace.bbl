@@ -1,214 +1,261 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\begin{thebibliography}{{MOH}09}
+\begin{thebibliography}{10}
 
-\bibitem[Ana99]{AD8309datasheet}
-Analog Devices Inc., Norwood, \emph{{AD}8309 {D}atasheet}, 1999,
-  \url{https://www.analog.com/media/en/technical-documentation/data-sheets/AD8309.pdf}.
+\bibitem{broadbandreflectometry}
+Andrea Cataldo, Egidio~De Benedetto, and Giuseppe Cannazza.
+\newblock {\em {B}roadband {R}eflectometry for {E}nhanced {D}iagnostics and
+  {M}onitoring {A}pplications ({L}ecture {N}otes in {E}lectrical
+  {E}ngineering)}.
+\newblock Springer, Berlin, 2011.
 
-\bibitem[Ana08]{ADF4350datasheet}
-Analog Devices Inc., Norwood, \emph{{ADF}4350 {W}ideband {S}ynthesizer with
-  {I}ntegrated {VCO}}, 2008,
-  \url{https://www.analog.com/media/en/technical-documentation/data-sheets/ADF4350.pdf}.
+\bibitem{S-1manual}
+Tektronix, Inc., Beaverton, Oregon.
+\newblock {\em Type {S-1} {S}ampling {H}ead {I}nstruction {M}anual}, 1968.
+\newblock \url{http://w140.com/tek_s1.pdf}.
 
-\bibitem[Ava18]{HSMS282xdatasheet}
-Avago Technologies, Austin, \emph{{HSMS}282x datasheet}, 2018,
-  \url{https://eu.mouser.com/datasheet/2/678/avagotechnologies_AV02-1320EN,0-1217119.pdf}.
+\bibitem{lvpecl_vml_cml_lvds_interfacing}
+Nick Holland.
+\newblock Interfacing between {LVPECL, VML, CML, and LVDS L}evels.
+\newblock Technical report, Texas Instruments, Dallas, 11 2002.
+\newblock \url{https://www.ti.com/lit/an/slla120/slla120.pdf}.
 
-\bibitem[BB97]{relaxationspectroscopy}
-R.~Buchner and J.~Barthel, \emph{{A Time Domain Reflectometer for Dielectric
-  Relaxation Spectroscopy of Electrolyte Solutions}}, Berichte der
-  Bunsengesellschaft für physikalische Chemie \textbf{101} (1997), no.~10,
-  1509--1516,
-  \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/bbpc.199700014}.
+\bibitem{SN75LVCP601datasheet}
+Texas Instruments, Dallas.
+\newblock {\em {SN75LVCP601} Datasheet}, 3 2016.
+\newblock \url{http://www.ti.com/lit/ds/symlink/sn75lvcp601.pdf}.
 
-\bibitem[BCL{\etalchar{+}}13]{fpgadelaylinereflectometer}
-G.~Bencivenni, E.~Czerwinski, E.~De Lucia, G.~De Robertis, D.~Domenici,
-  O.~Erriquez, G.~Fanizzi, G.~Felici, R.~Liuzzi, F.~Loddo, M.~Mongelli,
-  G.~Morello, A.~Ranieri, and V.~Valentino, \emph{{A} {T}ime {D}omain
-  {R}eflectometer with 100\,ps precision implemented in a cost-effective {FPGA}
-  for the test of the {KLOE-2} {I}nner {T}racker readout anodes}, Nuclear
-  Instruments and Methods in Physics Research Section A: Accelerators,
-  Spectrometers, Detectors and Associated Equipment \textbf{698} (2013), 185 --
-  191,
-  \url{http://www.sciencedirect.com/science/article/pii/S0168900212011552}.
-
-\bibitem[CBC11]{broadbandreflectometry}
-Andrea Cataldo, Egidio~De Benedetto, and Giuseppe Cannazza, \emph{{B}roadband
-  {R}eflectometry for {E}nhanced {D}iagnostics and {M}onitoring {A}pplications
-  ({L}ecture {N}otes in {E}lectrical {E}ngineering)}, Springer, Berlin, 2011.
-
-\bibitem[CF05]{noisedomainreflectometry}
-{Chet Lo} and C.~{Furse}, \emph{Noise-domain reflectometry for locating wiring
-  faults}, IEEE Transactions on Electromagnetic Compatibility \textbf{47}
-  (2005), no.~1, 97--104, \url{https://ieeexplore.ieee.org/document/1396356}.
-
-\bibitem[DDGC11]{subnanosecondgeneratorcomparison}
-A.~{De Angelis}, M.~{Dionigi}, R.~{Giglietti}, and P.~{Carbone},
-  \emph{{E}xperimental {C}omparison of {L}ow-{C}ost {S}ub-{N}anosecond {P}ulse
-  {G}enerators}, IEEE Transactions on Instrumentation and Measurement
-  \textbf{60} (2011), no.~1, 310--318,
-  \url{https://ieeexplore.ieee.org/document/5464318}.
-
-\bibitem[DJJ03]{vernierreflectometer}
-{Donghwan Lee}, {Jinho Sung}, and {Jaehong Park}, \emph{{A} 16\,ps-resolution
-  {R}andom {E}quivalent {S}ampling circuit for {TDR} utilizing a {V}ernier time
-  delay generation}, 2003 IEEE Nuclear Science Symposium. Conference Record
-  (IEEE Cat. No.03CH37515), vol.~2, Oct 2003,
-  \url{https://ieeexplore.ieee.org/document/1351912}, pp.~1219--1223 Vol.2.
-
-\bibitem[DM15]{resistivedirectionalbridge}
-N.~{Drobotun} and P.~{Mikheev}, \emph{A {300\,kHz--13.5\,GHz} directional
-  bridge}, 2015 European Microwave Conference (EuMC), Sep. 2015,
-  \url{https://ieeexplore.ieee.org/document/7345756}, pp.~287--290.
-
-\bibitem[DMD94]{time_domain_analyzer_calibration_normalization}
-T.~{Dhaene}, L.~{Martens}, and D.~{De Zutter}, \emph{Calibration and
-  normalization of time domain network analyzer measurements}, IEEE
-  Transactions on Microwave Theory and Techniques \textbf{42} (1994), no.~4,
-  580--589, \url{https://ieeexplore.ieee.org/document/285063}.
-
-\bibitem[Hew08]{usb30standard}
-Hewlett-Packard Company and Intel Corporation and Microsoft Corporation and NEC
-  Corporation and ST-NXP Wireless and Texas Instruments, \emph{{U}niversal
-  {S}erial {B}us 3.0 {S}pecification}, 11 2008,
-  \url{https://www.usb3.com/whitepapers/USB%203%200%20(11132008)-final.pdf}.
-
-\bibitem[Hol02]{lvpecl_vml_cml_lvds_interfacing}
-Nick Holland, \emph{Interfacing between {LVPECL, VML, CML, and LVDS L}evels},
-  Tech. report, Texas Instruments, Dallas, 11 2002,
-  \url{https://www.ti.com/lit/an/slla120/slla120.pdf}.
-
-\bibitem[Hou00]{oscilloscopefrontend}
-Hubert Houtman, \emph{{1-GHz} sampling oscilloscope front end is easily
-  modified}, Electronic Design \textbf{48} (2000), no.~19, 175 (English),
-  Copyright - Copyright Penton Media, Inc. Sep 18, 2000; Last updated -
-  2012-02-25; CODEN - ELODAW.
-
-\bibitem[JMN14]{Si5351_phase_noise_measurement}
-John Miles~(KE5FX) Jason Mildrum~(NT7S), \emph{{S}i5351 {I}nvestigations {P}art
-  7}, 11 2014, \url{https://nt7s.com/2014/11/si5351a-investigations-part-7/}.
-
-\bibitem[MGD{\etalchar{+}}15]{highspeed_trackhold}
-K.~N. {Madsen}, T.~D. {Gathman}, S.~{Daneshgar}, T.~C. {Oh}, J.~C. {Li}, and
-  J.~F. {Buckwalter}, \emph{{A High-Linearity, 30 GS/s Track-and-Hold Amplifier
-  and Time Interleaved Sample-and-Hold in an InP-on-CMOS Process}}, IEEE
-  Journal of Solid-State Circuits \textbf{50} (2015), no.~11, 2692--2702,
-  \url{https://ieeexplore.ieee.org/abstract/document/7299333}.
-
-\bibitem[Mic08]{SY54017datasheet}
-Micrel, Inc., San Jose, \emph{{SY54017} datasheet}, 5 2008,
-  \url{http://ww1.microchip.com/downloads/en/DeviceDoc/sy54017r.pdf}.
-
-\bibitem[Mic09]{SY54020datasheet}
-Micrel, Inc., San Jose, \emph{{SY54020AR} datasheet}, 4 2009,
-  \url{http://ww1.microchip.com/downloads/en/DeviceDoc/sy54020ar.pdf}.
-
-\bibitem[{MOH}09]{CT-100Bmanual}
-{MOHR Test and Measurement LLC}, \emph{{CT-100B} {D}atasheet}, 2009,
-  \url{https://www.mohr-engineering.com/download.php?download_file=CT100B%20TDR%20Cable%20Analyzer%20Datasheet}.
-
-\bibitem[MP74]{sincgausstdr}
-N.~A.~M. {Mackay} and S.~R. {Penstone}, \emph{{A} {H}igh-{S}ensitivity
-  {N}arrow-{B}and {T}ime-{D}omain {R}eflectometer}, IEEE Transactions on
-  Instrumentation and Measurement \textbf{23} (1974), no.~2, 155--158,
-  \url{https://ieeexplore.ieee.org/abstract/document/4314245}.
-
-\bibitem[NR09]{simpledelaylinereflectometer}
-C.~{Negrea} and M.~{Rangu}, \emph{Sequential sampling time domain
-  reflectometer}, 2009 15th International Symposium for Design and Technology
-  of Electronics Packages (SIITME), Sep. 2009,
-  \url{https://ieeexplore.ieee.org/document/5407341}, pp.~367--371.
-
-\bibitem[Sch86]{HP54100_article_journal}
-Rodney~T. Schlater, \emph{{W}aveform {G}raphics for a {1-G}hz {D}igitizing
-  {O}scillosocpe}, Hewlett-Packard Journal \textbf{37} (1986), no.~4, 20--25,
-  \url{https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1986-04.pdf}.
-
-\bibitem[Sil18a]{Si5351applicationnote}
-Silicon Laboratories Inc., Austin, \emph{{AN}619: {M}anually {G}enerating an
-  {S}i5351 {R}egister {M}ap}, 2018,
-  \url{https://www.silabs.com/documents/public/application-notes/AN619.pdf}.
-
-\bibitem[Sil18b]{Si5351datasheet}
-Silicon Laboratories Inc., Austin, \emph{{S}i5351 datasheet}, 2018,
+\bibitem{Si5351datasheet}
+Silicon Laboratories Inc., Austin.
+\newblock {\em {S}i5351 Datasheet}, 2018.
+\newblock
   \url{https://www.silabs.com/documents/public/data-sheets/Si5351-B.pdf}.
 
-\bibitem[SP18]{pcb_surface}
-P.~{Seiler} and D.~{Plettemeier}, \emph{{Measurement of PCB Surface Finishes
-  for Substrate Characterization up to 67 GHz}}, 2018 IEEE International
-  Symposium on Antennas and Propagation USNC/URSI National Radio Science
-  Meeting, July 2018, \url{https://ieeexplore.ieee.org/document/8608680},
-  pp.~1059--1060.
+\bibitem{oscilloscopefrontend}
+Hubert Houtman.
+\newblock {1-GHz} sampling oscilloscope front end is easily modified.
+\newblock {\em Electronic Design}, 48(19):175, Sep 18 2000.
+\newblock Copyright - Copyright Penton Media, Inc. Sep 18, 2000; Last updated -
+  2012-02-25; CODEN - ELODAW.
 
-\bibitem[SR93]{time_domain_analyzer_calibration}
-W.~{Su} and S.~M. {Riad}, \emph{Calibration of time domain network analyzers},
-  IEEE Transactions on Instrumentation and Measurement \textbf{42} (1993),
-  no.~2, 157--161, \url{https://ieeexplore.ieee.org/document/278540}.
+\bibitem{widebandcouplers}
+Elmin Tutkur.
+\newblock {W}ideband {D}irectional {C}ouplers and {P}ower {S}plitters.
+\newblock Master's thesis, Chalmers University of Technology, Gothenburg, 2014.
+\newblock \url{https://odr.chalmers.se/handle/20.500.12380/199699}.
 
-\bibitem[SY09]{TRL_calibration}
-J.~{Stenarson} and K.~{Yhland}, \emph{{A Reformulation and Stability Study of
-  TRL and LRM Using $S$-Parameters}}, IEEE Transactions on Microwave Theory and
-  Techniques \textbf{57} (2009), no.~11, 2800--2807,
-  \url{https://ieeexplore.ieee.org/document/5288538}.
+\bibitem{resistivedirectionalbridge}
+N.~{Drobotun} and P.~{Mikheev}.
+\newblock A {300\,kHz--13.5\,GHz} directional bridge.
+\newblock In {\em 2015 European Microwave Conference (EuMC)}, pages 287--290,
+  Sep. 2015.
+\newblock \url{https://ieeexplore.ieee.org/document/7345756}.
 
-\bibitem[Tek68]{S-1manual}
-Tektronix, Inc., Beaverton, Oregon, \emph{Type {S-1} {S}ampling {H}ead
-  {I}nstruction {M}anual}, 1968, \url{http://w140.com/tek_s1.pdf}.
+\bibitem{AD8309datasheet}
+Analog Devices Inc., Norwood.
+\newblock {\em {AD}8309 {D}atasheet}, 1999.
+\newblock
+  \url{https://www.analog.com/media/en/technical-documentation/data-sheets/AD8309.pdf}.
 
-\bibitem[Tek85]{S-4manual}
-Tektronix, Inc., Beaverton, Oregon, \emph{{S-4} {S}ampling {H}ead {I}nstruction
-  {M}anual}, 3 1985, \url{http://w140.com/tek_s4.pdf}.
+\bibitem{CT-100Bmanual}
+{MOHR Test and Measurement LLC}.
+\newblock {\em {CT-100B} {D}atasheet}, 2009.
+\newblock
+  \url{https://www.mohr-engineering.com/download.php?download_file=CT100B%20TDR%20Cable%20Analyzer%20Datasheet}.
 
-\bibitem[Tex12]{SN65LVPE501datasheet}
-Texas Instruments, Dallas, \emph{{SN65LVPE501} datasheet}, 5 2012,
-  \url{http://www.ti.com/lit/ds/symlink/sn65lvpe501.pdf}.
+\bibitem{relaxationspectroscopy}
+R.~Buchner and J.~Barthel.
+\newblock {A Time Domain Reflectometer for Dielectric Relaxation Spectroscopy
+  of Electrolyte Solutions}.
+\newblock {\em Berichte der Bunsengesellschaft für physikalische Chemie},
+  101(10):1509--1516, 1997.
+\newblock \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/bbpc.199700014}.
 
-\bibitem[Tex16a]{SN75LVCP600Sdatasheet}
-Texas Instruments, Dallas, \emph{{SN75LVCP600S} datasheet}, 3 2016,
-  \url{http://www.ti.com/lit/ds/symlink/sn75lvcp600s.pdf}.
+\bibitem{sincgausstdr}
+N.~A.~M. {Mackay} and S.~R. {Penstone}.
+\newblock {A} {H}igh-{S}ensitivity {N}arrow-{B}and {T}ime-{D}omain
+  {R}eflectometer.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  23(2):155--158, June 1974.
+\newblock \url{https://ieeexplore.ieee.org/abstract/document/4314245}.
 
-\bibitem[Tex16b]{SN75LVCP601datasheet}
-Texas Instruments, Dallas, \emph{{SN75LVCP601} datasheet}, 3 2016,
-  \url{http://www.ti.com/lit/ds/symlink/sn75lvcp601.pdf}.
-
-\bibitem[Tex18]{TUSB1002Adatasheet}
-Texas Instruments, Dallas, \emph{{TUSB1002} datasheet}, 11 2018,
-  \url{http://www.ti.com/lit/ds/symlink/tusb1002.pdf}.
-
-\bibitem[TKF{\etalchar{+}}13]{ddsfpgareflectometer}
-D.~{Trebbels}, A.~{Kern}, F.~{Fellhauer}, C.~{Huebner}, and R.~{Zengerle},
-  \emph{{Miniaturized FPGA-Based High-Resolution Time-Domain Reflectometer}},
-  IEEE Transactions on Instrumentation and Measurement \textbf{62} (2013),
-  no.~7, 2101--2113, \url{https://ieeexplore.ieee.org/document/6484979}.
-
-\bibitem[Tut14]{widebandcouplers}
-Elmin Tutkur, \emph{{W}ideband {D}irectional {C}ouplers and {P}ower
-  {S}plitters}, Master's thesis, Chalmers University of Technology, Gothenburg,
-  2014, \url{https://odr.chalmers.se/handle/20.500.12380/199699}.
-
-\bibitem[WCBR08]{pcb_surface_simple}
-X.~{Wu}, D.~{Cullen}, G.~{Brist}, and O.~M. {Ramahi}, \emph{{Surface Finish
-  Effects on High-Speed Signal Degradation}}, IEEE Transactions on Advanced
-  Packaging \textbf{31} (2008), no.~1, 182--189,
-  \url{https://ieeexplore.ieee.org/document/4437763}.
-
-\bibitem[Wil98]{AN72LT}
-Jim Williams, \emph{{AN72}: {A} {S}even-{N}anosecond {C}omparator for {S}ingle
-  {S}upply {O}peration: {G}uidance for {P}utting {C}ivilized {S}peed to
-  {W}ork}, Tech. report, Linear Technology Co., Milpitas, 5 1998,
+\bibitem{AN72LT}
+Jim Williams.
+\newblock {AN72}: {A} {S}even-{N}anosecond {C}omparator for {S}ingle {S}upply
+  {O}peration: {G}uidance for {P}utting {C}ivilized {S}peed to {W}ork.
+\newblock Technical report, Linear Technology Co., Milpitas, 5 1998.
+\newblock
   \url{https://www.analog.com/media/en/technical-documentation/application-notes/an72f.pdf}.
 
-\bibitem[Wil03]{AN94LT}
-\bysame, \emph{{AN94}: {S}lew {R}ate {V}erification for {W}ideband
-  {A}mplifiers: {T}he {T}aming of the {S}lew}, Tech. report, Linear Technology
-  Co., Milpitas, 5 2003,
+\bibitem{AN94LT}
+Jim Williams.
+\newblock {AN94}: {S}lew {R}ate {V}erification for {W}ideband {A}mplifiers:
+  {T}he {T}aming of the {S}lew.
+\newblock Technical report, Linear Technology Co., Milpitas, 5 2003.
+\newblock
   \url{https://www.analog.com/media/en/technical-documentation/application-notes/an94f.pdf}.
+
+\bibitem{S-4manual}
+Tektronix, Inc., Beaverton, Oregon.
+\newblock {\em {S-4} {S}ampling {H}ead {I}nstruction {M}anual}, 3 1985.
+\newblock \url{http://w140.com/tek_s4.pdf}.
+
+\bibitem{SY54017datasheet}
+Micrel, Inc., San Jose.
+\newblock {\em {SY54017} Datasheet}, 5 2008.
+\newblock \url{http://ww1.microchip.com/downloads/en/DeviceDoc/sy54017r.pdf}.
+
+\bibitem{SN75LVCP600Sdatasheet}
+Texas Instruments, Dallas.
+\newblock {\em {SN75LVCP600S} Datasheet}, 3 2016.
+\newblock \url{http://www.ti.com/lit/ds/symlink/sn75lvcp600s.pdf}.
+
+\bibitem{SN65LVPE501datasheet}
+Texas Instruments, Dallas.
+\newblock {\em {SN65LVPE501} Datasheet}, 5 2012.
+\newblock \url{http://www.ti.com/lit/ds/symlink/sn65lvpe501.pdf}.
+
+\bibitem{TUSB1002Adatasheet}
+Texas Instruments, Dallas.
+\newblock {\em {TUSB1002} Datasheet}, 11 2018.
+\newblock \url{http://www.ti.com/lit/ds/symlink/tusb1002.pdf}.
+
+\bibitem{noisedomainreflectometry}
+{Chet Lo} and C.~{Furse}.
+\newblock Noise-domain reflectometry for locating wiring faults.
+\newblock {\em IEEE Transactions on Electromagnetic Compatibility},
+  47(1):97--104, Feb 2005.
+\newblock \url{https://ieeexplore.ieee.org/document/1396356}.
+
+\bibitem{subnanosecondgeneratorcomparison}
+A.~{De Angelis}, M.~{Dionigi}, R.~{Giglietti}, and P.~{Carbone}.
+\newblock {E}xperimental {C}omparison of {L}ow-{C}ost {S}ub-{N}anosecond
+  {P}ulse {G}enerators.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  60(1):310--318, Jan 2011.
+\newblock \url{https://ieeexplore.ieee.org/document/5464318}.
+
+\bibitem{usb30standard}
+Hewlett-Packard Company and Intel Corporation and Microsoft Corporation and NEC
+  Corporation and ST-NXP Wireless and Texas Instruments.
+\newblock {\em {U}niversal {S}erial {B}us 3.0 {S}pecification}, 11 2008.
+\newblock
+  \url{https://www.usb3.com/whitepapers/USB%203%200%20(11132008)-final.pdf}.
+
+\bibitem{SY54020datasheet}
+Micrel, Inc., San Jose.
+\newblock {\em {SY54020AR} Datasheet}, 4 2009.
+\newblock \url{http://ww1.microchip.com/downloads/en/DeviceDoc/sy54020ar.pdf}.
+
+\bibitem{vernierreflectometer}
+{Donghwan Lee}, {Jinho Sung}, and {Jaehong Park}.
+\newblock {A} 16\,ps-resolution {R}andom {E}quivalent {S}ampling circuit for
+  {TDR} utilizing a {V}ernier time delay generation.
+\newblock In {\em 2003 IEEE Nuclear Science Symposium. Conference Record (IEEE
+  Cat. No.03CH37515)}, volume~2, pages 1219--1223 Vol.2, Oct 2003.
+\newblock \url{https://ieeexplore.ieee.org/document/1351912}.
+
+\bibitem{fpgadelaylinereflectometer}
+G.~Bencivenni, E.~Czerwinski, E.~De Lucia, G.~De Robertis, D.~Domenici,
+  O.~Erriquez, G.~Fanizzi, G.~Felici, R.~Liuzzi, F.~Loddo, M.~Mongelli,
+  G.~Morello, A.~Ranieri, and V.~Valentino.
+\newblock {A} {T}ime {D}omain {R}eflectometer with 100\,ps precision
+  implemented in a cost-effective {FPGA} for the test of the {KLOE-2} {I}nner
+  {T}racker readout anodes.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 698:185 --
+  191, 2013.
+\newblock
+  \url{http://www.sciencedirect.com/science/article/pii/S0168900212011552}.
+
+\bibitem{simpledelaylinereflectometer}
+C.~{Negrea} and M.~{Rangu}.
+\newblock Sequential sampling time domain reflectometer.
+\newblock In {\em 2009 15th International Symposium for Design and Technology
+  of Electronics Packages (SIITME)}, pages 367--371, Sep. 2009.
+\newblock \url{https://ieeexplore.ieee.org/document/5407341}.
+
+\bibitem{ddsfpgareflectometer}
+D.~{Trebbels}, A.~{Kern}, F.~{Fellhauer}, C.~{Huebner}, and R.~{Zengerle}.
+\newblock {Miniaturized FPGA-Based High-Resolution Time-Domain Reflectometer}.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  62(7):2101--2113, July 2013.
+\newblock \url{https://ieeexplore.ieee.org/document/6484979}.
+
+\bibitem{ADF4350datasheet}
+Analog Devices Inc., Norwood.
+\newblock {\em {ADF}4350 {W}ideband {S}ynthesizer with {I}ntegrated {VCO}},
+  2008.
+\newblock
+  \url{https://www.analog.com/media/en/technical-documentation/data-sheets/ADF4350.pdf}.
+
+\bibitem{highspeed_trackhold}
+K.~N. {Madsen}, T.~D. {Gathman}, S.~{Daneshgar}, T.~C. {Oh}, J.~C. {Li}, and
+  J.~F. {Buckwalter}.
+\newblock {A High-Linearity, 30 GS/s Track-and-Hold Amplifier and Time
+  Interleaved Sample-and-Hold in an InP-on-CMOS Process}.
+\newblock {\em IEEE Journal of Solid-State Circuits}, 50(11):2692--2702, Nov
+  2015.
+\newblock \url{https://ieeexplore.ieee.org/abstract/document/7299333}.
+
+\bibitem{HSMS282xdatasheet}
+Avago Technologies, Austin.
+\newblock {\em {HSMS}282x Datasheet}, 2018.
+\newblock
+  \url{https://eu.mouser.com/datasheet/2/678/avagotechnologies_AV02-1320EN,0-1217119.pdf}.
+
+\bibitem{Si5351applicationnote}
+Silicon Laboratories Inc., Austin.
+\newblock {\em {AN}619: {M}anually {G}enerating an {S}i5351 {R}egister {M}ap},
+  2018.
+\newblock
+  \url{https://www.silabs.com/documents/public/application-notes/AN619.pdf}.
+
+\bibitem{Si5351_phase_noise_measurement}
+John Miles~(KE5FX) Jason Mildrum~(NT7S).
+\newblock {S}i5351 {I}nvestigations {P}art 7, 11 2014.
+\newblock \url{https://nt7s.com/2014/11/si5351a-investigations-part-7/}.
+
+\bibitem{pcb_surface}
+P.~{Seiler} and D.~{Plettemeier}.
+\newblock {Measurement of PCB Surface Finishes for Substrate Characterization
+  up to 67 GHz}.
+\newblock In {\em 2018 IEEE International Symposium on Antennas and Propagation
+  USNC/URSI National Radio Science Meeting}, pages 1059--1060, July 2018.
+\newblock \url{https://ieeexplore.ieee.org/document/8608680}.
+
+\bibitem{pcb_surface_simple}
+X.~{Wu}, D.~{Cullen}, G.~{Brist}, and O.~M. {Ramahi}.
+\newblock {Surface Finish Effects on High-Speed Signal Degradation}.
+\newblock {\em IEEE Transactions on Advanced Packaging}, 31(1):182--189, Feb
+  2008.
+\newblock \url{https://ieeexplore.ieee.org/document/4437763}.
+
+\bibitem{HP54100_article_journal}
+Rodney~T. Schlater.
+\newblock {W}aveform {G}raphics for a {1-G}hz {D}igitizing {O}scillosocpe.
+\newblock {\em Hewlett-Packard Journal}, 37(4):20--25, April 1986.
+\newblock \url{https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1986-04.pdf}.
+
+\bibitem{time_domain_analyzer_calibration}
+W.~{Su} and S.~M. {Riad}.
+\newblock Calibration of time domain network analyzers.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  42(2):157--161, April 1993.
+\newblock \url{https://ieeexplore.ieee.org/document/278540}.
+
+\bibitem{time_domain_analyzer_calibration_normalization}
+T.~{Dhaene}, L.~{Martens}, and D.~{De Zutter}.
+\newblock Calibration and normalization of time domain network analyzer
+  measurements.
+\newblock {\em IEEE Transactions on Microwave Theory and Techniques},
+  42(4):580--589, April 1994.
+\newblock \url{https://ieeexplore.ieee.org/document/285063}.
+
+\bibitem{TRL_calibration}
+J.~{Stenarson} and K.~{Yhland}.
+\newblock {A Reformulation and Stability Study of TRL and LRM Using
+  $S$-Parameters}.
+\newblock {\em IEEE Transactions on Microwave Theory and Techniques},
+  57(11):2800--2807, Nov 2009.
+\newblock \url{https://ieeexplore.ieee.org/document/5288538}.
 
 \end{thebibliography}

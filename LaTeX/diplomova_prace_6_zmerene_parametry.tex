@@ -24,13 +24,13 @@ Následně byl budicí pulz změřen vzorkovací hlavou Agilent 86015C v mainfra
 Snahou v této části měření bylo změřit fázový šum fázového závěsu. Tato snaha bohužel byla z větší části neúspěšná. Nejprve byl vyzkoušen osciloskop Teledyne LeCroy WaveRunner 6 Zi, který umí měřit fázový šum a ze změřených dat vytvořit graf histogramu fázového šumu, graf frekenčního spektra šumu a numerické statistiky. Bohužel se ukázalo, že tento osciloskop, který katedra elektromagnetickéh pole vlastní, není vybaven softwarovou licencí na tato měření. Vyzkoušen byl tedy mainframe Agilent DCA-J 86100C, který podle označení DCA-J obsahuje hardwarové vybavení potřebné pro měření jitteru. Bohužel i u tohoto osciloskopu se také ukázalo, že není vybaven softwarovou licencí pro tato měření. Bez této licence je schopen pouze zobrazit dvě statistické hodnoty, mezivrcholovou úroveň fázového šumu a efektivní úroveň fázového šumu. Nakonec byl pouze změřen fázový šum mezi dvěma výstupy připojenými ke stejnému fázovému závěsu. Výsledkem měření je tedy fázový šum odpovídající šumu mezi dvěma výstupy diferenciálního páru. Toto měření je vidět na grafu \ref{agilent_fall}. Mezikanálový šum tedy dosahuje mezivrcholové úrovně \SI{21}{\pico\second} a efektivní úrovně \SI{3.4}{\pico\second}.
 
 \section{TDR měření vstupní impedance reflektometru}
-Vstupní impedance reflektometru byla změřena pomocí TDR hlavy Agilent 54754A v mainframe Agilent 86100C. Před použitím byla provedena kompletní kalibrace TDR hlavy pomocí kalibrů open, short a match. Podle očekávání na přechodu mezi konektorem a plošným spojem dochází k poklesu impedance přibližně na \SI{35}{\pico\second}. K dalšímu poklesu impedance dochází nejspíše na přechodu mezi koplanárním vedení pod konektorem a úzkým koplanárním vedením. Dále již impedance reflektometru odpovídá \SI{50}{\ohm}.
+Vstupní impedance reflektometru byla změřena pomocí TDR hlavy Agilent 54754A v mainframe Agilent 86100C. Před použitím byla provedena kompletní kalibrace TDR hlavy pomocí kalibrů open, short a match. Podle očekávání na přechodu mezi konektorem a plošným spojem dochází k poklesu impedance přibližně na \SI{35}{\ohm}. K dalšímu poklesu impedance dochází nejspíše na přechodu mezi koplanárním vedení pod konektorem a úzkým koplanárním vedením. Dále již impedance reflektometru odpovídá \SI{50}{\ohm}.
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/measurements/tdr_profile.png}\caption{TDR měření vstupní impedance reflektometru.}\label{tdr_profile}
 \end{figure}
 
 \section{Měření vstupní impedance reflektometru pomocí VNA}
-Měření impedance bylo zopakováno pomocí \acrshort{VNA} Agilent E8364A. Výsledek měření je prezentován v grafu \ref{vna_impedance}. Parametr $S_{11}$ je menší než \SI{-20}{\deci\bel} pro frekvence do \SI{3.5}{\giga\hertz} a menší než \SI{-10}{\deci\bel} pro frekvence do \SI{7.7}{\giga\hertz}. Měření bylo provedeno při různých výkonech generátoru ve VNA za účelem zjištěn, zda se vstupní port chová lineárně. Test probíhal pro výkony do \SI{0}{\deci\bel m}, neprojevovaly se žádné viditelné nelineární jevy.
+Měření impedance bylo zopakováno pomocí \acrshort{VNA} Agilent E8364A. Výsledek měření je prezentován v grafu \ref{vna_impedance}. Parametr $S_{11}$ je menší než \SI{-20}{\deci\bel} pro frekvence do \SI{3.5}{\giga\hertz} a menší než \SI{-10}{\deci\bel} pro frekvence do \SI{7.7}{\giga\hertz}. Měření bylo provedeno při různých výkonech generátoru ve VNA za účelem zjištění, zda se vstupní port chová lineárně. Test probíhal pro výkony do \SI{0}{\deci\bel m}, neprojevovaly se žádné viditelné nelineární jevy.
 
 Toto měření bylo opakováno s neosazenou deskou plošných spojů z obr. \ref{pcb_coplanar}, změřený průběh parametru $S_{11}$ je v grafu \ref{vna_impedance_blank}. Změřený průběh je velmi podobný osazené desce plošných spojů, charakteristické prvky se vyskytují na podobných frekvencích a s podobnou velikostí. Zavěrem tohoto měření je tedy fakt, že špatné přizpůsobení vstupu není způsobeno navrženým splitterem, budičem, ani vzorkovačem, nýbrž nesprávným návrhem vedení pod konektorem a nekvalitním konektorem.
 
@@ -43,7 +43,7 @@ Toto měření bylo opakováno s neosazenou deskou plošných spojů z obr. \ref
 \end{figure}
 
 \section{Měření parametrů použitého substrátu}
-Pro ověření permitivity použitého substrátu byla vytvořena testovací deska s kalibry pro kalibrační metody \acrshort{TRL} a \acrshort{UOML}. Tato deska je na fotografii \ref{uoml}. Nachází se na ní zeshora postupně kalibrační vedení nulové délky \quotedblbase thru\textquotedblleft , kalibry \quotedblbase short\textquotedblleft , \quotedblbase open\textquotedblleft{} a \quotedblbase match\textquotedblleft{}. Pod nimi se nachází tři vedení různých délek. Zeshora jsou to vedení délek \SI{8}{\milli\meter}, \SI{50}{\milli\meter} a \SI{69.8}{\milli\meter}. Tloušťka substrátu a povrchová úprava je stejná jako u reflektometru, tedy \SI{0.6}{\milli\meter} a olovnatý HAL. Deska byla navržena tak, aby bylo možné na ni namontovat jak kvalitní konektory Southwest Endlaunch, tak i připájet levné konektory použité na reflektometru. Detail kalibru \quotedblbase match\textquotedblleft{} v podobě rezistoru velikosti 0201 je na fotografii \ref{match_detail}, pro srovnání velikosti má otvor napravo od rezistoru průměr \SI{0.3}{\milli\meter}.
+Pro ověření permitivity použitého substrátu byla vytvořena testovací deska s kalibry pro kalibrační metody \acrshort{TRL} a \acrshort{UOML}. Tato deska je na fotografii \ref{uoml}. Nachází se na ní seshora postupně kalibrační vedení nulové délky \quotedblbase thru\textquotedblleft , kalibry \quotedblbase short\textquotedblleft , \quotedblbase open\textquotedblleft{} a \quotedblbase match\textquotedblleft{}. Pod nimi se nachází tři vedení různých délek. Seshora jsou to vedení délek \SI{8}{\milli\meter}, \SI{50}{\milli\meter} a \SI{69.8}{\milli\meter}. Tloušťka substrátu a povrchová úprava je stejná jako u reflektometru, tedy \SI{0.6}{\milli\meter} a olovnatý HAL. Deska byla navržena tak, aby bylo možné na ni namontovat jak kvalitní konektory Southwest Endlaunch, tak i připájet levné konektory použité na reflektometru. Detail kalibru \quotedblbase match\textquotedblleft{} v podobě rezistoru velikosti 0201 je na fotografii \ref{match_detail}, pro srovnání velikosti má otvor napravo od rezistoru průměr \SI{0.3}{\milli\meter}.
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/measurements/match.jpg}\caption{Detail kalibru \quotedblbase match\textquotedblleft .}\label{match_detail}
 \end{figure}
@@ -113,3 +113,35 @@ Odezva na kalibr \quotedblbase match\textquotedblleft{} je v grafu \ref{measured
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth,keepaspectratio]{images/self-measurements/measured_load.eps}\caption{Odezva při měření kalibru \quotedblbase match\textquotedblleft{} na konci vedení.}\label{measured_load}
 \end{figure}
+
+\section{Měření funkčnosti potlačení šumu a zvlnění průměrováním a jednoduchou kalibrací}
+Pro ověření funkčnosti potlačení šumu pomocí průměrování byl změřen kalibr \quotedblbase open\textquotedblleft{} při různých počtech průměrování ($1\times$, $2\times$, $4\times$, $8\times$, $16\times$, $32\times$, $64\times$). Tato změřená data jsou zanesena v grafu \ref{noise_raw_comparison}. Graf je pouze informativní, data pro různé úrovně průměrování jsou posunuta tak, aby se nepřekrývala. Měření probíhalo při vzorkovacím kroku $10\times$~větším, než ve zbytku práce, tedy přibližně \SI{196.2}{\pico\second}. Byl změřen i standard \quotedblbase load\textquotedblleft{} při průměrování $64\times$, pomocí získaných dat byla zkalibrována data jednotlivých měření kalibru \quotedblbase open\textquotedblleft . Z měření je vidět, že úroveň šumu klesá s rostoucím počtem průměrování, přičemž nedochází k žádným viditelným negativním jevům průměrování, jako je například prodloužení náběžné hrany vlivem vysokého fázového šumu. V grafu \ref{noise_cal_comparison} jsou zakreslena tatáž změřená data po kalibraci pomocí standardu \quotedblbase load\textquotedblleft . Z tohoto grafu je vidět, že téměř veškeré zvlnění měřeného signálu pomocí této kalibrace bylo výrazně potlačeno.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_raw_comparison.eps}\caption{Porovnání úrovně šumu pro různé počty průměrování, bez jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_raw_comparison}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_cal_comparison.eps}\caption{Porovnání úrovně šumu pro různé počty průměrování, s použitím jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_cal_comparison}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_raw_avg1.eps}\caption{Spektrum měřeného kalibru \quotedblbase open\textquotedblleft{} při průměrování $1\times$, bez jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_raw_avg1}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_raw_avg64.eps}\caption{Spektrum měřeného kalibru \quotedblbase open\textquotedblleft{} při průměrování $64\times$, bez jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_raw_avg64}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_cal_avg1.eps}\caption{Spektrum měřeného kalibru \quotedblbase open\textquotedblleft{} při průměrování $1\times$, s použitím jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_cal_avg1}
+\end{figure}
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth,keepaspectratio]{images/noise_cal_avg64.eps}\caption{Spektrum měřeného kalibru \quotedblbase open\textquotedblleft{} při průměrování $64\times$, s použitím jednoduché kalibrace pomocí standardu \quotedblbase load\textquotedblleft .}\label{noise_cal_avg64}
+\end{figure}
+
+
+Amplitudové spektrum měřeného kalibru při počtech průměrování $1\times$ a $64\times$, s jednoduchou kalibrací i bez ní, je uvedeno v grafech \ref{noise_raw_avg1}, \ref{noise_raw_avg64}, \ref{noise_cal_avg1} a \ref{noise_cal_avg64}. V grafu \ref{noise_raw_avg64} je oproti grafu \ref{noise_raw_avg1} vidět výrazně nižší úroveň šumu - spektrum je hladší a i na frekvencích přes \SI{2}{\giga\hertz} jsou vidět periodické propady ve spektru, zatímco bez průměrování jsou tyto propady viditelné jen přibližně do \SI{0.5}{\giga\hertz}. Pomocí průměrování tedy bylo dosaženo snížení šumové úrovně a rozšíření použitelného frekvenčního rozsahu reflektometru. Graf \ref{noise_cal_avg1} a \ref{noise_raw_avg1} vypadají podobně, pro malé počty průměrování tedy kalibrace nepřínáší výrazné vylepšení měřených dat. V grafu \ref{noise_cal_avg64} je však vidět, že při velkém počtu průměrování zlepšuje kalibrace dynamický rozsah. Při použití kalibrace je amplituda mezi vrcholy a propady ve spektru přibližně \SIrange{80}{90}{\deci\bel}, bez použití kalibrace je tato amplituda pouze přibližně \SIrange{40}{80}{\deci\bel}.
+
+Experimentálně tedy bylo zjištěno, že průměrováním a kalibrací pomocí kalibru \quotedblbase load\textquotedblleft{} je možné výrazně potlačit šum a zvlnění a zlepšit dynamický rozsah měření.
