@@ -9,8 +9,12 @@ global calibration_data;
 calibration_data.open=[];
 calibration_data.short=[];
 calibration_data.load=[];
+calibration_data.noise=[];
+calibration_data.noise_avg=0;
+calibration_data.load_avg=0;
 
 global decoded_data=[];
+global noise=[];
 
 %------------------------------------------------------------------------------- 
 
@@ -29,18 +33,42 @@ endfunction
 function update_graph_data(calling_object,event_data,h)
   global decoded_data;
   global calibration_data;
+  global noise;
   
   if (get(h.calibration_use,"value")==0)
+    
     if(length(calibration_data.load)==4096) 
-      set(h.plot,"YData",decoded_data-calibration_data.load);
+      waveform=decoded_data-calibration_data.load;
     else
-      set(h.plot,"YData",decoded_data);
+      waveform=decoded_data;
     endif;
+    
+    if (get(h.calibration_denoise,"value")==1)
+      waveform_spectrum=fft([0 diff(waveform)]);
+      noise=sqrt(calibration_data.noise_avg./(1+round(63*get(h.device_average_slider, "value")))).*(calibration_data.noise-calibration_data.load)./(sqrt(1+(calibration_data.noise_avg/calibration_data.load_avg)^2));
+      noise=[0 diff(noise)];
+      noise_spectrum=fft(noise);
+      sigma=6;
+      noise_floor_shift=1; %makes the noise estimation N times larger to suppress more noise
+      gaussian=(1/(sigma*sqrt(2*pi())))*exp(-0.5*(((1:4096)-2048)/sigma).^2);
+      gaussian_spectrum=fft(gaussian);
+      noise_filter=1./(1+(noise_floor_shift*((abs(noise_spectrum)+abs(flip(noise_spectrum)))/2)./((abs(gaussian_spectrum)+abs(flip(gaussian_spectrum)))/2)).^2);
+      S11A=waveform_spectrum.*noise_filter;
+      calibrated_data=real(ifft(S11A));
+      for i=2:length(calibrated_data)
+        calibrated_data(i)=calibrated_data(i)+calibrated_data(i-1);
+      endfor  
+      set(h.plot,"YData",calibrated_data);
+    else
+      set(h.plot,"YData",waveform);
+    endif;
+    
+    
   else
-    S11L=fft(calibration_data.load);
-    S11O=fft(calibration_data.open);
-    S11S=fft(calibration_data.short);
-    S11M=fft(decoded_data);
+    S11L=fft([0 diff(calibration_data.load)]);
+    S11O=fft([0 diff(calibration_data.open)]);
+    S11S=fft([0 diff(calibration_data.short)]);
+    S11M=fft([0 diff(decoded_data)]);
     
     Ed=S11L;
     Er=2.*( ( (S11O-S11L).*(S11S - S11L) ) ./ (S11S-S11O) );
@@ -48,7 +76,22 @@ function update_graph_data(calling_object,event_data,h)
     
     S11A= (S11M-Ed) ./ ( Es.*(S11M-Ed)+Er );
     
+    if (get(h.calibration_denoise,"value")==1)
+      noise=sqrt(calibration_data.noise_avg./(1+round(63*get(h.device_average_slider, "value")))).*(calibration_data.noise-calibration_data.load)./(sqrt(1+(calibration_data.noise_avg/calibration_data.load_avg)^2));
+      noise=[0 diff(noise)];
+      noise_spectrum=fft(noise);
+      sigma=6;
+      noise_floor_shift=1; %makes the noise estimation N times larger to suppress more noise
+      gaussian=(1/(sigma*sqrt(2*pi())))*exp(-0.5*(((1:4096)-2048)/sigma).^2);
+      gaussian_spectrum=fft(gaussian);
+      noise_filter=1./(1+(noise_floor_shift*((abs(noise_spectrum)+abs(flip(noise_spectrum)))/2)./((abs(gaussian_spectrum)+abs(flip(gaussian_spectrum)))/2)).^2);
+      S11A=S11A.*noise_filter;
+    endif;
+    
     calibrated_data=real(ifft(S11A));
+    for i=2:length(calibrated_data)
+      calibrated_data(i)=calibrated_data(i)+calibrated_data(i-1);
+    endfor  
     
     set(h.plot,"YData",calibrated_data);
   endif;
@@ -108,8 +151,21 @@ function calibration_action(calling_object,event_data,h)
         if(length(calibration_data.load)==4096)
           calibration_data.load=[];
           set(h.calibration_use,"value",0);
+          calibration_data.load_avg=0;
         else
           calibration_data.load=decoded_data;
+          calibration_data.load_avg=1+round(63*get(h.device_average_slider, "value"));
+        endif;
+      endif;
+      
+      if (gcbo()==h.calibration_noise) 
+        if(length(calibration_data.noise)==4096)
+          calibration_data.noise=[];
+          set(h.calibration_denoise,"value",0);
+          calibration_data.noise_avg=0;
+        else
+          calibration_data.noise=decoded_data;
+          calibration_data.noise_avg=1+round(63*get(h.device_average_slider, "value"));
         endif;
       endif;
       
@@ -149,6 +205,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is initialising its peripherals.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
         set(h.device_run,"visible","off");
@@ -178,6 +236,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is about to find the position\nof rising edge of the generator.");
         set(h.device_instruction_text,"string","Please disconnect everything form test port\nand connect directly an \"OPEN\" standard.\nThen press either the Continue button\nor button on the device.");
         set(h.device_run,"visible","off");
@@ -206,7 +266,9 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_load,"enable","off");
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
-        set(h.calibration_restore,"enable","off");  
+        set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off"); 
         set(h.device_state_text,"string","The device is calibrating DC offset of the sampler.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
         set(h.device_run,"visible","off");
@@ -235,7 +297,9 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_load,"enable","off");
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
-        set(h.calibration_restore,"enable","off");   
+        set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");  
         set(h.device_state_text,"string","The device is measuring its own noise.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
         set(h.device_run,"visible","off");
@@ -265,6 +329,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");   
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is trying to find the rising edge\n of the generator.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");
         set(h.device_run,"visible","off");
@@ -294,6 +360,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is about to find the position\nof the measurement plane.");
         set(h.device_instruction_text,"string","Please connect airline/transmission line and connect \nan \"OPEN\" standard to its end. Then press either the \nContinue button or button on the device.");
         set(h.device_run,"visible","off");
@@ -323,6 +391,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is trying to find the position\nof the measurement plane.");
         set(h.device_instruction_text,"string","Please wait. No user action is required."); 
         set(h.device_run,"visible","off");
@@ -352,6 +422,8 @@ function update_gui_state(h,state,data_length)
         %set(h.calibration_use,"enable","on");
         %set(h.calibration_store,"enable","on");
         set(h.calibration_restore,"enable","on"); 
+        set(h.calibration_noise,"enable","on");
+        %set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is ready for measurement.");
         set(h.device_instruction_text,"string","Now you can control the device."); 
         set(h.device_run,"visible","off");
@@ -381,6 +453,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
         set(h.device_instruction_text,"string","Please connect \"OPEN\" standard to the reference plane.\nThen press either the Continue button or button\non the device."); 
         set(h.device_run,"visible","off");
@@ -410,6 +484,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
         set(h.device_instruction_text,"string","Please connect \"SHORT\" standard to the reference plane.\Then press either the Continue button or button\non the device."); 
         set(h.device_run,"visible","off");
@@ -439,6 +515,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is about to measure a calibration normal.");
         set(h.device_instruction_text,"string","Please connect \"LOAD\" standard to the reference plane.\Then press either the Continue button or button\non the device."); 
         set(h.device_run,"visible","off");
@@ -455,21 +533,26 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_open,"enable","on");
         set(h.calibration_short,"enable","on");
         set(h.calibration_load,"enable","on");
+        set(h.calibration_noise,"enable","on");
+        
         if(length(calibration_data.open)==4096)
           set(h.calibration_open,"backgroundcolor",[0.94 0.94 0.5]);
         else
           set(h.calibration_open,"backgroundcolor",[0.94 0.94 0.94]);
         endif;
+        
         if(length(calibration_data.load)==4096)
           set(h.calibration_load,"backgroundcolor",[0.94 0.94 0.5]);
         else
           set(h.calibration_load,"backgroundcolor",[0.94 0.94 0.94]);
         endif;
+        
         if(length(calibration_data.short)==4096)
           set(h.calibration_short,"backgroundcolor",[0.94 0.94 0.5]);
         else
           set(h.calibration_short,"backgroundcolor",[0.94 0.94 0.94]);
         endif;
+        
         if((length(calibration_data.open)==4096)&(length(calibration_data.load)==4096)&(length(calibration_data.short)==4096))
           set(h.calibration_use,"enable","on");
           set(h.calibration_store,"enable","on");
@@ -477,6 +560,19 @@ function update_gui_state(h,state,data_length)
           set(h.calibration_use,"enable","off");
           set(h.calibration_store,"enable","off");
         endif;
+        
+        if(length(calibration_data.noise)==4096)
+          set(h.calibration_noise,"backgroundcolor",[0.94 0.94 0.5]);
+        else
+          set(h.calibration_noise,"backgroundcolor",[0.94 0.94 0.94]);
+        endif;
+        
+        if((length(calibration_data.noise)==4096)&(length(calibration_data.load)==4096))
+          set(h.calibration_denoise,"enable","on");
+        else
+          set(h.calibration_denoise,"enable","off");
+        endif;
+        
         set(h.calibration_restore,"enable","on");  
         set(h.device_state_text,"string","The device is ready to measure the DUT.");
         set(h.device_instruction_text,"string","Please connect the DUT. Then press \neither the Continue button or button\non the device.");
@@ -530,6 +626,8 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
         set(h.calibration_restore,"enable","off");  
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");
         set(h.device_state_text,"string","The device is measuring a calibration normal.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.");  
         set(h.device_run,"visible","off");
@@ -558,7 +656,9 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_load,"enable","off");
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
-        set(h.calibration_restore,"enable","off");  
+        set(h.calibration_restore,"enable","off");
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off");  
         set(h.device_state_text,"string","The device is ready to send data.");
         set(h.device_instruction_text,"string","Please wait. No user action is required."); 
         set(h.device_run,"visible","off");
@@ -587,7 +687,9 @@ function update_gui_state(h,state,data_length)
         set(h.calibration_load,"enable","off");
         set(h.calibration_use,"enable","off");
         set(h.calibration_store,"enable","off");
-        set(h.calibration_restore,"enable","off");  
+        set(h.calibration_restore,"enable","off"); 
+        set(h.calibration_noise,"enable","off");
+        set(h.calibration_denoise,"enable","off"); 
         set(h.device_state_text,"string","The device is running a measurement.");
         set(h.device_instruction_text,"string","Please wait. No user action is required.\nOnce the measurement is done, you will see the data.");  
         set(h.device_run,"visible","off");
@@ -679,12 +781,14 @@ DEVICE_AVERAGE_TEXT_COORD=GetCornerCoord([2/3 2/20 1/4 1/15]);
 DEVICE_AVERAGE_SLIDER_COORD=GetCornerCoord([2/3 1/6 1/4 1/15]);
 DEVICE_RUN_STOP_COORD=GetCornerCoord([1/3 1/6 1/4 1/9]);
 
-CALIBRATION_OPEN_COORD=GetCornerCoord([1/5 3/4 CALIBRATION_BUTTON_SIZE]);
-CALIBRATION_SHORT_COORD=GetCornerCoord([1/5 2/4 CALIBRATION_BUTTON_SIZE]);
-CALIBRATION_LOAD_COORD=GetCornerCoord([1/5 1/4 CALIBRATION_BUTTON_SIZE]);
-CALIBRATION_STORE_COORD=GetCornerCoord([1-1/5+1/8-1/4 2/4 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
-CALIBRATION_RESTORE_COORD=GetCornerCoord([1-1/5+1/8-1/4 1/4 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
-CALIBRATION_USE_COORD=GetCornerCoord([1-1/5+1/8-1/4 3/4 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
+CALIBRATION_OPEN_COORD=GetCornerCoord([1/5 4/5 CALIBRATION_BUTTON_SIZE]);
+CALIBRATION_SHORT_COORD=GetCornerCoord([1/5 3/5 CALIBRATION_BUTTON_SIZE]);
+CALIBRATION_LOAD_COORD=GetCornerCoord([1/5 2/5 CALIBRATION_BUTTON_SIZE]);
+CALIBRATION_STORE_COORD=GetCornerCoord([1-1/5+1/8-1/4 3/5 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
+CALIBRATION_RESTORE_COORD=GetCornerCoord([1-1/5+1/8-1/4 2/5 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
+CALIBRATION_USE_COORD=GetCornerCoord([1-1/5+1/8-1/4 4/5 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
+CALIBRATION_NOISE_COORD=GetCornerCoord([1/5 1/5 CALIBRATION_BUTTON_SIZE]);
+CALIBRATION_DENOISE_COORD=GetCornerCoord([1-1/5+1/8-1/4 1/5 CALIBRATION_BUTTON_SIZE(1)*2 CALIBRATION_BUTTON_SIZE(2)]);
 %------------------------------------------------------------------------------- 
 
 main_window=figure();
@@ -693,7 +797,7 @@ set(main_window, "ToolBar", "none");
 %set (main_window, "color", get(0, "defaultuicontrolbackgroundcolor"))
 set(main_window, "position", [get(main_window, "position")(1:2) window_size]);
 %set(main_window, "position", [1600 1000 window_size]);
-set(main_window, "Name", "TDR Control panel (Petr Polasek 2019-12-20)", "NumberTitle", "off");
+set(main_window, "Name", "TDR Control panel (Petr Polasek 2020-01-26)", "NumberTitle", "off");
 
 h.serial_probe_message = uicontrol ("style", "text",
                                 "units", "normalized",
@@ -1009,6 +1113,20 @@ h.calibration_restore = uicontrol ("style", "pushbutton",
                                 %"callback", @update_plot_axes,
                                 "TooltipString", "To restore the OSL calibration from a file, push this button. It is loaded from a file in the current working directory of this script.\nYou cannot select the file to which it will be stored.",
                                 "position", CALIBRATION_RESTORE_COORD, "parent", h.calibration_panel);   
+                                
+h.calibration_denoise = uicontrol ("style", "checkbox",
+                                "units", "normalized",
+                                "string", "Noise reduction",
+                                "value", 0,
+                                "TooltipString", "To apply the noise reduction to the measured data and display the calibrated data, check this box.\nThis box can be checked only after the LOAD and NOISE calibration is performed or loaded from file.",
+                                "position", CALIBRATION_DENOISE_COORD, "parent", h.calibration_panel);     
+                                
+h.calibration_noise = uicontrol ("style", "pushbutton",
+                                "units", "normalized",
+                                "string", "Noise",
+                                %"callback", {@store_calibration, h},
+                                "TooltipString", "After performing a measurement of the LOAD standard with averagin set to 1, push this button to store the calibration.\nIf you wish to remove the calibration, push the button again. If it is yellow, then the calibration is set.",
+                                "position", CALIBRATION_NOISE_COORD, "parent", h.calibration_panel);                                   
  
 set(h.calibration_open, "callback",{@calibration_action, h});   
 set(h.calibration_short, "callback",{@calibration_action, h}); 
@@ -1016,6 +1134,8 @@ set(h.calibration_load, "callback",{@calibration_action, h});
 set(h.calibration_use, "callback",{@update_graph_data, h}); 
 set(h.calibration_store, "callback",{@calibration_io, h}); 
 set(h.calibration_restore, "callback",{@calibration_io, h});  
+set(h.calibration_denoise, "callback",{@update_graph_data, h}); 
+set(h.calibration_noise, "callback",{@calibration_action, h}); 
  
 guidata(main_window, h);
 
