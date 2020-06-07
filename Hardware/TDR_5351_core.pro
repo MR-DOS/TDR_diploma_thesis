@@ -1,4 +1,4 @@
-update=Po 23. prosince 2019, 00:14:53 CET
+update=So 6. června 2020, 08:32:01 CEST
 version=1
 last_client=kicad
 [general]
@@ -41,14 +41,14 @@ CopperLayerCount=2
 BoardThickness=0.6
 AllowMicroVias=0
 AllowBlindVias=0
-RequireCourtyardDefinitions=0
-ProhibitOverlappingCourtyards=1
 MinTrackWidth=0.127
 MinViaDiameter=0.6
 MinViaDrill=0.3
 MinMicroViaDiameter=0.6
 MinMicroViaDrill=0.3
 MinHoleToHole=0.25
+RequireCourtyardDefinitions=0
+ProhibitOverlappingCourtyards=1
 CopperEdgeClearance=0.01
 TrackWidth1=0.25
 TrackWidth2=0.25
@@ -328,3 +328,5 @@ uViaDrill=0.3
 dPairWidth=0.2
 dPairGap=0.25
 dPairViaGap=0.25
+[LibeditFrame]
+version=1

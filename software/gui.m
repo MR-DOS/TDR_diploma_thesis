@@ -3,7 +3,7 @@ close all;
 clear all;
 graphics_toolkit qt;
 warning('off', 'Octave:possible-matlab-short-circuit-operator');
-warning('off', 'Octave:missing-glyph');
+#warning('off', 'Octave:missing-glyph');
 
 global calibration_data;
 calibration_data.open=[];

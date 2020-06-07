@@ -16,6 +16,8 @@ if (unwrap==1)
   endfor
 endif
 
+s.freq=s.freq/1e9;
+
 figure(1);
 [ax,h1,h2]=plotyy(s.freq, s.s11.mag, s.freq, s.s11.ph, @semilogx, @semilogx);
 xlim([s.freq(1) s.freq(end)]);
@@ -23,7 +25,7 @@ grid off;
 grid minor on;
 hold on;
 hold off;
-xlabel("Frekvence (Hz)");
+xlabel("Frekvence (GHz)");
 set(h1,"linewidth",2);
 set(h2,"linewidth",2);
 ylabel(ax(1),"|S11| (dB)");
@@ -51,6 +53,8 @@ if (unwrap==1)
   endfor
 endif
 
+s.freq=s.freq/1e9;
+
 figure(2);
 [ax,h1,h2]=plotyy(s.freq, 10.^(s.s11.mag/20), s.freq, s.s11.ph, @semilogx, @semilogx);
 xlim([s.freq(1) s.freq(end)]);
@@ -58,7 +62,7 @@ grid off;
 grid minor on;
 hold on;
 hold off;
-xlabel("Frekvence (Hz)");
+xlabel("Frekvence (GHz)");
 set(h1,"linewidth",2);
 set(h2,"linewidth",2);
 ylim(ax(1), [48 52]);
@@ -92,7 +96,7 @@ saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/transfer_cha
 %------------------------------------------------------------------------------%
 
 s=read_touchstone("frequency_transfer_function_BF.txt");
-
+s.freq=s.freq/1e9;
 figure(4);
 [ax,h1,h2]=plotyy(s.freq, s.s11.mag, s.freq, s.s11.ph, @semilogx, @semilogx);
 xlim([s.freq(1) s.freq(end)]);
@@ -100,7 +104,7 @@ grid off;
 grid minor on;
 hold on;
 hold off;
-xlabel("Frekvence (Hz)");
+xlabel("Frekvence (GHz)");
 set(h1,"linewidth",2);
 set(h2,"linewidth",2);
 %ylim(ax(1), [48 52]);
@@ -115,7 +119,7 @@ saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/frequency_tr
 %------------------------------------------------------------------------------%
 
 s=read_touchstone("frequency_transfer_function_all.txt");
-
+s.freq=s.freq/1e9;
 unwrap=1;
 if (unwrap==1)
   for j=2:length(s.s11.ph)
@@ -136,7 +140,7 @@ grid off;
 grid minor on;
 hold on;
 hold off;
-xlabel("Frekvence (Hz)");
+xlabel("Frekvence (GHz)");
 set(h1,"linewidth",2);
 set(h2,"linewidth",2);
 %ylim(ax(1), [48 52]);
@@ -151,6 +155,7 @@ saveas(gca, '/home/msboss/Documents/diplomova_prace/LTSpice/outputs/frequency_tr
 %------------------------------------------------------------------------------%
 
 s=read_touchstone("denoiser_positive.txt");
+s.freq=s.freq/1e9;
 figure(6);
 h1=semilogx(s.freq, s.s11.mag);
 hold on;
@@ -163,7 +168,7 @@ grid off;
 grid minor on;
 hold on;
 hold off;
-xlabel("Frekvence (Hz)");
+xlabel("Frekvence (GHz)");
 
 set(h2,"linewidth",2);
 %ylim(ax(1), [48 52]);

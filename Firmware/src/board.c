@@ -6,7 +6,7 @@
  */
 
 #define INT_DIVIDER 46
-#define NUMBER_OF_POINTS 50000
+#define NUMBER_OF_POINTS 500000
 #define DRAMATIC_PAUSE 250
 #define SAMPLE_MEMORY_SIZE	4096
 #define DEVICE_NAME "TDR5351_CORE"
@@ -1830,13 +1830,13 @@ EnableState Calibrate_Rising_Edge_Position_Guess(Si5351_ConfigTypeDef *Si5351_Co
 
 	start_millis=millis;
 	//repeat looking for new largest differentiation index until it lies four times in tolerance field
-	while(position_hits<4)
+	while(position_hits<3)
 	{
 		last_largest_differentiation_point=Board_ReflectometerState->largest_differentiation_point;
 		while(Board_ReflectometerState->current_sample_index!=1){}
 		while(Board_ReflectometerState->current_sample_index!=2){}
 		if ((millis-start_millis)>120000) return ON; //if not found in two minutes, return error
-		if (abs(Board_ReflectometerState->largest_differentiation_point-last_largest_differentiation_point)>=256)
+		if (abs(Board_ReflectometerState->largest_differentiation_point-last_largest_differentiation_point)>=512)
 		{
 			position_hits=0;
 		} else position_hits++;
